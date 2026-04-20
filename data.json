@@ -1,0 +1,70 @@
+[
+  {
+    "id": "c1",
+    "col": "done",
+    "title": "GitHub Pages Board – Setup & Deploy",
+    "tags": [
+      "infra"
+    ],
+    "note": "Live at https://harreson-bot.github.io/board/",
+    "blocked": "",
+    "date": "2026-04-20"
+  },
+  {
+    "id": "c2",
+    "col": "done",
+    "title": "Insurance CRM – Full Gmail Extraction & Rebuild",
+    "tags": [
+      "crm",
+      "insurance"
+    ],
+    "note": "57 contacts extracted. Dashboard at localhost:8899/crm/index.html",
+    "blocked": "",
+    "date": "2026-04-20"
+  },
+  {
+    "id": "c3",
+    "col": "inprog",
+    "title": "LLC Dissolution – Stepson's SC & DE LLCs",
+    "tags": [
+      "llc"
+    ],
+    "note": "Framework built. DE first (complex), SC in parallel.",
+    "blocked": "Waiting on stepson's LLC details (names, EINs, formation dates)",
+    "date": "2026-04-20"
+  },
+  {
+    "id": "c4",
+    "col": "inprog",
+    "title": "Insurance CRM – Past-Due Client Outreach",
+    "tags": [
+      "crm",
+      "insurance"
+    ],
+    "note": "5 past-due clients. Call scripts + email drafts in Gmail awaiting review.",
+    "blocked": "",
+    "date": "2026-04-20"
+  },
+  {
+    "id": "c5",
+    "col": "inprog",
+    "title": "Follow Up – Kent Dobey (Hot Prospect)",
+    "tags": [
+      "insurance"
+    ],
+    "note": "Pre-retirement ACA buyer, in pipeline since Jul 2025. Draft email in Gmail.",
+    "blocked": "",
+    "date": "2026-04-20"
+  },
+  {
+    "id": "c6",
+    "col": "inprog",
+    "title": "Joseph Lombardo – Medicare Transition (Turns 65 May 2026)",
+    "tags": [
+      "insurance"
+    ],
+    "note": "Currently on Ambetter ACA $105.62/mo. Medicare eligible May 2026. Draft email in Gmail.",
+    "blocked": "",
+    "date": "2026-04-20"
+  }
+]
