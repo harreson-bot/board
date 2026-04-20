@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harreson Board</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f1117; color: #e2e8f0; min-height: 100vh; }
+    header { background: #1a1d2e; border-bottom: 1px solid #2d3148; padding: 16px 24px; display: flex; align-items: center; gap: 12px; }
+    header h1 { font-size: 1.3rem; font-weight: 700; color: #7c85f5; }
+    header span { color: #64748b; font-size: 0.85rem; }
+    .board { display: flex; gap: 16px; padding: 24px; overflow-x: auto; align-items: flex-start; }
+    .column { background: #1a1d2e; border-radius: 12px; min-width: 280px; max-width: 320px; flex-shrink: 0; border: 1px solid #2d3148; }
+    .col-header { padding: 14px 16px; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; border-bottom: 1px solid #2d3148; display: flex; align-items: center; gap: 8px; }
+    .col-header .count { background: #2d3148; border-radius: 9999px; padding: 1px 8px; font-size: 0.75rem; font-weight: 600; }
+    .col-todo .col-header { color: #94a3b8; }
+    .col-inprog .col-header { color: #60a5fa; }
+    .col-pending .col-header { color: #f59e0b; }
+    .col-done .col-header { color: #34d399; }
+    .cards { padding: 12px; display: flex; flex-direction: column; gap: 10px; min-height: 80px; }
+    .card { background: #22263a; border: 1px solid #2d3148; border-radius: 8px; padding: 12px 14px; cursor: default; transition: border-color 0.15s; }
+    .card:hover { border-color: #4a5080; }
+    .card-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; line-height: 1.4; }
+    .card-meta { font-size: 0.75rem; color: #64748b; margin-top: 6px; }
+    .card-tag { display: inline-block; border-radius: 4px; padding: 2px 7px; font-size: 0.7rem; font-weight: 600; margin-right: 4px; margin-top: 4px; }
+    .tag-crm { background: #1e3a5f; color: #60a5fa; }
+    .tag-insurance { background: #1e3d2f; color: #34d399; }
+    .tag-llc { background: #3d1e2f; color: #f472b6; }
+    .tag-infra { background: #2d2a1e; color: #fbbf24; }
+    .tag-trading { background: #1e2d3d; color: #818cf8; }
+    .blocked-badge { display: inline-flex; align-items: center; gap: 4px; background: #3d2a1e; color: #f97316; border-radius: 4px; padding: 2px 7px; font-size: 0.7rem; font-weight: 600; margin-top: 6px; }
+    .empty { color: #3d4466; font-size: 0.82rem; text-align: center; padding: 16px 0; font-style: italic; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📋 Harreson Board</h1>
+    <span>Calvenn Starre · Operations Task Board</span>
+  </header>
+  <div class="board">
+
+    <!-- TODO -->
+    <div class="column col-todo">
+      <div class="col-header">🔲 Todo <span class="count" id="cnt-todo">0</span></div>
+      <div class="cards" id="col-todo">
+        <div class="empty">Nothing here yet</div>
+      </div>
+    </div>
+
+    <!-- IN PROGRESS -->
+    <div class="column col-inprog">
+      <div class="col-header">🔄 In Progress <span class="count" id="cnt-inprog">0</span></div>
+      <div class="cards" id="col-inprog">
+        <div class="empty">Nothing here yet</div>
+      </div>
+    </div>
+
+    <!-- PENDING -->
+    <div class="column col-pending">
+      <div class="col-header">⏳ Pending <span class="count" id="cnt-pending">0</span></div>
+      <div class="cards" id="col-pending">
+      </div>
+    </div>
+
+    <!-- DONE -->
+    <div class="column col-done">
+      <div class="col-header">✅ Done <span class="count" id="cnt-done">0</span></div>
+      <div class="cards" id="col-done">
+        <div class="empty">Nothing here yet</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const cards = [
+      {
+        col: "pending",
+        title: "Insurance CRM – Full Gmail Extraction & Rebuild",
+        tags: ["crm", "insurance"],
+        meta: "Added 2026-04-20",
+        blocked: null,
+        note: "57 contacts extracted. Dashboard live at localhost:8899/crm/index.html"
+      },
+      {
+        col: "pending",
+        title: "LLC Dissolution – Stepson's SC & DE LLCs",
+        tags: ["llc"],
+        meta: "Added 2026-04-20",
+        blocked: "Waiting on stepson's LLC details (names, EINs, formation dates, file numbers, operating agreements)",
+        note: "Framework built. DE first (complex), SC in parallel."
+      },
+      {
+        col: "pending",
+        title: "Board.md → GitHub Pages (Public URL)",
+        tags: ["infra"],
+        meta: "Added 2026-04-20",
+        blocked: "GitHub account created (Harreson-bot) — awaiting token/deploy",
+        note: "This board itself. Will be live at https://harreson-bot.github.io/board"
+      },
+      {
+        col: "inprog",
+        title: "Insurance CRM – Past-Due Client Outreach",
+        tags: ["crm", "insurance"],
+        meta: "Added 2026-04-20",
+        note: "5 past-due clients. Drafts created in Gmail for Maryellen Tribby, Patrice & Richard Miller (phone only — internal call scripts drafted)."
+      },
+      {
+        col: "inprog",
+        title: "Follow Up – Kent Dobey (Hot Prospect)",
+        tags: ["insurance"],
+        meta: "Added 2026-04-20",
+        note: "Pre-retirement ACA buyer. In pipeline since Jul 2025. Draft email in Gmail for review."
+      },
+      {
+        col: "inprog",
+        title: "Joseph Lombardo – Medicare Transition (Turns 65 May 2026)",
+        tags: ["insurance"],
+        meta: "Added 2026-04-20",
+        note: "Currently on Ambetter ACA $105.62/mo. Medicare eligible May 2026. Draft email in Gmail."
+      },
+    ];
+
+    const colMap = { todo: "col-todo", inprog: "col-inprog", pending: "col-pending", done: "col-done" };
+    const counts = { todo: 0, inprog: 0, pending: 0, done: 0 };
+    const tagClass = { crm: "tag-crm", insurance: "tag-insurance", llc: "tag-llc", infra: "tag-infra", trading: "tag-trading" };
+
+    cards.forEach(c => {
+      const col = document.getElementById(colMap[c.col]);
+      const empty = col.querySelector('.empty');
+      if (empty) empty.remove();
+      counts[c.col]++;
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.innerHTML = `
+        <div class="card-title">${c.title}</div>
+        ${c.tags.map(t => `<span class="card-tag ${tagClass[t]||''}">${t}</span>`).join('')}
+        ${c.blocked ? `<div class="blocked-badge">⛔ ${c.blocked}</div>` : ''}
+        ${c.note ? `<div class="card-meta">${c.note}</div>` : ''}
+        <div class="card-meta">${c.meta}</div>
+      `;
+      col.appendChild(div);
+    });
+
+    Object.keys(counts).forEach(k => {
+      document.getElementById('cnt-' + k).textContent = counts[k];
+    });
+  </script>
+</body>
+</html>
