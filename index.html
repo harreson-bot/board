@@ -40,35 +40,24 @@
   </header>
   <div class="board">
 
-    <!-- TODO -->
     <div class="column col-todo">
       <div class="col-header">🔲 Todo <span class="count" id="cnt-todo">0</span></div>
-      <div class="cards" id="col-todo">
-        <div class="empty">Nothing here yet</div>
-      </div>
+      <div class="cards" id="col-todo"><div class="empty">Nothing here yet</div></div>
     </div>
 
-    <!-- IN PROGRESS -->
     <div class="column col-inprog">
       <div class="col-header">🔄 In Progress <span class="count" id="cnt-inprog">0</span></div>
-      <div class="cards" id="col-inprog">
-        <div class="empty">Nothing here yet</div>
-      </div>
+      <div class="cards" id="col-inprog"></div>
     </div>
 
-    <!-- PENDING -->
     <div class="column col-pending">
       <div class="col-header">⏳ Pending <span class="count" id="cnt-pending">0</span></div>
-      <div class="cards" id="col-pending">
-      </div>
+      <div class="cards" id="col-pending"></div>
     </div>
 
-    <!-- DONE -->
     <div class="column col-done">
       <div class="col-header">✅ Done <span class="count" id="cnt-done">0</span></div>
-      <div class="cards" id="col-done">
-        <div class="empty">Nothing here yet</div>
-      </div>
+      <div class="cards" id="col-done"></div>
     </div>
 
   </div>
@@ -76,15 +65,21 @@
   <script>
     const cards = [
       {
-        col: "pending",
+        col: "done",
+        title: "GitHub Pages Board – Setup & Deploy",
+        tags: ["infra"],
+        meta: "Completed 2026-04-20",
+        note: "Live at https://harreson-bot.github.io/board/"
+      },
+      {
+        col: "done",
         title: "Insurance CRM – Full Gmail Extraction & Rebuild",
         tags: ["crm", "insurance"],
-        meta: "Added 2026-04-20",
-        blocked: null,
+        meta: "Completed 2026-04-20",
         note: "57 contacts extracted. Dashboard live at localhost:8899/crm/index.html"
       },
       {
-        col: "pending",
+        col: "inprog",
         title: "LLC Dissolution – Stepson's SC & DE LLCs",
         tags: ["llc"],
         meta: "Added 2026-04-20",
@@ -92,19 +87,11 @@
         note: "Framework built. DE first (complex), SC in parallel."
       },
       {
-        col: "pending",
-        title: "Board.md → GitHub Pages (Public URL)",
-        tags: ["infra"],
-        meta: "Added 2026-04-20",
-        blocked: "GitHub account created (Harreson-bot) — awaiting token/deploy",
-        note: "This board itself. Will be live at https://harreson-bot.github.io/board"
-      },
-      {
         col: "inprog",
         title: "Insurance CRM – Past-Due Client Outreach",
         tags: ["crm", "insurance"],
         meta: "Added 2026-04-20",
-        note: "5 past-due clients. Drafts created in Gmail for Maryellen Tribby, Patrice & Richard Miller (phone only — internal call scripts drafted)."
+        note: "5 past-due clients. Call scripts + email drafts in Gmail awaiting review."
       },
       {
         col: "inprog",
