@@ -1,391 +1,622 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harreson Board</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f1117; color: #e2e8f0; min-height: 100vh; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affordable Healthcare Solutions | Licensed Insurance Advisor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header { background: #1a1d2e; border-bottom: 1px solid #2d3148; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
-    header h1 { font-size: 1.2rem; font-weight: 700; color: #7c85f5; }
-    header span { color: #64748b; font-size: 0.82rem; }
-    .save-status { font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; background: #22263a; color: #64748b; transition: all 0.3s; }
-    .save-status.saving { background: #2d3148; color: #f59e0b; }
-    .save-status.saved { background: #1e3d2f; color: #34d399; }
-    .save-status.error { background: #3d1e2f; color: #f472b6; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
 
-    .board { display: flex; gap: 16px; padding: 20px 24px; overflow-x: auto; align-items: flex-start; min-height: calc(100vh - 57px); }
+        /* Header & Navigation */
+        header {
+            background-color: #003087;
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 48, 135, 0.15);
+        }
 
-    .column { background: #1a1d2e; border-radius: 12px; min-width: 270px; max-width: 300px; flex-shrink: 0; border: 1px solid #2d3148; display: flex; flex-direction: column; }
-    .col-header { padding: 12px 14px; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; border-bottom: 1px solid #2d3148; display: flex; align-items: center; gap: 8px; }
-    .col-header .count { background: #2d3148; border-radius: 9999px; padding: 1px 8px; font-size: 0.72rem; font-weight: 600; margin-left: auto; }
-    .col-request .col-header { color: #a78bfa; }
-    .col-todo .col-header { color: #94a3b8; }
-    .col-inprog .col-header { color: #60a5fa; }
-    .col-pending .col-header { color: #f59e0b; }
-    .col-done .col-header { color: #34d399; }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .cards { padding: 10px; display: flex; flex-direction: column; gap: 8px; flex: 1; min-height: 60px; transition: background 0.15s; }
-    .cards.drag-over { background: #1e2240; border-radius: 8px; }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
 
-    .card { background: #22263a; border: 1px solid #2d3148; border-radius: 8px; padding: 10px 12px; cursor: grab; transition: border-color 0.15s, box-shadow 0.15s; position: relative; }
-    .card:hover { border-color: #4a5080; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-    .card.dragging { opacity: 0.4; cursor: grabbing; }
-    .card-title { font-size: 0.87rem; font-weight: 600; line-height: 1.4; padding-right: 40px; }
-    .card-note { font-size: 0.73rem; color: #64748b; margin-top: 5px; line-height: 1.4; }
-    .card-meta { font-size: 0.7rem; color: #3d4466; margin-top: 5px; }
-    .card-tags { margin-top: 5px; display: flex; flex-wrap: wrap; gap: 4px; }
-    .card-tag { border-radius: 4px; padding: 1px 6px; font-size: 0.68rem; font-weight: 600; }
-    .tag-crm { background: #1e3a5f; color: #60a5fa; }
-    .tag-insurance { background: #1e3d2f; color: #34d399; }
-    .tag-llc { background: #3d1e2f; color: #f472b6; }
-    .tag-infra { background: #2d2a1e; color: #fbbf24; }
-    .tag-trading { background: #1e2d3d; color: #818cf8; }
-    .tag-request { background: #2d1e3d; color: #a78bfa; }
-    .blocked-badge { display: inline-flex; align-items: center; gap: 4px; background: #3d2a1e; color: #f97316; border-radius: 4px; padding: 2px 6px; font-size: 0.68rem; font-weight: 600; margin-top: 5px; }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-    .card-actions { position: absolute; top: 8px; right: 8px; display: flex; gap: 4px; opacity: 0; transition: opacity 0.15s; }
-    .card:hover .card-actions { opacity: 1; }
-    .btn-icon { background: #2d3148; border: none; color: #94a3b8; border-radius: 4px; width: 22px; height: 22px; cursor: pointer; font-size: 0.75rem; display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
-    .btn-icon:hover { background: #3d4466; color: #e2e8f0; }
-    .btn-icon.del:hover { background: #3d1e2f; color: #f472b6; }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-    .add-card-btn { margin: 0 10px 10px; padding: 7px; border: 1px dashed #2d3148; border-radius: 7px; background: none; color: #3d4466; font-size: 0.78rem; cursor: pointer; width: calc(100% - 20px); text-align: left; transition: all 0.15s; }
-    .add-card-btn:hover { border-color: #4a5080; color: #94a3b8; background: #22263a; }
+        nav a:hover {
+            color: #0066CC;
+        }
 
-    .empty { color: #3d4466; font-size: 0.78rem; text-align: center; padding: 14px 0; font-style: italic; }
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
 
-    /* Modal */
-    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 100; align-items: center; justify-content: center; }
-    .modal-overlay.open { display: flex; }
-    .modal { background: #1a1d2e; border: 1px solid #2d3148; border-radius: 14px; padding: 24px; width: 420px; max-width: 95vw; }
-    .modal h2 { font-size: 1rem; font-weight: 700; color: #e2e8f0; margin-bottom: 16px; }
-    .modal label { display: block; font-size: 0.75rem; color: #64748b; margin-bottom: 4px; margin-top: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
-    .modal input, .modal textarea, .modal select { width: 100%; background: #22263a; border: 1px solid #2d3148; border-radius: 7px; color: #e2e8f0; padding: 8px 10px; font-size: 0.85rem; font-family: inherit; outline: none; transition: border-color 0.15s; }
-    .modal input:focus, .modal textarea:focus, .modal select:focus { border-color: #7c85f5; }
-    .modal textarea { resize: vertical; min-height: 70px; }
-    .modal-actions { display: flex; gap: 8px; margin-top: 20px; justify-content: flex-end; }
-    .btn { padding: 8px 18px; border-radius: 7px; border: none; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: background 0.15s; }
-    .btn-primary { background: #7c85f5; color: #fff; }
-    .btn-primary:hover { background: #6470e8; }
-    .btn-secondary { background: #22263a; color: #94a3b8; }
-    .btn-secondary:hover { background: #2d3148; }
-    .btn-danger { background: #3d1e2f; color: #f472b6; }
-    .btn-danger:hover { background: #5d2040; }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #003087 0%, #004db3 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
 
-    .tag-checkboxes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-    .tag-cb { display: none; }
-    .tag-label { border-radius: 4px; padding: 3px 9px; font-size: 0.72rem; font-weight: 600; cursor: pointer; border: 1px solid transparent; opacity: 0.5; transition: opacity 0.15s; }
-    .tag-cb:checked + .tag-label { opacity: 1; border-color: currentColor; }
-  </style>
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero .subheadline {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #0066CC;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #0052a3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 102, 204, 0.4);
+        }
+
+        /* Value Proposition Section */
+        .value-prop {
+            padding: 4rem 2rem;
+            background-color: #f8f9fa;
+        }
+
+        .value-prop-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .value-prop p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: center;
+        }
+
+        /* About Calvenn Section */
+        .about {
+            padding: 5rem 2rem;
+            background-color: white;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #e6f0ff 0%, #d0e0ff 100%);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            color: #003087;
+            font-weight: 600;
+            font-size: 1rem;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #003087;
+        }
+
+        .about-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-phone {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0066CC;
+        }
+
+        /* HRA-105 Tax Benefits Section */
+        .hra-benefits {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #0066CC 0%, #004499 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .hra-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hra-benefits h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .hra-benefits p {
+            font-size: 1rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        /* Medical Bills Stat Section */
+        .stat-banner {
+            padding: 3rem 2rem;
+            background-color: #fff3cd;
+            border-left: 6px solid #ffc107;
+            text-align: center;
+        }
+
+        .stat-banner-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stat-banner p {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #856404;
+        }
+
+        /* 30 Day Money Back Guarantee */
+        .guarantee {
+            padding: 3rem 2rem;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        .guarantee-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .guarantee h3 {
+            font-size: 1.8rem;
+            color: #003087;
+            margin-bottom: 1rem;
+        }
+
+        .guarantee p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 2rem;
+            background-color: white;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #003087;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #0066CC;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 48, 135, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-card p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: #003087;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-stars {
+            color: #ffc107;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #003087;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-content p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #0066CC;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                justify-content: space-between;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #003087;
+                flex-direction: column;
+                width: 100%;
+                padding: 1rem 0;
+                gap: 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                padding: 0.5rem 2rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subheadline {
+                font-size: 1.1rem;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .stat-banner p {
+                font-size: 1.1rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                padding: 2rem 1rem;
+            }
+
+            .footer-links a {
+                margin: 0 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero .subheadline {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+            }
+
+            .value-prop {
+                padding: 2rem 1rem;
+            }
+
+            .value-prop p {
+                font-size: 0.95rem;
+            }
+
+            .about {
+                padding: 2rem 1rem;
+            }
+
+            .hra-benefits {
+                padding: 2.5rem 1rem;
+            }
+
+            .hra-benefits h2 {
+                font-size: 1.4rem;
+            }
+
+            .guarantee h3 {
+                font-size: 1.4rem;
+            }
+
+            .testimonials {
+                padding: 2.5rem 1rem;
+            }
+
+            .testimonials h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Affordable Healthcare Solutions</div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <nav id="navMenu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Calvenn</a></li>
+                    <li><a href="#book">Book An Appointment</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<header>
-  <h1>📋 Harreson Board</h1>
-  <div style="display:flex;align-items:center;gap:12px;">
-    <span>Calvenn Starre · Operations</span>
-    <span class="save-status" id="saveStatus">● synced</span>
-    <button class="btn btn-secondary" style="font-size:0.72rem;padding:3px 10px;" onclick="resetToken()" title="Reset GitHub token">🔑</button>
-  </div>
-</header>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <h1>5-Star Coverage and Treatment at Affordable Prices</h1>
+            <p class="subheadline">Get the healthcare coverage you deserve, tailored to your budget and needs</p>
+            <a href="https://calendly.com/calvenn" class="cta-button">Book a Free Consultation</a>
+        </div>
+    </section>
 
-<div class="board" id="board">
-  <div class="column col-request" data-col="request">
-    <div class="col-header">📥 Requests <span class="count">0</span></div>
-    <div class="cards" id="col-request"></div>
-    <button class="add-card-btn" onclick="openModal('request')">＋ Add request</button>
-  </div>
-  <div class="column col-todo" data-col="todo">
-    <div class="col-header">🔲 Todo <span class="count">0</span></div>
-    <div class="cards" id="col-todo"></div>
-    <button class="add-card-btn" onclick="openModal('todo')">＋ Add card</button>
-  </div>
-  <div class="column col-inprog" data-col="inprog">
-    <div class="col-header">🔄 In Progress <span class="count">0</span></div>
-    <div class="cards" id="col-inprog"></div>
-    <button class="add-card-btn" onclick="openModal('inprog')">＋ Add card</button>
-  </div>
-  <div class="column col-pending" data-col="pending">
-    <div class="col-header">⏳ Pending <span class="count">0</span></div>
-    <div class="cards" id="col-pending"></div>
-    <button class="add-card-btn" onclick="openModal('pending')">＋ Add card</button>
-  </div>
-  <div class="column col-done" data-col="done">
-    <div class="col-header">✅ Done <span class="count">0</span></div>
-    <div class="cards" id="col-done"></div>
-    <button class="add-card-btn" onclick="openModal('done')">＋ Add card</button>
-  </div>
-</div>
+    <!-- Value Proposition Section -->
+    <section class="value-prop">
+        <div class="value-prop-container">
+            <p>At Affordable Healthcare Solutions, we work on behalf of the needs and budget of our clients. We put the POWER in the hands of our clients, and maximize their healthcare options by focusing on Private Health-Based options, as well as Income based options to help lower their payments, deductibles and max out of pocket costs.</p>
+        </div>
+    </section>
 
-<!-- Modal -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <h2 id="modalTitle">Add Card</h2>
-    <label>Title *</label>
-    <input type="text" id="mTitle" placeholder="What needs to be done?">
-    <label>Notes</label>
-    <textarea id="mNote" placeholder="Context, links, details..."></textarea>
-    <label>Blocked by</label>
-    <input type="text" id="mBlocked" placeholder="What's blocking this? (optional)">
-    <label>Tags</label>
-    <div class="tag-checkboxes">
-      <input type="checkbox" class="tag-cb" id="t-insurance" value="insurance"><label for="t-insurance" class="tag-label tag-insurance">insurance</label>
-      <input type="checkbox" class="tag-cb" id="t-crm" value="crm"><label for="t-crm" class="tag-label tag-crm">crm</label>
-      <input type="checkbox" class="tag-cb" id="t-trading" value="trading"><label for="t-trading" class="tag-label tag-trading">trading</label>
-      <input type="checkbox" class="tag-cb" id="t-llc" value="llc"><label for="t-llc" class="tag-label tag-llc">llc</label>
-      <input type="checkbox" class="tag-cb" id="t-infra" value="infra"><label for="t-infra" class="tag-label tag-infra">infra</label>
-      <input type="checkbox" class="tag-cb" id="t-request" value="request"><label for="t-request" class="tag-label tag-request">request</label>
-    </div>
-    <div class="modal-actions">
-      <button class="btn btn-danger" id="btnDelete" style="margin-right:auto;display:none;" onclick="deleteCard()">Delete</button>
-      <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
-      <button class="btn btn-primary" onclick="saveCard()">Save</button>
-    </div>
-  </div>
-</div>
+    <!-- About Calvenn Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-image">
+                📸 Photo Placeholder
+            </div>
+            <div class="about-content">
+                <h2>About Calvenn</h2>
+                <p>As an insurance Advisor, my goal is to first educate you on all of the options available, so that you can confidently choose the best type of coverage for you and your family. I personally specialize in private, health-based plans that offer you Nationwide Coverage. Whether you have a job, or Self-Employed, there are plans to fit your needs and maximize your Tax Benefits.</p>
+                <p class="about-phone">📞 (561) 345-0571</p>
+                <p style="font-size: 0.9rem; color: #999; margin-top: 1rem;">Licensed to serve 31 states with private health-based insurance plans</p>
+            </div>
+        </div>
+    </section>
 
-<script>
-// ── Config ──────────────────────────────────────────────
-function promptForToken() {
-  const t = prompt('Enter your GitHub token to enable sync:');
-  if (t) localStorage.setItem('gh_token', t);
-  return t || '';
-}
-const GITHUB_TOKEN = localStorage.getItem('gh_token') || promptForToken();
-const REPO = 'harreson-bot/board';
-const DATA_FILE = 'data.json';
-const BRANCH = 'main';
+    <!-- HRA-105 Tax Benefits Section -->
+    <section class="hra-benefits">
+        <div class="hra-container">
+            <h2>Write-Off 100% on Your Taxes</h2>
+            <p>The BASE® HRA is an IRS-approved tax savings plan created through Code Section 105 of the Internal Revenue Code that allows business owners the opportunity to deduct premiums and out-of-pocket expenses as a business deduction.</p>
+        </div>
+    </section>
 
-// ── Initial data ─────────────────────────────────────────
-const DEFAULT_CARDS = [
-  { id: 'c1', col: 'done', title: 'GitHub Pages Board – Setup & Deploy', tags: ['infra'], note: 'Live at https://harreson-bot.github.io/board/', blocked: '', date: '2026-04-20' },
-  { id: 'c2', col: 'done', title: 'Insurance CRM – Full Gmail Extraction & Rebuild', tags: ['crm', 'insurance'], note: '57 contacts extracted. Dashboard at localhost:8899/crm/index.html', blocked: '', date: '2026-04-20' },
-  { id: 'c3', col: 'inprog', title: 'LLC Dissolution – Stepson\'s SC & DE LLCs', tags: ['llc'], note: 'Framework built. DE first (complex), SC in parallel.', blocked: 'Waiting on stepson\'s LLC details (names, EINs, formation dates)', date: '2026-04-20' },
-  { id: 'c4', col: 'inprog', title: 'Insurance CRM – Past-Due Client Outreach', tags: ['crm', 'insurance'], note: '5 past-due clients. Call scripts + email drafts in Gmail awaiting review.', blocked: '', date: '2026-04-20' },
-  { id: 'c5', col: 'inprog', title: 'Follow Up – Kent Dobey (Hot Prospect)', tags: ['insurance'], note: 'Pre-retirement ACA buyer, in pipeline since Jul 2025. Draft email in Gmail.', blocked: '', date: '2026-04-20' },
-  { id: 'c6', col: 'inprog', title: 'Joseph Lombardo – Medicare Transition (Turns 65 May 2026)', tags: ['insurance'], note: 'Currently on Ambetter ACA $105.62/mo. Medicare eligible May 2026. Draft email in Gmail.', blocked: '', date: '2026-04-20' },
-];
+    <!-- Medical Bills Stat Section -->
+    <section class="stat-banner">
+        <div class="stat-banner-container">
+            <p>⚠️ 62.1% of bankruptcies are caused by medical issues. Don't be a statistic — get covered today.</p>
+        </div>
+    </section>
 
-// ── State ────────────────────────────────────────────────
-let cards = [];
-let fileSha = null;
-let dragSrcId = null;
-let editingId = null;
-let modalCol = null;
-let saveTimer = null;
+    <!-- 30 Day Money Back Guarantee -->
+    <section class="guarantee">
+        <div class="guarantee-container">
+            <h3>30-Day Money Back Guarantee</h3>
+            <p>We're confident in our service. If you're not satisfied, we'll work with you to make it right or provide a full refund within 30 days.</p>
+        </div>
+    </section>
 
-const tagClass = { crm:'tag-crm', insurance:'tag-insurance', llc:'tag-llc', infra:'tag-infra', trading:'tag-trading', request:'tag-request' };
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"Calvenn made finding the right healthcare plan simple and affordable. Highly recommended!"</p>
+                    <div class="testimonial-name">Christopher Henry</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                </div>
 
-// ── GitHub API ───────────────────────────────────────────
-async function ghGet() {
-  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${DATA_FILE}?ref=${BRANCH}`, {
-    headers: { Authorization: `token ${GITHUB_TOKEN}`, Accept: 'application/vnd.github.v3+json' }
-  });
-  if (r.status === 404) return null;
-  return r.json();
-}
+                <div class="testimonial-card">
+                    <p>"Outstanding service and personalized attention. I saved hundreds per month on my premium."</p>
+                    <div class="testimonial-name">Health Logan</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                </div>
 
-async function ghPut(content, sha) {
-  const body = { message: 'Board update', content: btoa(unescape(encodeURIComponent(content))), branch: BRANCH };
-  if (sha) body.sha = sha;
-  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${DATA_FILE}`, {
-    method: 'PUT',
-    headers: { Authorization: `token ${GITHUB_TOKEN}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-    body: JSON.stringify(body)
-  });
-  return r.json();
-}
+                <div class="testimonial-card">
+                    <p>"Professional, knowledgeable, and truly cares about finding the best solution for his clients."</p>
+                    <div class="testimonial-name">Tina Losinger</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                </div>
 
-// ── Load ─────────────────────────────────────────────────
-async function loadData() {
-  setStatus('saving', '● loading…');
-  try {
-    const f = await ghGet();
-    if (f && f.content) {
-      fileSha = f.sha;
-      cards = JSON.parse(decodeURIComponent(escape(atob(f.content.replace(/\n/g,'')))));
-    } else {
-      cards = DEFAULT_CARDS;
-      await saveNow();
-      return;
-    }
-    render();
-    setStatus('saved', '● synced');
-  } catch(e) {
-    console.error(e);
-    cards = DEFAULT_CARDS;
-    render();
-    setStatus('error', '● offline');
-  }
-}
+                <div class="testimonial-card">
+                    <p>"Calvenn's expertise in tax benefits saved me thousands. Best investment in my health plan ever."</p>
+                    <div class="testimonial-name">Robert Rankin</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                </div>
 
-// ── Save ─────────────────────────────────────────────────
-function scheduleSave() {
-  clearTimeout(saveTimer);
-  setStatus('saving', '● saving…');
-  saveTimer = setTimeout(saveNow, 1200);
-}
+                <div class="testimonial-card">
+                    <p>"Responsive, transparent, and genuinely interested in my family's healthcare needs. A true professional."</p>
+                    <div class="testimonial-name">Michelle Reynolds</div>
+                    <div class="testimonial-stars">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-async function saveNow() {
-  try {
-    const res = await ghPut(JSON.stringify(cards, null, 2), fileSha);
-    if (res.content) { fileSha = res.content.sha; setStatus('saved', '● synced'); }
-    else { setStatus('error', '● save failed'); }
-  } catch(e) { setStatus('error', '● offline'); }
-}
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <p><strong>Affordable Healthcare Solutions</strong></p>
+                <p>Licensed Insurance Advisor | Calvenn Starre</p>
+            </div>
+            <div class="footer-content">
+                <p>📞 (561) 345-0571</p>
+                <p><a href="https://affordablehealthcare.solutions" style="color: #0066CC;">affordablehealthcare.solutions</a></p>
+            </div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="https://calendly.com/calvenn">Book Now</a>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2019–2026 Affordable Healthcare Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-function setStatus(cls, txt) {
-  const el = document.getElementById('saveStatus');
-  el.className = 'save-status ' + cls;
-  el.textContent = txt;
-}
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
 
-// ── Render ───────────────────────────────────────────────
-const COLS = ['request','todo','inprog','pending','done'];
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
 
-function render() {
-  COLS.forEach(col => {
-    const el = document.getElementById('col-' + col);
-    el.innerHTML = '';
-    const colCards = cards.filter(c => c.col === col);
-    if (!colCards.length) el.innerHTML = '<div class="empty">Drop cards here</div>';
-    colCards.forEach(c => el.appendChild(makeCard(c)));
-    // update count
-    el.closest('.column').querySelector('.count').textContent = colCards.length;
-  });
-  initDrag();
-}
-
-function makeCard(c) {
-  const div = document.createElement('div');
-  div.className = 'card';
-  div.draggable = true;
-  div.dataset.id = c.id;
-  div.innerHTML = `
-    <div class="card-actions">
-      <button class="btn-icon" title="Edit" onclick="openModal('${c.col}','${c.id}')">✏️</button>
-      <button class="btn-icon del" title="Delete" onclick="confirmDelete('${c.id}')">🗑</button>
-    </div>
-    <div class="card-title">${esc(c.title)}</div>
-    ${c.tags && c.tags.length ? '<div class="card-tags">' + c.tags.map(t=>`<span class="card-tag ${tagClass[t]||''}">${t}</span>`).join('') + '</div>' : ''}
-    ${c.blocked ? `<div class="blocked-badge">⛔ ${esc(c.blocked)}</div>` : ''}
-    ${c.note ? `<div class="card-note">${esc(c.note)}</div>` : ''}
-    <div class="card-meta">${c.date || ''}</div>
-  `;
-  return div;
-}
-
-function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-// ── Drag & Drop ──────────────────────────────────────────
-function initDrag() {
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('dragstart', e => {
-      dragSrcId = card.dataset.id;
-      setTimeout(() => card.classList.add('dragging'), 0);
-      e.dataTransfer.effectAllowed = 'move';
-    });
-    card.addEventListener('dragend', () => card.classList.remove('dragging'));
-  });
-
-  document.querySelectorAll('.cards').forEach(zone => {
-    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); e.dataTransfer.dropEffect = 'move'; });
-    zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
-    zone.addEventListener('drop', e => {
-      e.preventDefault();
-      zone.classList.remove('drag-over');
-      const targetCol = zone.id.replace('col-','');
-      const card = cards.find(c => c.id === dragSrcId);
-      if (card && card.col !== targetCol) {
-        card.col = targetCol;
-        render();
-        scheduleSave();
-      }
-    });
-  });
-}
-
-// ── Modal ────────────────────────────────────────────────
-function openModal(col, id) {
-  editingId = id || null;
-  modalCol = col;
-  document.getElementById('modalTitle').textContent = id ? 'Edit Card' : 'Add Card';
-  document.getElementById('btnDelete').style.display = id ? 'block' : 'none';
-
-  const c = id ? cards.find(x => x.id === id) : null;
-  document.getElementById('mTitle').value = c ? c.title : '';
-  document.getElementById('mNote').value = c ? (c.note || '') : '';
-  document.getElementById('mBlocked').value = c ? (c.blocked || '') : '';
-
-  document.querySelectorAll('.tag-cb').forEach(cb => {
-    cb.checked = c && c.tags ? c.tags.includes(cb.value) : false;
-  });
-
-  document.getElementById('modalOverlay').classList.add('open');
-  document.getElementById('mTitle').focus();
-}
-
-function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('open');
-  editingId = null;
-}
-
-function saveCard() {
-  const title = document.getElementById('mTitle').value.trim();
-  if (!title) { document.getElementById('mTitle').focus(); return; }
-  const tags = [...document.querySelectorAll('.tag-cb:checked')].map(cb => cb.value);
-  const note = document.getElementById('mNote').value.trim();
-  const blocked = document.getElementById('mBlocked').value.trim();
-  const today = new Date().toISOString().split('T')[0];
-
-  if (editingId) {
-    const c = cards.find(x => x.id === editingId);
-    Object.assign(c, { title, tags, note, blocked });
-  } else {
-    cards.push({ id: 'c' + Date.now(), col: modalCol, title, tags, note, blocked, date: today });
-  }
-  closeModal();
-  render();
-  scheduleSave();
-}
-
-function confirmDelete(id) {
-  if (confirm('Delete this card?')) { deleteCardById(id); }
-}
-
-function deleteCard() {
-  if (editingId && confirm('Delete this card?')) {
-    deleteCardById(editingId);
-    closeModal();
-  }
-}
-
-function deleteCardById(id) {
-  cards = cards.filter(c => c.id !== id);
-  render();
-  scheduleSave();
-}
-
-// ── Keyboard ─────────────────────────────────────────────
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
-  if (e.key === 'Enter' && e.metaKey) saveCard();
-});
-
-document.getElementById('modalOverlay').addEventListener('click', e => {
-  if (e.target === document.getElementById('modalOverlay')) closeModal();
-});
-
-function resetToken() {
-  localStorage.removeItem('gh_token');
-  location.reload();
-}
-
-// ── Boot ─────────────────────────────────────────────────
-loadData();
-</script>
+        // Close menu when clicking on a link
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
