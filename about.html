@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Calvenn Starre | Affordable Healthcare Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light only;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: #003087;
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 48, 135, 0.15);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #0066CC;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #003087 0%, #004db3 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        main {
+            padding: 3rem 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #003087;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            color: #003087;
+            font-size: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            color: #0066CC;
+            font-size: 1.3rem;
+            margin-top: 0;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .specialties {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .specialty-card {
+            background: #f0f5ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #0066CC;
+        }
+
+        .states-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            background: #f0f5ff;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .state-item {
+            padding: 0.75rem;
+            background: white;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #003087;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #0066CC;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #0052a3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 102, 204, 0.4);
+        }
+
+        .cta-section {
+            background: #f0f5ff;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #003087;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            background-color: #003087;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-content p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: white;
+        }
+
+        .footer-content a {
+            color: #ffffff;
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #aac4ff;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .footer-legal a {
+            color: #aac4ff;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .footer-legal a:hover {
+            color: #ffffff;
+        }
+
+        .footer-copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; }
+            nav ul { display: none; }
+            .menu-toggle { display: block; }
+            .specialties { grid-template-columns: 1fr; }
+            .states-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-legal { flex-direction: column; gap: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            main { padding: 2rem 1rem; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.3rem; }
+            footer { padding: 2rem 1rem; }
+            .states-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Affordable Healthcare Solutions</div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <nav id="navMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Calvenn</a></li>
+                    <li><a href="book.html">Book An Appointment</a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Meet Calvenn Starre — Your Licensed Insurance Advisor</h1>
+        </div>
+    </section>
+
+    <main>
+        <div class="container">
+            <p style="font-size: 1.1rem; line-height: 1.9;">With over 16 years of experience as a business operations professional and licensed insurance advisor in 31 states, I help self-employed individuals, families, and small business owners navigate the complex world of health insurance. I specialize in private, health-based plans that offer nationwide coverage — not the limited network plans you find on healthcare.gov.</p>
+
+            <h2>My Specialties</h2>
+            <div class="specialties">
+                <div class="specialty-card">
+                    <h3>Private Health-Based Plans</h3>
+                    <p>Nationwide coverage with flexible networks and competitive premiums.</p>
+                </div>
+                <div class="specialty-card">
+                    <h3>Medicare & Supplements</h3>
+                    <p>Navigate Medicare enrollment and find the best supplement coverage.</p>
+                </div>
+                <div class="specialty-card">
+                    <h3>Life Insurance</h3>
+                    <p>Protect your family's future with affordable life coverage.</p>
+                </div>
+                <div class="specialty-card">
+                    <h3>ACA/Marketplace Plans</h3>
+                    <p>Income-based options and subsidies you may qualify for.</p>
+                </div>
+                <div class="specialty-card">
+                    <h3>HRA-105 Tax Strategy</h3>
+                    <p>IRS-approved strategies to deduct 100% of premiums and medical expenses.</p>
+                </div>
+                <div class="specialty-card">
+                    <h3>Small Business Coverage</h3>
+                    <p>Employee group plans and owner options tailored to your business.</p>
+                </div>
+            </div>
+
+            <h2>Licensed in 31 States</h2>
+            <div class="states-grid">
+                <div class="state-item">Alabama</div>
+                <div class="state-item">Arkansas</div>
+                <div class="state-item">Colorado</div>
+                <div class="state-item">Delaware</div>
+                <div class="state-item">Florida</div>
+                <div class="state-item">Georgia</div>
+                <div class="state-item">Illinois</div>
+                <div class="state-item">Indiana</div>
+                <div class="state-item">Iowa</div>
+                <div class="state-item">Kansas</div>
+                <div class="state-item">Kentucky</div>
+                <div class="state-item">Louisiana</div>
+                <div class="state-item">Maryland</div>
+                <div class="state-item">Michigan</div>
+                <div class="state-item">Mississippi</div>
+                <div class="state-item">Missouri</div>
+                <div class="state-item">Montana</div>
+                <div class="state-item">Nebraska</div>
+                <div class="state-item">Nevada</div>
+                <div class="state-item">North Carolina</div>
+                <div class="state-item">Ohio</div>
+                <div class="state-item">Oklahoma</div>
+                <div class="state-item">South Carolina</div>
+                <div class="state-item">South Dakota</div>
+                <div class="state-item">Tennessee</div>
+                <div class="state-item">Texas</div>
+                <div class="state-item">Utah</div>
+                <div class="state-item">Virginia</div>
+                <div class="state-item">West Virginia</div>
+                <div class="state-item">Wisconsin</div>
+                <div class="state-item">Wyoming</div>
+            </div>
+
+            <div class="cta-section">
+                <p>Ready to explore your options?</p>
+                <a href="https://calendly.com/calvenn" class="cta-button">Book a Free Consultation</a>
+                <p style="font-size: 1rem; margin-top: 1rem;">Or call/text directly: <strong>(561) 345-0571</strong></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <p><strong>Affordable Healthcare Solutions</strong></p>
+                <p>Licensed Insurance Advisor | Calvenn Starre</p>
+            </div>
+            <div class="footer-content">
+                <p>📞 (561) 345-0571</p>
+                <p><a href="https://affordablehealthcare.solutions">affordablehealthcare.solutions</a></p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="book.html">Book Now</a>
+            </div>
+            <div class="footer-legal">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms & Conditions</a>
+                <a href="disclaimer.html">Disclaimer</a>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2019–2026 Affordable Healthcare Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
