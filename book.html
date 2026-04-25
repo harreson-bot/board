@@ -4,110 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book An Appointment | Affordable Healthcare Solutions</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root { color-scheme: light only; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; background-color: #fff; }
-        header { background-color: #003087; color: white; padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 8px rgba(0, 48, 135, 0.15); }
-        .header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
-        nav ul { display: flex; list-style: none; gap: 2rem; }
-        nav a { color: white; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s ease; }
-        nav a:hover { color: #0066CC; }
-        .menu-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
-        main { padding: 3rem 2rem; }
-        .container { max-width: 1000px; margin: 0 auto; }
-        h1 { color: #003087; font-size: 2.5rem; margin-bottom: 1.5rem; }
-        h2 { color: #003087; font-size: 2rem; margin-top: 2rem; margin-bottom: 1rem; }
-        h3 { color: #0066CC; font-size: 1.3rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
-        p { font-size: 1rem; line-height: 1.8; color: #555; margin-bottom: 1rem; }
-        ul, ol { margin-left: 2rem; margin-bottom: 1.5rem; }
-        li { margin-bottom: 0.5rem; }
-        a { color: #0066CC; }
-        .cta-button { display: inline-block; background-color: #0066CC; color: white; padding: 1rem 2.5rem; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3); }
-        .cta-button:hover { background-color: #0052a3; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 102, 204, 0.4); }
-        .cta-section { background: #f0f5ff; padding: 2rem; border-radius: 8px; text-align: center; margin-top: 3rem; }
-        .cta-section p { font-size: 1.1rem; color: #003087; font-weight: 600; margin-bottom: 1.5rem; }
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; }
-        .blog-card { background: #f8f9fa; border-radius: 8px; padding: 2rem; border-left: 4px solid #0066CC; transition: all 0.3s ease; }
-        .blog-card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(0, 48, 135, 0.1); }
-        .blog-card h3 { margin-top: 0; color: #003087; }
-        .read-more { color: #0066CC; font-weight: 600; }
-        .read-more:hover { color: #003087; text-decoration: underline; }
-        details { margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 8px; padding: 0; }
-        details[open] { background: #f0f5ff; box-shadow: 0 4px 12px rgba(0, 48, 135, 0.1); }
-        summary { cursor: pointer; padding: 1.5rem; font-weight: 600; color: #003087; user-select: none; background: white; display: flex; justify-content: space-between; align-items: center; }
-        summary:hover { background: #f8f9fa; }
-        details[open] > summary { background: #f0f5ff; color: #0066CC; }
-        summary::after { content: "▼"; font-size: 0.8rem; transition: transform 0.3s ease; }
-        details[open] > summary::after { transform: rotate(180deg); }
-        .accordion-content { padding: 0 1.5rem 1.5rem 1.5rem; color: #555; }
-        footer { background-color: #003087; color: white; padding: 3rem 2rem; text-align: center; }
-        .footer-container { max-width: 1200px; margin: 0 auto; }
-        .footer-content { margin-bottom: 1.5rem; }
-        .footer-content p { margin-bottom: 0.5rem; font-size: 0.95rem; color: white; }
-        .footer-content a { color: #ffffff; }
-        .footer-links { margin-bottom: 1.5rem; }
-        .footer-links a { color: #ffffff; text-decoration: none; margin: 0 1rem; transition: color 0.3s ease; }
+        body { font-family: "Poppins", sans-serif; background: #fff; color: #333; }
+
+        /* NAV */
+        header { background-color: #003087; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #fff; font-size: 1.2rem; font-weight: 700; text-decoration: none; }
+        nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        nav a { color: #cce0ff; text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+        nav a:hover, nav a.active { color: #fff; }
+
+        /* HERO */
+        .page-hero { background: linear-gradient(135deg, #003087 0%, #004db3 100%); padding: 3rem 2rem; text-align: center; }
+        .page-hero h1 { color: #fff; font-size: 2rem; margin-bottom: 0.75rem; }
+        .page-hero p { color: #cce0ff; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+        /* CALENDLY SECTION */
+        .calendly-section { padding: 3rem 2rem; background: #f0f5ff; border-bottom: 4px solid #0066CC; }
+        .section-container { max-width: 900px; margin: 0 auto; text-align: center; }
+        .section-container h2 { color: #003087; font-size: 1.6rem; margin-bottom: 0.75rem; }
+        .section-container p { color: #555; margin-bottom: 1.5rem; }
+        .calendly-btn {
+            display: inline-block; background-color: #0066CC; color: #fff;
+            padding: 0.9rem 2.5rem; border-radius: 50px; text-decoration: none;
+            font-size: 1rem; font-weight: 600; margin-bottom: 1rem;
+            transition: background 0.2s;
+        }
+        .calendly-btn:hover { background-color: #0052a3; }
+        .phone-note { color: #555; font-size: 0.95rem; margin-top: 0.75rem; }
+        .phone-note a { color: #0066CC; font-weight: 600; text-decoration: none; }
+
+        /* DIVIDER */
+        .section-divider { text-align: center; padding: 2rem 1rem 0; }
+        .section-divider h3 { color: #003087; font-size: 1.4rem; }
+        .section-divider p { color: #555; font-size: 0.95rem; margin-top: 0.5rem; }
+
+        /* CONTACT FORM */
+        .contact-section { padding: 2rem 2rem 3rem; background: #fff; }
+        .form-container { max-width: 600px; margin: 0 auto; }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label { display: block; font-weight: 600; color: #003087; margin-bottom: 0.4rem; font-size: 0.9rem; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #ccd6f6;
+            border-radius: 8px; font-family: "Poppins", sans-serif; font-size: 0.95rem;
+            color: #333; transition: border 0.2s;
+        }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #0066CC; }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .required { color: #cc0000; }
+        .submit-btn {
+            width: 100%; background-color: #003087; color: #fff;
+            padding: 0.9rem; border: none; border-radius: 50px;
+            font-size: 1rem; font-weight: 600; cursor: pointer;
+            font-family: "Poppins", sans-serif; transition: background 0.2s;
+        }
+        .submit-btn:hover { background-color: #0066CC; }
+
+        /* TCPA */
+        .tcpa-box {
+            background: #f8f9fa; border-left: 4px solid #0066CC;
+            padding: 1rem 1.25rem; border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0; font-size: 0.82rem; color: #555; line-height: 1.6;
+        }
+        .tcpa-box strong { color: #003087; }
+
+        /* FOOTER */
+        footer { background-color: #003087; padding: 2.5rem 2rem; }
+        .footer-container { max-width: 1200px; margin: 0 auto; text-align: center; }
+        .footer-content p { color: #cce0ff; margin-bottom: 0.3rem; font-size: 0.9rem; }
+        .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0 0.5rem; }
+        .footer-links a { color: #fff; text-decoration: none; font-size: 0.9rem; }
         .footer-links a:hover { color: #aac4ff; }
         .footer-legal { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.2); }
         .footer-legal a { color: #aac4ff; text-decoration: none; font-size: 0.85rem; }
-        .footer-legal a:hover { color: #ffffff; }
-        .footer-copyright { border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 1.5rem; font-size: 0.85rem; opacity: 0.9; }
-        @media (max-width: 768px) { nav ul { display: none; } .menu-toggle { display: block; } .blog-grid { grid-template-columns: 1fr; } .footer-legal { flex-direction: column; gap: 1rem; } }
-</style>
+        .footer-legal a:hover { color: #fff; }
+        .footer-copyright { margin-top: 1rem; }
+        .footer-copyright p { color: #7a8fb0; font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            nav { gap: 0.75rem; }
+            .logo { font-size: 1rem; }
+            .page-hero h1 { font-size: 1.5rem; }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="header-container">
-            <div class="logo">Affordable Healthcare Solutions</div>
-            <button class="menu-toggle" id="menuToggle">☰</button>
-            <nav id="navMenu">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Calvenn</a></li>
-                    <li><a href="book.html">Book An Appointment</a></li>
-                    <li><a href="faqs.html">FAQs</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                </ul>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Affordable Healthcare Solutions</a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Calvenn</a>
+                <a href="book.html" class="active">Book An Appointment</a>
+                <a href="faqs.html">FAQs</a>
+                <a href="blog.html">Blog</a>
             </nav>
         </div>
     </header>
-    
-    <main><div class="container"><h1>Schedule Your Free Consultation</h1><p style="font-size: 1.1rem; text-align: center; color: #0066CC; font-weight: 500; margin-bottom: 2rem;">Schedule a free, no-obligation consultation with Calvenn. We'll review your current coverage, discuss your options, and find the best plan for your needs and budget.</p><div style="background: white; border-radius: 8px; padding: 2rem; text-align: center; margin: 2rem 0;"><div class="calendly-inline-widget" data-url="https://calendly.com/calvenn" style="min-width:320px;height:700px;"></div><script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script></div><div style="background: #f0f5ff; padding: 2rem; border-radius: 8px; text-align: center; margin-top: 2rem;"><h3 style="margin-top: 0;">Prefer to Call?</h3><p style="font-size: 1.2rem; color: #0066CC; font-weight: 600;">Reach Calvenn directly at <strong>(561) 345-0571</strong></p><p style="color: #555; margin-bottom: 0;">Available via phone or text message</p></div></div></main>
+
+    <div class="page-hero">
+        <h1>Book a Free Consultation</h1>
+        <p>No cost, no obligation. Let's find the right coverage for your needs and budget.</p>
+    </div>
+
+    <section class="calendly-section">
+        <div class="section-container">
+            <h2>Schedule a Call</h2>
+            <p>Pick a time that works for you. Calvenn will review your current situation and walk you through your best options.</p>
+            <a href="https://calendly.com/calvenn" target="_blank" rel="noopener" class="calendly-btn">&#128197; Open Scheduling Calendar</a>
+            <p class="phone-note">Prefer to call or text? Reach Calvenn directly: <a href="tel:5613450571">(561) 345-0571</a></p>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="form-container">
+            <div class="section-divider">
+                <h3>Prefer to Start via Email?</h3>
+                <p>Fill out the form below and Calvenn will follow up within one business day.</p>
+            </div>
+
+            <br>
+
+            <div class="tcpa-box">
+                <strong>Communication Consent Notice:</strong> By submitting this form, you consent to receive calls, 
+                text messages (SMS/MMS), and emails from Affordable Healthcare Solutions regarding insurance options, 
+                quotes, and appointment reminders. Message and data rates may apply. Message frequency varies. 
+                <strong>Reply STOP to opt out of text messages at any time.</strong> Reply HELP for help. 
+                You may also opt out by emailing <a href="mailto:calvenn@affordablehealthcare.solutions" style="color:#0066CC;">calvenn@affordablehealthcare.solutions</a>. 
+                Your information will not be sold to third parties. See our <a href="privacy-policy.html" style="color:#0066CC;">Privacy Policy</a>.
+            </div>
+
+            <form action="https://formspree.io/f/calvenn@affordablehealthcare.solutions" method="POST">
+                <div class="form-group">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" name="name" placeholder="Your full name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address <span class="required">*</span></label>
+                    <input type="email" name="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" name="phone" placeholder="(000) 000-0000">
+                </div>
+                <div class="form-group">
+                    <label>Notes / Questions</label>
+                    <textarea name="message" placeholder="Tell me about your situation, current coverage, or any questions you have..."></textarea>
+                </div>
+                <input type="hidden" name="_subject" value="New Consultation Request - Affordable Healthcare Solutions">
+                <input type="hidden" name="_next" value="https://harreson-bot.github.io/board/book.html?submitted=true">
+                <button type="submit" class="submit-btn">Send Message &rarr;</button>
+            </form>
+        </div>
+    </section>
 
     <footer>
         <div class="footer-container">
             <div class="footer-content">
-                <p><strong>Affordable Healthcare Solutions</strong></p>
+                <p><strong style="color:#fff;">Affordable Healthcare Solutions</strong></p>
                 <p>Licensed Insurance Advisor | Calvenn Starre</p>
-            </div>
-            <div class="footer-content">
-                <p>📞 (561) 345-0571</p>
-                <p><a href="https://affordablehealthcare.solutions">affordablehealthcare.solutions</a></p>
+                <p style="font-size:0.85rem; color:#aac4ff; margin-top:0.25rem;">NPN # 3410196 &nbsp;|&nbsp; Florida License # W590016*</p>
+                <p style="font-size:0.8rem; color:#7a8fb0; margin-top:0.2rem;">* Other state license numbers available upon request. Digital copies supplied with all quotes.</p>
+                <p style="margin-top:0.5rem;"><a href="tel:5613450571" style="color:#cce0ff;">(561) 345-0571</a></p>
+                <p><a href="https://affordablehealthcare.solutions" style="color:#ffffff;">affordablehealthcare.solutions</a></p>
             </div>
             <div class="footer-links">
                 <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="book.html">Book Now</a>
+                <a href="about.html">About Calvenn</a>
+                <a href="book.html">Book Appointment</a>
+                <a href="faqs.html">FAQs</a>
+                <a href="blog.html">Blog</a>
             </div>
             <div class="footer-legal">
                 <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms.html">Terms & Conditions</a>
+                <a href="terms.html">Terms &amp; Conditions</a>
                 <a href="disclaimer.html">Disclaimer</a>
             </div>
             <div class="footer-copyright">
-                <p>&copy; 2019–2026 Affordable Healthcare Solutions. All rights reserved.</p>
+                <p>&copy; 2019&ndash;2026 Affordable Healthcare Solutions. All rights reserved.</p>
+                <p style="margin-top:0.4rem;">Calvenn Starre is a licensed insurance agent, not a financial advisor. Results are not typical and will vary. Not all plans available in all states.</p>
             </div>
         </div>
     </footer>
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-        const navLinks = navMenu.querySelectorAll('a');
-        navLinks.forEach(link => link.addEventListener('click', () => navMenu.classList.remove('active')));
-    </script>
 </body>
 </html>
