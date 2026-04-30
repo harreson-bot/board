@@ -143,6 +143,36 @@ Implemented:
 4. **Facebook contact upload deprecated** — Build own matcher instead; more control, more defensible
 5. **Accountability must be built-in** — Change protocol, changelog, git audit trail are non-negotiable
 
+## Backup & Recovery System (Apr 30, 09:10 EDT) ✅
+
+**Automated daily backup system now active:**
+
+### Locations
+1. **Local backup:** `/home/harreson/Backups/workspace-daily/`
+   - tar.gz archives (timestamped), retains last 30 days
+   
+2. **OneDrive cloud backup:** `/mnt/c/Users/calve/OneDrive/Backups/OpenClaw-Workspace/`
+   - Same archives, auto-synced via Windows
+   
+3. **Session history:** `/home/harreson/.openclaw/agents/main/sessions/`
+   - Full JSONL transcripts (emergency recovery)
+
+### What's backed up
+- MEMORY.md, TOOLS.md, AGENTS.md, SOUL.md, USER.md, IDENTITY.md, HEARTBEAT.md
+- memory/ directory (daily notes)
+- .gitignore and git configuration
+- PatchHub docs (when created May 5)
+
+### Schedule
+- **When:** Daily at midnight EDT (cron job 658586c2-4e4b-4317-ab61-86d0477b1893)
+- **Log file:** `/home/harreson/Backups/backup.log`
+- **Retention:** 30-day rolling history
+
+### Recovery
+- **Lost files?** Extract from `/home/harreson/Backups/workspace-daily/workspace-backup-*.tar.gz`
+- **Local crashed?** Download from OneDrive (auto-synced)
+- **Need more history?** Check session JSONL files or OneDrive version history
+
 ---
 
-**Last Updated:** Wednesday, April 29, 2026 (6:51 PM EDT / 22:51 UTC) — Evening sync: no new sessions today. PatchHub architecture stable and ready for May 5 development kickoff.
+**Last Updated:** Thursday, April 30, 2026 (9:10 AM EDT) — Backup system active, TOOLS.md recovered, all files protected. PatchHub ready for May 5 launch.
