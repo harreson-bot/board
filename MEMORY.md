@@ -300,7 +300,7 @@ Implemented:
 
 ---
 
-**Last Updated:** Thursday, April 30, 2026 (10:51 PM EDT) — Memory sync complete. All activities captured: TOOLS.md loss/recovery resolved, backup system active, Alachua County Farm Project complete and ready for execution, PatchHub on track for May 5 launch, Prop firm strategy finalized (TPT $50K focus, daily payout mechanics documented).
+**Last Updated:** Friday, May 1, 2026 (10:51 AM EDT) — Memory sync complete. New items from May 1 morning: Land lease investigation, Trello board populated, PROP_FIRM_ANALYSIS.md created with verified TPT daily payout details, farm documents converted to HTML/PDF for easy distribution.
 
 ---
 
@@ -341,4 +341,64 @@ Implemented:
 ✅ Git repository ready for version control
 ✅ Session history preserved (JSONL transcripts)
 
-**Last Updated:** Thursday, April 30, 2026 (9:15 PM EDT) — ALACHUA COUNTY FARM PROJECT COMPLETE
+### Land Lease Investigation (May 1, 2026)
+
+**Finding:** Agricultural land-only leases are SCARCE in Alachua County (~1-2 publicly listed)
+- Typical bare land: $100-200/acre/year ($166-333/month for 20 acres)
+- Most properties available: Land + housing bundles ($800-1,500/month with house)
+- Root cause: Landowners maximize income by including housing; agricultural land appreciated significantly
+
+**Recommended Strategies (Ranked by Feasibility):**
+1. **Option 1: Negotiate Land+House Bundle** (Fastest, realistic)
+   - Target: $150/acre land + $700-900/month house = ~$800-1,000/month total
+   - Script: "I'll sign 3-year lease for stable income to you"
+   - Better than waiting months for land-only deal
+
+2. **Option 2: Purchase with FSA Down Payment Loan** (Best long-term)
+   - 20 acres @ $3,500/acre = $70,000
+   - FSA covers 45%, you provide 5% down ($3,500), bank covers 50%
+   - Monthly payment: $700-800 (builds equity instead of rent)
+   - Same or lower cost than land+house lease
+
+3. **Option 3: Direct Recruiting** (Off-market deals)
+   - Call FSA directly: (352) 376-7414 — ask about private landowners
+   - Call UF/IFAS Extension: (352) 955-2402 — leverage ag networks
+   - Post on Craigslist + Facebook farm groups (check daily)
+   - Talk to farmers market vendors (Saturday 8:30 AM)
+   - Contact ag real estate agents (ask about unlisted deals)
+   - Expand search to neighboring counties (Levy, Gilchrist, Bradford)
+
+**Status:** Investigation complete, strategies documented for May 1+ execution
+
+### Trello Board Updated (May 1, 2026)
+
+✅ **7 cards created** in Harreson Trello board (https://trello.com/b/1R3S7GZJ/harreson)
+- Farm project tasks organized (To Do → In Progress → Done)
+- Critical action items tracked (FSA call, land recruitment, farmers market visit)
+- Deadlines set for May 1+ execution
+
+### PROP_FIRM_ANALYSIS.md Created (May 1, 2026)
+
+**New comprehensive document** saved with verified TPT daily payout mechanics:
+- **Daily profit limit:** $10,000/day per account (triggers auto-upgrade to PRO+ if exceeded)
+- **Daily withdrawal limit:** UNLIMITED (no maximum stated)
+- **Buffer zone:** $52,000 minimum balance ($2,000 buffer on $50k account)
+- **Payout splits:** 50/50 for days 1-60, then 90/10 day 61+
+- **No fees. No payout caps. No consistency rules.**
+
+**File:** Git commit f1126cb (Apr 30, 22:47 EDT) — PROP_FIRM_ANALYSIS.md + verified research
+
+### Farm Documents: HTML/PDF Ready (May 1, 2026)
+
+✅ **5 HTML documents created** (print-ready for PDF conversion)
+1. Executive_Summary.html
+2. Farm_Business_Plan.html
+3. Quick_Reference_Guide.html
+4. Market_Research_Summary.html
+5. Questions_Answered.html
+
+**How to use:** Open in browser → Ctrl+P → Save as PDF (5 professional PDFs in minutes)
+
+**Backup status:** All files in `/home/harreson/.openclaw/workspace/` + daily backup system + OneDrive sync
+
+**Last Updated:** Friday, May 1, 2026 (10:51 AM EDT) — FARM PROJECT COMPLETE, LAND LEASE STRATEGIES DOCUMENTED, TRELLO UPDATED
