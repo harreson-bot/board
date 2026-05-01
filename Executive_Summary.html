@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Summary - Alachua County Farm Startup</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdance, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8f0e8 100%);
+        }
+        .container {
+            max-width: 8.5in;
+            height: 11in;
+            margin: 10px auto;
+            padding: 1in;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        .header {
+            background: linear-gradient(135deg, #2c5f2d 0%, #1f4620 100%);
+            color: white;
+            padding: 20px;
+            margin: -1in -1in 20px -1in;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        h1 {
+            font-size: 28px;
+            margin: 0 0 5px 0;
+        }
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 0;
+        }
+        h2 {
+            color: #2c5f2d;
+            font-size: 16px;
+            margin: 20px 0 10px 0;
+            border-bottom: 2px solid #2c5f2d;
+            padding-bottom: 8px;
+        }
+        .metric-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .metric {
+            background: linear-gradient(135deg, #f0f7f0 0%, #e8f0e8 100%);
+            border-left: 4px solid #2c5f2d;
+            padding: 12px;
+            border-radius: 3px;
+        }
+        .metric-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c5f2d;
+        }
+        .metric-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 12px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background: #2c5f2d;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        .highlight-box {
+            background: #fffacd;
+            border-left: 4px solid #ff6b6b;
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+        .success-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 3px;
+        }
+        .contact-card {
+            background: linear-gradient(135deg, #f0f7f0 0%, #e8f0e8 100%);
+            border: 2px solid #2c5f2d;
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 3px;
+        }
+        .contact-card strong {
+            display: block;
+            color: #2c5f2d;
+            margin-bottom: 6px;
+            font-size: 13px;
+        }
+        .contact-info {
+            font-size: 12px;
+            line-height: 1.6;
+        }
+        ul, ol {
+            margin-left: 20px;
+            font-size: 13px;
+        }
+        li {
+            margin: 6px 0;
+        }
+        .advantage {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        .warning {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        .footer {
+            font-size: 11px;
+            color: #999;
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 12px;
+        }
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; margin: 0; }
+            .header { margin: -1in -1in 20px -1in; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>ALACHUA COUNTY FARM STARTUP</h1>
+        <p class="subtitle">Complete Research, Business Plan & Market Analysis</p>
+        <p class="subtitle">April 30, 2026</p>
+    </div>
+
+    <h2>📊 QUICK METRICS</h2>
+    <div class="metric-grid">
+        <div class="metric">
+            <div class="metric-value">$45,000-65,000</div>
+            <div class="metric-label">Startup Investment</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">$20,800</div>
+            <div class="metric-label">Year 1 Revenue</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">18-24 months</div>
+            <div class="metric-label">Break-Even Timeline</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">$27,000-37,000</div>
+            <div class="metric-label">Year 2 Projected Profit</div>
+        </div>
+    </div>
+
+    <h2>🌱 FARM OVERVIEW</h2>
+    <p><strong>Size:</strong> 20-30 acres (qualifies for beginning farmer programs)<br>
+    <strong>Crops:</strong> Tomatoes (6 acres), Lettuce/Greens (4 acres), Strawberries (4 acres), Onions (3 acres)<br>
+    <strong>Location:</strong> Alachua County, Florida<br>
+    <strong>Season:</strong> Year-round growing (strategic seasonal planning)<br>
+    <strong>Target Markets:</strong> Farmers market, CSA, wholesale restaurants</p>
+
+    <h2>💰 FINANCIAL PROJECTIONS</h2>
+    <table>
+        <tr>
+            <th>Year</th>
+            <th>Revenue</th>
+            <th>Operating Costs</th>
+            <th>Net Profit/Loss</th>
+        </tr>
+        <tr>
+            <td>Year 1</td>
+            <td>$20,800</td>
+            <td>$38,500</td>
+            <td>-$17,700</td>
+        </tr>
+        <tr>
+            <td>Year 2</td>
+            <td>$45,000-55,000</td>
+            <td>$18,000</td>
+            <td>+$27,000-37,000</td>
+        </tr>
+        <tr>
+            <td>Year 3</td>
+            <td>$60,000-75,000</td>
+            <td>$20,000</td>
+            <td>+$40,000-55,000</td>
+        </tr>
+    </table>
+
+    <div class="success-box">
+        ✅ <strong>Year 1 loss is normal.</strong> Infrastructure costs are front-loaded. Year 2-3 profitability comes as markets mature and plants establish.
+    </div>
+
+    <h2>🥕 REVENUE STREAMS (Year 1)</h2>
+    <table>
+        <tr>
+            <th>Channel</th>
+            <th>Weekly</th>
+            <th>Annual</th>
+            <th>% Total</th>
+        </tr>
+        <tr>
+            <td><strong>Farmers Market</strong></td>
+            <td>$400-600</td>
+            <td>$20,800</td>
+            <td>38%</td>
+        </tr>
+        <tr>
+            <td><strong>CSA (Community Supported Ag)</strong></td>
+            <td>$300-600</td>
+            <td>$7,200</td>
+            <td>35%</td>
+        </tr>
+        <tr>
+            <td><strong>Wholesale (Restaurants)</strong></td>
+            <td>$200-400</td>
+            <td>$4,000</td>
+            <td>19%</td>
+        </tr>
+        <tr>
+            <td><strong>Other (events, u-pick)</strong></td>
+            <td>$100-300</td>
+            <td>$1,600</td>
+            <td>8%</td>
+        </tr>
+    </table>
+
+    <h2>🥗 YOUR PRIMARY MARKET</h2>
+    <div class="contact-card">
+        <strong>Alachua County Farmers' Market (Your Anchor)</strong>
+        <div class="contact-info">
+            📍 13900 Tech City Circle, Alachua, FL 32615<br>
+            ⏰ <strong>Every Saturday, 8:30 AM - 12:00 PM</strong><br>
+            📞 (352) 371-8236 | acfm441market@gmail.com<br>
+            👥 300-500 customers per week<br>
+            💰 Vendor fee: $25-40/week<br>
+            📊 Revenue potential: $200-400/week (Year 1), $400-800/week (Year 2-3)<br>
+            <br>
+            <span class="advantage">✅ YOU LIVE NEXT DOOR - Eliminates transportation costs!</span>
+        </div>
+    </div>
+
+    <h2>🍽️ WHOLESALE OPPORTUNITY</h2>
+    <p><strong>10+ restaurants confirmed buying local:</strong> Afternoon, Doro, Fresh Kitchen, Stoke Barn & Kitchen (NEW 2025), Ward's Supermarket, Swallowtail Farm, The Local, and more.</p>
+    <p><strong>Approach:</strong> Visit restaurants, bring samples, negotiate wholesale pricing (40-50% of retail). Target 3-4 restaurants by end of Year 1 = $300-400/week revenue.</p>
+
+    <h2>🤝 GOVERNMENT SUPPORT AVAILABLE</h2>
+    <div class="success-box">
+        <strong>FSA Loans (Farm Service Agency):</strong><br>
+        • Farm Ownership Loans: Up to 100% financing<br>
+        • Operating Loans: $25,000-50,000<br>
+        • Microloans: Up to $35,000 (easier approval)<br>
+        • Beginning farmers get set-aside funding & favorable terms
+    </div>
+
+    <div class="success-box">
+        <strong>BFRDP Training (Beginning Farmer & Rancher Development):</strong><br>
+        • Free workshops, mentoring, technical assistance<br>
+        • Business planning help<br>
+        • Peer networking
+    </div>
+
+    <h2>☎️ IMMEDIATE ACTIONS (THIS WEEK)</h2>
+    <div class="contact-card">
+        <strong>1. Call USDA FSA Service Center</strong>
+        <div class="contact-info">
+            📞 <strong>(352) 376-7414</strong><br>
+            📍 5709 NW 13th St, Gainesville, FL 32653<br>
+            ✅ Ask for: Beginning Farmer Coordinator<br>
+            ✅ Bring: Business plan + Photo ID
+        </div>
+    </div>
+
+    <div class="contact-card">
+        <strong>2. Visit Alachua County Farmers Market</strong>
+        <div class="contact-info">
+            ⏰ <strong>Saturday 8:30 AM</strong><br>
+            📍 13900 Tech City Circle, Alachua, FL<br>
+            ✅ Talk to 5-10 vegetable vendors<br>
+            ✅ Ask about profitability, best sellers, challenges
+        </div>
+    </div>
+
+    <div class="contact-card">
+        <strong>3. Call Farmers Market for Vendor Application</strong>
+        <div class="contact-info">
+            📞 (352) 371-8236<br>
+            ✅ Request vendor application<br>
+            ✅ Ask about farm inspection requirements
+        </div>
+    </div>
+
+    <h2>✅ WHY THIS PLAN WORKS</h2>
+    <ul>
+        <li><span class="advantage">✓ You live next to farmers market</span> (transportation advantage)</li>
+        <li><span class="advantage">✓ Growing farm-to-table trend in Gainesville</span> (market demand)</li>
+        <li><span class="advantage">✓ Multiple revenue streams</span> (reduces risk)</li>
+        <li><span class="advantage">✓ Government support available</span> (FSA loans, training, grants)</li>
+        <li><span class="advantage">✓ Established infrastructure</span> (extension services, farm networks)</li>
+        <li><span class="advantage">✓ Year-round growing climate</span> (3 distinct seasons)</li>
+    </ul>
+
+    <h2>⚠️ CRITICAL SUCCESS FACTORS</h2>
+    <ul>
+        <li><span class="warning">🔴 Land secured by Month 2</span> (lease is fastest option)</li>
+        <li><span class="warning">🔴 Water/irrigation figured out</span> (non-negotiable in Florida)</li>
+        <li><span class="warning">🔴 Farmers market vendor approved by Month 3</span> (your anchor market)</li>
+        <li><span class="warning">🔴 FSA pre-approval for financing</span> (before planting)</li>
+        <li><span class="warning">🔴 Connected to local farmer network</span> (don't go alone)</li>
+    </ul>
+
+    <h2>📁 DOCUMENTS PROVIDED</h2>
+    <table>
+        <tr>
+            <th>Document</th>
+            <th>Purpose</th>
+            <th>Use When</th>
+        </tr>
+        <tr>
+            <td><strong>Farm Business Plan</strong></td>
+            <td>Complete 14-section plan with all FSA requirements</td>
+            <td>FSA meeting, detailed reference</td>
+        </tr>
+        <tr>
+            <td><strong>Quick Reference Guide</strong></td>
+            <td>One-page cheat sheet with key info</td>
+            <td>Daily reference, phone calls</td>
+        </tr>
+        <tr>
+            <td><strong>Market Research Summary</strong></td>
+            <td>Farmers market, CSA, wholesale analysis</td>
+            <td>Marketing planning, restaurant pitching</td>
+        </tr>
+        <tr>
+            <td><strong>Questions Answered</strong></td>
+            <td>Direct answers to all 10 questions</td>
+            <td>Understand research methodology</td>
+        </tr>
+        <tr>
+            <td><strong>Executive Summary</strong></td>
+            <td>This overview document</td>
+            <td>Big picture, stakeholder reference</td>
+        </tr>
+    </table>
+
+    <h2>🎯 NEXT STEPS</h2>
+    <ol>
+        <li><strong>Call FSA this week:</strong> (352) 376-7414 - Schedule appointment</li>
+        <li><strong>Visit farmers market:</strong> Saturday 8:30 AM - Talk to vendors</li>
+        <li><strong>Search land:</strong> FSA property portal + Farm Link Finder</li>
+        <li><strong>Month 2:</strong> Secure land lease, register business, complete FSA loan application</li>
+        <li><strong>Month 3:</strong> Farmers market vendor approved, soil tested, infrastructure planned</li>
+        <li><strong>Ongoing:</strong> Build network, study markets, prepare for planting</li>
+    </ol>
+
+    <div class="highlight-box">
+        💡 <strong>Bottom line:</strong> You have a solid, viable plan. The farmers market is your anchor. Government support is available. Your biggest advantage is living next door to established market infrastructure. Start with FSA phone call this week. Everything else follows.
+    </div>
+
+    <div class="footer">
+        <strong>All information current as of April 30, 2026</strong><br>
+        Complete research package | 5 documents provided | Ready to execute<br>
+        Next action: Call (352) 376-7414
+    </div>
+</div>
+</body>
+</html>

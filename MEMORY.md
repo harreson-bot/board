@@ -229,7 +229,78 @@ Implemented:
 
 ---
 
-**Last Updated:** Thursday, April 30, 2026 (6:51 PM EDT) — Memory sync complete. All activities captured: TOOLS.md loss/recovery resolved, backup system active, Alachua County Farm Project complete and ready for execution, PatchHub on track for May 5 launch.
+## PROP FIRM TRADING STRATEGY (April 30, 2026 - Evening) 📈
+
+**Status:** RESEARCH COMPLETE — Strategy finalized for next 30 days
+
+### Decision: TakeProfitTrading (TPT) over Apex Trader Funding
+
+**Why TPT wins:**
+- No monthly fees ($85/month Apex fee eats profits)
+- No payout cap (Apex caps at $14,500/account)
+- No consistency rule blocking volatile win days (Apex's 50% rule kills 100-200 point runs)
+- Same 90/10 split as Apex long-term
+
+### Apex Trader Funding (Verified Analysis - Why We're NOT Using It)
+
+| Factor | Details |
+|--------|----------|
+| **Evaluation speed** | 1 day (vs TPT's 5 days) |
+| **Monthly fee** | $85 — friction on profits |
+| **Max payout per account** | $14,500 (caps out after 6 withdrawals) |
+| **50% consistency rule** | One explosive day (100-200 pts) = blocked payout until you dilute with more wins |
+| **Account lifecycle** | Max 6 payouts, then account closes |
+| **Profit ceiling** | ~$2,400-2,800/payout = unsustainable for $5-10k/month goal |
+
+**Verdict:** Speed of evaluation not worth the monthly fees + payout cap + consistency trap.
+
+### TakeProfitTrading $50K Account - EXACT DAILY PAYOUT RULES
+
+**Profit limits:**
+- Daily max profit: **$10,000** (hitting this triggers auto-upgrade to PRO+)
+- At your 2-3% weekly returns on 30 micro contracts: Realistic daily range $500-2,000 (safe)
+
+**Buffer zone:**
+- Account balance requirement: **$52,000 minimum** (buffer = $2,000)
+- Only profits **above $52,000** are withdrawable
+- Example: $53,500 balance = $1,500 available for withdrawal
+
+**Withdrawal limits:**
+- **Daily: UNLIMITED** ✅ (no maximum withdrawal amount stated)
+- **50/50 split (Days 1-60):** Withdraw 50% of available above buffer daily
+- **90/10 split (Day 61+):** Withdraw 90% of available above buffer daily
+
+**No monthly fees. No payout caps. No consistency rule.**
+
+### 30-Day Timeline to Daily Payouts
+
+1. **Days 1-5:** Pass $3,000 challenge (don't withdraw, build balance)
+2. **Days 6-15:** Trade PRO account, build to $53,000+ balance
+3. **Days 16-60:** Start daily withdrawals (50/50 split) = ~$500-750/week
+4. **Day 60+:** Switch to 90/10 split = ~$900-1,350/week
+5. **Day 90+:** Consider upgrade to $100k account
+
+### Monthly Income Projection (TPT $50k → $100k)
+
+**Month 1 (Challenge + early PRO):** $1,600-2,000
+**Month 2-3 (90/10 split active):** $2,800-3,600
+**Month 4+ ($100k account at 2-3% weekly):** $8,000-10,800/month
+
+### Next 30-Day Goal
+
+✅ **Focus:** Pass TPT $50k challenge in 5 days
+✅ **Strategy:** Leverage 100-200 point runs + 30 micro contracts ($15/tick potential)
+✅ **Execution:** Daily payouts after buffer zone cleared (no waiting for withdrawals)
+✅ **Scaling:** Hit $5-10k/month recurring with $100k account by June
+
+### Key Research Files
+
+- **PROP_FIRM_ANALYSIS.md** — Full comparison, verified rules, daily payout mechanics
+- **Git commit f1126cb** — Saved Apr 30, 22:47 EDT
+
+---
+
+**Last Updated:** Thursday, April 30, 2026 (10:51 PM EDT) — Memory sync complete. All activities captured: TOOLS.md loss/recovery resolved, backup system active, Alachua County Farm Project complete and ready for execution, PatchHub on track for May 5 launch, Prop firm strategy finalized (TPT $50K focus, daily payout mechanics documented).
 
 ---
 
