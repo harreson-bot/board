@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperPatch Ambassador - John Smith</title>
+    <meta property="og:title" content="John Smith's SuperPatch Store">
+    <meta property="og:description" content="Join John Smith and earn with AI-powered tools. Save 10+ hours/week with PatchHub automation.">
+    <meta property="og:image" content="https://patchhub.solutions/og-image.png">
+    <meta property="og:url" content="https://patchhub.solutions/john_smith/">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4ade80;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero .ambassador-name {
+            color: #4ade80;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #4ade80;
+            color: #1a1a1a;
+        }
+
+        .btn-primary:hover {
+            background: #22c55e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 222, 128, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1a1a1a;
+            border: 2px solid #4ade80;
+        }
+
+        .btn-secondary:hover {
+            background: #4ade80;
+            transform: translateY(-2px);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 4rem 2rem;
+            background: #f5f5f5;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-category {
+            font-size: 0.85rem;
+            color: #4ade80;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: #1a1a1a;
+        }
+
+        .product-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .product-benefits {
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+
+        .product-benefits li {
+            margin-left: 1.5rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4ade80;
+            margin: 1rem 0;
+        }
+
+        .product-cta {
+            width: 100%;
+            padding: 0.7rem;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .product-cta:hover {
+            background: #4ade80;
+            color: #1a1a1a;
+        }
+
+        /* AI Platform Section */
+        .ai-pitch {
+            padding: 4rem 2rem;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .ai-pitch .section-title {
+            color: white;
+        }
+
+        .ai-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .ai-intro {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            opacity: 0.95;
+        }
+
+        .ai-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .ai-feature {
+            background: #2d2d2d;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #4ade80;
+        }
+
+        .ai-feature h3 {
+            color: #4ade80;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .ai-feature p {
+            color: #bbb;
+            font-size: 0.95rem;
+        }
+
+        .ai-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 1.5rem;
+            background: #2d2d2d;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #bbb;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .ai-cta-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: #2d2d2d;
+            border-radius: 12px;
+        }
+
+        .ai-cta-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #4ade80;
+        }
+
+        .ai-cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #ddd;
+        }
+
+        /* Trust Section */
+        .trust {
+            padding: 3rem 2rem;
+            background: #f5f5f5;
+            text-align: center;
+        }
+
+        .trust-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 2rem auto;
+        }
+
+        .trust-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .trust-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-text {
+            color: #555;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #4ade80;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🩹 SuperPatch</div>
+        <a href="#products">Shop By Category</a>
+        <a href="#ai">AI Tools</a>
+        <a href="#about">John Smith</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Feel Better. Live Better.</h1>
+        <p class="subtitle">Discover SuperPatch's natural wellness solutions</p>
+        <p class="ambassador-name">👋 Welcome to John Smith's SuperPatch Community</p>
+        <div class="cta-buttons">
+            <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
+                Shop Now
+            </button>
+            <a href="https://patchhub.solutions" class="btn btn-secondary">
+                Automate Your Business
+            </a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h2 class="section-title">Our Top Categories</h2>
+        <div class="products-grid">
+            <!-- Sleep -->
+            <div class="product-card">
+                <div class="product-image">😴</div>
+                <div class="product-info">
+                    <div class="product-category">Sleep</div>
+                    <h3 class="product-name">REM Patch</h3>
+                    <p class="product-desc">Supports restful sleep and deeper rest cycles.</p>
+                    <ul class="product-benefits">
+                        <li>✓ Promotes deep sleep</li>
+                        <li>✓ Natural ingredients</li>
+                        <li>✓ Long-lasting formula</li>
+                    </ul>
+                    <div class="product-price">$39.99</div>
+                    <a href="https://us.superpatch.com/collections/sleep?rsu=john_smith" class="product-cta" target="_blank">Shop Sleep Category</a>
+                </div>
+            </div>
+
+            <!-- Energy -->
+            <div class="product-card">
+                <div class="product-image">⚡</div>
+                <div class="product-info">
+                    <div class="product-category">Energy</div>
+                    <h3 class="product-name">Rocket Patch</h3>
+                    <p class="product-desc">Sustained energy boost without the crash.</p>
+                    <ul class="product-benefits">
+                        <li>✓ Clean energy lift</li>
+                        <li>✓ No jitters</li>
+                        <li>✓ All-day support</li>
+                    </ul>
+                    <div class="product-price">$39.99</div>
+                    <a href="https://us.superpatch.com/collections/energy?rsu=john_smith" class="product-cta" target="_blank">Shop Energy Category</a>
+                </div>
+            </div>
+
+            <!-- Aches & Pains -->
+            <div class="product-card">
+                <div class="product-image">💪</div>
+                <div class="product-info">
+                    <div class="product-category">Aches & Pains</div>
+                    <h3 class="product-name">Freedom Patch</h3>
+                    <p class="product-desc">Natural relief for everyday aches and discomfort.</p>
+                    <ul class="product-benefits">
+                        <li>✓ Targeted relief</li>
+                        <li>✓ Natural formula</li>
+                        <li>✓ Fast-acting</li>
+                    </ul>
+                    <div class="product-price">$39.99</div>
+                    <a href="https://us.superpatch.com/collections/aches-and-pains?rsu=john_smith" class="product-cta" target="_blank">Shop Aches & Pains</a>
+                </div>
+            </div>
+
+            <!-- Athletic Performance -->
+            <div class="product-card">
+                <div class="product-image">🏆</div>
+                <div class="product-info">
+                    <div class="product-category">Athletic Performance</div>
+                    <h3 class="product-name">Victory Patch</h3>
+                    <p class="product-desc">Optimize performance and recovery for athletes.</p>
+                    <ul class="product-benefits">
+                        <li>✓ Enhanced performance</li>
+                        <li>✓ Faster recovery</li>
+                        <li>✓ Athlete-tested</li>
+                    </ul>
+                    <div class="product-price">$44.99</div>
+                    <a href="https://us.superpatch.com/collections/athletic-performance?rsu=john_smith" class="product-cta" target="_blank">Shop Athletic Performance</a>
+                </div>
+            </div>
+
+            <!-- Mobility -->
+            <div class="product-card">
+                <div class="product-image">🧘</div>
+                <div class="product-info">
+                    <div class="product-category">Mobility</div>
+                    <h3 class="product-name">Liberty Patch</h3>
+                    <p class="product-desc">Support flexible movement and joint health.</p>
+                    <ul class="product-benefits">
+                        <li>✓ Enhanced flexibility</li>
+                        <li>✓ Joint support</li>
+                        <li>✓ Greater range of motion</li>
+                    </ul>
+                    <div class="product-price">$39.99</div>
+                    <a href="https://us.superpatch.com/collections/mobility?rsu=john_smith" class="product-cta" target="_blank">Shop Mobility Category</a>
+                </div>
+            </div>
+
+            <!-- Stress -->
+            <div class="product-card">
+                <div class="product-image">🧘‍♀️</div>
+                <div class="product-info">
+                    <div class="product-category">Stress</div>
+                    <h3 class="product-name">Zen Patch</h3>
+                    <p class="product-desc">Calm support for everyday peace of mind.</p>
+                    <ul class="product-benefits">
+                        <li>✓ Promotes calm</li>
+                        <li>✓ Natural blend</li>
+                        <li>✓ Daily peace</li>
+                    </ul>
+                    <div class="product-price">$39.99</div>
+                    <a href="https://us.superpatch.com/collections/stress?rsu=john_smith" class="product-cta" target="_blank">Shop Stress Category</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust">
+        <h2 class="section-title">Why SuperPatch?</h2>
+        <div class="trust-items">
+            <div class="trust-item">
+                <div class="trust-icon">🌿</div>
+                <div class="trust-text">Natural Ingredients</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">✅</div>
+                <div class="trust-text">Clinically Tested</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">🔬</div>
+                <div class="trust-text">Advanced Formula</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">💯</div>
+                <div class="trust-text">100% Satisfaction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Platform Pitch Section -->
+    <section class="ai-pitch" id="ai">
+        <h2 class="section-title">Scale Your SuperPatch Business with AI</h2>
+        
+        <div class="ai-content">
+            <p class="ai-intro">
+                Love SuperPatch? Imagine selling to hundreds while you sleep.
+                <strong>That's what PatchHub does for ambassadors.</strong>
+            </p>
+
+            <div class="ai-features">
+                <div class="ai-feature">
+                    <h3>📋 Smart Contact Matching</h3>
+                    <p>AI enriches your contact list, finding the perfect fit for each patch category.</p>
+                </div>
+                <div class="ai-feature">
+                    <h3>✍️ AI-Powered DMs</h3>
+                    <p>Personalized, natural-sounding messages. No robotic copy. Higher engagement.</p>
+                </div>
+                <div class="ai-feature">
+                    <h3>📊 Real-Time Analytics</h3>
+                    <p>Track opens, clicks, and conversions. Know exactly what's working.</p>
+                </div>
+                <div class="ai-feature">
+                    <h3>🤖 Automation Framework</h3>
+                    <p>Set up follow-up sequences. Let AI nurture leads 24/7.</p>
+                </div>
+                <div class="ai-feature">
+                    <h3>📱 Multi-Channel Reach</h3>
+                    <p>Instagram, Facebook, SMS, Email. One dashboard, maximum reach.</p>
+                </div>
+                <div class="ai-feature">
+                    <h3>🎯 Category-Based Targeting</h3>
+                    <p>Smart routing: Athletes get Victory, stressed people get Zen, etc.</p>
+                </div>
+            </div>
+
+            <div class="ai-stats">
+                <div class="stat">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Higher Open Rate</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3-5x</div>
+                    <div class="stat-label">More Conversions</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">10+ hrs</div>
+                    <div class="stat-label">Saved Per Week</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">$1k-5k</div>
+                    <div class="stat-label">Extra Income/Month</div>
+                </div>
+            </div>
+
+            <div class="ai-cta-section">
+                <h2>Ready to Automate Your SuperPatch Business?</h2>
+                <p>
+                    PatchHub is built specifically for SuperPatch ambassadors.
+                    Stop managing manually. Start earning on autopilot.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://patchhub.solutions" class="btn btn-primary">
+                        Learn About PatchHub
+                    </a>
+                    <a href="mailto:support@patchhub.solutions?subject=PatchHub%20Interest%20from%20john_smith" class="btn btn-secondary">
+                        Get Notified at Launch
+                    </a>
+                </div>
+
+                <div style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
+                    <p>🚀 PatchHub platform launching soon. Early ambassadors get special pricing.</p>
+                    <p style="margin-top: 1rem;">Share your link: <strong>https://patchhub.solutions/john_smith/</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            © 2026 SuperPatch | Powered by <a href="https://patchhub.solutions">PatchHub</a> | 
+            <a href="https://us.superpatch.com/pages/faq">FAQ</a> • 
+            <a href="https://us.superpatch.com/pages/about-us">About SuperPatch</a> • 
+            <a href="https://us.superpatch.com/pages/contact">Contact</a>
+        </p>
+        <p style="margin-top: 1rem; opacity: 0.7;">
+            Questions? Email john@example.com or contact <a href="https://us.superpatch.com">SuperPatch</a>
+        </p>
+        <p style="margin-top: 1rem; opacity: 0.6; font-size: 0.85rem;">
+            These statements have not been evaluated by the FDA. These products are not intended to diagnose, treat, cure, or prevent any disease.
+        </p>
+    </footer>
+</body>
+</html>

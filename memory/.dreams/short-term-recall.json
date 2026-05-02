@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-01T22:35:22.614Z",
+  "entries": {
+    "memory:memory/2026-04-28.md:1:38": {
+      "key": "memory:memory/2026-04-28.md:1:38",
+      "path": "memory/2026-04-28.md",
+      "startLine": 1,
+      "endLine": 38,
+      "source": "memory",
+      "snippet": "# Daily Memory - Tuesday, April 28, 2026 ## Events - **6:51 PM:** First memory sync cron task executed - Created memory infrastructure (MEMORY.md and memory/ directory) - No prior sessions to sync; system is fresh ## Telegram Session (11pm sync) — BLOCKED **Status:** Unable to access Telegram session history from cron context (visibility restrictions). - Attempted: `sessions_history` with sessionKey='agent:main:telegram:direct:5395479182' - Result: Session tree boundaries prevent cross-context access - **Action:** User must provide key items from Telegram conversation for manual consolidation **What would be consolidated if accessible:** - New skills or training received - Article r",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4942549624533335,
+      "maxScore": 0.4942549624533335,
+      "firstRecalledAt": "2026-05-01T22:35:22.614Z",
+      "lastRecalledAt": "2026-05-01T22:35:22.614Z",
+      "queryHashes": [
+        "c638eb7a07ba"
+      ],
+      "recallDays": [
+        "2026-05-01"
+      ],
+      "conceptTags": [
+        "memory.md",
+        "sessions-history",
+        "cross-context",
+        "tuesday",
+        "april",
+        "events",
+        "first",
+        "sync"
+      ]
+    }
+  }
+}

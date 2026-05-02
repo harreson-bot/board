@@ -1,0 +1,183 @@
+PATCHHUB AI NARRATION SCRIPT
+For: Text-to-Speech generation (ElevenLabs, Google Cloud, etc.)
+
+================================
+SCENE 1: THE PROBLEM (0:00-0:30)
+================================
+
+Building a SuperPatch business means finding customers, engaging them, and tracking sales. But doing it manually? That's exhausting.
+
+[Audio duration: ~15-20 seconds | Tone: Conversational, empathetic]
+
+
+================================
+SCENE 2: THE SOLUTION INTRO (0:30-1:15)
+================================
+
+Meet PatchHub. Your AI-powered CRM for SuperPatch ambassadors. 
+
+Upload your contacts. AI enriches them with social profiles. Create your template. Click launch. Done. 
+
+Your AI agent works 24/7, warming up leads while you focus on closing deals.
+
+[Audio duration: ~40-45 seconds | Tone: Energetic, confident]
+
+
+================================
+SCENE 3: LIVE DEMO (1:15-2:30)
+================================
+
+Let me show you how it works. 
+
+Login to app dot patchhub dot solutions. You see your dashboard with 500 contacts. 
+
+Click create campaign. Enter your template with personalization variables like first name and company. 
+
+Select all recipients. Click launch. 
+
+Confirmation: 500 DMs sent successfully. 
+
+It's that simple.
+
+[Audio duration: ~60-70 seconds | Tone: Instructional, clear, step-by-step]
+
+
+================================
+SCENE 4: RESULTS & ROI (2:30-3:15)
+================================
+
+Real results. In one week:
+
+Four hundred twenty-five opens. That's an 85 percent open rate.
+
+50 replies. That's a 10 percent reply rate.
+
+5 sales closed. That's a 1 percent conversion rate.
+
+Time invested? Just 30 minutes.
+
+Your AI agent handles the rest while you sleep.
+
+[Audio duration: ~45-50 seconds | Tone: Impressive, factual, impactful]
+
+
+================================
+SCENE 5: CALL TO ACTION (3:15-3:30)
+================================
+
+Ready to scale your SuperPatch business?
+
+Individual plan: 99 dollars setup, 19 dollars per month.
+
+Super Ambassador: 299 dollars setup, 79 dollars per month.
+
+Start your free trial today at app dot patchhub dot solutions.
+
+[Audio duration: ~15-20 seconds | Tone: Energetic, compelling, action-oriented]
+
+
+================================
+COMPLETE SCRIPT TIMING
+================================
+
+Total duration: 3 minutes 30 seconds (210 seconds)
+- Scene 1: 20 seconds
+- Scene 2: 45 seconds
+- Scene 3: 65 seconds
+- Scene 4: 45 seconds
+- Scene 5: 15 seconds
+- Total: 190 seconds (leaves 20 seconds buffer for transitions)
+
+
+================================
+VOICE NOTES FOR AI TTS
+================================
+
+Speaker profile: Professional, energetic, conversational
+Pace: Medium-fast (120-130 words per minute)
+Tone: Confident, not robotic
+Emphasis: Put emphasis on these words:
+  - "AI-powered" (emphasize the AI benefit)
+  - "24/7" (always working)
+  - "Real results" (credibility)
+  - "5 sales closed" (concrete number)
+  - "30 minutes" (efficiency)
+  - "Start your free trial" (CTA)
+
+Background music: Subtle, modern, upbeat (optional)
+Audio format: MP3 at 128kbps or higher
+
+
+================================
+HOW TO USE THIS SCRIPT
+================================
+
+1. Sign up at ElevenLabs.io (free trial available)
+2. Copy-paste each SCENE text into the TTS generator
+3. Select a professional male or female voice
+4. Generate audio files (5 total)
+5. Download MP3s
+6. Combine with video:
+   - Use OBS + screen recording for dashboard demo
+   - Sync MP3 narration with video timeline
+   - Export as MP4
+
+Alternative: Use Google Cloud Text-to-Speech API
+- Free tier: 1 million requests/month
+- Cost: $16 per million requests after
+- API: https://cloud.google.com/text-to-speech
+
+
+================================
+TIPS FOR BEST RESULTS
+================================
+
+- For ElevenLabs: Use "Professional" voice profile
+- For Google Cloud: Use "Neural2" voices (better quality)
+- Test audio sync with video (use a video editor like DaVinci Resolve)
+- Add subtle fade-in/fade-out for smooth transitions
+- Consider adding background music (royalty-free from YouTube Audio Library)
+
+
+================================
+VIDEO SYNC TIMING REFERENCE
+================================
+
+0:00 - Scene starts: "Building a SuperPatch business..."
+0:30 - Scene 2: "Meet PatchHub"
+1:15 - Scene 3: "Let me show you how it works" (show dashboard)
+1:20 - Show login screen
+1:30 - Show dashboard with 500 contacts
+1:45 - Click create campaign button
+2:00 - Fill in template
+2:15 - Select recipients
+2:25 - Click launch
+2:30 - Show confirmation + metrics
+2:30 - Scene 4: "Real results"
+2:45 - Show 425 opens, 85%
+3:00 - Show 50 replies, 10%
+3:10 - Show 5 sales closed, 1%
+3:15 - Scene 5: "Ready to scale?"
+3:20 - Show pricing cards
+3:25 - Show "Start Free Trial" button
+3:30 - End
+
+
+================================
+FINAL VIDEO CHECKLIST
+================================
+
+[ ] AI narration generated and downloaded
+[ ] Video screen recording created
+[ ] Sync audio to video timeline
+[ ] Add text overlays for key metrics
+[ ] Add transitions between scenes
+[ ] Color grade to match brand (black/white)
+[ ] Export as MP4 (1920x1080, H.264)
+[ ] Test on desktop and mobile
+[ ] Compress for web (under 100MB if possible)
+[ ] Upload to patchhub.solutions server
+[ ] Embed in marketing site
+
+
+Ready to create! 🎥

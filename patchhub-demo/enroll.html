@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperPatch Ambassador - Join SuperPatch Enroll</title>
+    <meta property="og:title" content="SuperPatch Enroll's SuperPatch Store">
+    <meta property="og:description" content="Join SuperPatch Enroll and earn with AI-powered tools. Save 10+ hours/week.">
+    <meta property="og:image" content="https://patchhub.solutions/og-image.png">
+    <meta property="og:url" content="https://patchhub.solutions/enroll/">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4ade80;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero .ambassador-name {
+            color: #4ade80;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #4ade80;
+            color: #1a1a1a;
+        }
+
+        .btn-primary:hover {
+            background: #22c55e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 222, 128, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1a1a1a;
+            border: 2px solid #4ade80;
+        }
+
+        .btn-secondary:hover {
+            background: #4ade80;
+            transform: translateY(-2px);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 4rem 2rem;
+            background: #f5f5f5;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .product-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .product-benefits {
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .product-benefits li {
+            margin-left: 1.5rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4ade80;
+            margin: 1rem 0;
+        }
+
+        .product-cta {
+            width: 100%;
+            padding: 0.7rem;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .product-cta:hover {
+            background: #4ade80;
+            color: #1a1a1a;
+        }
+
+        /* AI Platform Section */
+        .ai-pitch {
+            padding: 4rem 2rem;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .ai-pitch .section-title {
+            color: white;
+        }
+
+        .ai-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .ai-intro {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            opacity: 0.95;
+        }
+
+        .ai-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .ai-feature {
+            background: #2d2d2d;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #4ade80;
+        }
+
+        .ai-feature h3 {
+            color: #4ade80;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .ai-feature p {
+            color: #bbb;
+            font-size: 0.95rem;
+        }
+
+        .ai-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 1.5rem;
+            background: #2d2d2d;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #bbb;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .ai-cta-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: #2d2d2d;
+            border-radius: 12px;
+        }
+
+        .ai-cta-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #4ade80;
+        }
+
+        .ai-cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #ddd;
+        }
+
+        /* Trust Section */
+        .trust {
+            padding: 3rem 2rem;
+            background: #f5f5f5;
+            text-align: center;
+        }
+
+        .trust-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 2rem auto;
+        }
+
+        .trust-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .trust-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-text {
+            color: #555;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #4ade80;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🩹 SuperPatch</div>
+        <a href="#products">Products</a>
+        <a href="#ai">AI Tools</a>
+        <a href="#about">About SuperPatch Enroll</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Heal Better. Earn Better.</h1>
+        <p class="subtitle">Trusted by SuperPatch Enroll and 1000+ ambassadors worldwide</p>
+        <p class="ambassador-name">👋 Welcome to SuperPatch Enroll's SuperPatch Family</p>
+        <div class="cta-buttons">
+            <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
+                Shop Patches Now
+            </button>
+            <a href="https://patchhub.solutions" class="btn btn-secondary">
+                Learn About PatchHub
+            </a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h2 class="section-title">Our Products</h2>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">🩹</div>
+                <div class="product-info">
+                    <h3 class="product-name">Classic Patch</h3>
+                    <p class="product-desc">Our original formula. Trusted by thousands.</p>
+                    <ul class="product-benefits">
+                        <li>✓ Natural ingredients</li>
+                        <li>✓ Fast-acting</li>
+                        <li>✓ 8-12 hour relief</li>
+                    </ul>
+                    <div class="product-price">$19.99</div>
+                    <button class="product-cta">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">⚡</div>
+                <div class="product-info">
+                    <h3 class="product-name">Extra Strength</h3>
+                    <p class="product-desc">For serious pain. Maximum relief.</p>
+                    <ul class="product-benefits">
+                        <li>✓ 2x potency</li>
+                        <li>✓ 12-16 hour duration</li>
+                        <li>✓ Targeted relief</li>
+                    </ul>
+                    <div class="product-price">$29.99</div>
+                    <button class="product-cta">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">🌿</div>
+                <div class="product-info">
+                    <h3 class="product-name">Wellness Bundle</h3>
+                    <p class="product-desc">Complete pain management system.</p>
+                    <ul class="product-benefits">
+                        <li>✓ 5 Classic + 5 Extra</li>
+                        <li>✓ Save 20%</li>
+                        <li>✓ Free shipping</li>
+                    </ul>
+                    <div class="product-price">$79.99</div>
+                    <button class="product-cta">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image">💚</div>
+                <div class="product-info">
+                    <h3 class="product-name">Monthly Subscription</h3>
+                    <p class="product-desc">Never run out. Auto-delivered.</p>
+                    <ul class="product-benefits">
+                        <li>✓ 25% discount</li>
+                        <li>✓ Free shipping always</li>
+                        <li>✓ Cancel anytime</li>
+                    </ul>
+                    <div class="product-price">$14.99/mo</div>
+                    <button class="product-cta">Subscribe Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust">
+        <h2 class="section-title">Why Choose SuperPatch?</h2>
+        <div class="trust-items">
+            <div class="trust-item">
+                <div class="trust-icon">🔬</div>
+                <div class="trust-text">Clinically Tested</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">✅</div>
+                <div class="trust-text">FDA Compliant</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">🚚</div>
+                <div class="trust-text">Fast Shipping</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">💯</div>
+                <div class="trust-text">100% Satisfaction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Platform Pitch Section -->
+    <section class="ai-pitch" id="ai">
+        <h2 class="section-title">Maximize Your Earning Potential with AI</h2>
+        
+        <div class="ai-content">
+            <p class="ai-intro">
+                Selling SuperPatch is great. But managing contacts, writing DMs, and tracking responses takes time.
+                <strong>What if AI handled all of that for you?</strong>
+            </p>
+
+            <div class="ai-features">
+                <div class="ai-feature">
+                    <h3>📋 Auto-Import Contacts</h3>
+                    <p>Upload a CSV or connect your email. PatchHub enriches contacts with real-time data.</p>
+                </div>
+                <div class="ai-feature">
+                    <h3>✍️ AI-Powered DMs</h3>
+                    <p>One-click personalized messages. Natural tone. No robotic spam. Higher open rates.</p>
+                </div>
+                <div class="ai-feature">
+                    <h3>📊 Real-Time Analytics</h3>
+                    <p>See who opened, clicked, and is ready to buy. Close deals faster.</p>
+                </div>
+                <div class="ai-feature">
+                    <h3>🤖 Automation Framework</h3>
+                    <p>Set up follow-up sequences. Let AI nurture leads while you sleep.</p>
+                </div>
+                <div class="ai-feature">
+                    <h3>📱 Multi-Channel Support</h3>
+                    <p>Instagram DMs, Facebook, SMS. One dashboard, every platform.</p>
+                </div>
+                <div class="ai-feature">
+                    <h3>🔐 TCPA Compliant</h3>
+                    <p>Automatic opt-out handling. Built-in compliance. Zero legal risk.</p>
+                </div>
+            </div>
+
+            <div class="ai-stats">
+                <div class="stat">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Higher Open Rate</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3-5x</div>
+                    <div class="stat-label">More Conversions</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">10+ hrs</div>
+                    <div class="stat-label">Saved Per Week</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">$1k-5k</div>
+                    <div class="stat-label">Extra Income/Month</div>
+                </div>
+            </div>
+
+            <div class="ai-cta-section">
+                <h2>Ready to Scale Your SuperPatch Business?</h2>
+                <p>
+                    PatchHub is the AI CRM platform designed specifically for SuperPatch ambassadors.
+                    Stop doing manual work. Start automating sales.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://patchhub.solutions" class="btn btn-primary">
+                        Learn About PatchHub
+                    </a>
+                    <a href="mailto:support@patchhub.solutions?subject=PatchHub%20Interest" class="btn btn-secondary">
+                        Get Notified at Launch
+                    </a>
+                </div>
+
+                <div style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
+                    <p>🚀 PatchHub platform launching soon. Early ambassadors will get special pricing.</p>
+                    <p style="margin-top: 1rem;">Share your link: <strong>https://patchhub.solutions/enroll/</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            © 2026 SuperPatch • Powered by <a href="https://patchhub.solutions">PatchHub</a> | 
+            <a href="#">Privacy Policy</a> • 
+            <a href="#">Terms of Service</a> • 
+            <a href="#">Contact Us</a>
+        </p>
+        <p style="margin-top: 1rem; opacity: 0.7;">
+            Questions? Email enroll@patchhub.solutions or contact support@patchhub.solutions
+        </p>
+    </footer>
+</body>
+</html>
