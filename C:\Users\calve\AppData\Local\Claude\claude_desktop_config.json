@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "tradingview": {
+      "command": "wsl",
+      "args": ["node", "/home/harreson/.openclaw/workspace/claude-tradingview-mcp-trading/mcp-server.js"],
+      "env": {
+        "CDP_PORT": "9222"
+      }
+    }
+  }
+}

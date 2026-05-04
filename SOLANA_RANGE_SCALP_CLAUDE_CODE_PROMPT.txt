@@ -1,0 +1,72 @@
+COPY AND PASTE THIS ENTIRE PROMPT INTO CLAUDE CODE:
+
+---
+
+You are setting up a SOLANA range scalping bot. Your job is to:
+
+1. Create or update the rules.json file with EXACTLY these specifications:
+
+{
+  "symbol": "SOLUSDT",
+  "timeframe": "1H",
+  "strategy": "SOLANA_RANGE_SCALP",
+  "description": "Buy SOLANA between $80-82, sell between $85-87",
+  
+  "entry_rules": [
+    {
+      "name": "Price in buy zone",
+      "condition": "price >= 80 AND price <= 82",
+      "required": true
+    }
+  ],
+  
+  "exit_rules": [
+    {
+      "name": "Price in sell zone",
+      "condition": "price >= 85 AND price <= 87",
+      "required": true
+    }
+  ],
+  
+  "position_management": {
+    "position_size_usd": 1000,
+    "max_position_size_usd": 1000,
+    "stop_loss_percent": null,
+    "no_stop_loss": true,
+    "hold_until_exit_zone": true,
+    "max_daily_trades": 3
+  },
+  
+  "risk_management": {
+    "max_trade_size_usd": 1000,
+    "max_trades_per_day": 3,
+    "daily_profit_cap_usd": 10000,
+    "position_sizing": "fixed",
+    "portfolio_risk_percent": 100
+  }
+}
+
+2. Verify the .env file contains:
+PORTFOLIO_VALUE_USD=1000
+MAX_TRADE_SIZE_USD=1000
+MAX_TRADES_PER_DAY=3
+PAPER_TRADING=true
+SYMBOL=SOLUSDT
+TIMEFRAME=1H
+
+3. Run the bot with: node bot.js
+
+The bot will now:
+- BUY when SOLANA price is between $80-82
+- HOLD until price reaches $85-87
+- SELL the entire position when price hits $85-87
+- Wait for price to drop below $83 before entering again
+- Log all trades to trades.csv
+
+NO STOP LOSS. This is intentional — you're willing to hold.
+
+Start in PAPER_TRADING=true mode first. Verify it catches entries and exits correctly. When confident, flip to PAPER_TRADING=false for live trading.
+
+---
+
+That's it. Paste everything above into Claude Code now.

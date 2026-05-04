@@ -1,6 +1,6 @@
 # MEMORY.md - Long-Term Memory
 
-_Curated memories and significant context. Last synced on Sunday, May 3rd, 2026 at 6:51 AM EDT._
+_Curated memories and significant context. Last synced on Sunday, May 3rd, 2026 at 10:51 PM EDT._
 
 ## Workspace Setup
 
@@ -532,7 +532,263 @@ pm2 delete solana-trader  # Remove from PM2
 
 ---
 
-**Last Updated:** Sunday, May 3, 2026 (11:45 AM EDT) — SOLANA bot LIVE + Pine Script complete. All infrastructure operational. Strategy deployed with real-time visualization ready. Awaiting user to add Pine Script to TradingView and verify signals. Paper trading mode active, monitoring for errors.
+## CALVENNSTARRE BLOG — NEW ARTICLE DEPLOYED (May 3, 2026 - 8:37 PM EDT) 📝
+
+**Status:** ✅ READY FOR DEPLOYMENT TO PRODUCTION
+
+**Article:** "Run Your Relationships Like Your Business"
+- **Theme:** Relationships need the same intentional management as business
+- **Length:** ~1,300 words, 7-minute read
+- **Tone:** Direct, no-nonsense, actionable
+- **Key Message:** "Nothing matters unless you make it matter"
+
+**Files Created:**
+- `relationships-blog-post.html` — Production-ready HTML (styled, ready to deploy)
+- `relationship-article-draft.md` — Markdown version for reference
+- `deploy-blog-post.sh` — Deployment script (one-command deploy)
+
+**Deployment Path:**
+`vps48233.dreamhostps.com:~/public_html/blog/run-your-relationships-like-your-business.html`
+
+**Next Steps:**
+1. Deploy HTML file to blog directory
+2. Update `blog/index.html` to include new post
+3. Post link on social (CalvennStarre accounts)
+
+**Content Outline:**
+- Relationships require infrastructure (like business)
+- Communication errors cascade (resentment, breakdown)
+- Step back → be present → realize what matters
+- "Nothing matters unless you make it matter"
+- 5 practical tactics (schedule, address early, be clear, follow through, step back)
+
+---
+
+**Last Updated:** Sunday, May 3, 2026 (10:51 PM EDT) — Memory sync complete. All major projects documented and stable: PatchHub Phase 1 LIVE, SOLANA bot running hourly, TradingView Bridge architecture complete with 3-layer safety protocol. Backup system operational. Ready for Phase 2 development (May 5).
+
+---
+
+## PINE SCRIPT & TRADINGVIEW VISUALIZATION (May 3, 2026 - 12:04 PM EDT) 📊
+
+**Status:** ✅ COMPLETE & DEPLOYED TO WORKSPACE
+
+### Pine Script File
+**File:** `solana-scalp-strategy.pine` (production-ready, 100+ lines)
+
+### Visual Signals (TradingView Chart)
+- **Green triangles** (below candles) = BUY signals (all 6 conditions met)
+- **Red triangles** (above candles) = SELL signals (exit conditions triggered)
+- **Live condition table** (top-right) showing in real-time:
+  - EMA(8) vs EMA(21) status
+  - RSI value + threshold
+  - Volume confirmation
+  - Bollinger Band position
+  - Overall BUY/SELL signal status
+
+### Features
+- ✅ Fully parameterizable (adjust RSI, EMA via TradingView settings)
+- ✅ Shows all 6 entry conditions in real-time table
+- ✅ Matches bot logic exactly (same calculations)
+- ✅ Works on 1H timeframe (matches bot schedule)
+- ✅ Alerts ready (triggers when signals appear)
+
+### Documentation Created
+- **ADD_PINESCRIPT_INSTRUCTIONS.md** — Step-by-step setup guide
+- **CHART_VISUALIZATION.md** — What the chart displays
+- **TRADINGVIEW_CHART_SETUP.md** — Manual indicator setup
+
+### How to Add to TradingView
+1. Open SOLUSDT chart (1H timeframe)
+2. Click Pine Script Editor (bottom)
+3. Paste solana-scalp-strategy.pine
+4. Click "Add to Chart"
+5. Watch green/red triangles appear (should match bot signals)
+
+**Status:** Ready to add to TradingView Desktop. User wants direct control (not automated).
+
+---
+
+## TRADINGVIEW BRIDGE — PERSISTENT DATA CONNECTION (May 3, 2026 - 10:11 AM EDT) 🌉
+
+**Status:** ✅ COMPLETE & DEPLOYED — Production-ready for immediate use
+
+### Problem Solved
+User needed persistent, reusable TradingView connection (not browser-based CDP) that:
+- Serves live data to ANY bot via REST API
+- Maintains WebSocket for real-time updates
+- Provides safety checks before executing trades with real money
+- Single source of truth for market data
+
+### Architecture (Production-Ready)
+
+**Bridge Server (Node.js/Express + WebSocket) — PORT 3001**
+- REST Endpoints:
+  - `/health` — Server status
+  - `/candles/:symbol` — Historical candle data (returns 100+ candles)
+  - `/latest/:symbol` — Current tick with timestamp
+  - `/indicators/:symbol` — Calculated: RSI, EMA(8), EMA(21), Bollinger Bands, Volume
+  - **`/trading-safe/:symbol`** — **CRITICAL** safety validation before Coinbase execution
+  - `/status` — Connection health + data freshness
+- WebSocket Subscriptions:
+  - Real-time candle updates (as they close)
+  - Per-symbol live data tracking
+
+**Bridge Client Library (bridge-client.js)**
+- Simple API for bots: `await client.getIndicators('SOLUSDT')`
+- Handles WebSocket subscriptions internally
+- Per-symbol `isLiveData` tracking (prevents demo data mix)
+- Timestamp validation (ensures data is fresh)
+
+**Key Features:**
+- ✅ **Always-on 24/7** (not tied to browser, survives session crashes)
+- ✅ **Reusable** — Any bot can call /indicators, /candles, /latest
+- ✅ **Real-time** — WebSocket updates as candles close
+- ✅ **Safe for production** — /trading-safe endpoint validates before execution
+- ✅ **Demo mode** — Test safely without real money
+- ✅ **Per-symbol tracking** — Knows if data is live or demo
+
+### Files Created (7 total - all in workspace)
+1. **bridge-server.js** (15.6 KB) — Main server + /trading-safe endpoint
+2. **bridge-client.js** (7.5 KB) — Client library (one function call from bots)
+3. **bridge-safety-check.js** (3.9 KB) — Safety validation for bot integration
+4. **package.json** — Node dependencies (express, ws, dotenv, node-fetch)
+5. **.env.example** — Configuration template
+6. **BRIDGE_README.md** (9.5 KB) — Complete API documentation
+7. **DEPLOY.md** (7 KB) — Step-by-step deployment to DreamHost
+
+### How Bot Uses Bridge
+```javascript
+// Bot imports bridge client
+const BridgeClient = require('./bridge-client');
+const client = new BridgeClient('http://localhost:3001');
+
+// Every hour, before trading:
+const indicators = await client.getIndicators('SOLUSDT');
+const isReady = await client.validateBeforeTrade('SOLUSDT');
+if (isReady.approved && indicators.rsi < 40) {
+  // Execute Coinbase trade
+}
+```
+
+### Deployment (DreamHost — READY TO DEPLOY)
+- **Host:** vps48233.dreamhostps.com
+- **Account:** dh_ygjkxx (same as bot)
+- **Directory:** `/home/dh_ygjkxx/tradingview-bridge/`
+- **Process:** `pm2 start bridge-server.js --name "tv-bridge"`
+- **Verify:** `curl http://localhost:3001/health`
+- **Auto-restart:** PM2 restarts on crash or reboot
+- **Deployment time:** 5-10 minutes (git clone, npm install, pm2 start)
+
+### Why Not Use Bot Directly?
+**Old approach:** Bot calls TradingView CDP directly (browser-based, session-dependent)
+**Problem:** If bot process crashes or session ends, no data connection
+**New approach:** Persistent bridge server that bot connects to
+**Result:** Data always flows, multiple projects can share, easy to monitor
+
+---
+
+## LIVE TRADING SAFETY PROTOCOL — 3-LAYER PROTECTION (May 3, 2026 - 12:04 PM EDT) 🔒
+
+**Status:** ✅ COMPLETE & READY TO ENFORCE — User's critical requirement: NO demo data in LIVE_MODE
+
+### The Risk
+**When trading real money, using demo/old data = catastrophic losses.** Example: Bot thinks price is $85 (demo), actually $90 → losses occur immediately.
+
+**Solution:** 3-layer safety system ensures only fresh live data executes trades in LIVE_MODE.
+
+### Layer 1: Environment Variables (Intent)
+```env
+LIVE_MODE=true              # Flag: trading real money
+ALLOW_DEMO_DATA=false       # Strict enforcement: reject demo data
+DATA_FRESHNESS_REQUIRED_MS=300000  # Data must be <5 min old
+```
+
+### Layer 2: Bridge Server Validation (Gate-keeping)
+**Endpoint:** `/trading-safe/:symbol` — Called before EVERY trade
+
+**Checks (ALL 5 must pass):**
+1. ✅ TradingView data source connected
+2. ✅ Live data is flowing (not stalled)
+3. ✅ Data timestamp < 5 minutes old (not stale)
+4. ✅ At least 21 candles available (enough history)
+5. ✅ ALLOW_DEMO_DATA=false enforced (no demo fallback)
+
+**If ANY check fails:**
+- Returns `{approved: false, reason: "..."}`
+- Blocks trade execution
+- Logs violation to safety-check-log.json
+- Alerts user (can hook to email/SMS)
+
+### Layer 3: Bot Code (Double-Check)
+**Module:** `bridge-safety-check.js`
+- Function: `validateBeforeTrade('SOLUSDT')`
+- Runs immediately before Coinbase API call
+- Re-validates bridge response (defense in depth)
+- Prevents race conditions
+
+### Critical Files Created
+1. **LIVE_TRADING_SAFETY.md** (8 KB) — **USER MUST READ** before going live
+2. **LIVE_TRADING_SAFETY_IMPLEMENTATION.md** (10 KB) — Technical implementation
+3. **bridge-safety-check.js** (3.9 KB) — Safety module for bot.js
+
+### How to Use (Step-by-Step)
+
+**Phase 1: Testing (Days 1-15)**
+```env
+LIVE_MODE=false
+ALLOW_DEMO_DATA=true  # Safe, uses demo data
+```
+- Deploy bot & bridge
+- Run for 15+ days
+- Watch /trading-safe responses
+- Verify strategy math (60%+ win rate target)
+- Review trades.csv (actual P&L)
+
+**Phase 2: Production (Day 16+)**
+```env
+LIVE_MODE=true
+ALLOW_DEMO_DATA=false  # Enforced: blocks demo data
+```
+- All 5 safety checks must pass
+- Only fresh live data executes trades
+- Start small: $200 max per trade
+- Scale up after 30 days of live trading
+
+### Key Safety Rules
+✅ **DO THIS:**
+- Test 15+ days with demo data before LIVE_MODE
+- Start with $200 max trade (easy to recover from mistakes)
+- Review safety-check-log.json daily
+- Check PM2 logs for any safety violations
+- Keep ALLOW_DEMO_DATA=false in production
+
+❌ **NEVER DO THIS:**
+- Disable ALLOW_DEMO_DATA check in LIVE_MODE (removes safety)
+- Flip LIVE_MODE=true without testing (no data buffer)
+- Ignore safety-check-log.json violations (sign of problems)
+- Deploy with mixed LIVE_MODE/ALLOW_DEMO_DATA settings
+
+### Logging & Audit
+**All decisions logged to:** `/home/dh_ygjkxx/trading-bot-solana/safety-check-log.json`
+
+**Sample log entry:**
+```json
+{
+  "timestamp": "2026-05-03T16:00:00Z",
+  "symbol": "SOLUSDT",
+  "liveMode": true,
+  "dataFresh": true,
+  "lastCandle": "2026-05-03T16:00:00Z",
+  "approved": true,
+  "reason": "All 5 safety checks passed"
+}
+```
+
+**Every trade also logged to:** `/home/dh_ygjkxx/trading-bot-solana/trades.csv` (for tax accounting)
+
+
+
+---
 
 ## ALACHUA COUNTY FARM PROJECT (April 30 - May 1, 2026)
 

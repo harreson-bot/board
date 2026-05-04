@@ -1,0 +1,23 @@
+{
+  "preferences": {
+    "coworkScheduledTasksEnabled": true,
+    "ccdScheduledTasksEnabled": true,
+    "sidebarMode": "chat",
+    "coworkWebSearchEnabled": true,
+    "keepAwakeEnabled": true,
+    "coworkOnboardingResumeStep": {
+      "step": "setup",
+      "accountKey": "05bdb17a-11b3-478d-adac-e8bdb7667f72:7959505c-95bf-45c3-b90f-679c0ffdd6b3"
+    },
+    "chicagoEnabled": true
+  },
+  "mcpServers": {
+    "tradingview": {
+      "command": "wsl",
+      "args": ["node", "/home/harreson/.openclaw/workspace/claude-tradingview-mcp-trading/mcp-server.js"],
+      "env": {
+        "CDP_PORT": "9222"
+      }
+    }
+  }
+}
