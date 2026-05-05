@@ -1,0 +1,127 @@
+//@version=5
+strategy("FlowZone Strategy #2: Liquidity Grab + Order Block", overlay=true, default_qty_type=strategy.percent_of_equity, default_qty_value=1, pyramiding=0, margin_call_pct=100)
+
+// ============================================================================
+// FlowZoneTrader Strategy #2: Liquidity Grab + Order Block Reversal (SMC)
+// ============================================================================
+// Identifies when price grabs liquidity (stops) above/below structure
+// Confirms with order block reversal + Malaysian SnR levels
+// Entry on retest of order block
+// ============================================================================
+
+// ---- INPUTS ----
+emaFastLength = input.int(9, title="EMA Fast Length", minval=1, maxval=50, group="EMA Settings")
+emaSlowLength = input.int(21, title="EMA Slow Length", minval=1, maxval=50, group="EMA Settings")
+
+lookbackSwing = input.int(20, title="Lookback for Swing Highs/Lows", minval=5, maxval=100, group="Structure Settings")
+wickSize = input.float(0.001, title="Wick Size Factor", minval=0.0001, maxval=0.01, step=0.0001, group="Structure Settings")
+
+riskPips = input.int(5, title="Stop Loss (pips)", minval=1, maxval=50, group="Risk Settings")
+target1Pips = input.int(20, title="Target 1 (pips)", minval=1, maxval=100, group="Risk Settings")
+target2Pips = input.int(40, title="Target 2 (pips)", minval=1, maxval=100, group="Risk Settings")
+
+showMalaysianSnR = input.bool(true, title="Show Malaysian SnR", group="Display Settings")
+showOrderBlocks = input.bool(true, title="Show Order Blocks", group="Display Settings")
+showSwingLevels = input.bool(true, title="Show Swing Levels", group="Display Settings")
+
+// ---- CALCULATIONS ----
+
+// EMAs
+emaFast = ta.ema(close, emaFastLength)
+emaSlow = ta.ema(close, emaSlowLength)
+bullishEMA = emaFast > emaSlow
+bearishEMA = emaFast < emaSlow
+
+// Find swing highs and lows
+swingHigh = ta.highest(high, lookbackSwing)
+swingLow = ta.lowest(low, lookbackSwing)
+
+// Malaysian Support & Resistance
+malaysianRange = swingHigh - swingLow
+malaysianR = swingHigh + malaysianRange
+malaysianS = swingLow - malaysianRange
+
+// Track order blocks
+var float orderBlockHigh = na
+var float orderBlockLow = na
+var bool orderBlockFormed = false
+var int orderBlockBar = na
+
+// Identify order blocks (reversal candles)
+// Bullish order block: strong rally, then close back inside with body in lower portion
+bullishReversal = close[1] > open[1] and close < open and close > low[1] and high[1] > high
+
+// Bearish order block: strong decline, then close back inside with body in upper portion
+bearishReversal = close[1] < open[1] and close > open and close < high[1] and low[1] < low
+
+// Update order block
+if bullishReversal or bearishReversal
+    orderBlockHigh := high[1]
+    orderBlockLow := low[1]
+    orderBlockFormed := true
+    orderBlockBar := bar_index[1]
+
+// Liquidity grab: price wicks beyond previous structure, then reverses
+wickThreshold = (swingHigh - swingLow) * wickSize
+
+// Bullish grab: price goes above swing high with wick, then reverses
+bullishGrab = high > swingHigh and close < swingHigh and bullishReversal
+
+// Bearish grab: price goes below swing low with wick, then reverses
+bearishGrab = low < swingLow and close > swingLow and bearishReversal
+
+// ---- ENTRY SIGNALS ----
+
+// Bullish entry: order block + bullish EMA + price retests order block from above
+buySignal = orderBlockFormed and bullishEMA and close > orderBlockLow and close < orderBlockHigh and bullishGrab
+
+// Bearish entry: order block + bearish EMA + price retests order block from below
+sellSignal = orderBlockFormed and bearishEMA and close > orderBlockLow and close < orderBlockHigh and bearishGrab
+
+// ---- STRATEGY LOGIC ----
+
+if buySignal and strategy.position_size == 0
+    stopLoss = orderBlockLow - (riskPips * syminfo.mintick)
+    takeProfit1 = close + (target1Pips * syminfo.mintick)
+    takeProfit2 = malaySianR  // Use Malaysian R-level as T2
+    strategy.entry("Long LG", strategy.long)
+    strategy.exit("TP1 LG", "Long LG", limit=takeProfit1, stop=stopLoss)
+    strategy.exit("TP2 LG", "Long LG", limit=takeProfit2, stop=stopLoss)
+
+if sellSignal and strategy.position_size == 0
+    stopLoss = orderBlockHigh + (riskPips * syminfo.mintick)
+    takeProfit1 = close - (target1Pips * syminfo.mintick)
+    takeProfit2 = malaysianS  // Use Malaysian S-level as T2
+    strategy.entry("Short LG", strategy.short)
+    strategy.exit("TP1 LG", "Short LG", limit=takeProfit1, stop=stopLoss)
+    strategy.exit("TP2 LG", "Short LG", limit=takeProfit2, stop=stopLoss)
+
+// ---- VISUAL INDICATORS ----
+
+// Plot EMAs
+plot(emaFast, color=color.blue, linewidth=2, title="EMA 9")
+plot(emaSlow, color=color.orange, linewidth=2, title="EMA 21")
+
+// Swing levels
+if showSwingLevels
+    hline(swingHigh, "Swing High", color=color.new(color.green, 50), linestyle=hline.style_dashed, linewidth=1)
+    hline(swingLow, "Swing Low", color=color.new(color.red, 50), linestyle=hline.style_dashed, linewidth=1)
+
+// Malaysian SnR
+if showMalaysianSnR
+    hline(malaysianR, "Malaysian R", color=color.new(color.green, 70), linestyle=hline.style_dotted, linewidth=2)
+    hline(malaysianS, "Malaysian S", color=color.new(color.red, 70), linestyle=hline.style_dotted, linewidth=2)
+
+// Order blocks
+if showOrderBlocks and orderBlockFormed
+    box.new(orderBlockBar, orderBlockHigh, bar_index, orderBlockLow, 
+            border_color=color.gray, bgcolor=color.new(color.blue, 90), 
+            title="Order Block")
+
+// Entry signals
+plotshape(buySignal, location=location.belowbar, color=color.green, size=size.large, shape=shape.triangleup, title="Buy LG")
+plotshape(sellSignal, location=location.abovebar, color=color.red, size=size.large, shape=shape.triangledown, title="Sell LG")
+
+// ---- ALERTS ----
+alertcondition(buySignal, title="Liquidity Grab Buy", message="🟢 LG BUY - Order block + Bullish grab + Malaysian SnR")
+alertcondition(sellSignal, title="Liquidity Grab Sell", message="🔴 LG SELL - Order block + Bearish grab + Malaysian SnR")

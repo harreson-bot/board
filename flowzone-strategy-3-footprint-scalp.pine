@@ -1,0 +1,191 @@
+//@version=5
+strategy("FlowZone Strategy #3: Footprint Momentum Scalp", overlay=true, default_qty_type=strategy.percent_of_equity, default_qty_value=1, pyramiding=0, margin_call_pct=100)
+
+// ============================================================================
+// FlowZoneTrader Strategy #3: Footprint Momentum Scalp (Order Flow Micro)
+// ============================================================================
+// Identifies order flow momentum building (buy/sell volume accumulation)
+// Executes scalp entries when momentum is released
+// Tight stops, quick exits (2-10 minute trades)
+// NOTE: This script approximates order flow; use Bookmap for real Level 2 data
+// ============================================================================
+
+// ---- INPUTS ----
+emaFastLength = input.int(5, title="EMA Fast Length", minval=1, maxval=20, group="EMA Settings")
+emaSlowLength = input.int(13, title="EMA Slow Length", minval=1, maxval=30, group="EMA Settings")
+
+momntumLookback = input.int(3, title="Momentum Buildup Candles", minval=2, maxval=5, group="Momentum Settings")
+volumeMultiplier = input.float(1.2, title="Volume Spike Multiplier", minval=1.0, maxval=3.0, step=0.1, group="Momentum Settings")
+minVolumeMA = input.int(20, title="Min Volume MA Period", minval=5, maxval=50, group="Momentum Settings")
+
+riskPips = input.int(5, title="Stop Loss (pips)", minval=1, maxval=20, group="Risk Settings")
+target1Pips = input.int(10, title="Target 1 (pips)", minval=1, maxval=30, group="Risk Settings")
+target2Pips = input.int(15, title="Target 2 (pips)", minval=1, maxval=30, group="Risk Settings")
+trailingStopPips = input.int(3, title="Trailing Stop (pips)", minval=1, maxval=10, group="Risk Settings")
+
+tradingHourStart = input.int(9, title="Trading Start Hour (EDT)", minval=0, maxval=23, group="Time Settings")
+tradingHourEnd = input.int(15, title="Trading End Hour (EDT)", minval=0, maxval=23, group="Time Settings")
+
+// ---- CALCULATIONS ----
+
+// Adjust time for EDT (UTC-4)
+edtOffset = -4
+currentHourEDT = (hour(time("UTC")) + edtOffset + 24) % 24
+
+// EMAs
+emaFast = ta.ema(close, emaFastLength)
+emaSlow = ta.ema(close, emaSlowLength)
+
+// Volume analysis
+avgVolume = ta.sma(volume, minVolumeMA)
+volumeRatio = volume / avgVolume
+isHighVolume = volumeRatio > volumeMultiplier
+
+// ---- ORDER FLOW APPROXIMATION ----
+// Since real footprint data isn't available in Pine Script, we approximate using:
+// 1. Close position within candle (close > midpoint = buying, close < midpoint = selling)
+// 2. Volume comparison
+// 3. EMA alignment
+
+midpoint = (high + low) / 2
+buyPressure = close > midpoint and volume > avgVolume
+sellPressure = close < midpoint and volume > avgVolume
+
+// Track momentum buildup (consecutive candles showing buy or sell pressure)
+var int consecutiveBuyCandles = 0
+var int consecutiveSellCandles = 0
+
+// Count consecutive buy pressure candles
+if buyPressure
+    consecutiveBuyCandles += 1
+    consecutiveSellCandles := 0
+else
+    consecutiveBuyCandles := 0
+
+// Count consecutive sell pressure candles
+if sellPressure
+    consecutiveSellCandles += 1
+    consecutiveBuyCandles := 0
+else
+    consecutiveSellCandles := 0
+
+// Momentum buildup detected
+momentumBuildupBuy = consecutiveBuyCandles >= momntumLookback
+momentumBuildupSell = consecutiveSellCandles >= momntumLookback
+
+// Volume spike release (next candle after buildup has explosive volume)
+volumeSpikeBuy = momentumBuildupBuy and isHighVolume and volume > volume[1]
+volumeSpikeSell = momentumBuildupSell and isHighVolume and volume > volume[1]
+
+// EMA confirmation
+emaBullish = emaFast > emaSlow
+emaBearish = emaFast < emaSlow
+
+// ---- CONSOLIDATION DETECTION ----
+// Identify consolidation range (low volatility before spike)
+atr = ta.atr(14)
+isConsolidation = (high - low) < (atr * 0.5)
+
+var float consolidationHigh = na
+var float consolidationLow = na
+var int consolidationBar = na
+
+if isConsolidation and not volumeSpikeBuy and not volumeSpikeSell
+    if na(consolidationHigh)
+        consolidationHigh := high
+        consolidationLow := low
+        consolidationBar := bar_index
+    else
+        consolidationHigh := math.max(consolidationHigh, high)
+        consolidationLow := math.min(consolidationLow, low)
+else
+    consolidationHigh := na
+    consolidationLow := na
+
+// ---- ENTRY SIGNALS ----
+
+// Bullish scalp: momentum buildup + volume spike + price breaks above consolidation
+buySignal = volumeSpikeBuy and emaBullish and close > consolidationHigh and 
+            currentHourEDT >= tradingHourStart and currentHourEDT < tradingHourEnd
+
+// Bearish scalp: momentum buildup + volume spike + price breaks below consolidation
+sellSignal = volumeSpikeSell and emaBearish and close < consolidationLow and 
+             currentHourEDT >= tradingHourStart and currentHourEDT < tradingHourEnd
+
+// ---- STRATEGY LOGIC ----
+
+if buySignal and strategy.position_size == 0
+    stopLoss = consolidationLow - (riskPips * syminfo.mintick)
+    takeProfit1 = close + (target1Pips * syminfo.mintick)
+    takeProfit2 = close + (target2Pips * syminfo.mintick)
+    strategy.entry("Long Scalp", strategy.long)
+    // Exit 50% at T1
+    strategy.exit("T1", "Long Scalp", limit=takeProfit1, qty_percent=50, stop=stopLoss)
+    // Trail remaining 50% with trailing stop
+    strategy.exit("T2", "Long Scalp", limit=takeProfit2, stop=stopLoss)
+
+if sellSignal and strategy.position_size == 0
+    stopLoss = consolidationHigh + (riskPips * syminfo.mintick)
+    takeProfit1 = close - (target1Pips * syminfo.mintick)
+    takeProfit2 = close - (target2Pips * syminfo.mintick)
+    strategy.entry("Short Scalp", strategy.short)
+    // Exit 50% at T1
+    strategy.exit("T1", "Short Scalp", limit=takeProfit1, qty_percent=50, stop=stopLoss)
+    // Trail remaining 50% with trailing stop
+    strategy.exit("T2", "Short Scalp", limit=takeProfit2, stop=stopLoss)
+
+// Auto-close after end of trading hour
+if currentHourEDT >= tradingHourEnd and strategy.position_size != 0
+    strategy.close_all()
+
+// ---- VISUAL INDICATORS ----
+
+// Plot EMAs
+plot(emaFast, color=color.blue, linewidth=2, title="EMA 5")
+plot(emaSlow, color=color.orange, linewidth=2, title="EMA 13")
+
+// Consolidation zone
+if not na(consolidationHigh) and not na(consolidationLow)
+    box.new(consolidationBar, consolidationHigh, bar_index, consolidationLow,
+            border_color=color.gray, bgcolor=color.new(color.yellow, 85),
+            title="Consolidation")
+
+// Buy/sell pressure colors
+barcolor(buyPressure ? color.new(color.green, 60) : sellPressure ? color.new(color.red, 60) : na, title="Pressure")
+
+// Momentum indicator
+plot(consecutiveBuyCandles > 0 ? consecutiveBuyCandles : (consecutiveSellCandles > 0 ? -consecutiveSellCandles : 0),
+     title="Momentum Buildup", color=consecutiveBuyCandles > 0 ? color.green : color.red, style=plot.style_columns)
+
+// Entry signals
+plotshape(buySignal, location=location.belowbar, color=color.green, size=size.large, shape=shape.triangleup, title="Buy Scalp")
+plotshape(sellSignal, location=location.abovebar, color=color.red, size=size.large, shape=shape.triangledown, title="Sell Scalp")
+
+// Volume spike indicator
+plot(isHighVolume ? high + (atr * 0.2) : na, title="Volume Spike", color=color.purple, style=plot.style_circles)
+
+// ---- TABLE: REAL-TIME SIGNALS ----
+var table signalTable = table.new(position.top_right, 4, 5, bgcolor=color.new(color.black, 80), border_color=color.gray, border_width=1)
+
+table.cell(signalTable, 0, 0, "Signal", text_color=color.white, bgcolor=color.new(color.gray, 0))
+table.cell(signalTable, 1, 0, "Value", text_color=color.white, bgcolor=color.new(color.gray, 0))
+table.cell(signalTable, 2, 0, "EMA", text_color=color.white, bgcolor=color.new(color.gray, 0))
+table.cell(signalTable, 3, 0, "Volume", text_color=color.white, bgcolor=color.new(color.gray, 0))
+
+table.cell(signalTable, 0, 1, "Buy Candles", text_color=color.white)
+table.cell(signalTable, 1, 1, str.tostring(consecutiveBuyCandles), text_color=color.new(color.green, 0))
+table.cell(signalTable, 2, 1, emaBullish ? "📈" : "📉", text_color=color.white)
+table.cell(signalTable, 3, 1, str.tostring(math.round(volumeRatio, 2)) + "x", text_color=color.white)
+
+table.cell(signalTable, 0, 2, "Sell Candles", text_color=color.white)
+table.cell(signalTable, 1, 2, str.tostring(consecutiveSellCandles), text_color=color.white)
+
+table.cell(signalTable, 0, 3, "Consolidation", text_color=color.white)
+table.cell(signalTable, 1, 3, isConsolidation ? "✓" : "✗", text_color=color.white)
+
+table.cell(signalTable, 0, 4, "Ready to Trade", text_color=color.white)
+table.cell(signalTable, 1, 4, (currentHourEDT >= tradingHourStart and currentHourEDT < tradingHourEnd) ? "✓" : "✗", text_color=color.white)
+
+// ---- ALERTS ----
+alertcondition(buySignal, title="Footprint Momentum Buy", message="🟢 SCALP BUY - Volume spike + Bullish momentum + Consolidation break")
+alertcondition(sellSignal, title="Footprint Momentum Sell", message="🔴 SCALP SELL - Volume spike + Bearish momentum + Consolidation break")
