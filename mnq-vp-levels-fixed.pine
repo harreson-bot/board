@@ -1,0 +1,319 @@
+//@version=6
+indicator("MNQ VP Levels [Session · Day · Week]", overlay=true, max_bars_back=5000, max_lines_count=500, max_boxes_count=500)
+
+// ══════════════════════════════════════════════════════════════════
+// INPUTS
+// ══════════════════════════════════════════════════════════════════
+int n_bkts = input.int(300, "Buckets (session/day)", minval=100, maxval=500, group="Volume Profile")
+float bsz_sd = input.float(0.5, "Bucket size – session/day (pts)", minval=0.25, step=0.25, group="Volume Profile")
+float bsz_wk = input.float(2.0, "Bucket size – week (pts)", minval=0.25, step=0.25, group="Volume Profile")
+float va_pct = input.float(0.70, "Value area %", minval=0.50, maxval=0.95, step=0.01, group="Volume Profile")
+float alrt_d = input.float(2.0, "Alert proximity (pts)", minval=0.25, step=0.25, group="Alerts")
+bool wh_mode = input.bool(false, "JSON webhook payload", group="Alerts")
+bool s_cur = input.bool(true, "Current session", group="Display")
+bool s_pd = input.bool(true, "Previous day", group="Display")
+bool s_pw = input.bool(true, "Previous week", group="Display")
+bool s_nodes = input.bool(true, "HVN / LVN", group="Display")
+
+color c_cs_poc = input.color(#FFD700, "Current POC", group="Colors")
+color c_cs_va = input.color(color.new(#4488FF, 0), "Current VAH / VAL", group="Colors")
+color c_pd_poc = input.color(#FF8C00, "Prev day POC", group="Colors")
+color c_pd_va = input.color(color.new(#FF8C00, 30), "Prev day VAH / VAL", group="Colors")
+color c_pw_poc = input.color(#9B59B6, "Prev week POC", group="Colors")
+color c_pw_va = input.color(color.new(#9B59B6, 30), "Prev week VAH / VAL", group="Colors")
+color c_hvn = input.color(color.new(#00CC66, 0), "HVN", group="Colors")
+color c_lvn = input.color(color.new(#FF3333, 0), "LVN", group="Colors")
+
+// ══════════════════════════════════════════════════════════════════
+// CONSTANTS
+// ══════════════════════════════════════════════════════════════════
+int HALF_SD = math.round(n_bkts / 2)
+int HALF_WK = math.round(n_bkts / 2)
+int MAX_N = 8
+
+// ══════════════════════════════════════════════════════════════════
+// SESSION FLAGS
+// ══════════════════════════════════════════════════════════════════
+bool is_rth_session = not na(time("1", "0930-1600"))
+bool rth_open = is_rth_session and not is_rth_session[1]
+bool is_mon = dayofweek == dayofweek.monday
+bool wk_open = rth_open and is_mon
+
+// ══════════════════════════════════════════════════════════════════
+// VP ARRAYS
+// ══════════════════════════════════════════════════════════════════
+var float[] cs_vp = array.new_float(500, 0.0)
+var float[] wk_vp = array.new_float(500, 0.0)
+var float cs_ref = na
+var float wk_ref = na
+
+// ══════════════════════════════════════════════════════════════════
+// STORED LEVELS
+// ══════════════════════════════════════════════════════════════════
+var float cs_poc = na
+var float cs_vah = na
+var float cs_val = na
+var float pd_poc = na
+var float pd_vah = na
+var float pd_val = na
+var float pw_poc = na
+var float pw_vah = na
+var float pw_val = na
+
+var float[] cs_hvn = array.new_float(0)
+var float[] cs_lvn = array.new_float(0)
+var float[] pd_hvn = array.new_float(0)
+var float[] pd_lvn = array.new_float(0)
+var float[] pw_hvn = array.new_float(0)
+var float[] pw_lvn = array.new_float(0)
+
+// ══════════════════════════════════════════════════════════════════
+// FUNCTIONS
+// ══════════════════════════════════════════════════════════════════
+f_idx(float p, float ref, float bsz, int half) =>
+    math.max(0, math.min(499, math.round((p - ref) / bsz) + half))
+
+f_add(float[] vp, float ref, float bsz, int half) =>
+    float rng = high - low
+    if rng < syminfo.mintick
+        int i = f_idx(close, ref, bsz, half)
+        array.set(vp, i, array.get(vp, i) + volume)
+    else
+        int ilo = f_idx(low, ref, bsz, half)
+        int ihi = f_idx(high, ref, bsz, half)
+        for i = ilo to ihi
+            float blo = ref + (i - half) * bsz
+            float bhi = blo + bsz
+            float wt = math.max(0.0, (math.min(high, bhi) - math.max(low, blo)) / rng)
+            array.set(vp, i, array.get(vp, i) + volume * wt)
+
+f_poc(float[] vp, float ref, float bsz, int half) =>
+    int pi = 0
+    float pv = 0.0
+    for i = 0 to 499
+        float v = array.get(vp, i)
+        if v > pv
+            pv := v
+            pi := i
+    ref + (pi - half) * bsz + bsz * 0.5
+
+f_va(float[] vp, float ref, float bsz, int half, float poc) =>
+    float tgt = array.sum(vp) * va_pct
+    int pi = math.max(0, math.min(499, math.round((poc - ref) / bsz) + half))
+    float acc = array.get(vp, pi)
+    int lo = pi
+    int hi = pi
+    int max_iter = 250
+    int iter = 0
+    while acc < tgt and (lo > 0 or hi < 499) and iter < max_iter
+        float up = hi < 499 ? array.get(vp, hi + 1) : 0.0
+        float dn = lo > 0 ? array.get(vp, lo - 1) : 0.0
+        if up >= dn and hi < 499
+            hi += 1
+            acc += up
+        else if lo > 0
+            lo -= 1
+            acc += dn
+        else
+            break
+        iter += 1
+    [ref + (hi - half) * bsz + bsz, ref + (lo - half) * bsz]
+
+f_nodes(float[] vp, float ref, float bsz, int half, float[] hvn, float[] lvn) =>
+    array.clear(hvn)
+    array.clear(lvn)
+    float mean = array.sum(vp) / 500
+    for i = 1 to 498
+        float cv = array.get(vp, i)
+        float pv = array.get(vp, i - 1)
+        float nv = array.get(vp, i + 1)
+        float px = ref + (i - half) * bsz + bsz * 0.5
+        if cv > pv and cv > nv and cv > mean and array.size(hvn) < MAX_N
+            array.push(hvn, px)
+        if cv < pv and cv < nv and cv < mean and cv > 0 and array.size(lvn) < MAX_N
+            array.push(lvn, px)
+
+f_copy(float[] src, float[] dst) =>
+    array.clear(dst)
+    for v in src
+        array.push(dst, v)
+
+// ══════════════════════════════════════════════════════════════════
+// SESSION TRANSITIONS
+// ══════════════════════════════════════════════════════════════════
+if rth_open
+    if not na(cs_ref)
+        pd_poc := cs_poc
+        pd_vah := cs_vah
+        pd_val := cs_val
+        f_copy(cs_hvn, pd_hvn)
+        f_copy(cs_lvn, pd_lvn)
+        array.fill(cs_vp, 0.0)
+        cs_ref := open
+        cs_poc := na
+        cs_vah := na
+        cs_val := na
+
+if wk_open
+    if not na(wk_ref)
+        pw_poc := f_poc(wk_vp, wk_ref, bsz_wk, HALF_WK)
+        [wh, wl] = f_va(wk_vp, wk_ref, bsz_wk, HALF_WK, pw_poc)
+        pw_vah := wh
+        pw_val := wl
+        f_nodes(wk_vp, wk_ref, bsz_wk, HALF_WK, pw_hvn, pw_lvn)
+        array.fill(wk_vp, 0.0)
+        wk_ref := open
+
+// ══════════════════════════════════════════════════════════════════
+// BAR ACCUMULATION
+// ══════════════════════════════════════════════════════════════════
+if is_rth_session
+    if na(cs_ref)
+        cs_ref := open
+    f_add(cs_vp, cs_ref, bsz_sd, HALF_SD)
+    cs_poc := f_poc(cs_vp, cs_ref, bsz_sd, HALF_SD)
+    if bar_index % 5 == 0
+        [vh, vl] = f_va(cs_vp, cs_ref, bsz_sd, HALF_SD, cs_poc)
+        cs_vah := vh
+        cs_val := vl
+    if bar_index % 5 == 0
+        f_nodes(cs_vp, cs_ref, bsz_sd, HALF_SD, cs_hvn, cs_lvn)
+    if na(wk_ref)
+        wk_ref := open
+    f_add(wk_vp, wk_ref, bsz_wk, HALF_WK)
+
+// ══════════════════════════════════════════════════════════════════
+// LINE OBJECTS
+// ══════════════════════════════════════════════════════════════════
+f_ln(color col, int w, bool dashed) =>
+    line.new(bar_index, na, bar_index + 1, na, extend=extend.right, color=col, width=w, style=dashed ? line.style_dashed : line.style_solid)
+
+var line l_cs_poc = f_ln(c_cs_poc, 2, false)
+var line l_cs_vah = f_ln(c_cs_va, 1, true)
+var line l_cs_val = f_ln(c_cs_va, 1, true)
+var line l_pd_poc = f_ln(c_pd_poc, 2, false)
+var line l_pd_vah = f_ln(c_pd_va, 1, true)
+var line l_pd_val = f_ln(c_pd_va, 1, true)
+var line l_pw_poc = f_ln(c_pw_poc, 2, false)
+var line l_pw_vah = f_ln(c_pw_va, 1, true)
+var line l_pw_val = f_ln(c_pw_va, 1, true)
+
+f_upd(line ln, float y) =>
+    if not na(y)
+        line.set_y1(ln, y)
+        line.set_y2(ln, y)
+        line.set_x1(ln, bar_index)
+
+if s_cur
+    f_upd(l_cs_poc, cs_poc)
+    f_upd(l_cs_vah, cs_vah)
+    f_upd(l_cs_val, cs_val)
+if s_pd
+    f_upd(l_pd_poc, pd_poc)
+    f_upd(l_pd_vah, pd_vah)
+    f_upd(l_pd_val, pd_val)
+if s_pw
+    f_upd(l_pw_poc, pw_poc)
+    f_upd(l_pw_vah, pw_vah)
+    f_upd(l_pw_val, pw_val)
+
+// ══════════════════════════════════════════════════════════════════
+// HVN / LVN NODE LINES
+// ══════════════════════════════════════════════════════════════════
+var line[] ll_cs_hvn = array.new<line>(0)
+var line[] ll_cs_lvn = array.new<line>(0)
+var line[] ll_pd_hvn = array.new<line>(0)
+var line[] ll_pd_lvn = array.new<line>(0)
+var line[] ll_pw_hvn = array.new<line>(0)
+var line[] ll_pw_lvn = array.new<line>(0)
+
+f_draw_nodes(float[] lvls, line[] lns, color col) =>
+    for ln in lns
+        line.delete(ln)
+    array.clear(lns)
+    for lvl in lvls
+        ln = line.new(bar_index - 5, lvl, bar_index, lvl, extend=extend.right, color=col, width=1, style=line.style_dotted)
+        array.push(lns, ln)
+
+if s_nodes
+    if rth_open
+        f_draw_nodes(pd_hvn, ll_pd_hvn, c_hvn)
+        f_draw_nodes(pd_lvn, ll_pd_lvn, c_lvn)
+    if wk_open
+        f_draw_nodes(pw_hvn, ll_pw_hvn, c_hvn)
+        f_draw_nodes(pw_lvn, ll_pw_lvn, c_lvn)
+    if is_rth_session and bar_index % 5 == 0
+        f_draw_nodes(cs_hvn, ll_cs_hvn, c_hvn)
+        f_draw_nodes(cs_lvn, ll_cs_lvn, c_lvn)
+
+// ══════════════════════════════════════════════════════════════════
+// BUY / SELL SIGNALS (REFINED)
+// ══════════════════════════════════════════════════════════════════
+f_near(float lvl) => not na(lvl) and math.abs(close - lvl) <= alrt_d
+
+// Calculate trend: simple slope of last 5 closes
+float trend_slope = (close - close[5]) / 5
+
+bool near_support = f_near(cs_val) or f_near(pd_val) or f_near(pw_val)
+bool near_resist = f_near(cs_vah) or f_near(pd_vah) or f_near(pw_vah)
+
+bool hvn_buy = false
+bool hvn_sell = false
+
+if s_nodes
+    for lvl in cs_hvn
+        if f_near(lvl)
+            if close < lvl and trend_slope > 0
+                hvn_buy := true
+            if close > lvl and trend_slope < 0
+                hvn_sell := true
+    for lvl in pd_hvn
+        if f_near(lvl)
+            if close < lvl and trend_slope > 0
+                hvn_buy := true
+            if close > lvl and trend_slope < 0
+                hvn_sell := true
+    for lvl in pw_hvn
+        if f_near(lvl)
+            if close < lvl and trend_slope > 0
+                hvn_buy := true
+            if close > lvl and trend_slope < 0
+                hvn_sell := true
+
+bool buy_signal = (near_support or hvn_buy) and is_rth_session and trend_slope > 0 and high > high[2]
+bool sell_signal = (near_resist or hvn_sell) and is_rth_session and trend_slope < 0 and low < low[2]
+
+plotshape(buy_signal, "BUY", shape.triangleup, location.belowbar, color.new(color.green, 0), size=size.small, text="B")
+plotshape(sell_signal, "SELL", shape.triangledown, location.abovebar, color.new(color.red, 0), size=size.small, text="S")
+
+// ══════════════════════════════════════════════════════════════════
+// ALERTS
+// ══════════════════════════════════════════════════════════════════
+f_msg(string tf, string kind, float lvl) => wh_mode ? '{"ticker":"' + syminfo.ticker + '","price":' + str.tostring(close, "#.##") + ',"tf":"' + tf + '","level":"' + kind + '","level_price":' + str.tostring(lvl, "#.##") + ',"side":"' + (close >= lvl ? "above" : "below") + '"}' : "MNQ WATCH @ " + str.tostring(close, "#.##") + " | " + tf + " " + kind + " " + str.tostring(lvl, "#.##")
+
+if buy_signal
+    string bsrc = f_near(pd_val) ? "PD VAL " + str.tostring(pd_val, "#.##") : f_near(pw_val) ? "PW VAL " + str.tostring(pw_val, "#.##") : f_near(cs_val) ? "CS VAL " + str.tostring(cs_val, "#.##") : "HVN fade"
+    alert("MNQ BUY @ " + str.tostring(close, "#.##") + " | " + bsrc, alert.freq_once_per_bar_close)
+
+if sell_signal
+    string ssrc = f_near(pd_vah) ? "PD VAH " + str.tostring(pd_vah, "#.##") : f_near(pw_vah) ? "PW VAH " + str.tostring(pw_vah, "#.##") : f_near(cs_vah) ? "CS VAH " + str.tostring(cs_vah, "#.##") : "HVN fade"
+    alert("MNQ SELL @ " + str.tostring(close, "#.##") + " | " + ssrc, alert.freq_once_per_bar_close)
+
+if s_cur and f_near(cs_poc)
+    alert(f_msg("CS", "POC", cs_poc), alert.freq_once_per_bar_close)
+
+if s_pd and f_near(pd_poc)
+    alert(f_msg("PD", "POC", pd_poc), alert.freq_once_per_bar_close)
+
+if s_pw and f_near(pw_poc)
+    alert(f_msg("PW", "POC", pw_poc), alert.freq_once_per_bar_close)
+
+alertcondition(buy_signal, "BUY signal")
+alertcondition(sell_signal, "SELL signal")
+alertcondition(s_cur and f_near(cs_poc), "CS POC approach")
+alertcondition(s_pd and f_near(pd_poc), "PD POC approach")
+alertcondition(s_pd and f_near(pd_vah), "PD VAH approach")
+alertcondition(s_pd and f_near(pd_val), "PD VAL approach")
+alertcondition(s_pw and f_near(pw_poc), "PW POC approach")
+alertcondition(s_pw and f_near(pw_vah), "PW VAH approach")
+alertcondition(s_pw and f_near(pw_val), "PW VAL approach")
