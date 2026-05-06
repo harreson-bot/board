@@ -1,0 +1,133 @@
+//@version=6
+strategy("FlowZone ORB - Fixed TimeZone", overlay=true, default_qty_type=strategy.percent_of_equity, default_qty_value=2, pyramiding=0)
+
+// ============================================================================
+// FlowZoneTrader ORB - FIXED TIMEZONE + Works on 1M/5M/15M
+// ============================================================================
+// TIMEZONE FIX: Uses time() to properly convert to NY time
+// Detects ORB formation in first 15 minutes, then trades breakouts
+// ============================================================================
+
+// ---- INPUTS ----
+orbMinutesNeeded = input.int(15, title="ORB Formation Minutes", minval=5, maxval=30, group="ORB")
+target1 = input.int(50, title="Target 1 (points)", minval=10, maxval=200, group="Targets")
+stopLoss = input.int(50, title="Stop Loss (points)", minval=10, maxval=200, group="Targets")
+
+// ---- STATE TRACKING ----
+var float orbHigh = na
+var float orbLow = na
+var bool orbFormed = false
+var int orbStartBar = na
+var int barsSinceOrbStart = 0
+var box orbBox = na
+
+// ---- USE CHART TIME DIRECTLY ----
+// Your chart is set to New York, so use hour/minute as-is
+hourNY = hour
+minNY = minute
+
+// ---- DETECT MARKET OPEN (9:30 NY) ----
+isMarketOpen = (hourNY >= 9 and hourNY <= 16)
+
+// Detect first bar at/after 9:30 - simplest approach
+isOrbStart = hourNY == 9 and minNY >= 30 and na(orbHigh)
+
+// ---- ORB FORMATION LOGIC ----
+// Reset at 9:30 each day (only when orbHigh becomes na)
+if isOrbStart
+    orbHigh := high  // START tracking here
+    orbLow := low
+    orbFormed := false
+    barsSinceOrbStart := 1
+    orbStartBar := bar_index
+
+// Count bars in ORB period
+else if not orbFormed and isMarketOpen and not na(orbHigh)
+    barsSinceOrbStart += 1
+    
+    // Track high/low during ORB window
+    if barsSinceOrbStart == 1
+        orbHigh := high
+        orbLow := low
+    else if barsSinceOrbStart <= (orbMinutesNeeded / 5) + 1  // +1 for safety
+        orbHigh := math.max(orbHigh, high)
+        orbLow := math.min(orbLow, low)
+    
+    // Mark ORB as formed after 15 bars (on 5M chart)
+    if barsSinceOrbStart > (orbMinutesNeeded / 5)
+        orbFormed := true
+
+// ---- EMA CONFIRMATION ----
+ema9 = ta.ema(close, 9)
+ema21 = ta.ema(close, 21)
+
+bullishEMA = ema9 > ema21
+bearishEMA = ema9 < ema21
+
+// ---- ENTRY SIGNALS (after ORB is formed) ----
+buySignal = orbFormed and close > orbHigh and bullishEMA and isMarketOpen
+sellSignal = orbFormed and close < orbLow and bearishEMA and isMarketOpen
+
+// ---- EXECUTE ----
+if buySignal and strategy.position_size == 0
+    strategy.entry("Long", strategy.long)
+    strategy.exit("Long TP", "Long", limit=close + (target1 * syminfo.mintick))
+    strategy.exit("Long SL", "Long", stop=orbLow - (stopLoss * syminfo.mintick))
+
+if sellSignal and strategy.position_size == 0
+    strategy.entry("Short", strategy.short)
+    strategy.exit("Short TP", "Short", limit=close - (target1 * syminfo.mintick))
+    strategy.exit("Short SL", "Short", stop=orbHigh + (stopLoss * syminfo.mintick))
+
+// Close at end of day
+if not isMarketOpen and strategy.position_size != 0
+    strategy.close_all()
+
+// ---- VISUALIZATION ----
+
+// Draw ORB zone as a box
+if orbFormed and na(orbBox)
+    orbBox := box.new(left=orbStartBar, top=orbHigh, right=bar_index, bottom=orbLow, 
+                      bgcolor=color.new(color.blue, 90), border_color=color.blue, border_width=2)
+
+// Update box right edge as new bars come in
+if orbFormed and not na(orbBox)
+    box.set_right(orbBox, bar_index)
+
+// ORB High/Low lines
+plot(orbFormed and not na(orbHigh) ? orbHigh : na, color=color.new(color.green, 0), linewidth=2, title="ORB High", style=plot.style_linebr)
+plot(orbFormed and not na(orbLow) ? orbLow : na, color=color.new(color.red, 0), linewidth=2, title="ORB Low", style=plot.style_linebr)
+
+// EMAs
+plot(ema9, color=color.blue, linewidth=1, title="EMA 9")
+plot(ema21, color=color.orange, linewidth=1, title="EMA 21")
+
+// Buy/Sell signals
+plotshape(buySignal, location=location.belowbar, color=color.new(color.green, 0), size=size.large, style=shape.triangleup, title="BUY")
+plotshape(sellSignal, location=location.abovebar, color=color.new(color.red, 0), size=size.large, style=shape.triangledown, title="SELL")
+
+// Debug markers
+plotshape(isOrbStart, location=location.top, color=color.gray, size=size.tiny, style=shape.circle, title="Market Open (9:30)")
+plotshape(orbFormed and barsSinceOrbStart > orbMinutesNeeded / 5, location=location.top, color=color.green, size=size.tiny, style=shape.square, title="ORB Formed")
+
+// ---- INFO TABLE ----
+var table infoTable = na
+if barstate.isfirst
+    infoTable := table.new(position=position.top_right, columns=2, rows=5, bgcolor=color.new(color.black, 80), border_color=color.gray, border_width=1)
+    table.cell(infoTable, 0, 0, "ORB Status", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 0, 1, "Value", text_color=color.white, text_size=size.small)
+
+if barstate.islast
+    table.cell(infoTable, 0, 1, orbFormed ? "FORMED" : "FORMING", text_color=orbFormed ? color.green : color.gray, text_size=size.small)
+    table.cell(infoTable, 1, 0, "High:", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 1, 1, str.format("{0,.0f}", orbHigh), text_color=color.green, text_size=size.small)
+    table.cell(infoTable, 2, 0, "Low:", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 2, 1, str.format("{0,.0f}", orbLow), text_color=color.red, text_size=size.small)
+    table.cell(infoTable, 3, 0, "Time (NY):", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 3, 1, str.format("{0:02d}:{1:02d} NY", hourNY, minNY), text_color=color.yellow, text_size=size.small)
+    table.cell(infoTable, 4, 0, "Bars in ORB:", text_color=color.white, text_size=size.small)
+    table.cell(infoTable, 4, 1, str.tostring(barsSinceOrbStart), text_color=color.white, text_size=size.small)
+
+// ---- ALERTS ----
+alertcondition(buySignal, title="ORB BUY", message="BUY above ORB high + EMA bullish")
+alertcondition(sellSignal, title="ORB SELL", message="SELL below ORB low + EMA bearish")

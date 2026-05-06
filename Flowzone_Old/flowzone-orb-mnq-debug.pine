@@ -1,0 +1,95 @@
+//@version=6
+strategy("FlowZone ORB - MNQ Debug", overlay=true, default_qty_type=strategy.percent_of_equity, default_qty_value=2, pyramiding=0)
+
+// ============================================================================
+// FlowZoneTrader ORB - MNQ Edition with DEBUG INFO
+// ============================================================================
+
+// ---- INPUTS ----
+target1Points = input.int(50, title="Target 1 (points)", minval=10, maxval=200, group="Targets")
+target2Points = input.int(100, title="Target 2 (points)", minval=20, maxval=300, group="Targets")
+stopPoints = input.int(50, title="Stop Loss (points)", minval=10, maxval=200, group="Targets")
+
+orbEndMin = input.int(45, title="ORB End Minute (e.g., 45 for 9:45)", minval=30, maxval=59, group="ORB")
+tradingEndHour = input.int(11, title="End Trading Hour", minval=9, maxval=16, group="ORB")
+
+// ---- STATE VARIABLES ----
+var float orbHigh = na
+var float orbLow = na
+var bool orbFormed = false
+var int orbStartBar = na
+
+// ---- TIME CHECKS ----
+currentHour = hour
+currentMin = minute
+
+// Is it 9:30 or later but before market close?
+isMarketOpen = (currentHour == 9 and currentMin >= 30) or (currentHour > 9 and currentHour < tradingEndHour) or (currentHour == tradingEndHour and currentMin <= 30)
+
+// Is it the ORB period? (9:30 - 9:45)
+inOrbPeriod = (currentHour == 9 and currentMin >= 30 and currentMin < orbEndMin)
+
+// ---- ORB FORMATION ----
+// Reset once per day (at 9:30)
+if currentHour == 9 and currentMin == 30 and barstate.isfirst == false
+    orbHigh := na
+    orbLow := na
+    orbFormed := false
+    orbStartBar := bar_index
+
+// Form ORB during 9:30-9:45 window
+if inOrbPeriod
+    if na(orbHigh)
+        orbHigh := high
+        orbLow := low
+    else
+        orbHigh := math.max(orbHigh, high)
+        orbLow := math.min(orbLow, low)
+
+// Mark ORB as formed after 9:45
+if not orbFormed and currentHour == 9 and currentMin == orbEndMin
+    orbFormed := true
+
+// ---- EMA CONFIRMATION ----
+ema9 = ta.ema(close, 9)
+ema21 = ta.ema(close, 21)
+
+bullishEMA = ema9 > ema21
+bearishEMA = ema9 < ema21
+
+// ---- ENTRY CONDITIONS ----
+buySetup = orbFormed and close > orbHigh and bullishEMA and isMarketOpen
+sellSetup = orbFormed and close < orbLow and bearishEMA and isMarketOpen
+
+// ---- EXECUTE TRADES ----
+if buySetup and strategy.position_size == 0
+    strategy.entry("Long", strategy.long)
+    strategy.exit("Long TP1", "Long", limit=close + (target1Points * syminfo.mintick))
+    strategy.exit("Long SL", "Long", stop=orbLow - (stopPoints * syminfo.mintick))
+
+if sellSetup and strategy.position_size == 0
+    strategy.entry("Short", strategy.short)
+    strategy.exit("Short TP1", "Short", limit=close - (target1Points * syminfo.mintick))
+    strategy.exit("Short SL", "Short", stop=orbHigh + (stopPoints * syminfo.mintick))
+
+// Close all at end of session
+if not isMarketOpen and strategy.position_size != 0
+    strategy.close_all()
+
+// ---- VISUALIZATION ----
+plot(orbFormed and not na(orbHigh) ? orbHigh : na, color=color.green, linewidth=3, title="ORB High", style=plot.style_line)
+plot(orbFormed and not na(orbLow) ? orbLow : na, color=color.red, linewidth=3, title="ORB Low", style=plot.style_line)
+
+plot(ema9, color=color.blue, linewidth=2, title="EMA 9")
+plot(ema21, color=color.orange, linewidth=2, title="EMA 21")
+
+// Debug info
+plotshape(inOrbPeriod, location=location.top, color=color.gray, size=size.tiny, style=shape.circle, title="In ORB Period")
+plotshape(orbFormed and not inOrbPeriod, location=location.top, color=color.green, size=size.tiny, style=shape.square, title="ORB Formed")
+
+plotshape(buySetup, location=location.belowbar, color=color.green, size=size.large, style=shape.triangleup, title="BUY")
+plotshape(sellSetup, location=location.abovebar, color=color.red, size=size.large, style=shape.triangledown, title="SELL")
+
+// ---- ALERTS ----
+alertcondition(buySetup, title="ORB BUY Signal", message="BUY: Close above range high + EMA bullish")
+alertcondition(sellSetup, title="ORB SELL Signal", message="SELL: Close below range low + EMA bearish")

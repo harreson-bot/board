@@ -1,0 +1,79 @@
+//@version=6
+strategy("ORB Test v2", overlay=true, process_orders_on_close=true)
+
+h = hour
+m = minute
+
+// ORB window: 8:30–8:44 CT (9:30–9:44 EDT)
+inOrbWindow = h == 8 and m >= 30 and m <= 44
+
+var float orbHigh    = na
+var float orbLow     = na
+var bool  orbFormed  = false
+var bool  longTaken  = false
+var bool  shortTaken = false
+
+// Reset at 8:30 CT each day
+if h == 8 and m == 30
+    orbHigh    := na
+    orbLow     := na
+    orbFormed  := false
+    longTaken  := false
+    shortTaken := false
+
+// Build ORB
+if inOrbWindow
+    orbHigh := na(orbHigh) ? high : math.max(orbHigh, high)
+    orbLow  := na(orbLow)  ? low  : math.min(orbLow,  low)
+
+// Seal ORB after window
+if not orbFormed and not inOrbWindow and not na(orbHigh)
+    orbFormed := true
+
+// Signals — NO time filter, just price vs ORB
+// Restrict to 8:30–10:30 CT (9:30–11:30 EDT) — prevents overnight false trades
+inTradingWindow = (h == 8 and m >= 30) or h == 9 or (h == 10 and m <= 30)
+
+// Pullback retest confirmation:
+//   Candle 1: closes outside ORB
+//   Candle 2: wicks back inside ORB but closes outside again → ENTRY
+useRetestConfirm = input.bool(true, title="Require Pullback Retest (recommended)", group="Filters")
+
+buyC1  = close[1] > orbHigh
+buyC2  = low <= orbHigh and close > orbHigh
+sellC1 = close[1] < orbLow
+sellC2 = high >= orbLow and close < orbLow
+
+// One trade per day max
+buySignal  = orbFormed and inTradingWindow and (useRetestConfirm ? (buyC1  and buyC2)  : close > orbHigh) and not longTaken  and strategy.position_size == 0
+sellSignal = orbFormed and inTradingWindow and (useRetestConfirm ? (sellC1 and sellC2) : close < orbLow)  and not shortTaken and strategy.position_size == 0
+
+if buySignal
+    longTaken := true
+    strategy.entry("Long", strategy.long)
+
+if sellSignal
+    shortTaken := true
+    strategy.entry("Short", strategy.short)
+
+// Close everything at 3:00 PM CT (4:00 PM EDT)
+if h == 15
+    strategy.close_all()
+
+// Visuals
+plot(orbFormed ? orbHigh : na, "ORB High", color.green, 2)
+plot(orbFormed ? orbLow  : na, "ORB Low",  color.red,   2)
+plotshape(buySignal,  location=location.belowbar, color=color.green, style=shape.triangleup,   size=size.small, title="BUY")
+plotshape(sellSignal, location=location.abovebar, color=color.red,   style=shape.triangledown, size=size.small, title="SELL")
+bgcolor(inOrbWindow ? color.new(color.yellow, 90) : na)
+
+// Debug label on last bar
+var label lbl = na
+if barstate.islast
+    label.delete(lbl)
+    lbl := label.new(bar_index, high,
+         "CT: " + str.tostring(h) + ":" + (m < 10 ? "0" : "") + str.tostring(m) +
+         "\nORB: " + (orbFormed ? "YES" : "NO") +
+         "\nHigh: " + (na(orbHigh) ? "---" : str.tostring(math.round(orbHigh, 2))) +
+         "\nLow: "  + (na(orbLow)  ? "---" : str.tostring(math.round(orbLow,  2))),
+         style=label.style_label_left, color=color.black, textcolor=color.white, size=size.small)

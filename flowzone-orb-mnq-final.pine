@@ -1,0 +1,118 @@
+//@version=6
+strategy("FlowZone ORB - MNQ", overlay=true, process_orders_on_close=true, default_qty_type=strategy.percent_of_equity, default_qty_value=2, pyramiding=0)
+
+// ============================================================================
+// FlowZone ORB - MNQ/NQ  |  1M, 5M, 15M
+// CME Exchange Time (CT): 9:30 EDT = 8:30 CT | ORB = first 15 min
+// ============================================================================
+
+// ---- INPUTS ----
+target1Points = input.int(50, title="Target (points)", group="Targets")
+stopPoints    = input.int(50, title="Stop Loss (points)", group="Targets")
+useEmaFilter     = input.bool(false, title="Require EMA (9/21) Confirmation", group="Filters")
+useRetestConfirm = input.bool(true,  title="Require Pullback Retest (recommended)", group="Filters")
+
+// ---- TIME ----
+h = hour
+m = minute
+inOrbWindow     = h == 8 and m >= 30 and m <= 44
+inTradingWindow = (h == 8 and m >= 30) or h == 9 or (h == 10 and m <= 30)  // 8:30–10:30 CT = 9:30–11:30 EDT
+
+// ---- ORB STATE ----
+var float orbHigh   = na
+var float orbLow    = na
+var bool  orbFormed = false
+var bool  longTaken = false
+var bool  shortTaken = false
+
+if h == 8 and m == 30
+    orbHigh   := na
+    orbLow    := na
+    orbFormed := false
+    longTaken  := false
+    shortTaken := false
+
+if inOrbWindow
+    orbHigh := na(orbHigh) ? high : math.max(orbHigh, high)
+    orbLow  := na(orbLow)  ? low  : math.min(orbLow,  low)
+
+if not orbFormed and not inOrbWindow and not na(orbHigh)
+    orbFormed := true
+
+// ---- EMAs ----
+ema9  = ta.ema(close, 9)
+ema21 = ta.ema(close, 21)
+emaBull = ema9 > ema21
+emaBear = ema9 < ema21
+
+// ---- SIGNALS ----
+// Pullback retest confirmation:
+//   Candle 1: closes outside ORB
+//   Candle 2: wicks back inside ORB but closes outside again → ENTRY
+buyC1  = close[1] > orbHigh                        // prev candle closed above ORB high
+buyC2  = low <= orbHigh and close > orbHigh        // this candle wicked in, closed above
+sellC1 = close[1] < orbLow                         // prev candle closed below ORB low
+sellC2 = high >= orbLow and close < orbLow         // this candle wicked in, closed below
+
+buySignal  = orbFormed and inTradingWindow and (useRetestConfirm ? (buyC1  and buyC2)  : close > orbHigh) and not longTaken  and strategy.position_size == 0 and (useEmaFilter ? emaBull : true)
+sellSignal = orbFormed and inTradingWindow and (useRetestConfirm ? (sellC1 and sellC2) : close < orbLow)  and not shortTaken and strategy.position_size == 0 and (useEmaFilter ? emaBear : true)
+
+// ---- STRATEGY — manual exits only, no strategy.exit() ----
+var float entryPrice = na
+
+if buySignal
+    entryPrice := close
+    longTaken  := true
+    strategy.entry("Long", strategy.long)
+
+if strategy.position_size > 0
+    if close >= entryPrice + target1Points
+        strategy.close("Long", comment="TP")
+    else if close <= entryPrice - stopPoints
+        strategy.close("Long", comment="SL")
+
+if sellSignal
+    entryPrice := close
+    shortTaken := true
+    strategy.entry("Short", strategy.short)
+
+if strategy.position_size < 0
+    if close <= entryPrice - target1Points
+        strategy.close("Short", comment="TP")
+    else if close >= entryPrice + stopPoints
+        strategy.close("Short", comment="SL")
+
+if h == 15
+    strategy.close_all(comment="EOD")
+
+// ---- VISUALS ----
+plot(orbFormed ? orbHigh : na, "ORB High", color.green, 2, plot.style_linebr)
+plot(orbFormed ? orbLow  : na, "ORB Low",  color.red,   2, plot.style_linebr)
+plot(ema9,  "EMA 9",  color.blue,   1)
+plot(ema21, "EMA 21", color.orange, 1)
+
+bgcolor(inOrbWindow ? color.new(color.yellow, 88) : na, title="ORB Window")
+plotshape(buySignal,  location=location.belowbar, color=color.green, style=shape.triangleup,   size=size.normal, title="BUY")
+plotshape(sellSignal, location=location.abovebar, color=color.red,   style=shape.triangledown, size=size.normal, title="SELL")
+
+// ---- INFO TABLE ----
+var table t = table.new(position.top_right, 2, 6, bgcolor=color.new(color.black, 75), border_color=color.gray, border_width=1)
+
+if barstate.islast
+    table.cell(t, 0, 0, "FlowZone ORB", text_color=color.white,  text_size=size.small, bgcolor=color.new(color.blue, 70))
+    table.cell(t, 1, 0, "MNQ",          text_color=color.white,  text_size=size.small, bgcolor=color.new(color.blue, 70))
+    table.cell(t, 0, 1, "CT Time",      text_color=color.white,  text_size=size.small)
+    table.cell(t, 1, 1, str.tostring(h) + ":" + (m < 10 ? "0" : "") + str.tostring(m), text_color=color.yellow, text_size=size.small)
+    table.cell(t, 0, 2, "ORB",          text_color=color.white,  text_size=size.small)
+    table.cell(t, 1, 2, orbFormed ? "FORMED" : "FORMING", text_color=orbFormed ? color.green : color.orange, text_size=size.small)
+    table.cell(t, 0, 3, "High / Low",   text_color=color.white,  text_size=size.small)
+    table.cell(t, 1, 3, na(orbHigh) ? "---" : str.tostring(math.round(orbHigh, 0)) + " / " + str.tostring(math.round(orbLow, 0)), text_color=color.white, text_size=size.small)
+    table.cell(t, 0, 4, "EMA",          text_color=color.white,  text_size=size.small)
+    table.cell(t, 1, 4, emaBull ? "BULL" : "BEAR", text_color=emaBull ? color.green : color.red, text_size=size.small)
+    table.cell(t, 0, 5, "Position",     text_color=color.white,  text_size=size.small)
+    table.cell(t, 1, 5, strategy.position_size > 0 ? "LONG" : strategy.position_size < 0 ? "SHORT" : "FLAT",
+         text_color=strategy.position_size != 0 ? color.yellow : color.gray, text_size=size.small)
+
+// ---- ALERTS ----
+alertcondition(buySignal,  title="ORB BUY",  message="BUY: Above ORB high | SL: 50pts | T1: +50pts")
+alertcondition(sellSignal, title="ORB SELL", message="SELL: Below ORB low  | SL: 50pts | T1: +50pts")

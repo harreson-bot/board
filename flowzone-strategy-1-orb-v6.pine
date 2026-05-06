@@ -1,0 +1,116 @@
+//@version=6
+strategy("FlowZone Strategy #1: Opening Range Breakout (ORB)", overlay=true, default_qty_type=strategy.percent_of_equity, default_qty_value=1, pyramiding=0)
+
+// ============================================================================
+// FlowZoneTrader Strategy #1: Opening Range Breakout (ORB) + Order Flow
+// ============================================================================
+// Trades the first 30 minutes of market open (9:30-10:00 EDT)
+// Identifies opening range high/low, waits for breakout + confirmation
+// ============================================================================
+
+// ---- INPUTS ----
+orbMinutes = input.int(30, title="ORB Window (minutes)", minval=5, maxval=60, group="ORB Settings")
+confirmationBars = input.int(1, title="Confirmation Candles", minval=1, maxval=3, group="ORB Settings")
+emaFastLength = input.int(9, title="EMA Fast Length", minval=1, maxval=50, group="EMA Settings")
+emaSlowLength = input.int(21, title="EMA Slow Length", minval=1, maxval=50, group="EMA Settings")
+
+riskPips = input.int(10, title="Stop Loss (pips)", minval=1, maxval=100, group="Risk Settings")
+target1Pips = input.int(15, title="Target 1 (pips)", minval=1, maxval=100, group="Risk Settings")
+target2Pips = input.int(25, title="Target 2 (pips)", minval=1, maxval=100, group="Risk Settings")
+
+tradingHourStart = input.int(9, title="Trading Start Hour (EDT)", minval=0, maxval=23, group="Time Settings")
+tradingHourEnd = input.int(10, title="Trading End Hour (EDT)", minval=0, maxval=23, group="Time Settings")
+tradingMinuteEnd = input.int(30, title="Trading End Minute", minval=0, maxval=59, group="Time Settings")
+
+// ---- CALCULATIONS ----
+
+// Get current time (assumes chart is in EDT)
+currentHourEDT = hour
+currentMinuteEDT = minute
+
+// Determine if we're in ORB window (9:30-10:00 EDT)
+inOrbWindow = currentHourEDT == tradingHourStart and currentMinuteEDT < tradingMinuteEnd
+
+// Track opening range (resets daily)
+var float orbHigh = na
+var float orbLow = na
+var bool orbFormed = false
+var int orbBarIndex = na
+
+// Reset at market open
+if barstate.islast and (currentHourEDT == tradingHourStart and currentMinuteEDT == 0)
+    orbHigh := na
+    orbLow := na
+    orbFormed := false
+
+// Form opening range
+if inOrbWindow and not orbFormed
+    if na(orbHigh)
+        orbHigh := high
+        orbLow := low
+    else
+        orbHigh := math.max(orbHigh, high)
+        orbLow := math.min(orbLow, low)
+
+// Close ORB window
+if currentHourEDT == tradingHourStart and currentMinuteEDT == tradingMinuteEnd and not orbFormed
+    orbFormed := true
+    orbBarIndex := bar_index
+
+// Calculate EMAs
+emaFast = ta.ema(close, emaFastLength)
+emaSlow = ta.ema(close, emaSlowLength)
+
+// ---- ENTRY SIGNALS ----
+
+// Bullish breakout: price above ORB high + EMA bullish + confirmation
+bullishBreakout = close > orbHigh and emaFast > emaSlow and orbFormed
+
+// Bearish breakout: price below ORB low + EMA bearish + confirmation
+bearishBreakout = close < orbLow and emaFast < emaSlow and orbFormed
+
+// Entry signals
+buySignal = bullishBreakout
+sellSignal = bearishBreakout
+
+// ---- STRATEGY LOGIC ----
+
+// Entry
+if buySignal and strategy.position_size == 0 and (currentHourEDT >= tradingHourStart)
+    stopLoss = orbLow - (riskPips * syminfo.mintick)
+    takeProfit1 = close + (target1Pips * syminfo.mintick)
+    takeProfit2 = close + (target2Pips * syminfo.mintick)
+    strategy.entry("Long ORB", strategy.long)
+    strategy.exit("TP1", "Long ORB", limit=takeProfit1, stop=stopLoss)
+    strategy.exit("TP2", "Long ORB", limit=takeProfit2, stop=stopLoss)
+
+if sellSignal and strategy.position_size == 0 and (currentHourEDT >= tradingHourStart)
+    stopLoss = orbHigh + (riskPips * syminfo.mintick)
+    takeProfit1 = close - (target1Pips * syminfo.mintick)
+    takeProfit2 = close - (target2Pips * syminfo.mintick)
+    strategy.entry("Short ORB", strategy.short)
+    strategy.exit("TP1", "Short ORB", limit=takeProfit1, stop=stopLoss)
+    strategy.exit("TP2", "Short ORB", limit=takeProfit2, stop=stopLoss)
+
+// Close all positions after trading window
+if currentHourEDT > tradingHourEnd or (currentHourEDT == tradingHourEnd and currentMinuteEDT > tradingMinuteEnd)
+    if strategy.position_size != 0
+        strategy.close_all()
+
+// ---- VISUAL INDICATORS ----
+
+// Plot ORB levels as horizontal lines
+plot(not na(orbHigh) ? orbHigh : na, color=color.new(color.green, 50), linewidth=2, title="ORB High")
+plot(not na(orbLow) ? orbLow : na, color=color.new(color.red, 50), linewidth=2, title="ORB Low")
+
+// Plot EMAs
+plot(emaFast, color=color.blue, linewidth=2, title="EMA 9")
+plot(emaSlow, color=color.orange, linewidth=2, title="EMA 21")
+
+// Entry signals on chart
+plotshape(buySignal, location=location.belowbar, color=color.green, size=size.large, style=shape.triangleup, title="Buy Signal")
+plotshape(sellSignal, location=location.abovebar, color=color.red, size=size.large, style=shape.triangledown, title="Sell Signal")
+
+// ---- ALERTS ----
+alertcondition(buySignal, title="ORB Buy Signal", message="🟢 ORB BUY - Price above range high + Bullish EMA")
+alertcondition(sellSignal, title="ORB Sell Signal", message="🔴 ORB SELL - Price below range low + Bearish EMA")

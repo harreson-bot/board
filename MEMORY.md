@@ -1,6 +1,6 @@
 # MEMORY.md - Long-Term Memory
 
-_Curated memories and significant context. Last synced on Tuesday, May 5th, 2026 at 2:51 PM EDT._
+_Curated memories and significant context. Last synced on Tuesday, May 5th, 2026 at 8:20 PM EDT._
 
 ## Workspace Setup
 
@@ -680,7 +680,7 @@ You can now:
 
 ---
 
-**Last Updated:** Sunday, May 4, 2026 (11:15 AM EDT) — FlowZoneTrader complete trading system created and deployed. 8 documents + 3 Pine scripts. All major projects now documented: PatchHub Phase 1 LIVE, SOLANA bot running hourly, TradingView Bridge architecture complete, FlowZoneTrader system ready for live trading. Backup system operational. Ready for Phase 2 scaling (May 5+).
+**Last Updated:** Tuesday, May 5, 2026 (8:20 PM EDT) — Pine Script ORB strategy for MNQ finalized. See section below. PatchHub Phase 1 (ambassador replica sites) deployed with real SuperPatch products and live. SOLANA bot running hourly with paper trading active. TradingView Bridge with 3-layer safety protocol finalized. FlowZoneTrader trading system complete and documented. Backup system operational (daily snapshots + OneDrive sync). Phase 2 development kickoff TODAY (May 5) — 6-week sprint to MVP (target completion June 16).
 
 ---
 
@@ -1099,3 +1099,47 @@ ALLOW_DEMO_DATA=false  # Enforced: blocks demo data
 **All code complete. All documentation complete. Waiting on:** ZeroBounce API key setup + SSH into DreamHost to deploy.
 **Timeline to live:** ~5-6 hours of hands-on work.
 **Bottleneck:** None. Ready to execute ASAP.
+
+---
+
+## MNQ PINE SCRIPT v6 — ORB STRATEGY (May 5, 2026 - Evening) 📊
+
+**Status:** ✅ WORKING — Two files ready in workspace
+
+### Key Lesson: CME Timezone
+- MNQ trades on CME. Pine Script `hour`/`minute` return **Central Time (CT)**, not EDT
+- 9:30 EDT = 8:30 CT | 9:45 EDT = 8:45 CT | 11:30 EDT = 10:30 CT
+- NEVER apply EDT offset manually — chart set to NY ≠ Pine Script time for futures
+
+### Key Lesson: isMarketOpen Killed All Trades
+- Adding time filter to the ORB SEAL condition caused zero trades
+- Fix: time filter ONLY on entry signals, not on ORB formation logic
+
+### Key Lesson: strategy.exit() Breaks Entries
+- Calling `strategy.exit()` on same bar as `strategy.entry()` with `process_orders_on_close=true` silently cancels trades
+- Fix: use manual `strategy.close()` based on price conditions instead
+
+### Key Lesson: After-Hours False Signals
+- ORB levels persist overnight until next day's 8:30 CT reset
+- Without time filter, script catches overnight crossings = fake trades
+- Fix: restrict entries to `inTradingWindow`
+
+### Files
+1. **flowzone-orb-mnq-final.pine** — Full production script with EMA, table, alerts
+2. **flowzone-orb-test.pine** — Simplified test/debug version
+
+### Strategy Rules (as coded)
+- **ORB Window:** 8:30–8:44 CT (9:30–9:44 EDT) — first 15 min
+- **Trading Window:** 8:30–10:30 CT (9:30–11:30 EDT)
+- **Entry:** Pullback retest confirmation (toggle on/off)
+  - Candle 1: closes outside ORB
+  - Candle 2: wicks back inside, closes outside again → ENTRY
+- **One trade per day** (longTaken/shortTaken flags, reset at 8:30 CT)
+- **Target:** 50 points (adjustable in settings)
+- **Stop:** 50 points (adjustable in settings)
+- **EOD Close:** h == 15 (3 PM CT = 4 PM EDT)
+- **EMA Filter:** 9/21 EMA (toggle, off by default)
+
+### Timeframe
+- Works on 1M, 5M, 15M
+- User prefers 1M for confirmation candle watching
