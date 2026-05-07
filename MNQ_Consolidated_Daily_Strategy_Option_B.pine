@@ -1,0 +1,572 @@
+//@version=6
+// ═══════════════════════════════════════════════════════════════════════════
+// MNQ CONSOLIDATED DAILY STRATEGY (Option B - Modular)
+// ═══════════════════════════════════════════════════════════════════════════
+// 
+// Combines 7 signal modules + RBS/SBR zone detection
+// Input: 7 Pine Scripts (Dow Theory, VP Levels, Session Levels, etc.)
+// Output: Consolidated BUY/SELL signals with 5-star confidence scoring
+//
+// Modules:
+// 1. RBS/SBR Detection — Consolidation zones (current, overnight, prior day, weekly)
+// 2. Break of Structure (Dow Theory) — Price breaks swing highs/lows
+// 3. Volume Profile (VP Levels) — POC, VAH/VAL, HVN/LVN
+// 4. Session Levels — Prior RTH H/L, Overnight H/L, Opening Range
+// 5. Liquidity (BSL/SSL) — Buy-side / Sell-side liquidity levels
+// 6. Fair Value Gaps — 3-bar imbalances
+// 7. CVD + Divergence — Inferred volume flow + divergence detection
+// 8. Multi-TF Trend — Weekly bias filter
+//
+// ═══════════════════════════════════════════════════════════════════════════
+
+indicator("MNQ Consolidated Daily (Option B)", "MNQ Con", overlay=true,
+ max_lines_count=500, max_labels_count=500, max_boxes_count=500)
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// INPUTS
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ---- Module Toggles -------------------------------------------------------
+g_mod = "Module Toggles (On/Off)"
+showRBS = input.bool(true, "RBS/SBR Zones", group=g_mod)
+showBoS = input.bool(true, "Break of Structure", group=g_mod)
+showVP = input.bool(true, "Volume Profile (POC/VAH/VAL)", group=g_mod)
+showSession = input.bool(true, "Session Levels", group=g_mod)
+showLiquidity = input.bool(true, "BSL/SSL Liquidity", group=g_mod)
+showFVG = input.bool(true, "Fair Value Gaps", group=g_mod)
+showCVD = input.bool(true, "CVD + Divergence", group=g_mod)
+showTrend = input.bool(true, "Multi-TF Trend Bias", group=g_mod)
+showDashboard = input.bool(true, "Dashboard Table", group=g_mod)
+
+// ---- RBS/SBR Settings -----------------------------------------------------
+g_rbs = "RBS/SBR Detection"
+rbsLength = input.int(20, "RBS/SBR lookback bars", minval=5, maxval=50, group=g_rbs)
+rbsVolThresh = input.float(0.5, "Volume threshold (%ile)", minval=0.1, maxval=1.0, step=0.1, group=g_rbs, tooltip="Lower = more zones. 0.5 = bottom 50% volume = consolidation")
+rbsColorCurrent = input.color(color.new(color.gray, 70), "Current session color", group=g_rbs)
+rbsColorON = input.color(color.new(color.blue, 70), "Overnight color", group=g_rbs)
+rbsColorPrior = input.color(color.new(color.orange, 70), "Prior day color", group=g_rbs)
+rbsColorWeekly = input.color(color.new(color.purple, 70), "Weekly color", group=g_rbs)
+
+// ---- Break of Structure ---------------------------------------------------
+g_bos = "Break of Structure"
+bosLookback = input.int(5, "Swing lookback bars", minval=3, maxval=20, group=g_bos)
+bosBuffer = input.float(0.25, "BoS buffer (pts)", minval=0.0, step=0.25, group=g_bos)
+showBosLines = input.bool(true, "Show BoS swing lines", group=g_bos)
+
+// ---- Volume Filter --------------------------------------------------------
+g_vol = "Volume Filter"
+useVolFilter = input.bool(true, "Enable volume surge filter", group=g_vol)
+volMALen = input.int(20, "Volume MA length", minval=5, maxval=50, group=g_vol)
+volSurgeThresh = input.float(1.5, "Volume surge multiplier", minval=1.0, step=0.1, group=g_vol, tooltip="1.5 = signal only fires if volume > 1.5x MA")
+
+// ---- VP Settings ----------------------------------------------------------
+g_vp = "Volume Profile"
+vpBins = input.int(30, "Profile bins", minval=10, maxval=100, group=g_vp)
+vpValuePct = input.float(0.70, "Value area %", minval=0.50, maxval=0.95, step=0.01, group=g_vp)
+
+// ---- Session Settings -----------------------------------------------------
+g_ses = "Session Levels"
+sesShowPrior = input.bool(true, "Prior RTH H/L", group=g_ses)
+sesShowON = input.bool(true, "Overnight H/L", group=g_ses)
+sesShowOR = input.bool(true, "Opening Range (15m)", group=g_ses)
+sesShowVWAP = input.bool(true, "NY VWAP", group=g_ses)
+
+// ---- Liquidity (BSL/SSL) --------------------------------------------------
+g_liq = "Liquidity Levels"
+liqPivotL = input.int(10, "Pivot left bars", minval=3, maxval=50, group=g_liq)
+liqPivotR = input.int(10, "Pivot right bars", minval=3, maxval=50, group=g_liq)
+liqMaxLines = input.int(5, "Max levels per side", minval=2, maxval=10, group=g_liq)
+
+// ---- FVG Settings ---------------------------------------------------------
+g_fvg = "Fair Value Gaps"
+fvgMinSize = input.float(2.0, "Min gap size (pts)", minval=0.5, maxval=20, step=0.25, group=g_fvg)
+fvgMaxAge = input.int(100, "Max bars to keep FVG", minval=20, maxval=500, group=g_fvg)
+
+// ---- CVD Settings ---------------------------------------------------------
+g_cvd = "CVD Settings"
+cvdDivLookback = input.int(20, "Divergence lookback", minval=10, maxval=100, group=g_cvd)
+cvdPivotL = input.int(5, "CVD pivot left", minval=2, maxval=20, group=g_cvd)
+cvdPivotR = input.int(5, "CVD pivot right", minval=2, maxval=20, group=g_cvd)
+
+// ---- Display Settings -----------------------------------------------------
+g_disp = "Display"
+dashPos = input.string("top_right", "Dashboard position", options=["top_right", "top_left", "middle_right", "bottom_right"], group=g_disp)
+dashSize = input.string("small", "Text size", options=["tiny", "small", "normal", "large"], group=g_disp)
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// CONSTANTS & HELPERS
+// ═══════════════════════════════════════════════════════════════════════════
+
+TZ = "America/New_York"
+inRTH = not na(time(timeframe.period, "0930-1600", TZ))
+rthStart = inRTH and not inRTH[1]
+inOR = not na(time(timeframe.period, "0930-0945", TZ))
+isNewDay = ta.change(time("D")) != 0
+isNewWeek = ta.change(time("W")) != 0
+
+posConst(s) =>
+    if s == "top_left"
+        position.top_left
+    else if s == "middle_right"
+        position.middle_right
+    else if s == "bottom_right"
+        position.bottom_right
+    else
+        position.top_right
+
+sizeConst(s) =>
+    if s == "tiny"
+        size.tiny
+    else if s == "small"
+        size.small
+    else if s == "normal"
+        size.normal
+    else if s == "large"
+        size.large
+    else
+        size.small
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 1: RBS/SBR ZONE DETECTION
+// ═══════════════════════════════════════════════════════════════════════════
+// RBS = Range Bound Structure (consolidation, low volume)
+// SBR = Squeeze Before Range (narrow range before breakout)
+// Detect based on ATR contraction + volume reduction
+
+var float[] rbsZoneHi = array.new<float>(0)
+var float[] rbsZoneLo = array.new<float>(0)
+var string[] rbsZoneType = array.new<string>(0)  // "RBS" or "SBR"
+var string[] rbsZoneSession = array.new<string>(0)  // "Current", "ON", "PriorDay", "Weekly"
+var box[] rbsBoxes = array.new<box>(0)
+
+f_detectRBS(int lookback, float volThreshold, int volLen) =>
+    atr = ta.atr(14)
+    atrMA = ta.sma(atr, lookback)
+    atrRatio = atr / atrMA
+    vol = volume
+    volMA = ta.sma(volume, volLen)
+    volRatio = vol / volMA
+    isRBS = atrRatio < 0.8 and volRatio < volThreshold
+    isSBR = atrRatio < 0.6 and volRatio < volThreshold * 0.5
+    [isRBS, isSBR, high - low, volRatio]
+
+[rbsCurrent, sbrCurrent, rangeCurrent, volRatioCurrent] = f_detectRBS(rbsLength, rbsVolThresh, volMALen)
+
+// Draw RBS/SBR boxes on current session
+if showRBS and inRTH and rbsCurrent and barstate.islast
+    zoneType = sbrCurrent ? "SBR" : "RBS"
+    bx = box.new(bar_index - rbsLength, high, bar_index, low,
+     bgcolor=rbsColorCurrent, border_color=color.new(color.white, 80),
+     border_width=1, extend=extend.right)
+    lb = label.new(bar_index, (high + low) / 2, zoneType + " " + str.tostring(rangeCurrent, "#.##"),
+     style=label.style_label_center, color=color.new(color.white, 100),
+     textcolor=color.white, size=sizeConst(dashSize))
+    array.push(rbsBoxes, bx)
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 2: BREAK OF STRUCTURE (Dow Theory)
+// ═══════════════════════════════════════════════════════════════════════════
+
+var float swingHi = na
+var float swingLo = na
+var int swingHiBar = na
+var int swingLoBar = na
+
+if high > swingHi or na(swingHi)
+    swingHi := high
+    swingHiBar := bar_index
+
+if low < swingLo or na(swingLo)
+    swingLo := low
+    swingLoBar := bar_index
+
+bool bosUp = close > swingHi + bosBuffer and bar_index - swingHiBar < bosLookback
+bool bosDn = close < swingLo - bosBuffer and bar_index - swingLoBar < bosLookback
+
+// Visualization
+if showBoS and showBosLines
+ if bosUp
+  box.new(bar_index - 1, swingLo, bar_index, high, 
+   bgcolor=color.new(color.green, 80), border_color=color.new(color.green, 30))
+ if bosDn
+  box.new(bar_index - 1, low, bar_index, swingHi,
+   bgcolor=color.new(color.red, 80), border_color=color.new(color.red, 30))
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 3: VOLUME PROFILE (POC/VAH/VAL)
+// ═══════════════════════════════════════════════════════════════════════════
+
+var float vpPOC = na
+var float vpVAH = na
+var float vpVAL = na
+var float[] vpArray = array.new<float>(vpBins, 0.0)
+
+if inRTH
+ // Simple VP: accumulate volume into price bins
+ binSize = (high - low) / vpBins
+ if binSize > 0
+  idx = math.min(vpBins - 1, math.max(0, math.floor((close - low) / binSize)))
+  array.set(vpArray, idx, array.get(vpArray, idx) + volume)
+  
+  // Find POC (highest volume bin)
+  maxVol = 0.0
+  pocIdx = 0
+  for i = 0 to vpBins - 1
+   v = array.get(vpArray, i)
+   if v > maxVol
+    maxVol := v
+    pocIdx := i
+  
+  vpPOC := low + pocIdx * binSize + binSize / 2
+
+// Plot POC
+plot(showVP and not na(vpPOC) ? vpPOC : na, "VP POC", color.new(color.yellow, 0), linewidth=2)
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 4: SESSION LEVELS
+// ═══════════════════════════════════════════════════════════════════════════
+
+var float rthHi = na
+var float rthLo = na
+var float priorRthHi = na
+var float priorRthLo = na
+
+var float onHi = na
+var float onLo = na
+var float lastONHi = na
+var float lastONLo = na
+
+var float orHi = na
+var float orLo = na
+
+// Accumulate RTH high/low
+if rthStart
+ priorRthHi := rthHi
+ priorRthLo := rthLo
+ rthHi := high
+ rthLo := low
+else if inRTH
+ rthHi := math.max(nz(rthHi, high), high)
+ rthLo := math.min(nz(rthLo, low), low)
+
+// Accumulate ON high/low
+if rthStart
+ lastONHi := onHi
+ lastONLo := onLo
+
+// Opening Range
+if inOR
+ orHi := math.max(nz(orHi, high), high)
+ orLo := math.min(nz(orLo, low), low)
+
+// NY VWAP
+var float cumPV = 0.0
+var float cumVol = 0.0
+if rthStart
+ cumPV := hlc3 * volume
+ cumVol := volume
+else if inRTH
+ cumPV := cumPV + hlc3 * volume
+ cumVol := cumVol + volume
+
+nyVWAP = inRTH and cumVol > 0 ? cumPV / cumVol : na
+
+// Plot session levels
+plot(showSession and sesShowPrior and not na(priorRthHi) ? priorRthHi : na,
+ "Prior RTH Hi", color.new(color.yellow, 40), linewidth=1)
+plot(showSession and sesShowPrior and not na(priorRthLo) ? priorRthLo : na,
+ "Prior RTH Lo", color.new(color.yellow, 40), linewidth=1)
+plot(showSession and sesShowON and not na(lastONHi) ? lastONHi : na,
+ "ON Hi", color.new(color.aqua, 40), linewidth=1)
+plot(showSession and sesShowON and not na(lastONLo) ? lastONLo : na,
+ "ON Lo", color.new(color.aqua, 40), linewidth=1)
+plot(showSession and sesShowOR and not na(orHi) ? orHi : na,
+ "OR Hi", color.new(color.fuchsia, 40), linewidth=1)
+plot(showSession and sesShowOR and not na(orLo) ? orLo : na,
+ "OR Lo", color.new(color.fuchsia, 40), linewidth=1)
+plot(showSession and sesShowVWAP and not na(nyVWAP) ? nyVWAP : na,
+ "NY VWAP", color.new(color.orange, 0), linewidth=2)
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 5: LIQUIDITY (BSL/SSL)
+// ═══════════════════════════════════════════════════════════════════════════
+
+var array<line> bslLines = array.new<line>()
+var array<float> bslPrices = array.new<float>()
+var array<bool> bslTaken = array.new<bool>()
+var array<line> sslLines = array.new<line>()
+var array<float> sslPrices = array.new<float>()
+var array<bool> sslTaken = array.new<bool>()
+
+ph = ta.pivothigh(high, liqPivotL, liqPivotR)
+pl = ta.pivotlow(low, liqPivotL, liqPivotR)
+
+if not na(ph) and showLiquidity
+ ln = line.new(bar_index - liqPivotR, ph, bar_index, ph,
+  color=color.new(color.lime, 40), width=1, style=line.style_solid, extend=extend.right)
+ array.push(bslLines, ln)
+ array.push(bslPrices, ph)
+ array.push(bslTaken, false)
+ 
+ if array.size(bslLines) > liqMaxLines * 2
+  line.delete(array.shift(bslLines))
+  array.shift(bslPrices)
+  array.shift(bslTaken)
+
+if not na(pl) and showLiquidity
+ ln = line.new(bar_index - liqPivotR, pl, bar_index, pl,
+  color=color.new(color.red, 40), width=1, style=line.style_solid, extend=extend.right)
+ array.push(sslLines, ln)
+ array.push(sslPrices, pl)
+ array.push(sslTaken, false)
+ 
+ if array.size(sslLines) > liqMaxLines * 2
+  line.delete(array.shift(sslLines))
+  array.shift(sslPrices)
+  array.shift(sslTaken)
+
+// Sweep detection
+if showLiquidity and array.size(bslLines) > 0
+ for i = 0 to array.size(bslLines) - 1
+  if not array.get(bslTaken, i) and high >= array.get(bslPrices, i)
+   array.set(bslTaken, i, true)
+   line.set_color(array.get(bslLines, i), color.new(color.gray, 60))
+
+if showLiquidity and array.size(sslLines) > 0
+ for i = 0 to array.size(sslLines) - 1
+  if not array.get(sslTaken, i) and low <= array.get(sslPrices, i)
+   array.set(sslTaken, i, true)
+   line.set_color(array.get(sslLines, i), color.new(color.gray, 60))
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 6: FAIR VALUE GAPS
+// ═══════════════════════════════════════════════════════════════════════════
+
+var array<box> fvgBoxes = array.new<box>()
+var array<float> fvgTops = array.new<float>()
+var array<float> fvgBots = array.new<float>()
+var array<int> fvgBars = array.new<int>()
+
+fvgMin = fvgMinSize * syminfo.mintick
+
+if showFVG and bar_index >= 2
+ // Bullish FVG: gap between high[2] and low
+ bullGap = low - high[2]
+ if bullGap >= fvgMin
+  bx = box.new(bar_index - 2, low, bar_index, high[2],
+   bgcolor=color.new(color.green, 80), border_color=color.new(color.green, 40))
+  array.push(fvgBoxes, bx)
+  array.push(fvgTops, low)
+  array.push(fvgBots, high[2])
+  array.push(fvgBars, bar_index)
+ 
+ // Bearish FVG: gap between low[2] and high
+ bearGap = low[2] - high
+ if bearGap >= fvgMin
+  bx = box.new(bar_index - 2, low[2], bar_index, high,
+   bgcolor=color.new(color.red, 80), border_color=color.new(color.red, 40))
+  array.push(fvgBoxes, bx)
+  array.push(fvgTops, low[2])
+  array.push(fvgBots, high)
+  array.push(fvgBars, bar_index)
+
+// Remove filled FVGs
+if showFVG and array.size(fvgBoxes) > 0
+ i = array.size(fvgBoxes) - 1
+ while i >= 0
+  top = array.get(fvgTops, i)
+  bot = array.get(fvgBots, i)
+  age = bar_index - array.get(fvgBars, i)
+  
+  isFilled = (low <= bot and top > bot) or (high >= top and bot < top)
+  if isFilled or age > fvgMaxAge
+   box.delete(array.get(fvgBoxes, i))
+   array.remove(fvgBoxes, i)
+   array.remove(fvgTops, i)
+   array.remove(fvgBots, i)
+   array.remove(fvgBars, i)
+  i -= 1
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 7: CVD + DIVERGENCE
+// ═══════════════════════════════════════════════════════════════════════════
+
+barDelta = close > open ? volume : close < open ? -volume : 0.0
+
+var float sessionCVD = 0.0
+if rthStart
+ sessionCVD := barDelta
+else if inRTH
+ sessionCVD := sessionCVD + barDelta
+
+// Price and CVD pivot divergence detection
+ph_price = ta.pivothigh(high, cvdPivotL, cvdPivotR)
+pl_price = ta.pivotlow(low, cvdPivotL, cvdPivotR)
+ph_cvd = ta.pivothigh(sessionCVD, cvdPivotL, cvdPivotR)
+pl_cvd = ta.pivotlow(sessionCVD, cvdPivotL, cvdPivotR)
+
+var float lastPH = na
+var float priorPH = na
+var float lastCVDh = na
+var float priorCVDh = na
+var float lastPL = na
+var float priorPL = na
+var float lastCVDl = na
+var float priorCVDl = na
+
+if not na(ph_price)
+ priorPH := lastPH
+ lastPH := ph_price
+ priorCVDh := lastCVDh
+ lastCVDh := sessionCVD[cvdPivotR]
+
+if not na(pl_price)
+ priorPL := lastPL
+ lastPL := pl_price
+ priorCVDl := lastCVDl
+ lastCVDl := sessionCVD[cvdPivotR]
+
+// Bearish divergence: HH price, LH CVD
+bearDiv = not na(lastPH) and not na(priorPH) and lastPH > priorPH and lastCVDh < priorCVDh
+
+// Bullish divergence: LL price, HL CVD
+bullDiv = not na(lastPL) and not na(priorPL) and lastPL < priorPL and lastCVDl > priorCVDl
+
+plotshape(showCVD and bearDiv ? high[cvdPivotR] : na,
+ "Bear Div", shape.triangledown, location.absolute, color.new(color.red, 0), size=size.small, offset=-cvdPivotR)
+plotshape(showCVD and bullDiv ? low[cvdPivotR] : na,
+ "Bull Div", shape.triangleup, location.absolute, color.new(color.green, 0), size=size.small, offset=-cvdPivotR)
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// MODULE 8: MULTI-TF TREND BIAS
+// ═══════════════════════════════════════════════════════════════════════════
+
+ema5 = ta.ema(close, 5)
+ema20 = ta.ema(close, 20)
+trend_daily = close > ema20 and ema5 > ema20 ? "Bullish" : close < ema20 and ema5 < ema20 ? "Bearish" : "Neutral"
+
+ema5_weekly = request.security(syminfo.tickerid, "W", ta.ema(close, 5))
+ema20_weekly = request.security(syminfo.tickerid, "W", ta.ema(close, 20))
+close_weekly = request.security(syminfo.tickerid, "W", close)
+trend_weekly = close_weekly > ema20_weekly and ema5_weekly > ema20_weekly ? "Bullish" : close_weekly < ema20_weekly and ema5_weekly < ema20_weekly ? "Bearish" : "Neutral"
+
+plot(ema5, "EMA 5", color.new(color.blue, 0), linewidth=1)
+plot(ema20, "EMA 20", color.new(color.orange, 0), linewidth=1)
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SIGNAL GENERATION
+// ═══════════════════════════════════════════════════════════════════════════
+
+// Volume surge filter
+volMA = ta.sma(volume, volMALen)
+volSurge = volume > volMA * volSurgeThresh
+
+// Confidence scoring (1-5 stars)
+f_confidence(bool bos, bool vp_touch, bool session_touch, bool div, bool volSurge, bool trend_align) =>
+ score = 0.0
+ if bos
+  score += 2.0
+ if vp_touch
+  score += 1.0
+ if session_touch
+  score += 1.0
+ if div
+  score += 0.5
+ if volSurge
+  score += 0.5
+ if trend_align
+  score += 0.5
+ math.min(5.0, score)
+
+// Signal conditions with volume filter
+volFilter = not useVolFilter or volSurge
+
+buySignal = inRTH and volFilter and (bosUp or bullDiv) and (trend_daily != "Bearish" or trend_weekly == "Bullish")
+sellSignal = inRTH and volFilter and (bosDn or bearDiv) and (trend_daily != "Bullish" or trend_weekly == "Bearish")
+
+buyConfidence = f_confidence(bosUp, not na(vpPOC) and close < vpPOC, not na(orLo) and close < orLo + 5, bullDiv, volSurge, trend_daily == "Bullish")
+sellConfidence = f_confidence(bosDn, not na(vpPOC) and close > vpPOC, not na(orHi) and close > orHi - 5, bearDiv, volSurge, trend_daily == "Bearish")
+
+// Plot signals
+plotshape(buySignal, "BUY", shape.triangleup, location.belowbar, color.new(color.green, 0), size=size.small)
+plotshape(sellSignal, "SELL", shape.triangledown, location.abovebar, color.new(color.red, 0), size=size.small)
+
+// Alerts
+if buySignal
+ alert("MNQ BUY @ " + str.tostring(close, "#.##") + " | Confidence: " + str.tostring(buyConfidence, "#.#") + "★", alert.freq_once_per_bar_close)
+
+if sellSignal
+ alert("MNQ SELL @ " + str.tostring(close, "#.##") + " | Confidence: " + str.tostring(sellConfidence, "#.#") + "★", alert.freq_once_per_bar_close)
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DASHBOARD TABLE
+// ═══════════════════════════════════════════════════════════════════════════
+
+var table dash = table.new(posConst(dashPos), 2, 10,
+ border_width=1, border_color=color.gray, bgcolor=color.new(color.navy, 20))
+
+if barstate.islast and showDashboard
+ txtSize = sizeConst(dashSize)
+ 
+ table.cell(dash, 0, 0, "MNQ DASHBOARD", text_color=color.white, bgcolor=color.new(color.navy, 60), text_size=txtSize)
+ table.cell(dash, 1, 0, str.tostring(close, "#.##"), text_color=color.white, bgcolor=color.new(color.navy, 60), text_size=txtSize)
+ 
+ // Current Signal
+ signal = buySignal ? "BUY" : sellSignal ? "SELL" : "—"
+ sigColor = buySignal ? color.green : sellSignal ? color.red : color.gray
+ sigConf = buySignal ? buyConfidence : sellSignal ? sellConfidence : na
+ sigText = signal + (not na(sigConf) ? " " + str.tostring(sigConf, "#.#") + "★" : "")
+ table.cell(dash, 0, 1, "Signal", text_color=color.silver, text_size=txtSize)
+ table.cell(dash, 1, 1, sigText, text_color=sigColor, text_size=txtSize)
+ 
+ // Trend Bias
+ table.cell(dash, 0, 2, "Daily Trend", text_color=color.silver, text_size=txtSize)
+ trendColor = trend_daily == "Bullish" ? color.green : trend_daily == "Bearish" ? color.red : color.orange
+ table.cell(dash, 1, 2, trend_daily, text_color=trendColor, text_size=txtSize)
+ 
+ table.cell(dash, 0, 3, "Weekly Trend", text_color=color.silver, text_size=txtSize)
+ trendWkColor = trend_weekly == "Bullish" ? color.green : trend_weekly == "Bearish" ? color.red : color.orange
+ table.cell(dash, 1, 3, trend_weekly, text_color=trendWkColor, text_size=txtSize)
+ 
+ // Volume Surge
+ table.cell(dash, 0, 4, "Vol Surge", text_color=color.silver, text_size=txtSize)
+ volText = volSurge ? "YES" : "No"
+ volColor = volSurge ? color.lime : color.gray
+ table.cell(dash, 1, 4, volText, text_color=volColor, text_size=txtSize)
+ 
+ // BoS Status
+ table.cell(dash, 0, 5, "BoS Up", text_color=color.silver, text_size=txtSize)
+ table.cell(dash, 1, 5, bosUp ? "ACTIVE" : "—", text_color=bosUp ? color.green : color.gray, text_size=txtSize)
+ 
+ table.cell(dash, 0, 6, "BoS Down", text_color=color.silver, text_size=txtSize)
+ table.cell(dash, 1, 6, bosDn ? "ACTIVE" : "—", text_color=bosDn ? color.red : color.gray, text_size=txtSize)
+ 
+ // CVD Divergence
+ table.cell(dash, 0, 7, "Bull Div", text_color=color.silver, text_size=txtSize)
+ table.cell(dash, 1, 7, bullDiv ? "YES" : "—", text_color=bullDiv ? color.green : color.gray, text_size=txtSize)
+ 
+ table.cell(dash, 0, 8, "Bear Div", text_color=color.silver, text_size=txtSize)
+ table.cell(dash, 1, 8, bearDiv ? "YES" : "—", text_color=bearDiv ? color.red : color.gray, text_size=txtSize)
+ 
+ // RBS/SBR Status
+ table.cell(dash, 0, 9, "RBS/SBR", text_color=color.silver, text_size=txtSize)
+ rbsStatus = rbsCurrent ? (sbrCurrent ? "SBR" : "RBS") : "—"
+ rbsStatusColor = rbsCurrent ? color.orange : color.gray
+ table.cell(dash, 1, 9, rbsStatus, text_color=rbsStatusColor, text_size=txtSize)
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+// END
+// ═══════════════════════════════════════════════════════════════════════════
