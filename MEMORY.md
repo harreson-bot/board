@@ -1,6 +1,6 @@
 # MEMORY.md - Long-Term Memory
 
-_Curated memories and significant context. Last synced on Wednesday, May 6th, 2026 at 11:00 PM EDT (nightly consolidation)._
+_Curated memories and significant context. Last synced on Thursday, May 7th, 2026 at 10:51 PM EDT (memory sync cron)._
 
 ## Workspace Setup
 
@@ -680,7 +680,27 @@ You can now:
 
 ---
 
-**Last Updated:** Wednesday, May 6, 2026 (10:51 PM EDT) — Memory sync confirms all systems operational and current through May 5, 11:00 PM EDT. No new sessions since May 5 evening. All major projects documented: PatchHub Phase 1 live with real products, SOLANA bot running hourly (paper trading), Pine Script MNQ finalized, FlowZoneTrader strategies complete, backup system active. Next significant work session pending user initiation.
+## META (FACEBOOK) — NEW APP CREATION SYSTEM (May 7, 2026 - 6:00 PM EDT) 🚀
+
+**CRITICAL UPDATE:** Meta launched a **NEW app creation system** in 2026 (as of May 7).
+
+**OLD way (outdated):** Business Settings → Apps → Add App (complex permissions picking)
+**NEW way (current):** https://developers.facebook.com → My Apps → Create App → Use Case-Based System
+
+**Process:**
+1. Go to **https://developers.facebook.com/**
+2. **My Apps** → **Create App**
+3. Choose **Use Case** (not individual products)
+4. Meta guides you through customized setup
+5. Automatic dashboard + data access requirements
+
+**Key insight:** The new system is EASIER — use cases replace picking individual permissions.
+
+**Future sessions:** Always check https://developers.facebook.com/docs/development/create-an-app/ for latest process before guiding on Meta setup.
+
+---
+
+**Last Updated:** Thursday, May 7, 2026 (10:51 PM EDT) — All systems remain operational. PatchHub Phase 1 live with real SuperPatch products, SOLANA trading bot running hourly (paper trading), Pine Script MNQ VP Levels production-ready, FlowZoneTrader strategies documented, TradingView Bridge ready to deploy, backup system active (daily snapshots + OneDrive sync). Ready for Phase 2 deployment and trading validation.
 
 ---
 
