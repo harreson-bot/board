@@ -1,6 +1,6 @@
 # MEMORY.md - Long-Term Memory
 
-_Curated memories and significant context. Last synced Friday, May 8th, 2026 at 22:23 EDT (evening sync: Gmail cron setup + model selection discussion)._
+_Curated memories and significant context. Last synced Friday, May 8th, 2026 at 22:51 EDT (memory consolidation cron: OpenClaw audit complete, Gmail triple-check crons active, email triage summary)._
 
 ## Workspace Setup
 
@@ -700,7 +700,47 @@ You can now:
 
 ---
 
-**Last Updated:** Friday, May 8, 2026 (2:51 PM EDT) — All systems remain operational. PatchHub Phase 1 live with real SuperPatch products, SOLANA trading bot running hourly (paper trading), Pine Script MNQ VP Levels production-ready, FlowZoneTrader strategies documented, TradingView Bridge ready to deploy, backup system active (daily snapshots + OneDrive sync). No new development since morning systems check (10:51 AM); workspace stable and ready for Phase 2 execution.
+## GMAIL DRAFT CHECK — AUTOMATED DAILY TRIAGE (May 8, 2026 - 10:25 PM EDT) 📬
+
+**Status:** ✅ ACTIVE — 3 daily cron jobs running
+
+**Account:** yourbesthealthquote@gmail.com (authenticated May 8, OAuth token stored)
+
+**Cron Jobs (Sonnet model — external content):**
+| Time | Job ID |
+|------|--------|
+| 8:00 AM EDT | `8ed906d8-4513-427c-b18b-81675283f2c5` |
+| 1:00 PM EDT | `0d04aed9-8fb7-44c6-9bea-aa1d959eb353` |
+| 9:00 PM EDT | `0fcaf47b-d55f-4681-ae77-060fa7dc2e6e` |
+
+**Process per run:**
+1. Search for unread emails (max 5 per run)
+2. Read full content
+3. Create draft responses in Gmail (NOT sent automatically)
+4. Report to Telegram with summary + draft subjects
+
+**Security:** Sonnet used for all Gmail processing (external content → prompt injection risk)
+
+**User must:** Review drafts in Gmail and click Send when ready
+
+---
+
+## CRON JOB REGISTRY (Updated May 8, 2026 — Evening)
+
+**Total active cron jobs: 15 (15/15 healthy as of 10:30 PM EDT May 8)**
+
+**Key cron job IDs for reference:**
+- Memory Consolidation (11 PM daily): `6b43e034-a9b1-48f9-a62f-7e26cde51c58`
+- Daily Backup (midnight EDT): `658586c2-4e4b-4317-ab61-86d0477b1893`
+- Gmail Check — Morning (8 AM EDT): `8ed906d8-4513-427c-b18b-81675283f2c5`
+- Gmail Check — Afternoon (1 PM EDT): `0d04aed9-8fb7-44c6-9bea-aa1d959eb353`
+- Gmail Check — Evening (9 PM EDT): `0fcaf47b-d55f-4681-ae77-060fa7dc2e6e`
+
+**Note on May 8 module issue:** OpenClaw dist rebuild caused hash mismatch errors ("Cannot find module ...BcvDY0YV.js"). Calvenn resolved locally. All cron jobs cleared (consecutiveErrors = 0). Future: if 3+ cron jobs start erroring simultaneously, check for recent OpenClaw rebuilds.
+
+---
+
+**Last Updated:** Friday, May 8, 2026 (11:00 PM EDT) — All systems operational. PatchHub Phase 1 live with real SuperPatch products, SOLANA trading bot running hourly (paper trading), Pine Script MNQ VP Levels production-ready, FlowZoneTrader strategies documented, TradingView Bridge ready to deploy, backup system active (daily snapshots + OneDrive sync). No new development since morning systems check (10:51 AM); workspace stable and ready for Phase 2 execution.
 
 ---
 
@@ -926,6 +966,99 @@ ALLOW_DEMO_DATA=false  # Enforced: blocks demo data
 
 ---
 
+## OPENCLAW HEALTHCHECK & HARDENING (May 8, 2026 - 7:31 PM EDT) ✅
+
+**Status:** Complete — All critical phases finalized
+
+### What Was Done
+
+**Phase A: Backup & Recovery (Complete)**
+- Backup script created & tested (35MB archive, 3,970 files, daily cron verified)
+- Cron 658586c2 rewired to call actual backup script + Telegram notification
+- All 3 errored cron jobs recovered (GitHub, Trello, Memory Consolidation → all "ok")
+
+**Phase B: Gateway Security Hardening (Complete)**
+- Bind address tightened: 0.0.0.0 → 127.0.0.1 (loopback only)
+- Auth rate limiting added: 10 attempts/60s, 5min lockout, loopback exempt
+- Gateway restarted, connectivity verified
+
+**Phase C: Memory Consolidation Upgrade (Complete)**
+- Upgraded to Sonnet model (better at handling untrusted external content)
+- Injection-aware prompts added (treats all external data as potentially hostile)
+
+**Phase D: Task Issues (Deferred)**
+- 24 task issues in `openclaw status --deep` (lower priority, deferred)
+- BitLocker verification (pending user Windows command when convenient)
+
+### Final Audit Results
+- ✅ **0 critical issues**
+- ⚠️ **1 warning** (models.weak_tier — intentional for cost control)
+- ✅ **15/15 cron jobs healthy** (all module errors fixed locally by user)
+
+---
+
+## GMAIL INFRASTRUCTURE & 3X DAILY DRAFT CHECKS (May 8, 2026 - 9:00 PM EDT) ✅
+
+**Status:** Live and operational
+
+### Account Setup
+- **Email:** yourbesthealthquote@gmail.com
+- **OAuth tokens:** Saved securely (`~/.gmail-mcp/token.json`, `tokens.json`, 0o600 perms)
+- **MCP Features:** Enhanced search, fuzzy matching, conversation analysis all active
+
+### 3x Daily Cron Jobs (NEW)
+**Purpose:** Check for unread emails, create draft responses (NOT auto-send)
+
+1. **8:00 AM EDT** — Job ID: `8ed906d8-4513-427c-b18b-81675283f2c5`
+2. **1:00 PM EDT** — Job ID: `0d04aed9-8fb7-44c6-9bea-aa1d959eb353`
+3. **9:00 PM EDT** — Job ID: `0fcaf47b-d55f-4681-ae77-060fa7dc2e6e`
+
+**Process:** Search unread → Read max 5 → Analyze → Create draft → Report to Telegram
+
+### Model Selection Guidance
+**Decision rule:**
+- **Haiku:** Internal work (trusted data, cost-conscious). Default choice.
+- **Sonnet:** External/untrusted content (email from strangers, web scraping, bulk third-party data). Better at separating data from instructions.
+
+**Gmail uses Sonnet:** Emails could contain injection attempts or misleading directives. Sonnet is more resilient to adversarial formatting and context bleeding in complex email chains.
+
+---
+
+## EMAIL TRIAGE SUMMARY (May 8, 2026 - 7:31 PM EDT) 📬
+
+**5 recent emails analyzed (last 7 days). Status of each:**
+
+1. **🔴 Claro Insurance — $24.70 Late Payment Commission** (May 8, 19:34 UTC)
+   - 1 policy in late payments, commission at risk
+   - Action: Log arc.claroinsurance.com → identify client → send payment reminder
+   - Priority: Medium (quick money)
+
+2. **🟡 Kristen Godfrey — Milliman IntelliScript FCRA Report** (May 7, forwarded)
+   - Password-protected PDF (167KB)
+   - Action: Waiting on password from Milliman (sent separately to Kristen)
+   - Next: Request password from Kristen, review underwriting implications
+   - Priority: Medium (active client matter)
+
+3. **🟢 Kent Dobey — Health Plans Q&A** (May 5, 22:50 UTC)
+   - **DRAFT CREATED** (ID: r-1948380204016917802)
+   - Q1 answered: $349/mo base, +$96.55/mo supplement at $80k income ✅
+   - Q2 answered: Recommend July 1 effective with early-June notice ✅
+   - Action: Draft ready to send whenever (user clicks send)
+   - Priority: Ready (action item)
+
+4. **⚪ Cigna Exits ACA Market in 2027** (May 4, Claro notice)
+   - Strategic FYI: ~369k policyholders affected
+   - Action: Note for 2027 OE planning (prospecting opportunity)
+   - Priority: Low now / High for 2027 strategy
+
+5. **⚪ Bethany & Adam Follow-up** (May 2, sent quotes)
+   - Life insurance quotes sent ($1M / 20-yr: $54.59/mo)
+   - Awaiting reply (6 days old, reasonable timeline)
+   - Action: Draft follow-up after 3-4 more days if silent
+   - Priority: Low (not urgent yet)
+
+---
+
 ## ALACHUA COUNTY FARM PROJECT (April 30 - May 1, 2026)
 
 **Status:** ✅ COMPLETE - Ready for execution
@@ -1024,6 +1157,8 @@ ALLOW_DEMO_DATA=false  # Enforced: blocks demo data
 **Backup status:** All files in `/home/harreson/.openclaw/workspace/` + daily backup system + OneDrive sync
 
 **Status (May 1):** Farm project complete, land lease strategies documented, Trello updated. PatchHub backend/frontend code ready for deployment.
+
+---
 
 ---
 
