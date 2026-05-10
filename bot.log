@@ -1,0 +1,35 @@
+[2026-05-10T02:24:02.576Z] ═══════════════════════════════════════════════════════════
+[2026-05-10T02:24:02.578Z] 🤖 30-Day Range Trading Bot (Complete)
+[2026-05-10T02:24:02.578Z] 📍 Mode: PAPER TRADING
+[2026-05-10T02:24:02.578Z] ⏰ Update interval: 60 minutes
+[2026-05-10T02:24:02.578Z] 💾 Data: Coinbase Advanced API (JWT authenticated)
+[2026-05-10T02:24:02.578Z] 📊 Tracking: Google Sheets + CSV logs
+[2026-05-10T02:24:02.578Z] ═══════════════════════════════════════════════════════════
+[2026-05-10T02:24:02.578Z] 
+🔄 Cycle: 2026-05-10T02:24:02.578Z
+[2026-05-10T02:24:02.578Z] 
+━━━ Checking ETH ━━━
+[2026-05-10T02:24:02.897Z] 💰 Current Price: $2324.20
+[2026-05-10T02:24:03.124Z] ❌ ERROR fetching candles for ETH: Unexpected token 'U', "Unauthorized
+" is not valid JSON
+(node:143771) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/harreson/.openclaw/workspace/bot-30day-complete.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/harreson/.openclaw/workspace/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2026-05-10T02:24:04.125Z] 
+━━━ Checking BTC ━━━
+[2026-05-10T02:24:04.357Z] 💰 Current Price: $80672.49
+[2026-05-10T02:24:04.553Z] ❌ ERROR fetching candles for BTC: Unexpected token 'U', "Unauthorized
+" is not valid JSON
+[2026-05-10T02:24:05.554Z] 
+━━━ Checking ATOM ━━━
+[2026-05-10T02:24:05.779Z] 💰 Current Price: $1.92
+[2026-05-10T02:24:05.990Z] ❌ ERROR fetching candles for ATOM: Unexpected token 'U', "Unauthorized
+" is not valid JSON
+[2026-05-10T02:24:06.991Z] 
+━━━ Checking DOGE ━━━
+[2026-05-10T02:24:07.229Z] 💰 Current Price: $0.11
+[2026-05-10T02:24:07.435Z] ❌ ERROR fetching candles for DOGE: Unexpected token 'U', "Unauthorized
+" is not valid JSON
+[2026-05-10T02:24:08.436Z] 
+✅ Cycle complete. Next run in 60 minutes.

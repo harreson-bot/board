@@ -1,0 +1,67 @@
+[2026-05-10T02:45:25.766Z] ═══════════════════════════════════════════════════════════
+[2026-05-10T02:45:25.768Z] 🤖 30-Day Range Trading Bot (Production)
+[2026-05-10T02:45:25.768Z] 📍 Mode: ✅ PAPER TRADING (NO REAL MONEY)
+[2026-05-10T02:45:25.768Z] ⏰ Update interval: 60 minutes
+[2026-05-10T02:45:25.768Z] 💾 Data: Coinbase Advanced API (JWT authenticated)
+[2026-05-10T02:45:25.768Z] 📊 Tracking: Google Sheets + CSV logs
+[2026-05-10T02:45:25.768Z] 💰 Symbols: SOL, ETH, BTC, ATOM, DOGE
+[2026-05-10T02:45:25.768Z] 🛡️  Strategy: BUY in lower 30%, SELL in upper 70% (uptrend only)
+[2026-05-10T02:45:25.768Z] 🚫 NEVER SELL AT LOSS - downtrend = buy & hold mode
+[2026-05-10T02:45:25.769Z] ═══════════════════════════════════════════════════════════
+[2026-05-10T02:45:25.769Z] 
+🔄 Cycle: 2026-05-10T02:45:25.769Z
+[2026-05-10T02:45:25.769Z] 
+━━━ Checking SOL ━━━
+(node:145354) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/harreson/.openclaw/workspace/bot-30day-complete.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/harreson/.openclaw/workspace/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2026-05-10T02:45:26.146Z] 💰 Current Price: $92.91
+[2026-05-10T02:45:26.367Z] 📊 30-Day Range: $77.10 — $95.25
+[2026-05-10T02:45:26.367Z] 🟢 Buy Zone: $77.10 — $82.55
+[2026-05-10T02:45:26.367Z] 🔴 Sell Zone: $89.80 — $95.25
+[2026-05-10T02:45:26.367Z] 📍 Position: 87.11% of range
+[2026-05-10T02:45:26.367Z] 📈 Trend: DOWNTREND
+[2026-05-10T02:45:26.367Z] ⏸️  HOLD: Price in sell zone BUT DOWNTREND — NO SELL (never lose money)
+[2026-05-10T02:45:28.370Z] 
+━━━ Checking ETH ━━━
+[2026-05-10T02:45:28.529Z] 💰 Current Price: $2325.78
+[2026-05-10T02:45:28.654Z] 📊 30-Day Range: $2234.35 — $2613.31
+[2026-05-10T02:45:28.654Z] 🟢 Buy Zone: $2234.35 — $2348.04
+[2026-05-10T02:45:28.654Z] 🔴 Sell Zone: $2499.62 — $2613.31
+[2026-05-10T02:45:28.654Z] 📍 Position: 24.13% of range
+[2026-05-10T02:45:28.654Z] 📈 Trend: UPTREND
+[2026-05-10T02:45:28.654Z] ✅ BUY SIGNAL: Price in buy zone (24.13% of range)
+[2026-05-10T02:45:30.656Z] 
+━━━ Checking BTC ━━━
+[2026-05-10T02:45:30.827Z] 💰 Current Price: $80718.84
+[2026-05-10T02:45:30.980Z] 📊 30-Day Range: $63725.13 — $81264.28
+[2026-05-10T02:45:30.981Z] 🟢 Buy Zone: $63725.13 — $68986.88
+[2026-05-10T02:45:30.981Z] 🔴 Sell Zone: $76002.54 — $81264.28
+[2026-05-10T02:45:30.981Z] 📍 Position: 96.89% of range
+[2026-05-10T02:45:30.981Z] 📈 Trend: DOWNTREND
+[2026-05-10T02:45:30.981Z] ⏸️  HOLD: Price in sell zone BUT DOWNTREND — NO SELL (never lose money)
+[2026-05-10T02:45:32.981Z] 
+━━━ Checking ATOM ━━━
+[2026-05-10T02:45:33.090Z] 💰 Current Price: $1.92
+[2026-05-10T02:45:33.315Z] 📊 30-Day Range: $1.89 — $2.16
+[2026-05-10T02:45:33.315Z] 🟢 Buy Zone: $1.89 — $1.97
+[2026-05-10T02:45:33.315Z] 🔴 Sell Zone: $2.08 — $2.16
+[2026-05-10T02:45:33.315Z] 📍 Position: 10.00% of range
+[2026-05-10T02:45:33.315Z] 📈 Trend: UPTREND
+[2026-05-10T02:45:33.315Z] ✅ BUY SIGNAL: Price in buy zone (10.00% of range)
+[2026-05-10T02:45:35.315Z] 
+━━━ Checking DOGE ━━━
+[2026-05-10T02:45:35.812Z] 💰 Current Price: $0.11
+[2026-05-10T02:45:36.249Z] 📊 30-Day Range: $0.09 — $0.11
+[2026-05-10T02:45:36.249Z] 🟢 Buy Zone: $0.09 — $0.10
+[2026-05-10T02:45:36.249Z] 🔴 Sell Zone: $0.10 — $0.11
+[2026-05-10T02:45:36.249Z] 📍 Position: 92.55% of range
+[2026-05-10T02:45:36.249Z] 📈 Trend: NEUTRAL
+[2026-05-10T02:45:36.249Z] ⏸️  HOLD: Price in sell zone BUT NEUTRAL — NO SELL (never lose money)
+[2026-05-10T02:45:39.406Z] ⚠️ ERROR updating Google Sheet: The caller does not have permission
+[2026-05-10T02:45:39.406Z] 
+✅ Cycle complete. Next run in 60 minutes.
+ caller does not have permission
+[2026-05-10T02:45:39.406Z] 
+✅ Cycle complete. Next run in 60 minutes.

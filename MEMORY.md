@@ -1,6 +1,32 @@
 # MEMORY.md - Long-Term Memory
 
-_Curated memories and significant context. Last synced Friday, May 8th, 2026 at 22:51 EDT (memory consolidation cron: OpenClaw audit complete, Gmail triple-check crons active, email triage summary)._
+_Curated memories and significant context. Last synced Saturday, May 9th, 2026 at 6:51 PM EDT via memory sync cron (All systems operational; email triage active with 5 pending items; no user sessions May 8 evening - May 9 6:51 PM; OpenClaw healthcheck Phase A/B/C complete, 0 critical issues; 15/15 cron jobs healthy)._
+
+## HarresonCRM OAuth App Configuration (May 9, 2026 - 9:28 AM EDT) 🔑
+
+**Google Cloud Console:**
+- **Console Account:** yourbesthealthquote@gmail.com
+- **Project Name:** HarresonCRM
+- **Test Users Location:** Under "Audience" section (NOT "Test users" as older docs suggested)
+- **Authorized Test Users Added:**
+  1. caylenstarresfg@gmail.com ✅
+  2. calvennstarre@gmail.com ✅
+  3. blackwellharreson@gmail.com ✅
+
+**Note:** Google Cloud Console interface has changed; test users are now managed under "Audience" section, not a separate "Test users" button.
+
+### Multi-Account Gmail OAuth Setup (May 9, 2026 - Afternoon)
+
+Four Gmail accounts now authenticated with HarresonCRM OAuth app:
+
+| Account | Auth Date | Scope | Use Case |
+|---------|-----------|-------|----------|
+| yourbesthealthquote@gmail.com | May 8, 10:51 PM EDT | gmail.readonly | Primary inbox monitoring (3x daily crons) |
+| calvennstarre@gmail.com | May 9, 10:28 AM EDT | gmail.modify | Ready for drafts/send capability |
+| caylenstarresfg@gmail.com | May 9, 10:29 AM EDT | gmail.modify | Can send, delete, modify emails |
+| blackwellharreson@gmail.com | May 9, 10:38 AM EDT | gmail.modify | Can send, delete, modify emails |
+
+**Status:** All 4 accounts have active OAuth tokens stored locally. Sonnet model used for all Gmail processing (external email content = untrusted).
 
 ## Workspace Setup
 
@@ -725,9 +751,23 @@ You can now:
 
 ---
 
-## CRON JOB REGISTRY (Updated May 8, 2026 — Evening)
+## CRITICAL RULE: NEVER MODIFY MAIN SYSTEM CONFIGURATIONS (May 9, 2026 — 8:49 PM EDT) 🚫
 
-**Total active cron jobs: 15 (15/15 healthy as of 10:30 PM EDT May 8)**
+**Rule:** Only reconfigure/rework things that Calvenn explicitly asks to change in chat.
+**Never:** Modify systems/bots/configurations that the main system has already set up.
+**Why:** Changes to deployed systems (like the trading bot) break production and require manual fixes on the main system.
+**Incident:** May 9 — Modified trading bot → broke on main system → 1 hour of manual repair needed.
+**Boundary:** 
+- ✅ DO: Build new things, modify things we create in chat, reconfigure on request
+- ❌ DON'T: Touch existing production systems (trading bot, cron jobs, deployed apps) unless explicitly asked
+
+**STATUS (May 9, 8:50 PM EDT):** Trading bot is being finalized by Calvenn. HANDS OFF until explicit instruction to change something.
+
+---
+
+## CRON JOB REGISTRY (Updated May 9, 2026 — 6:51 PM EDT)
+
+**Total active cron jobs: 15 (15/15 healthy as of 6:51 PM EDT May 9)**
 
 **Key cron job IDs for reference:**
 - Memory Consolidation (11 PM daily): `6b43e034-a9b1-48f9-a62f-7e26cde51c58`
@@ -740,7 +780,7 @@ You can now:
 
 ---
 
-**Last Updated:** Friday, May 8, 2026 (11:00 PM EDT) — All systems operational. PatchHub Phase 1 live with real SuperPatch products, SOLANA trading bot running hourly (paper trading), Pine Script MNQ VP Levels production-ready, FlowZoneTrader strategies documented, TradingView Bridge ready to deploy, backup system active (daily snapshots + OneDrive sync). No new development since morning systems check (10:51 AM); workspace stable and ready for Phase 2 execution.
+**Last Updated:** Saturday, May 9, 2026 (6:51 PM EDT) — All systems stable and idle. No user sessions since May 8 evening (19:31 EDT). OpenClaw healthcheck audit complete (Phase A/B/C finalized, 0 critical issues, 15/15 cron jobs healthy as of 6:51 PM). Gmail infrastructure active: yourbesthealthquote@gmail.com authenticated, 3x daily email draft checks running. Email triage active (5 pending items awaiting Calvenn decisions: Claro commission, Kristen FCRA report, Kent Q&A draft, Cigna 2027 planning, Bethany follow-up). Model selection guidance documented (Haiku = fast/cheap internal; Sonnet = untrusted external content). PatchHub Phase 1 live, SOLANA bot running (paper mode), TradingView Bridge ready, FlowZoneTrader strategies documented, MNQ Pine Scripts production-ready. All backups active (daily snapshots + OneDrive sync).
 
 ---
 
@@ -1021,6 +1061,27 @@ ALLOW_DEMO_DATA=false  # Enforced: blocks demo data
 - **Sonnet:** External/untrusted content (email from strangers, web scraping, bulk third-party data). Better at separating data from instructions.
 
 **Gmail uses Sonnet:** Emails could contain injection attempts or misleading directives. Sonnet is more resilient to adversarial formatting and context bleeding in complex email chains.
+
+---
+
+## INBOX TRIAGE — 5 ACTIVE ITEMS (May 9, 2026) 📧
+
+**Email triage status (last 7 days). Pending user decisions on each:**
+
+| # | From | Date | Subject | Status | Action |
+|---|------|------|---------|--------|--------|
+| 1 | Claro Insurance | May 8 | $24.70 late commission | 🔴 At risk | Log arc.claroinsurance.com, identify client, send payment reminder |
+| 2 | Kristen Godfrey | May 7 | Milliman FCRA report (PDF) | 🟡 Blocked | Waiting on password from Milliman (sent separately to Kristen) — request it |
+| 3 | Kent Dobey | May 5 | Health plans Q&A | 🟢 Ready | **DRAFT CREATED** (ID: r-1948380204016917802) — pricing verified, awaiting send |
+| 4 | Claro (FYI) | May 4 | Cigna exits ACA 2027 | ⚪ Strategic | Note for 2027 OE planning (prospecting opportunity, 369k affected) |
+| 5 | Bethany & Adam | May 2 | Follow-up quotes | ⚪ Pending | $1M / 20-yr: $54.59/mo sent (6 days old) — send follow-up in 3-4 more days if silent |
+
+**Pending Decisions (User to Review):**
+1. **Kent Dobey draft:** Send now from Gmail Drafts?
+2. **Kristen Godfrey:** Draft reply requesting FCRA password email?
+3. **Bethany & Adam:** Draft follow-up now or wait 3-4 days?
+4. **Claro commission:** Identify late-payer client, send payment reminder?
+5. **Cigna 2027:** Add to strategic 2027 OE planning notes?
 
 ---
 

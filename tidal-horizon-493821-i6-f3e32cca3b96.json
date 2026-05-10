@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "tidal-horizon-493821-i6",
+  "private_key_id": "f3e32cca3b96d1d2509b3d24ca8b910489416236",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC3UbRKxqz1ett+\nGvLLyqO9SEVRjggfDJPPIrwU1JP0Hv22Je29voBF4Vh9H6iq+nGXCMXWohBlf4aR\nhQWwgaVt0obJSQ3RJR1auFIB5YgSyn6LgzEna+22iPlfnnOXIxqt7+PPaFj+SyAx\nF3k0798dLells/t9ZiC3cHla9wM7LTF5LnrKDVvVEQmuptwMM86uivC0KNSjuF8f\nE8kRBU/pr8RKLjPnGihWwqE9hxvR3du0jj3191hmLvbwR6i+jpvlAjw0LhH7cuvE\n8YzStmmGoTfKfTL3a3VclHaMLJcddCwPB3u5gXHvEQQOPJb2qA3ayU0PIp5JzTOG\nFw6++k8xAgMBAAECggEAAam1k3oS5pUrOY0gB7Y6XwSxUEiUDUgNbTMY9q1o/C1t\nysG0UuTQABJHvbbUTlzAPAkB1m0Y7frGqzpEL3I1oHXo8BmADRYjmoeSgt7kqZr5\no+VYRE3H1cCPVo026jeQzeQfsml1aTUgQSG/4TmN0hNxCxGjZeNPx6o3B5q3Bkni\nOXEj1OxcQSiCcFCOjUY4MIgJakBH5VE5HMlk9EmmVcJE/NhuGWEYViSsNni8q/qm\nO0Sy9mfZ5WY9yHad+xXTPFG2gMYybMUZBpEA8WGMTRy/X9DApKPoUkTTT2yk7Czz\nuDPHM4RBdJfu1y+k3/V0ySu8sQXW2vT1Xzw2oScWIwKBgQDmY6n+rpuAYfUTspfv\n9yuOHGCens0KMKJ/EkaQeOsu62s65w2BqMvodA/lFiZ4bMcsbXpk0+W2m+TA91tE\nBgiO1/7v4jsQ0nXdPdFNHjT3cRJbw/59NZlKT+65SDoiZwUIJAX/2uktVcfhHcnn\nBuJFKfNiHdf4SdK7sS5w/Lw0swKBgQDLsojjbWTcu8TvYsL57zyWXtMk9dbiF1BA\n7xYbO+fo1mQUpC+TiV06ZnZLs5Bf6SYYmSOudQrT2U1co7RwC4AZefr6SzBIAqdz\n3eHOSbef4CQSr6vxOl7+1eVvpbdP+QSbxwzvywU5rt1Ly9o5Qhe154ODstbdowvE\nLqem2/yGiwKBgDdCOljaunNti2HBGU42I50/UzFYd2d1SNRfpssqJYaocpy7JHMv\n8FB93f4ddPa3aIJQc+XRKSzGcXSTH7HOHKleR0h0I6SiRiDdneD4WM3ssfGOrfCM\nNYssZt7L4x2zRfKw6Tt33yu/gmSNR4sBDK54JGcpL07fLgtUsQXqqJ2fAoGAaVWf\nmAvf1o1631ew/9IJALF0em5uemgX5hw80ESAPlVvV4U33RFxlluZ3Le0dwR34MyA\nORzpRnfem4NEMZSg34vGj1wGUZadxTr+I9DXFeOwg8E4JvxKV3mAteV6D+7zxSJ/\nvBi+UP/uC94UsPtOi5B238nBdsdztDV0GMM1qNUCgYAjT6KkUWbTKeQVoMZXUNE0\nO16xq3i1BCwsxA0Hxv8muoZQAzMPFyh/Qq6N/UtszoIY2y1GN+ZMgRMmvkv/rH1N\nNtwcEz0KECnDS5Mef0qOVYr0ZXv1E6bJjjmYoOaic7SWCm/FHz177udo3M2Pu+PW\nBTsn3ifHU20Oz4DlnYK8Yg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "sheets-automation@tidal-horizon-493821-i6.iam.gserviceaccount.com",
+  "client_id": "104343519768081442612",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sheets-automation%40tidal-horizon-493821-i6.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

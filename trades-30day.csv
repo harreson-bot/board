@@ -1,0 +1,6 @@
+DateTime,Symbol,Price,Buy_Zone_Low,Buy_Zone_High,Sell_Zone_Low,Sell_Zone_High,Position_Percent,Action,Reason
+2026-05-10T02:45:26.367Z,SOL,92.91,DOWNTREND,77.10,82.55,89.80,95.25,87.11,HOLD,Price in sell zone BUT DOWNTREND — NO SELL (never lose money)
+2026-05-10T02:45:28.654Z,ETH,2325.78,UPTREND,2234.35,2348.04,2499.62,2613.31,24.13,BUY,Price in buy zone (24.13% of range)
+2026-05-10T02:45:30.981Z,BTC,80718.84,DOWNTREND,63725.13,68986.88,76002.54,81264.28,96.89,HOLD,Price in sell zone BUT DOWNTREND — NO SELL (never lose money)
+2026-05-10T02:45:33.315Z,ATOM,1.92,UPTREND,1.89,1.97,2.08,2.16,10.00,BUY,Price in buy zone (10.00% of range)
+2026-05-10T02:45:36.249Z,DOGE,0.11,NEUTRAL,0.09,0.10,0.10,0.11,92.55,HOLD,Price in sell zone BUT NEUTRAL — NO SELL (never lose money)
