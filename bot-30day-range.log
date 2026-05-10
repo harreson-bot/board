@@ -65,3 +65,23 @@ To eliminate this warning, add "type": "module" to /home/harreson/.openclaw/work
  caller does not have permission
 [2026-05-10T02:45:39.406Z] 
 ✅ Cycle complete. Next run in 60 minutes.
+[2026-05-10T02:49:59.738Z] 
+🔄 Cycle: 2026-05-10T02:49:59.738Z
+[2026-05-10T02:49:59.742Z] 
+━━━ Checking ETH ━━━
+[2026-05-10T02:50:00.262Z] ❌ ERROR getting price for ETH: API Request (GET /products/ETH-USD): HTTP 401: Unauthorized
+
+[2026-05-10T02:50:01.263Z] 
+━━━ Checking BTC ━━━
+[2026-05-10T02:50:01.363Z] ❌ ERROR getting price for BTC: API Request (GET /products/BTC-USD): HTTP 401: Unauthorized
+
+[2026-05-10T02:50:02.364Z] 
+━━━ Checking ATOM ━━━
+[2026-05-10T02:50:02.469Z] ❌ ERROR getting price for ATOM: API Request (GET /products/ATOM-USD): HTTP 401: Unauthorized
+
+[2026-05-10T02:50:03.470Z] 
+━━━ Checking DOGE ━━━
+[2026-05-10T02:50:03.610Z] ❌ ERROR getting price for DOGE: API Request (GET /products/DOGE-USD): HTTP 401: Unauthorized
+
+[2026-05-10T02:50:04.611Z] 
+✅ Cycle complete. Next run in 60 minutes.

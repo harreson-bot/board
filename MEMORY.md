@@ -214,5 +214,13 @@ Upgrade to **Sonnet** when processing content from untrusted sources:
 
 ---
 
-_Last Updated: Saturday, May 10, 2026 (2:47 AM EDT)_
-_Context: Session ending; context limit reached. All systems operational. New chat starting._
+## User Communication & Protocols (May 9, 2026 Evening Session)
+
+**Backup-Before-Change Protocol:** User emphasizes making backups of all systems BEFORE making any changes or modifications. This is part of their safety protocol and should be followed strictly.
+
+**User Context:** User doesn't know technical details of infrastructure (Coinbase API formats, signature algorithms, etc.) because Harreson set it all up. User delegates expertise to Harreson but maintains final approval authority. Communication should be clear and actionable, not theoretical.
+
+---
+
+_Last Updated: Saturday, May 10, 2026 (2:51 AM EDT)_
+_Context: Memory sync completed. All systems operational. Bot running hourly cycles._
