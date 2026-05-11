@@ -163,9 +163,32 @@ _Curated memories and significant context._
 3. Scoped database isolation via partner_id
 4. Ready to test: CSV import → DM drafts → queuing
 
+### Cloudflare Setup (May 11, 2026 - 7:13 PM EDT)
+
+**Status:** ⏳ DNS Propagation in Progress
+
+**Completed:**
+- ✅ Domain added to Cloudflare (Zone ID: 70bac54f83c6ee26d4102777686adf8f)
+- ✅ Nameservers updated in Squarespace to Cloudflare
+- ✅ API Token created (cfut_yCMZ8HShBVnWVkJb1AXTQgeyV4Jfk7PdUGmDjME904bae93d with Cloudflare Connector + DNS permissions)
+
+**Waiting On:**
+- ⏳ DNS propagation (1-24 hours expected)
+- Dashboard error should clear when DNS is live
+- Zone status will change from "pending" to "active"
+
+**Next Steps (Once DNS Propagates):**
+1. Create tunnel in Zero Trust → Networks → Connectors
+   - Name: `patchhub-v2`
+   - Copy the tunnel token
+2. SSH to VPS and start tunnel: `cloudflared tunnel --no-autoupdate run --token [TOKEN]`
+3. Create route in Cloudflare: `app.patchhub.solutions` → `localhost:8000`
+4. Test at https://app.patchhub.solutions
+5. Share with partners for signup
+
 ### Next Phase (May 12-18)
 
-- Verify Cloudflare tunnel routing (app.patchhub.solutions → localhost:8000)
+- ✅ Verify Cloudflare tunnel routing (app.patchhub.solutions → localhost:8000)
 - Test partner signup flow
 - Create test partner account + verify sample leads load
 - Test CSV import + duplicate detection
@@ -311,5 +334,5 @@ Upgrade to **Sonnet** when processing content from untrusted sources:
 
 ---
 
-_Last Updated: Monday, May 11, 2026 (2:51 AM EDT)_
+_Last Updated: Monday, May 11, 2026 (6:51 PM EDT / 22:51 UTC)_
 _Context: Bot deployed and operational. Running continuously since May 10, 2:45 AM EDT start (40+ hourly cycles completed). SOL signal improved from DOWNTREND to UPTREND on May 11. All infrastructure nominal. Email triage queue ready: Claro, Kristen FCRA, Kent Dobey, Cigna 2027, Bethany. All systems stable and nominal._
