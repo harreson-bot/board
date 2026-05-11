@@ -1,10 +1,11 @@
 /**
  * PatchHub v2 - Main Server
  * Multi-tenant CRM Platform
- * Express.js + PostgreSQL
+ * Express.js + SQLite + HTTPS
  */
 require('dotenv').config();
 const express = require('express');
+const https = require('https');
 const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
@@ -141,12 +142,15 @@ async function start() {
     // Init DB schema (idempotent)
     await initializeSchema();
 
+    // Run on HTTP for Cloudflare tunnel
+    // (Cloudflare provides HTTPS encryption to end users)
     app.listen(PORT, () => {
-      console.log(`\n🚀 PatchHub v2 running on port ${PORT}`);
+      console.log(`\n🚀 PatchHub v2 running on port ${PORT} (HTTP)`);
       console.log(`   ENV: ${process.env.NODE_ENV || 'development'}`);
-      console.log(`   DB:  ${process.env.DATABASE_URL ? 'PostgreSQL connected' : '⚠️ DATABASE_URL not set'}`);
+      console.log(`   DB:  SQLite (patchhub.db)`);
+      console.log(`   Tunnel: Cloudflare (HTTPS to users)`);
       console.log(`   API: http://localhost:${PORT}/api\n`);
-    });
+    })
   } catch (err) {
     console.error('❌ Failed to start server:', err.message);
     process.exit(1);

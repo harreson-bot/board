@@ -163,28 +163,31 @@ _Curated memories and significant context._
 3. Scoped database isolation via partner_id
 4. Ready to test: CSV import → DM drafts → queuing
 
-### Cloudflare Setup (May 11, 2026 - 7:13 PM EDT)
+### Cloudflare Setup - LIVE (May 11, 2026, 11:55 PM EDT) 🚀
 
-**Status:** ⏳ DNS Propagation in Progress
+**Status:** ✅ OPERATIONAL
 
 **Completed:**
 - ✅ Domain added to Cloudflare (Zone ID: 70bac54f83c6ee26d4102777686adf8f)
-- ✅ Nameservers updated in Squarespace to Cloudflare
-- ✅ API Token created (cfut_yCMZ8HShBVnWVkJb1AXTQgeyV4Jfk7PdUGmDjME904bae93d with Cloudflare Connector + DNS permissions)
+- ✅ Nameservers updated in Squarespace to Cloudflare (DNS ACTIVE)
+- ✅ Let's Encrypt SSL certificates created (patchhub.solutions + app.patchhub.solutions)
+- ✅ Cloudflare Tunnel created (patchhub-v2, Connector ID: 4846703d-5a09-42d3-80fa-6bf79ee68c3c)
+- ✅ Tunnel running via PM2 (cloudflared-patchhub process)
+- ✅ Public Hostname route: app.patchhub.solutions → http://localhost:8000
+- ✅ Backend running on HTTP (port 8000) with React frontend served
+- ✅ Tunnel connection established and routing traffic
 
-**Waiting On:**
-- ⏳ DNS propagation (1-24 hours expected)
-- Dashboard error should clear when DNS is live
-- Zone status will change from "pending" to "active"
+**Current Issue:**
+- Assets (JS/CSS) returning 404 when accessed via HTTPS tunnel (likely Cloudflare cache)
 
-**Next Steps (Once DNS Propagates):**
-1. Create tunnel in Zero Trust → Networks → Connectors
-   - Name: `patchhub-v2`
-   - Copy the tunnel token
-2. SSH to VPS and start tunnel: `cloudflared tunnel --no-autoupdate run --token [TOKEN]`
-3. Create route in Cloudflare: `app.patchhub.solutions` → `localhost:8000`
-4. Test at https://app.patchhub.solutions
-5. Share with partners for signup
+**Quick Fix:**
+1. Go to Cloudflare Dashboard → Caching → Purge Cache → Purge Everything
+2. Hard refresh browser: Ctrl+Shift+R (or Cmd+Shift+R on Mac)
+3. Try https://app.patchhub.solutions again
+
+**If still blank:**
+- Check browser console for JavaScript errors
+- Verify /assets/ path is loading (should see it in Network tab)
 
 ### Next Phase (May 12-18)
 

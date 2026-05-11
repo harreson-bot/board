@@ -1,0 +1,3 @@
+#!/bin/bash
+# Start Cloudflare Tunnel for patchhub-v2
+/tmp/cloudflared tunnel --no-autoupdate run --token eyJhIjoiNDAwY2U4ODBjZjMyMWZlMGI1ZjMyZTc0ZGRhNDNkMTEiLCJ0IjoiYjViODZhZjItMjZiOS00Mzg5LWEyNzItYTQ5YTVlN2Q3NGIzIiwicyI6Ik5ETTNOMlEzTlRNdE9XRmxPUzAwTVRVNExUa3paVE10WWpWa056ZzVZemM0TldJNSJ9
