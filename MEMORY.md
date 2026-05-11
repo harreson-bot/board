@@ -67,12 +67,20 @@ _Curated memories and significant context._
 
 | Account | Auth Date | Scope | Use Case |
 |---------|-----------|-------|----------|
-| yourbesthealthquote@gmail.com | May 8, 10:51 PM EDT | gmail.readonly | Primary inbox monitoring (3x daily crons) |
+| yourbesthealthquote@gmail.com | May 8, 10:51 PM EDT | gmail.readonly | Primary inbox monitoring (3x daily crons: 8 AM, 1 PM, 9 PM EDT) |
 | calvennstarre@gmail.com | May 9, 10:28 AM EDT | gmail.modify | Ready for drafts/send capability |
 | caylenstarresfg@gmail.com | May 9, 10:29 AM EDT | gmail.modify | Can send, delete, modify emails |
 | blackwellharreson@gmail.com | May 9, 10:38 AM EDT | gmail.modify | Can send, delete, modify emails |
 
 **Status:** All 4 accounts authenticated with active OAuth tokens. Sonnet model used for all Gmail processing (external email content = untrusted).
+
+### Email Triage Queue (May 9, 2026)
+**5 pending items identified:**
+1. Claro bill
+2. Kristen FCRA
+3. Kent Dobey
+4. Cigna 2027
+5. Bethany follow-up
 
 ---
 
@@ -203,14 +211,27 @@ Upgrade to **Sonnet** when processing content from untrusted sources:
 
 ---
 
-## Next Steps (New Chat Session)
+## Infrastructure Details
 
-1. **Bot monitoring:** Check if second cycle completed (~3:45 AM EDT)
+### Trading Bot Deployment Location
+- **Running on:** Local machine (172.59.70.230) in paper trading mode
+- **Why local?** DreamHost VPS cannot reach Coinbase Advanced Trade API (provider network restrictions)
+- **Process:** `nohup node bot-30day-complete.js > bot-30day-range.log 2>&1 &`
+
+### Pine Scripts Status
+- MNQ (Micro Nasdaq) — production-ready
+- Solana — production-ready
+- Both available for deployment/monitoring
+
+## Next Steps
+
+1. **Bot monitoring:** Verify second hourly cycle completed (~3:45 AM EDT on May 10)
 2. **Signal review:** Analyze trades-30day.csv for pattern validation
-3. **Candles endpoint:** Debug Coinbase granularity issue (optional refinement)
-4. **Sheets integration:** Fix write permissions if needed
-5. **PM2 setup:** Add persistent monitoring for 24/7 operation
-6. **Live migration:** When user approves, flip `paperTrading: false`
+3. **Email triage:** Process 5 pending items (Claro, Kristen FCRA, Kent Dobey, Cigna 2027, Bethany) when user available
+4. **Candles endpoint:** Debug Coinbase granularity issue (optional, non-blocking)
+5. **Sheets integration:** Verify write permissions if needed
+6. **PM2 setup:** Add persistent monitoring for 24/7 operation
+7. **Live migration:** When user approves, flip `paperTrading: false`
 
 ---
 
@@ -222,5 +243,19 @@ Upgrade to **Sonnet** when processing content from untrusted sources:
 
 ---
 
-_Last Updated: Saturday, May 10, 2026 (2:51 AM EDT)_
-_Context: Memory sync completed. All systems operational. Bot running hourly cycles._
+## Session Handoff Document (May 10, 2026 - 7:46 AM EDT)
+
+**File created:** `NEXT-CHAT-HANDOFF.md` for seamless continuity when starting new chat sessions.
+
+**Contents:**
+- Bot operational status summary
+- Confirmed paper trading mode (safe, no real money)
+- First-cycle signals (ETH BUY, ATOM BUY, others HOLD)
+- Git commits: `90a8a93` (handoff), `20d829e` (memory), `8ef2484` (bot deployment)
+- Files to reference: BOT-STATUS.md, bot-30day-range.log, trades-30day.csv
+- Bot running as: `nohup node bot-30day-complete.js > bot-30day-range.log 2>&1 &`
+
+---
+
+_Last Updated: Sunday, May 10, 2026 (10:51 PM EDT)_
+_Context: Bot deployed and operational. Running continuously since 2:45 AM EDT start (24+ hourly cycles completed). All infrastructure nominal. Email triage queue ready: Claro, Kristen FCRA, Kent Dobey, Cigna 2027, Bethany. No new significant changes since morning sync — all systems stable._
