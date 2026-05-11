@@ -1,1 +1,16 @@
-[]
+{
+  "summary": {
+    "timestamp": "2026-05-11T03:01:48.606Z",
+    "totalContacts": 0,
+    "ushaCount": 0,
+    "ffiCount": 0,
+    "phoneCount": 0,
+    "approvedCount": 0,
+    "declinedCount": 0,
+    "leadCount": 0,
+    "newThisWeek": 27,
+    "updated": 0
+  },
+  "contacts": [],
+  "count": 0
+}

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-10T02:47:15.154Z",
+  "updatedAt": "2026-05-11T21:47:30.913Z",
   "entries": {
     "memory:memory/2026-04-28.md:1:38": {
       "key": "memory:memory/2026-04-28.md:1:38",
@@ -44,20 +44,22 @@
       "endLine": 98,
       "source": "memory",
       "snippet": "4. **PatchHub:** Development starts May 5 --- **Date:** 2026-05-01 | **Time:** 10:51 AM EDT | **Status:** MEMORY SYNCED --- ## Evening Session (11:00 PM EDT) - Final Consolidation ### Status Summary **All major projects consolidated and backed up:** 1. ✅ **PatchHub Deployment** — Complete and ready for go-live (May 5 launch confirmed) 2. ✅ **Alachua Farm Project** — 10+ documents created, strategies documented, Trello board populated 3. ✅ **Prop Firm Analysis** — TPT $50K strategy verified, daily payout mechanics confirmed 4. ✅ **TOOLS.md Recovery** — All credentials restored and synced (Apr 30 incident resolved) 5. ✅ **Backup System** — Daily snapshots active, 30-day retention + OneD",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.742992889881134,
-      "maxScore": 0.3732179254293442,
+      "totalScore": 1.2751524899307933,
+      "maxScore": 0.5321596000496593,
       "firstRecalledAt": "2026-05-03T03:01:08.891Z",
-      "lastRecalledAt": "2026-05-04T03:00:24.100Z",
+      "lastRecalledAt": "2026-05-11T21:47:30.913Z",
       "queryHashes": [
         "e491a95f4913",
-        "f839355c3ab0"
+        "f839355c3ab0",
+        "c0fa7745fd91"
       ],
       "recallDays": [
         "2026-05-02",
-        "2026-05-03"
+        "2026-05-03",
+        "2026-05-11"
       ],
       "conceptTags": [
         "backup",
@@ -285,6 +287,130 @@
         "rules.json",
         "solana-scalp-strategy.pine",
         "bridge-safety-check.js"
+      ]
+    },
+    "memory:memory/2026-05-08.md:114:146": {
+      "key": "memory:memory/2026-05-08.md:114:146",
+      "path": "memory/2026-05-08.md",
+      "startLine": 114,
+      "endLine": 146,
+      "source": "memory",
+      "snippet": "**1. ✅ All Cron Jobs Healthy (12/12)** - Earlier in the day, 3 cron jobs were erroring due to OpenClaw module hash mismatch after a rebuild - Calvenn fixed the issue locally on the system - All 12/12 cron jobs confirmed healthy — consecutiveErrors = 0 - Affected jobs (now fixed): Daily Memory Consolidation, Daily GitHub Backup, Trello Evening Check **2. ✅ Gmail Draft Check Cron Jobs Created (3x daily)** - User requested automated email triage with draft responses (NOT auto-send) - Three new cron jobs created for yourbesthealthquote@gmail.com: - 8:00 AM EDT — Job ID: `8ed906d8-4513-427c-b18b-81675283f2c5` - 1:00 PM EDT — Job ID: `0d04aed9-8fb7-44c6-9bea-aa1d959eb353` - 9:00 PM EDT — Jo",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.39546885192394254,
+      "maxScore": 0.39546885192394254,
+      "firstRecalledAt": "2026-05-11T12:26:13.751Z",
+      "lastRecalledAt": "2026-05-11T12:26:13.751Z",
+      "queryHashes": [
+        "38a49ed03d75"
+      ],
+      "recallDays": [
+        "2026-05-11"
+      ],
+      "conceptTags": [
+        "backup",
+        "12/12",
+        "auto-send",
+        "gmail.com",
+        "all",
+        "cron",
+        "jobs",
+        "healthy"
+      ]
+    },
+    "memory:memory/2026-05-08.md:134:173": {
+      "key": "memory:memory/2026-05-08.md:134:173",
+      "path": "memory/2026-05-08.md",
+      "startLine": 134,
+      "endLine": 173,
+      "source": "memory",
+      "snippet": "- Gmail draft jobs → Sonnet (belt-and-suspenders for external content) **4. ✅ Sync, Update & Backup Completed** - Session memory synced at 22:23 EDT - Daily memory file created (2026-05-08-evening-session.md) - Git backup queued via cron **Total items consolidated: 4** --- ## Evening Session: OpenClaw Healthcheck + Gmail Triage (7:31 PM EDT) ### ✅ OpenClaw Healthcheck Audit — COMPLETE **Phases A, B, C finalized:** - **Phase A.1:** Backup script created & tested (35M archive, 3,970 files, daily cron active) - **Phase A.1b:** Cron 658586c2 rewired to call actual backup script + Telegram notification - **Phase A.3:** All 3 errored cron jobs recovered (GitHub, Trello, Memory Consolidation",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3716278314590454,
+      "maxScore": 0.3716278314590454,
+      "firstRecalledAt": "2026-05-11T12:26:13.751Z",
+      "lastRecalledAt": "2026-05-11T12:26:13.751Z",
+      "queryHashes": [
+        "38a49ed03d75"
+      ],
+      "recallDays": [
+        "2026-05-11"
+      ],
+      "conceptTags": [
+        "backup",
+        "belt-and-suspenders",
+        "2026-05-08-evening-session.md",
+        "a.1",
+        "a.1b",
+        "a.3",
+        "gmail",
+        "draft"
+      ]
+    },
+    "memory:memory/2026-05-11.md:33:53": {
+      "key": "memory:memory/2026-05-11.md:33:53",
+      "path": "memory/2026-05-11.md",
+      "startLine": 33,
+      "endLine": 53,
+      "source": "memory",
+      "snippet": "- Daily backup cron active - No critical alerts **Email Triage Queue:** - Still pending user action: Claro, Kristen FCRA, Kent Dobey, Cigna 2027, Bethany - No new urgent items identified **Gmail Monitoring:** - 4 accounts OAuth authenticated - Scheduled crons: 8 AM, 1 PM, 9 PM EDT - Crons operating normally ### Summary No new major decisions or significant changes beyond trading bot's continued normal operation. All systems remain stable and nominal. MEMORY.md updated with latest cycle signals and timestamp. --- _Sync Time: Monday, May 11, 2026 — 2:51 AM EDT_ _Status: All systems nominal. Bot running smoothly. Ready for continued monitoring._",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3598995715379715,
+      "maxScore": 0.3598995715379715,
+      "firstRecalledAt": "2026-05-11T12:26:13.751Z",
+      "lastRecalledAt": "2026-05-11T12:26:13.751Z",
+      "queryHashes": [
+        "38a49ed03d75"
+      ],
+      "recallDays": [
+        "2026-05-11"
+      ],
+      "conceptTags": [
+        "backup",
+        "memory.md",
+        "cron",
+        "active",
+        "critical",
+        "alerts",
+        "email",
+        "triage"
+      ]
+    },
+    "memory:memory/2026-05-05.md:1:43": {
+      "key": "memory:memory/2026-05-05.md:1:43",
+      "path": "memory/2026-05-05.md",
+      "startLine": 1,
+      "endLine": 43,
+      "source": "memory",
+      "snippet": "# Daily Memory — Tuesday, May 5, 2026 **Cron Task:** Memory sync at 2:51 AM EDT **Status:** ✅ Complete --- ## Memory Sync Summary **What was checked:** - ✅ MEMORY.md (comprehensive through May 4, 11:00 PM EDT) - ✅ Daily memory files (all current, no gaps) - ✅ No new sessions since May 4 evening (expected for overnight cron) **Result:** Everything current and stable. Timestamp updated to May 5, 2:51 AM EDT. --- ## Current Status — Ready for Phase 2 ### 🟢 All Systems Operational - **PatchHub Phase 1:** ✅ Live (ambassador replica sites deployed with real SuperPatch products) - **SOLANA Trading Bot:** ✅ Running hourly (paper trading, dip detection active) - **TradingView Bridge:** ✅ A",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5854942752499903,
+      "maxScore": 0.5854942752499903,
+      "firstRecalledAt": "2026-05-11T21:09:37.231Z",
+      "lastRecalledAt": "2026-05-11T21:09:37.231Z",
+      "queryHashes": [
+        "6af9d1db4e24"
+      ],
+      "recallDays": [
+        "2026-05-11"
+      ],
+      "conceptTags": [
+        "memory.md",
+        "tuesday",
+        "may",
+        "cron",
+        "task",
+        "sync",
+        "edt",
+        "status"
       ]
     }
   }

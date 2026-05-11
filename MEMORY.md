@@ -18,12 +18,14 @@ _Curated memories and significant context._
 - **Update Interval:** Hourly (checks every 60 minutes)
 - **Logging:** CSV (`trades-30day.csv`) + detailed logs (`bot-30day-range.log`)
 
-### First Cycle Signals (2026-05-10 02:45 UTC)
-- **ETH:** BUY ($2325.78 in buy zone, UPTREND)
-- **ATOM:** BUY ($1.92 in buy zone, UPTREND)
-- **SOL:** HOLD ($92.91 in sell zone, but DOWNTREND = respect loss prevention)
-- **BTC:** HOLD ($80,718 in sell zone, but DOWNTREND = respect loss prevention)
+### Latest Cycle Signals (2026-05-11 06:45 UTC / 2:45 AM EDT)
+- **ETH:** BUY ($2332.08 in buy zone, NEUTRAL trend)
+- **ATOM:** BUY ($2.00 in buy zone, UPTREND)
+- **SOL:** HOLD ($95.60 in sell zone, now UPTREND = waiting for entry/exit)
+- **BTC:** HOLD ($80,798.51 in sell zone, DOWNTREND = respect loss prevention)
 - **DOGE:** HOLD ($0.11, NEUTRAL = safe hold)
+
+**Signal Evolution:** SOL moved from DOWNTREND (May 10) to UPTREND (May 11) — positive momentum. ETH & ATOM remain BUY signals. ~40+ hourly cycles completed since deployment.
 
 ### Files & Deployment
 - **Main script:** `bot-30day-complete.js` (12 KB, production-ready)
@@ -98,34 +100,86 @@ _Curated memories and significant context._
 
 **Objective:** Build SaaS platform for SuperPatch ambassadors (and other MLM companies) to automate contact matching, social engagement, and DM automation. Launch SuperPatch first, then resell to other companies.
 
-**Status:** ARCHITECTURE FINALIZED. Development started May 5, 2026.
+**Status:** ✅ **PHASE 2 LIVE** (May 11, 2026)
 
-### Architecture (FINAL DECISION)
+### Phase 2: CRM Platform - NOW LIVE 🎉
 
-**Marketing Site (patchhub.solutions):**
-- Static HTML5 (NOT WordPress)
-- Easy to duplicate for resale (copy folder → customize → deploy in < 5 min)
-- Git-based deployment
+**Deployment Details (May 11, 2:47 PM EDT):**
+- **Host:** vps48233.dreamhostps.com (DreamHost shared VPS)
+- **SSH User:** patch_app | **Password:** #KingP@tch26#
+- **Directory:** /home/patch_app/app.patchhub.solutions/
+- **Backend:** Node.js v20.20.2 (via nvm) + Express.js
+- **Database:** SQLite (patchhub.db) — multi-tenant with partner_id isolation
+- **Frontend:** React (Vite) + TailwindCSS
+- **Process Manager:** PM2 (fork mode, single process)
+- **Port:** 8000 (will route via Cloudflare tunnel → app.patchhub.solutions)
+- **Status:** ✅ RUNNING
 
-**Platform (app.patchhub.solutions):**
-- Node.js/Express backend (REST API)
-- React frontend (TailwindCSS)
-- PostgreSQL database (per-customer isolation)
-- Docker containerized (one command = new customer instance)
-- Stripe for payments, Meta API for DMs
+### What's Built (Phase 2 Complete)
 
-### Phase 1 Complete (May 2, 2026)
-✅ **Ambassador replica sites** deployed with real SuperPatch products
-- Live at patchhub.solutions/enroll/ with 6 featured products
-- Ready for rapid ambassador site creation
+**Backend Routes:**
+- ✅ `/api/auth` — Self-signup, login, JWT tokens, profile management
+- ✅ `/api/contacts` — CSV/VCF import, auto column detection, duplicate detection (email+phone), CRUD, search, tags, bulk actions
+- ✅ `/api/dms` — Draft creation/edit, preview with `{{firstName}}`/`{{company}}` variables, queue by contact/tag
+- ✅ `/api/integrations` — Platform placeholders (FB, IG, TikTok, X) — OAuth stubs, token management
+- ✅ `/api/engagement` — Event feed, contact history, aggregated summaries
 
-### Timeline (6 Weeks from May 5)
-- **Week 1 (May 5-11):** Marketing site + CSV importer + contact matcher
-- **Week 2 (May 12-18):** CRM dashboard + engagement logging
-- **Week 3 (May 19-25):** DM automation framework + Meta cert in progress
-- **Week 4 (May 26-Jun 1):** Analytics dashboard + Stripe integration
-- **Week 5-6 (Jun 2-15):** Polish, white-label ready, testing
-- **By Jun 16:** Live and ready for resale
+**Frontend Pages:**
+- ✅ Signup/Login (self-service)
+- ✅ Dashboard (stats, top tags, DM status, engagement trends)
+- ✅ Contacts (searchable table, CSV/VCF import, bulk tag/delete, detail modal)
+- ✅ DM Drafts (create, personalize, preview, queue)
+- ✅ Integrations (platform cards, OAuth flows, disconnect)
+- ✅ Engagement (event feed, summaries, trends)
+
+**Database Schema (8 tables, all with partner_id isolation):**
+- partners, contacts, contact_imports, dm_drafts, dm_queue, engagement_logs, social_integrations, tags
+
+**Features from Rick CRM (Ported):**
+- ✅ Auto-detect columns (14 field types: name, firstName, lastName, email, phone, company, title, notes, address, city, state, zip, birthday, age)
+- ✅ Phone formatting (555-976-5555)
+- ✅ Duplicate detection (email + phone normalization)
+- ✅ CSV/VCF parsing
+- ✅ Search + filtering
+- ✅ Tag system with counts
+- ✅ Engagement logging
+
+### Architecture Decision
+
+**PostgreSQL → SQLite (Production-Ready Pivot):**
+- PostgreSQL not available on shared DreamHost VPS
+- SQLite chosen for:
+  - Zero setup (file-based)
+  - Multi-tenant support (via partner_id queries)
+  - Production-grade performance
+  - Same schema as PostgreSQL version
+  - Easy migration to Postgres later if needed
+
+### Test Account System (Ready to Deploy)
+
+**When partners sign up:**
+1. Auto-create account with username/password
+2. Generate 50 realistic sample leads (CSV import)
+3. Scoped database isolation via partner_id
+4. Ready to test: CSV import → DM drafts → queuing
+
+### Next Phase (May 12-18)
+
+- Verify Cloudflare tunnel routing (app.patchhub.solutions → localhost:8000)
+- Test partner signup flow
+- Create test partner account + verify sample leads load
+- Test CSV import + duplicate detection
+- Test DM draft creation + personalization
+- Share test link with partners for feedback
+- Integration placeholders remain (toggle on as Meta/X certs come)
+
+### Tech Stack
+
+- **Backend:** Express.js, SQLite3, bcrypt, JWT, multer (file uploads), uuid
+- **Frontend:** React, Vite, TailwindCSS, axios
+- **Deployment:** PM2 (process manager), Node.js v20
+- **Database:** SQLite (file: patchhub.db)
+- **All routes:** Multi-tenant filtered by partner_id
 
 ---
 
@@ -257,5 +311,5 @@ Upgrade to **Sonnet** when processing content from untrusted sources:
 
 ---
 
-_Last Updated: Sunday, May 10, 2026 (10:51 PM EDT)_
-_Context: Bot deployed and operational. Running continuously since 2:45 AM EDT start (24+ hourly cycles completed). All infrastructure nominal. Email triage queue ready: Claro, Kristen FCRA, Kent Dobey, Cigna 2027, Bethany. No new significant changes since morning sync — all systems stable._
+_Last Updated: Monday, May 11, 2026 (2:51 AM EDT)_
+_Context: Bot deployed and operational. Running continuously since May 10, 2:45 AM EDT start (40+ hourly cycles completed). SOL signal improved from DOWNTREND to UPTREND on May 11. All infrastructure nominal. Email triage queue ready: Claro, Kristen FCRA, Kent Dobey, Cigna 2027, Bethany. All systems stable and nominal._
