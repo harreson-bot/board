@@ -123,7 +123,7 @@ export default function App() {
         {/* Sidebar */}
         <aside className="w-60 bg-gray-900 text-white flex flex-col">
           <div className="px-6 py-5 border-b border-gray-700">
-            <div className="text-xl font-bold text-sky-400">🩹 PatchHub</div>
+            <div className="text-xl font-bold text-sky-400">🚀 PatchHub</div>
             <div className="text-xs text-gray-400 mt-1 truncate">{partner.display_name || partner.username}</div>
           </div>
 

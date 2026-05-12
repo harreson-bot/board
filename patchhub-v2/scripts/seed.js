@@ -80,7 +80,7 @@ async function seedTestAccount(partnerId, partnerUsername) {
         `INSERT INTO contacts
            (partner_id, first_name, last_name, email, phone, phone_normalized,
             company, city, state, country, tags, source, notes)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,'US',$10,'seed_demo',$11)
+         VALUES (?,?,?,?,?,?,?,?,?,'US',?0,'seed_demo',?1)
          ON CONFLICT DO NOTHING`,
         [
           partnerId,
@@ -97,14 +97,14 @@ async function seedTestAccount(partnerId, partnerUsername) {
 
       // Seed engagement log
       const contact = await get(
-        'SELECT id FROM contacts WHERE partner_id = $1 AND email = $2',
+        'SELECT id FROM contacts WHERE partner_id = ? AND email = ?',
         [partnerId, lead.email]
       );
 
       if (contact) {
         await run(
           `INSERT INTO engagement_logs (partner_id, contact_id, event_type, metadata)
-           VALUES ($1, $2, 'contact_created', $3)`,
+           VALUES (?, ?, 'contact_created', ?)`,
           [partnerId, contact.id, JSON.stringify({ source: 'seed_demo', seeded_for: partnerUsername })]
         );
       }
@@ -119,12 +119,12 @@ async function seedTestAccount(partnerId, partnerUsername) {
   for (const tagName of allTags) {
     try {
       const count = await get(
-        `SELECT COUNT(*) as c FROM contacts WHERE partner_id = $1 AND $2 = ANY(tags)`,
+        `SELECT COUNT(*) as c FROM contacts WHERE partner_id = ? AND ? = ANY(tags)`,
         [partnerId, tagName]
       );
       await run(
         `INSERT INTO tags (partner_id, name, contact_count)
-         VALUES ($1, $2, $3)
+         VALUES (?, ?, ?)
          ON CONFLICT (partner_id, name) DO UPDATE SET contact_count = EXCLUDED.contact_count`,
         [partnerId, tagName, parseInt(count.c)]
       );
@@ -135,7 +135,7 @@ async function seedTestAccount(partnerId, partnerUsername) {
   try {
     await run(
       `INSERT INTO dm_drafts (partner_id, name, body, platform, tags, status)
-       VALUES ($1, $2, $3, 'instagram', $4, 'draft')`,
+       VALUES (?, ?, ?, 'instagram', ?, 'draft')`,
       [
         partnerId,
         'Welcome Intro Message',

@@ -54,7 +54,7 @@ const PLATFORM_INFO = {
 router.get('/', verifyToken, async (req, res) => {
   try {
     const connected = await all(
-      'SELECT platform, platform_username, status, connected_at, token_expires_at FROM social_integrations WHERE partner_id = $1',
+      'SELECT platform, platform_username, status, connected_at, token_expires_at FROM social_integrations WHERE partner_id = ?',
       [req.partnerId]
     );
 
@@ -87,7 +87,7 @@ router.get('/:platform', verifyToken, async (req, res) => {
   const info = PLATFORM_INFO[platform];
 
   const connection = await get(
-    'SELECT * FROM social_integrations WHERE partner_id = $1 AND platform = $2',
+    'SELECT * FROM social_integrations WHERE partner_id = ? AND platform = ?',
     [req.partnerId, platform]
   );
 
@@ -195,7 +195,7 @@ router.get('/:platform/oauth/callback', async (req, res) => {
 
     await run(
       `INSERT INTO social_integrations (partner_id, platform, status, metadata)
-       VALUES ($1, $2, 'active', $3)
+       VALUES (?, ?, 'active', ?)
        ON CONFLICT (partner_id, platform) DO UPDATE SET status = 'active', updated_at = NOW()`,
       [partnerId, platform, JSON.stringify({ code_received: true, callback_at: new Date().toISOString() })]
     );
@@ -226,7 +226,7 @@ router.post('/:platform/connect', verifyToken, async (req, res) => {
   await run(
     `INSERT INTO social_integrations
        (partner_id, platform, access_token, refresh_token, platform_username, platform_user_id, scopes, status)
-     VALUES ($1, $2, $3, $4, $5, $6, $7, 'active')
+     VALUES (?, ?, ?, ?, ?, ?, ?, 'active')
      ON CONFLICT (partner_id, platform) DO UPDATE SET
        access_token = EXCLUDED.access_token,
        refresh_token = EXCLUDED.refresh_token,
@@ -250,7 +250,7 @@ router.delete('/:platform/disconnect', verifyToken, async (req, res) => {
 
   await run(
     `UPDATE social_integrations SET status = 'disconnected', access_token = NULL, refresh_token = NULL
-     WHERE partner_id = $1 AND platform = $2`,
+     WHERE partner_id = ? AND platform = ?`,
     [req.partnerId, platform]
   );
 
@@ -270,7 +270,7 @@ router.post('/:platform/send-dm', verifyToken, async (req, res) => {
   }
 
   const integration = await get(
-    'SELECT * FROM social_integrations WHERE partner_id = $1 AND platform = $2 AND status = $3',
+    'SELECT * FROM social_integrations WHERE partner_id = ? AND platform = ? AND status = ?',
     [req.partnerId, platform, 'active']
   );
 
@@ -289,7 +289,7 @@ router.post('/:platform/send-dm', verifyToken, async (req, res) => {
   // Log the send attempt
   await run(
     `INSERT INTO engagement_logs (partner_id, event_type, platform, direction, body, metadata)
-     VALUES ($1, 'dm_sent', $2, 'outbound', $3, $4)`,
+     VALUES (?, 'dm_sent', ?, 'outbound', ?, ?)`,
     [req.partnerId, platform, message, JSON.stringify({ recipient_id, stub: true })]
   );
 
@@ -309,13 +309,13 @@ router.get('/stats/all', verifyToken, async (req, res) => {
   try {
     const connected = await all(
       `SELECT platform, platform_username, status, connected_at
-       FROM social_integrations WHERE partner_id = $1`,
+       FROM social_integrations WHERE partner_id = ?`,
       [req.partnerId]
     );
 
     const dmStats = await all(
       `SELECT platform, COUNT(*) as total_sent
-       FROM engagement_logs WHERE partner_id = $1 AND event_type = 'dm_sent'
+       FROM engagement_logs WHERE partner_id = ? AND event_type = 'dm_sent'
        GROUP BY platform`,
       [req.partnerId]
     );

@@ -1129,30 +1129,31 @@ complete. Next run in 60 minutes.
 
 [2026-05-11T23:38:58.596Z] 
 ✅ Cycle complete. Next run in 60 minutes.
-t Price: $2322.10
-[2026-05-11T13:42:15.644Z] ❌ ERROR fetching candles for ETH: HTTP 401: Unauthorized
-
-[2026-05-11T13:42:17.645Z] 
-━━━ Checking BTC ━━━
-[2026-05-11T13:42:17.759Z] 💰 Current Price: $81067.49
-[2026-05-11T13:42:17.867Z] ❌ ERROR fetching candles for BTC: HTTP 401: Unauthorized
-
-[2026-05-11T13:42:19.868Z] 
-━━━ Checking ATOM ━━━
-[2026-05-11T13:42:19.994Z] 💰 Current Price: $2.01
-[2026-05-11T13:42:20.074Z] ❌ ERROR fetching candles for ATOM: HTTP 401: Unauthorized
-
-[2026-05-11T13:42:22.075Z] 
-━━━ Checking DOGE ━━━
-[2026-05-11T13:42:22.200Z] 💰 Current Price: $0.11
-[2026-05-11T13:42:22.287Z] ❌ ERROR fetching candles for DOGE: HTTP 401: Unauthorized
-
-[2026-05-11T13:42:24.289Z] 
-✅ Cycle complete. Next run in 60 minutes.
-[2026-05-11T14:42:13.045Z] 
-🔄 Cycle: 2026-05-11T14:42:13.044Z
-[2026-05-11T14:42:13.056Z] 
+[2026-05-12T00:38:47.924Z] 
+🔄 Cycle: 2026-05-12T00:38:47.924Z
+[2026-05-12T00:38:47.927Z] 
 ━━━ Checking SOL ━━━
+[2026-05-12T00:38:48.570Z] ❌ ERROR getting price for SOL: Invalid JSON: Unauthorized
+
+[2026-05-12T00:38:50.573Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T00:38:50.662Z] ❌ ERROR getting price for ETH: Invalid JSON: Unauthorized
+
+[2026-05-12T00:38:52.664Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T00:38:52.795Z] ❌ ERROR getting price for BTC: Invalid JSON: Unauthorized
+
+[2026-05-12T00:38:54.798Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T00:38:54.906Z] ❌ ERROR getting price for ATOM: Invalid JSON: Unauthorized
+
+[2026-05-12T00:38:56.909Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T00:38:57.009Z] ❌ ERROR getting price for DOGE: Invalid JSON: Unauthorized
+
+[2026-05-12T00:38:59.012Z] 
+✅ Cycle complete. Next run in 60 minutes.
+�━ Checking SOL ━━━
 [2026-05-11T14:42:13.352Z] 💰 Current Price: $94.78
 [2026-05-11T14:42:13.484Z] ❌ ERROR fetching candles for SOL: HTTP 401: Unauthorized
 
@@ -9044,4 +9045,28 @@ t Price: $2322.10
 [2026-05-11T23:50:06.728Z] ❌ ERROR getting price for DOGE: API Request (GET /products/DOGE-USD): HTTP 401: Unauthorized
 
 [2026-05-11T23:50:07.729Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T00:38:47.924Z] 
+🔄 Cycle: 2026-05-12T00:38:47.924Z
+[2026-05-12T00:38:47.927Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T00:38:48.570Z] ❌ ERROR getting price for SOL: Invalid JSON: Unauthorized
+
+[2026-05-12T00:38:50.573Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T00:38:50.662Z] ❌ ERROR getting price for ETH: Invalid JSON: Unauthorized
+
+[2026-05-12T00:38:52.664Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T00:38:52.795Z] ❌ ERROR getting price for BTC: Invalid JSON: Unauthorized
+
+[2026-05-12T00:38:54.798Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T00:38:54.906Z] ❌ ERROR getting price for ATOM: Invalid JSON: Unauthorized
+
+[2026-05-12T00:38:56.909Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T00:38:57.009Z] ❌ ERROR getting price for DOGE: Invalid JSON: Unauthorized
+
+[2026-05-12T00:38:59.012Z] 
 ✅ Cycle complete. Next run in 60 minutes.

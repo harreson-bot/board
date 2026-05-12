@@ -36,7 +36,7 @@ router.get('/', verifyToken, async (req, res) => {
   try {
     const { status, platform, limit = 50, offset = 0 } = req.query;
 
-    let where = ['partner_id = $1'];
+    let where = ['partner_id = ?'];
     let params = [req.partnerId];
     let idx = 2;
 
@@ -72,7 +72,7 @@ router.get('/', verifyToken, async (req, res) => {
 router.get('/:id', verifyToken, async (req, res) => {
   try {
     const draft = await get(
-      'SELECT * FROM dm_drafts WHERE id = $1 AND partner_id = $2',
+      'SELECT * FROM dm_drafts WHERE id = ? AND partner_id = ?',
       [req.params.id, req.partnerId]
     );
     if (!draft) return res.status(404).json({ error: 'Draft not found' });
@@ -84,7 +84,7 @@ router.get('/:id', verifyToken, async (req, res) => {
          COUNT(*) FILTER (WHERE status = 'sent') as sent,
          COUNT(*) FILTER (WHERE status = 'failed') as failed,
          COUNT(*) FILTER (WHERE status = 'skipped') as skipped
-       FROM dm_queue WHERE draft_id = $1 AND partner_id = $2`,
+       FROM dm_queue WHERE draft_id = ? AND partner_id = ?`,
       [req.params.id, req.partnerId]
     );
 
@@ -117,7 +117,7 @@ router.post('/', verifyToken, async (req, res) => {
     const result = await run(
       `INSERT INTO dm_drafts
          (partner_id, name, body, platform, variables, tags, send_settings, scheduled_at)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)
        RETURNING *`,
       [
         req.partnerId, name, body, plat,
@@ -142,7 +142,7 @@ router.post('/', verifyToken, async (req, res) => {
 router.put('/:id', verifyToken, async (req, res) => {
   try {
     const existing = await get(
-      'SELECT id, status FROM dm_drafts WHERE id = $1 AND partner_id = $2',
+      'SELECT id, status FROM dm_drafts WHERE id = ? AND partner_id = ?',
       [req.params.id, req.partnerId]
     );
     if (!existing) return res.status(404).json({ error: 'Draft not found' });
@@ -156,14 +156,14 @@ router.put('/:id', verifyToken, async (req, res) => {
 
     const result = await run(
       `UPDATE dm_drafts SET
-         name = COALESCE($1, name),
-         body = COALESCE($2, body),
-         platform = COALESCE($3, platform),
-         variables = COALESCE($4, variables),
-         tags = COALESCE($5, tags),
-         send_settings = COALESCE($6::jsonb, send_settings),
-         scheduled_at = COALESCE($7, scheduled_at)
-       WHERE id = $8 AND partner_id = $9
+         name = COALESCE(?, name),
+         body = COALESCE(?, body),
+         platform = COALESCE(?, platform),
+         variables = COALESCE(?, variables),
+         tags = COALESCE(?, tags),
+         send_settings = COALESCE(?::jsonb, send_settings),
+         scheduled_at = COALESCE(?, scheduled_at)
+       WHERE id = ? AND partner_id = ?
        RETURNING *`,
       [
         name, body, platform, variables,
@@ -187,7 +187,7 @@ router.put('/:id', verifyToken, async (req, res) => {
 router.delete('/:id', verifyToken, async (req, res) => {
   try {
     const result = await run(
-      'DELETE FROM dm_drafts WHERE id = $1 AND partner_id = $2 RETURNING id',
+      'DELETE FROM dm_drafts WHERE id = ? AND partner_id = ? RETURNING id',
       [req.params.id, req.partnerId]
     );
     if (!result.rows.length) return res.status(404).json({ error: 'Draft not found' });
@@ -204,7 +204,7 @@ router.delete('/:id', verifyToken, async (req, res) => {
 router.post('/:id/preview', verifyToken, async (req, res) => {
   try {
     const draft = await get(
-      'SELECT body, platform, variables FROM dm_drafts WHERE id = $1 AND partner_id = $2',
+      'SELECT body, platform, variables FROM dm_drafts WHERE id = ? AND partner_id = ?',
       [req.params.id, req.partnerId]
     );
     if (!draft) return res.status(404).json({ error: 'Draft not found' });
@@ -241,7 +241,7 @@ router.post('/:id/preview', verifyToken, async (req, res) => {
 router.post('/:id/queue', verifyToken, async (req, res) => {
   try {
     const draft = await get(
-      'SELECT * FROM dm_drafts WHERE id = $1 AND partner_id = $2',
+      'SELECT * FROM dm_drafts WHERE id = ? AND partner_id = ?',
       [req.params.id, req.partnerId]
     );
     if (!draft) return res.status(404).json({ error: 'Draft not found' });
@@ -257,14 +257,14 @@ router.post('/:id/queue', verifyToken, async (req, res) => {
     if (contact_ids && contact_ids.length > 0) {
       contacts = await all(
         `SELECT id, first_name, last_name, email, phone, company, city, state
-         FROM contacts WHERE id = ANY($1::uuid[]) AND partner_id = $2
+         FROM contacts WHERE id = ANY(?::uuid[]) AND partner_id = ?
          ${exclude_opted_out ? 'AND opted_out = FALSE' : ''}`,
         [contact_ids, req.partnerId]
       );
     } else if (tag) {
       contacts = await all(
         `SELECT id, first_name, last_name, email, phone, company, city, state
-         FROM contacts WHERE partner_id = $1 AND $2 = ANY(tags)
+         FROM contacts WHERE partner_id = ? AND ? = ANY(tags)
          ${exclude_opted_out ? 'AND opted_out = FALSE' : ''}`,
         [req.partnerId, tag.toLowerCase()]
       );
@@ -292,7 +292,7 @@ router.post('/:id/queue', verifyToken, async (req, res) => {
       for (const v of batch) {
         await run(
           `INSERT INTO dm_queue (partner_id, draft_id, contact_id, platform, personalized_body, send_at)
-           VALUES ($1, $2, $3, $4, $5, $6)
+           VALUES (?, ?, ?, ?, ?, ?)
            ON CONFLICT DO NOTHING`,
           v
         );
@@ -302,15 +302,15 @@ router.post('/:id/queue', verifyToken, async (req, res) => {
 
     // Update draft status
     await run(
-      `UPDATE dm_drafts SET status = 'queued', recipient_count = $1, scheduled_at = $2
-       WHERE id = $3 AND partner_id = $4`,
+      `UPDATE dm_drafts SET status = 'queued', recipient_count = ?, scheduled_at = ?
+       WHERE id = ? AND partner_id = ?`,
       [queued, sendTime, req.params.id, req.partnerId]
     );
 
     // Log engagement event
     await run(
       `INSERT INTO engagement_logs (partner_id, draft_id, event_type, metadata)
-       VALUES ($1, $2, 'dm_queued', $3)`,
+       VALUES (?, ?, 'dm_queued', ?)`,
       [req.partnerId, req.params.id, JSON.stringify({ recipient_count: queued, platform: draft.platform })]
     );
 
@@ -334,7 +334,7 @@ router.post('/:id/queue', verifyToken, async (req, res) => {
 router.post('/:id/pause', verifyToken, async (req, res) => {
   try {
     const result = await run(
-      `UPDATE dm_drafts SET status = 'paused' WHERE id = $1 AND partner_id = $2
+      `UPDATE dm_drafts SET status = 'paused' WHERE id = ? AND partner_id = ?
        AND status IN ('queued', 'sending') RETURNING id`,
       [req.params.id, req.partnerId]
     );
@@ -351,12 +351,12 @@ router.post('/:id/pause', verifyToken, async (req, res) => {
 router.post('/:id/cancel', verifyToken, async (req, res) => {
   try {
     await run(
-      `UPDATE dm_drafts SET status = 'cancelled' WHERE id = $1 AND partner_id = $2`,
+      `UPDATE dm_drafts SET status = 'cancelled' WHERE id = ? AND partner_id = ?`,
       [req.params.id, req.partnerId]
     );
     // Cancel pending queue items
     await run(
-      `UPDATE dm_queue SET status = 'skipped' WHERE draft_id = $1 AND partner_id = $2 AND status = 'pending'`,
+      `UPDATE dm_queue SET status = 'skipped' WHERE draft_id = ? AND partner_id = ? AND status = 'pending'`,
       [req.params.id, req.partnerId]
     );
     res.json({ success: true, message: 'Draft cancelled' });
@@ -373,7 +373,7 @@ router.get('/:id/queue', verifyToken, async (req, res) => {
   try {
     const { status, limit = 50, offset = 0 } = req.query;
 
-    let where = ['q.draft_id = $1', 'q.partner_id = $2'];
+    let where = ['q.draft_id = ?', 'q.partner_id = ?'];
     let params = [req.params.id, req.partnerId];
 
     if (status) {
@@ -413,7 +413,7 @@ router.get('/stats/overview', verifyToken, async (req, res) => {
          SUM(CASE WHEN status = 'sent' THEN 1 ELSE 0 END) as sent,
          SUM(sent_count) as total_sent,
          SUM(reply_count) as total_replies
-       FROM dm_drafts WHERE partner_id = $1`,
+       FROM dm_drafts WHERE partner_id = ?`,
       [req.partnerId]
     );
     res.json(stats);

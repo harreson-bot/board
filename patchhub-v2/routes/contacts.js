@@ -75,14 +75,14 @@ async function findDuplicate(partnerId, email, phone) {
   const phoneNorm = normalizePhone(phone);
   if (email) {
     const byEmail = await get(
-      'SELECT id FROM contacts WHERE partner_id = $1 AND email = $2',
+      'SELECT id FROM contacts WHERE partner_id = ? AND email = ?',
       [partnerId, email.toLowerCase().trim()]
     );
     if (byEmail) return byEmail;
   }
   if (phoneNorm) {
     const byPhone = await get(
-      'SELECT id FROM contacts WHERE partner_id = $1 AND phone_normalized = $2',
+      'SELECT id FROM contacts WHERE partner_id = ? AND phone_normalized = ?',
       [partnerId, phoneNorm]
     );
     if (byPhone) return byPhone;
@@ -96,7 +96,7 @@ async function upsertTags(partnerId, tagNames) {
   if (!tagNames || tagNames.length === 0) return;
   for (const name of tagNames) {
     await run(
-      `INSERT INTO tags (partner_id, name) VALUES ($1, $2)
+      `INSERT INTO tags (partner_id, name) VALUES (?, ?)
        ON CONFLICT (partner_id, name) DO UPDATE SET contact_count = tags.contact_count + 1`,
       [partnerId, name.trim().toLowerCase()]
     );
@@ -108,13 +108,13 @@ async function upsertTags(partnerId, tagNames) {
 async function logEngagement(partnerId, contactId, eventType, metadata = {}) {
   await run(
     `INSERT INTO engagement_logs (partner_id, contact_id, event_type, metadata)
-     VALUES ($1, $2, $3, $4)`,
+     VALUES (?, ?, ?, ?)`,
     [partnerId, contactId, eventType, JSON.stringify(metadata)]
   );
   // Update contact last_contacted_at and engagement score
   await run(
     `UPDATE contacts SET last_contacted_at = NOW(), engagement_score = engagement_score + 1
-     WHERE id = $1 AND partner_id = $2`,
+     WHERE id = ? AND partner_id = ?`,
     [contactId, partnerId]
   );
 }
@@ -135,7 +135,7 @@ router.get('/', verifyToken, async (req, res) => {
     const sortCol = validSorts.includes(sort) ? sort : 'created_at';
     const sortDir = order === 'ASC' ? 'ASC' : 'DESC';
 
-    let where = ['partner_id = $1'];
+    let where = ['partner_id = ?'];
     let params = [req.partnerId];
     let idx = 2;
 
@@ -198,7 +198,7 @@ router.get('/', verifyToken, async (req, res) => {
 router.get('/:id', verifyToken, async (req, res) => {
   try {
     const contact = await get(
-      'SELECT * FROM contacts WHERE id = $1 AND partner_id = $2',
+      'SELECT * FROM contacts WHERE id = ? AND partner_id = ?',
       [req.params.id, req.partnerId]
     );
     if (!contact) return res.status(404).json({ error: 'Contact not found' });
@@ -206,7 +206,7 @@ router.get('/:id', verifyToken, async (req, res) => {
     // Fetch recent engagement
     const recent = await all(
       `SELECT event_type, platform, direction, body, metadata, created_at
-       FROM engagement_logs WHERE contact_id = $1 ORDER BY created_at DESC LIMIT 20`,
+       FROM engagement_logs WHERE contact_id = ? ORDER BY created_at DESC LIMIT 20`,
       [req.params.id]
     );
 
@@ -247,7 +247,7 @@ router.post('/', verifyToken, async (req, res) => {
          (partner_id, first_name, last_name, email, phone, phone_normalized,
           company, title, website, address, city, state, zip, country,
           tags, notes, source, custom_fields)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)
+       VALUES (?,?,?,?,?,?,?,?,?,?0,?1,?2,?3,?4,?5,?6,?7,?8)
        RETURNING *`,
       [
         req.partnerId, first_name, last_name,
@@ -275,7 +275,7 @@ router.post('/', verifyToken, async (req, res) => {
 router.put('/:id', verifyToken, async (req, res) => {
   try {
     const existing = await get(
-      'SELECT id FROM contacts WHERE id = $1 AND partner_id = $2',
+      'SELECT id FROM contacts WHERE id = ? AND partner_id = ?',
       [req.params.id, req.partnerId]
     );
     if (!existing) return res.status(404).json({ error: 'Contact not found' });
@@ -291,23 +291,23 @@ router.put('/:id', verifyToken, async (req, res) => {
 
     const result = await run(
       `UPDATE contacts SET
-         first_name = COALESCE($1, first_name),
-         last_name = COALESCE($2, last_name),
-         email = COALESCE($3, email),
-         phone = COALESCE($4, phone),
-         phone_normalized = COALESCE($5, phone_normalized),
-         company = COALESCE($6, company),
-         title = COALESCE($7, title),
-         website = COALESCE($8, website),
-         address = COALESCE($9, address),
-         city = COALESCE($10, city),
-         state = COALESCE($11, state),
-         zip = COALESCE($12, zip),
-         country = COALESCE($13, country),
-         tags = COALESCE($14, tags),
-         notes = COALESCE($15, notes),
-         custom_fields = COALESCE($16::jsonb, custom_fields)
-       WHERE id = $17 AND partner_id = $18
+         first_name = COALESCE(?, first_name),
+         last_name = COALESCE(?, last_name),
+         email = COALESCE(?, email),
+         phone = COALESCE(?, phone),
+         phone_normalized = COALESCE(?, phone_normalized),
+         company = COALESCE(?, company),
+         title = COALESCE(?, title),
+         website = COALESCE(?, website),
+         address = COALESCE(?, address),
+         city = COALESCE(?0, city),
+         state = COALESCE(?1, state),
+         zip = COALESCE(?2, zip),
+         country = COALESCE(?3, country),
+         tags = COALESCE(?4, tags),
+         notes = COALESCE(?5, notes),
+         custom_fields = COALESCE(?6::jsonb, custom_fields)
+       WHERE id = ?7 AND partner_id = ?8
        RETURNING *`,
       [
         first_name, last_name,
@@ -335,7 +335,7 @@ router.put('/:id', verifyToken, async (req, res) => {
 router.delete('/:id', verifyToken, async (req, res) => {
   try {
     const result = await run(
-      'DELETE FROM contacts WHERE id = $1 AND partner_id = $2 RETURNING id',
+      'DELETE FROM contacts WHERE id = ? AND partner_id = ? RETURNING id',
       [req.params.id, req.partnerId]
     );
     if (result.rows.length === 0) return res.status(404).json({ error: 'Contact not found' });
@@ -351,7 +351,7 @@ router.delete('/:id', verifyToken, async (req, res) => {
 router.post('/:id/opt-out', verifyToken, async (req, res) => {
   try {
     await run(
-      'UPDATE contacts SET opted_out = TRUE, opted_out_at = NOW() WHERE id = $1 AND partner_id = $2',
+      'UPDATE contacts SET opted_out = TRUE, opted_out_at = NOW() WHERE id = ? AND partner_id = ?',
       [req.params.id, req.partnerId]
     );
     await logEngagement(req.partnerId, req.params.id, 'opt_out');
@@ -371,7 +371,7 @@ router.post('/import/csv', verifyToken, upload.single('file'), async (req, res) 
   // Start import record
   const importResult = await run(
     `INSERT INTO contact_imports (partner_id, filename, import_type, status)
-     VALUES ($1, $2, 'csv', 'processing') RETURNING id`,
+     VALUES (?, ?, 'csv', 'processing') RETURNING id`,
     [req.partnerId, req.file.originalname]
   );
   const importId = importResult.rows[0].id;
@@ -436,7 +436,7 @@ async function processCsvImport(partnerId, importId, filePath, filename) {
         `INSERT INTO contacts
            (partner_id, first_name, last_name, email, phone, phone_normalized,
             company, title, website, address, city, state, zip, country, tags, notes, source)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,'csv_import')
+         VALUES (?,?,?,?,?,?,?,?,?,?0,?1,?2,?3,?4,?5,?6,'csv_import')
          RETURNING id`,
         [
           partnerId,
@@ -461,9 +461,9 @@ async function processCsvImport(partnerId, importId, filePath, filename) {
   // Update import record
   await run(
     `UPDATE contact_imports SET
-       total_rows = $1, imported_count = $2, duplicate_count = $3,
-       skipped_count = $4, error_count = $5, status = 'complete', error_log = $6
-     WHERE id = $7`,
+       total_rows = ?, imported_count = ?, duplicate_count = ?,
+       skipped_count = ?, error_count = ?, status = 'complete', error_log = ?
+     WHERE id = ?`,
     [rows.length, imported, duplicates, skipped, errors, JSON.stringify(errorLog), importId]
   );
 
@@ -482,7 +482,7 @@ router.post('/import/vcf', verifyToken, upload.single('file'), async (req, res) 
 
   const importResult = await run(
     `INSERT INTO contact_imports (partner_id, filename, import_type, status)
-     VALUES ($1, $2, 'vcf', 'processing') RETURNING id`,
+     VALUES (?, ?, 'vcf', 'processing') RETURNING id`,
     [req.partnerId, req.file.originalname]
   );
   const importId = importResult.rows[0].id;
@@ -547,7 +547,7 @@ async function processVcfImport(partnerId, importId, filePath, filename) {
         `INSERT INTO contacts
            (partner_id, first_name, last_name, email, phone, phone_normalized,
             company, title, website, address, city, state, zip, country, notes, source)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,'vcf_import')
+         VALUES (?,?,?,?,?,?,?,?,?,?0,?1,?2,?3,?4,?5,'vcf_import')
          RETURNING id`,
         [
           partnerId,
@@ -569,9 +569,9 @@ async function processVcfImport(partnerId, importId, filePath, filename) {
 
   await run(
     `UPDATE contact_imports SET
-       total_rows = $1, imported_count = $2, duplicate_count = $3,
-       error_count = $4, status = 'complete'
-     WHERE id = $5`,
+       total_rows = ?, imported_count = ?, duplicate_count = ?,
+       error_count = ?, status = 'complete'
+     WHERE id = ?`,
     [vcards.length, imported, duplicates, errors, importId]
   );
 
@@ -586,7 +586,7 @@ async function processVcfImport(partnerId, importId, filePath, filename) {
 router.get('/imports/status/:id', verifyToken, async (req, res) => {
   try {
     const imp = await get(
-      'SELECT * FROM contact_imports WHERE id = $1 AND partner_id = $2',
+      'SELECT * FROM contact_imports WHERE id = ? AND partner_id = ?',
       [req.params.id, req.partnerId]
     );
     if (!imp) return res.status(404).json({ error: 'Import not found' });
@@ -602,7 +602,7 @@ router.get('/imports/status/:id', verifyToken, async (req, res) => {
 router.get('/imports/list', verifyToken, async (req, res) => {
   try {
     const imports = await all(
-      'SELECT * FROM contact_imports WHERE partner_id = $1 ORDER BY created_at DESC LIMIT 20',
+      'SELECT * FROM contact_imports WHERE partner_id = ? ORDER BY created_at DESC LIMIT 20',
       [req.partnerId]
     );
     res.json(imports);
@@ -617,7 +617,7 @@ router.get('/imports/list', verifyToken, async (req, res) => {
 router.get('/tags/list', verifyToken, async (req, res) => {
   try {
     const tags = await all(
-      'SELECT name, color, contact_count FROM tags WHERE partner_id = $1 ORDER BY contact_count DESC',
+      'SELECT name, color, contact_count FROM tags WHERE partner_id = ? ORDER BY contact_count DESC',
       [req.partnerId]
     );
     res.json(tags);
@@ -639,9 +639,9 @@ router.post('/bulk/tag', verifyToken, async (req, res) => {
     await upsertTags(req.partnerId, [tagName]);
 
     await run(
-      `UPDATE contacts SET tags = array_append(tags, $1)
-       WHERE id = ANY($2::uuid[]) AND partner_id = $3
-         AND NOT ($1 = ANY(tags))`,
+      `UPDATE contacts SET tags = array_append(tags, ?)
+       WHERE id = ANY(?::uuid[]) AND partner_id = ?
+         AND NOT (? = ANY(tags))`,
       [tagName, contact_ids, req.partnerId]
     );
 
@@ -660,7 +660,7 @@ router.post('/bulk/delete', verifyToken, async (req, res) => {
     if (!contact_ids || !contact_ids.length) return res.status(400).json({ error: 'contact_ids required' });
 
     const result = await run(
-      'DELETE FROM contacts WHERE id = ANY($1::uuid[]) AND partner_id = $2 RETURNING id',
+      'DELETE FROM contacts WHERE id = ANY(?::uuid[]) AND partner_id = ? RETURNING id',
       [contact_ids, req.partnerId]
     );
     res.json({ success: true, deleted: result.rows.length });
@@ -679,15 +679,15 @@ router.get('/stats/summary', verifyToken, async (req, res) => {
         `SELECT COUNT(*) as total,
                 SUM(CASE WHEN opted_out THEN 1 ELSE 0 END) as opted_out,
                 SUM(CASE WHEN last_contacted_at > NOW() - INTERVAL '7 days' THEN 1 ELSE 0 END) as active_week
-         FROM contacts WHERE partner_id = $1`,
+         FROM contacts WHERE partner_id = ?`,
         [req.partnerId]
       ),
       all(
-        `SELECT source, COUNT(*) as count FROM contacts WHERE partner_id = $1 GROUP BY source ORDER BY count DESC`,
+        `SELECT source, COUNT(*) as count FROM contacts WHERE partner_id = ? GROUP BY source ORDER BY count DESC`,
         [req.partnerId]
       ),
       all(
-        `SELECT name, contact_count FROM tags WHERE partner_id = $1 ORDER BY contact_count DESC LIMIT 10`,
+        `SELECT name, contact_count FROM tags WHERE partner_id = ? ORDER BY contact_count DESC LIMIT 10`,
         [req.partnerId]
       ),
     ]);

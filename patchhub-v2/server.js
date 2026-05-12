@@ -22,7 +22,10 @@ const integrationsRouter = require('./routes/integrations');
 const engagementRouter = require('./routes/engagement');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
+
+// Trust proxy headers from Cloudflare tunnel
+app.set('trust proxy', 1);
 
 // ─── CORS ─────────────────────────────────────────────────────────────────────
 
@@ -53,6 +56,7 @@ const limiter = rateLimit({
   max: 300,
   standardHeaders: true,
   legacyHeaders: false,
+  skip: (req) => process.env.NODE_ENV !== 'production',
   message: { error: 'Too many requests, please try again later' }
 });
 

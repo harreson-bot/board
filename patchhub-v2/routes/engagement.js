@@ -15,7 +15,7 @@ router.get('/', verifyToken, async (req, res) => {
   try {
     const { event_type, platform, contact_id, limit = 50, offset = 0, days = 30 } = req.query;
 
-    let where = ['el.partner_id = $1', `el.created_at > NOW() - INTERVAL '${parseInt(days)} days'`];
+    let where = ['el.partner_id = ?', `el.created_at > NOW() - INTERVAL '${parseInt(days)} days'`];
     let params = [req.partnerId];
     let idx = 2;
 
@@ -65,7 +65,7 @@ router.get('/contact/:id', verifyToken, async (req, res) => {
     const events = await all(
       `SELECT id, event_type, platform, direction, body, metadata, created_at
        FROM engagement_logs
-       WHERE contact_id = $1 AND partner_id = $2
+       WHERE contact_id = ? AND partner_id = ?
        ORDER BY created_at DESC LIMIT 100`,
       [req.params.id, req.partnerId]
     );
@@ -88,21 +88,21 @@ router.get('/summary', verifyToken, async (req, res) => {
       all(
         `SELECT event_type, COUNT(*) as count
          FROM engagement_logs
-         WHERE partner_id = $1 AND created_at > NOW() - INTERVAL $2
+         WHERE partner_id = ? AND created_at > NOW() - INTERVAL ?
          GROUP BY event_type ORDER BY count DESC`,
         [req.partnerId, interval]
       ),
       all(
         `SELECT platform, COUNT(*) as count
          FROM engagement_logs
-         WHERE partner_id = $1 AND platform IS NOT NULL AND created_at > NOW() - INTERVAL $2
+         WHERE partner_id = ? AND platform IS NOT NULL AND created_at > NOW() - INTERVAL ?
          GROUP BY platform ORDER BY count DESC`,
         [req.partnerId, interval]
       ),
       all(
         `SELECT DATE(created_at) as date, COUNT(*) as events
          FROM engagement_logs
-         WHERE partner_id = $1 AND created_at > NOW() - INTERVAL $2
+         WHERE partner_id = ? AND created_at > NOW() - INTERVAL ?
          GROUP BY DATE(created_at) ORDER BY date ASC`,
         [req.partnerId, interval]
       ),
@@ -126,7 +126,7 @@ router.post('/log', verifyToken, async (req, res) => {
 
     const result = await run(
       `INSERT INTO engagement_logs (partner_id, contact_id, event_type, platform, direction, body, metadata)
-       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`,
+       VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id`,
       [
         req.partnerId, contact_id || null, event_type,
         platform || null, direction || 'outbound',
@@ -137,7 +137,7 @@ router.post('/log', verifyToken, async (req, res) => {
     if (contact_id) {
       await run(
         `UPDATE contacts SET last_contacted_at = NOW(), engagement_score = engagement_score + 1
-         WHERE id = $1 AND partner_id = $2`,
+         WHERE id = ? AND partner_id = ?`,
         [contact_id, req.partnerId]
       );
     }
