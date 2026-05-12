@@ -1104,100 +1104,102 @@ To eliminate this warning, add "type": "module" to /home/harreson/.openclaw/work
 
 [2026-05-11T23:40:27.735Z] 
 ✅ Cycle complete. Next run in 60 minutes.
-complete. Next run in 60 minutes.
-[2026-05-11T23:38:47.824Z] 
-🔄 Cycle: 2026-05-11T23:38:47.824Z
-[2026-05-11T23:38:47.827Z] 
+[2026-05-12T00:40:17.216Z] 
+🔄 Cycle: 2026-05-12T00:40:17.216Z
+[2026-05-12T00:40:17.218Z] 
 ━━━ Checking SOL ━━━
-[2026-05-11T23:38:48.141Z] ❌ ERROR getting price for SOL: Invalid JSON: Unauthorized
+[2026-05-12T00:40:17.410Z] ❌ ERROR getting price for SOL: HTTP 401: Unauthorized
 
-[2026-05-11T23:38:50.143Z] 
+[2026-05-12T00:40:19.412Z] 
 ━━━ Checking ETH ━━━
-[2026-05-11T23:38:50.280Z] ❌ ERROR getting price for ETH: Invalid JSON: Unauthorized
+[2026-05-12T00:40:19.511Z] ❌ ERROR getting price for ETH: HTTP 401: Unauthorized
 
-[2026-05-11T23:38:52.283Z] 
+[2026-05-12T00:40:21.512Z] 
 ━━━ Checking BTC ━━━
-[2026-05-11T23:38:52.400Z] ❌ ERROR getting price for BTC: Invalid JSON: Unauthorized
+[2026-05-12T00:40:21.600Z] ❌ ERROR getting price for BTC: HTTP 401: Unauthorized
 
-[2026-05-11T23:38:54.402Z] 
+[2026-05-12T00:40:23.600Z] 
 ━━━ Checking ATOM ━━━
-[2026-05-11T23:38:54.494Z] ❌ ERROR getting price for ATOM: Invalid JSON: Unauthorized
+[2026-05-12T00:40:23.711Z] ❌ ERROR getting price for ATOM: HTTP 401: Unauthorized
 
-[2026-05-11T23:38:56.496Z] 
+[2026-05-12T00:40:25.712Z] 
 ━━━ Checking DOGE ━━━
-[2026-05-11T23:38:56.593Z] ❌ ERROR getting price for DOGE: Invalid JSON: Unauthorized
+[2026-05-12T00:40:25.830Z] ❌ ERROR getting price for DOGE: HTTP 401: Unauthorized
 
-[2026-05-11T23:38:58.596Z] 
+[2026-05-12T00:40:27.830Z] 
 ✅ Cycle complete. Next run in 60 minutes.
-[2026-05-12T00:38:47.924Z] 
-🔄 Cycle: 2026-05-12T00:38:47.924Z
-[2026-05-12T00:38:47.927Z] 
+[2026-05-12T01:40:17.318Z] 
+🔄 Cycle: 2026-05-12T01:40:17.318Z
+[2026-05-12T01:40:17.319Z] 
 ━━━ Checking SOL ━━━
-[2026-05-12T00:38:48.570Z] ❌ ERROR getting price for SOL: Invalid JSON: Unauthorized
+[2026-05-12T01:40:17.561Z] ❌ ERROR getting price for SOL: HTTP 401: Unauthorized
 
-[2026-05-12T00:38:50.573Z] 
+[2026-05-12T01:40:19.564Z] 
 ━━━ Checking ETH ━━━
-[2026-05-12T00:38:50.662Z] ❌ ERROR getting price for ETH: Invalid JSON: Unauthorized
+[2026-05-12T01:40:19.698Z] ❌ ERROR getting price for ETH: HTTP 401: Unauthorized
 
-[2026-05-12T00:38:52.664Z] 
+[2026-05-12T01:40:21.699Z] 
 ━━━ Checking BTC ━━━
-[2026-05-12T00:38:52.795Z] ❌ ERROR getting price for BTC: Invalid JSON: Unauthorized
+[2026-05-12T01:40:21.839Z] ❌ ERROR getting price for BTC: HTTP 401: Unauthorized
 
-[2026-05-12T00:38:54.798Z] 
+[2026-05-12T01:40:23.840Z] 
 ━━━ Checking ATOM ━━━
-[2026-05-12T00:38:54.906Z] ❌ ERROR getting price for ATOM: Invalid JSON: Unauthorized
+[2026-05-12T01:40:23.950Z] ❌ ERROR getting price for ATOM: HTTP 401: Unauthorized
 
-[2026-05-12T00:38:56.909Z] 
+[2026-05-12T01:40:25.951Z] 
 ━━━ Checking DOGE ━━━
-[2026-05-12T00:38:57.009Z] ❌ ERROR getting price for DOGE: Invalid JSON: Unauthorized
+[2026-05-12T01:40:26.039Z] ❌ ERROR getting price for DOGE: HTTP 401: Unauthorized
 
-[2026-05-12T00:38:59.012Z] 
+[2026-05-12T01:40:28.040Z] 
 ✅ Cycle complete. Next run in 60 minutes.
-�━ Checking SOL ━━━
-[2026-05-11T14:42:13.352Z] 💰 Current Price: $94.78
-[2026-05-11T14:42:13.484Z] ❌ ERROR fetching candles for SOL: HTTP 401: Unauthorized
-
-[2026-05-11T14:42:15.486Z] 
-━━━ Checking ETH ━━━
-[2026-05-11T14:42:15.597Z] 💰 Current Price: $2314.72
-[2026-05-11T14:42:15.762Z] ❌ ERROR fetching candles for ETH: HTTP 401: Unauthorized
-
-[2026-05-11T14:42:17.764Z] 
-━━━ Checking BTC ━━━
-[2026-05-11T14:42:17.882Z] 💰 Current Price: $80814.60
-[2026-05-11T14:42:17.978Z] ❌ ERROR fetching candles for BTC: HTTP 401: Unauthorized
-
-[2026-05-11T14:42:19.980Z] 
-━━━ Checking ATOM ━━━
-[2026-05-11T14:42:20.148Z] 💰 Current Price: $2.00
-[2026-05-11T14:42:20.268Z] ❌ ERROR fetching candles for ATOM: HTTP 401: Unauthorized
-
-[2026-05-11T14:42:22.269Z] 
-━━━ Checking DOGE ━━━
-[2026-05-11T14:42:22.392Z] 💰 Current Price: $0.11
-[2026-05-11T14:42:22.483Z] ❌ ERROR fetching candles for DOGE: HTTP 401: Unauthorized
-
-[2026-05-11T14:42:24.484Z] 
-✅ Cycle complete. Next run in 60 minutes.
-[2026-05-11T15:42:13.149Z] 
-🔄 Cycle: 2026-05-11T15:42:13.148Z
-[2026-05-11T15:42:13.156Z] 
+[2026-05-12T02:40:17.418Z] 
+🔄 Cycle: 2026-05-12T02:40:17.418Z
+[2026-05-12T02:40:17.420Z] 
 ━━━ Checking SOL ━━━
-[2026-05-11T15:42:13.471Z] 💰 Current Price: $96.00
-[2026-05-11T15:42:13.584Z] ❌ ERROR fetching candles for SOL: HTTP 401: Unauthorized
-
-[2026-05-11T15:42:15.586Z] 
+[2026-05-12T02:40:17.953Z] ❌ ERROR getting price for SOL: fetch failed
+[2026-05-12T02:40:19.956Z] 
 ━━━ Checking ETH ━━━
-[2026-05-11T15:42:15.746Z] 💰 Current Price: $2327.49
-[2026-05-11T15:42:15.841Z] ❌ ERROR fetching candles for ETH: HTTP 401: Unauthorized
-
-[2026-05-11T15:42:17.842Z] 
+[2026-05-12T02:40:20.481Z] ❌ ERROR getting price for ETH: fetch failed
+[2026-05-12T02:40:22.485Z] 
 ━━━ Checking BTC ━━━
-[2026-05-11T15:42:17.970Z] 💰 Current Price: $81204.06
-[2026-05-11T15:42:18.059Z] ❌ ERROR fetching candles for BTC: HTTP 401: Unauthorized
-
-[2026-05-11T15:42:20.060Z] 
+[2026-05-12T02:40:23.657Z] ❌ ERROR getting price for BTC: fetch failed
+[2026-05-12T02:40:25.659Z] 
 ━━━ Checking ATOM ━━━
+[2026-05-12T02:40:26.204Z] ❌ ERROR getting price for ATOM: fetch failed
+[2026-05-12T02:40:28.207Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T02:40:28.726Z] ❌ ERROR getting price for DOGE: fetch failed
+[2026-05-12T02:40:30.729Z] 
+✅ Cycle complete. Next run in 60 minutes.
+01:38:56.846Z] ❌ ERROR getting price for DOGE: Invalid JSON: Unauthorized
+
+[2026-05-12T01:38:58.847Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T02:38:48.031Z] 
+🔄 Cycle: 2026-05-12T02:38:48.031Z
+[2026-05-12T02:38:48.034Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T02:38:48.324Z] ❌ ERROR getting price for SOL: Invalid JSON: Unauthorized
+
+[2026-05-12T02:38:50.327Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T02:38:50.417Z] ❌ ERROR getting price for ETH: Invalid JSON: Unauthorized
+
+[2026-05-12T02:38:52.420Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T02:38:52.556Z] ❌ ERROR getting price for BTC: Invalid JSON: Unauthorized
+
+[2026-05-12T02:38:54.558Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T02:38:54.667Z] ❌ ERROR getting price for ATOM: Invalid JSON: Unauthorized
+
+[2026-05-12T02:38:56.670Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T02:38:56.774Z] ❌ ERROR getting price for DOGE: Invalid JSON: Unauthorized
+
+[2026-05-12T02:38:58.775Z] 
+✅ Cycle complete. Next run in 60 minutes.
+ecking ATOM ━━━
 [2026-05-11T15:42:20.197Z] 💰 Current Price: $2.00
 [2026-05-11T15:42:20.322Z] ❌ ERROR fetching candles for ATOM: HTTP 401: Unauthorized
 
@@ -1440,45 +1442,84 @@ complete. Next run in 60 minutes.
 
 [2026-05-11T23:42:24.911Z] 
 ✅ Cycle complete. Next run in 60 minutes.
-0\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
-[2026-05-11T05:44:42.057Z] 
+[2026-05-12T00:42:13.690Z] 
+🔄 Cycle: 2026-05-12T00:42:13.690Z
+[2026-05-12T00:42:13.690Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T00:42:13.981Z] 💰 Current Price: $97.44
+[2026-05-12T00:42:14.072Z] ❌ ERROR fetching candles for SOL: HTTP 401: Unauthorized
+
+[2026-05-12T00:42:16.076Z] 
 ━━━ Checking ETH ━━━
-[2026-05-11T05:44:42.193Z] 💰 Current Price: $2333.89
-[2026-05-11T05:44:42.295Z] ❌ ERROR fetching candles for ETH: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
-[2026-05-11T05:44:44.296Z] 
+[2026-05-12T00:42:16.190Z] 💰 Current Price: $2333.72
+[2026-05-12T00:42:16.294Z] ❌ ERROR fetching candles for ETH: HTTP 401: Unauthorized
+
+[2026-05-12T00:42:18.295Z] 
 ━━━ Checking BTC ━━━
-[2026-05-11T05:44:44.445Z] 💰 Current Price: $80769.72
-[2026-05-11T05:44:44.682Z] ❌ ERROR fetching candles for BTC: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
-[2026-05-11T05:44:46.683Z] 
+[2026-05-12T00:42:18.469Z] 💰 Current Price: $81513.06
+[2026-05-12T00:42:18.561Z] ❌ ERROR fetching candles for BTC: HTTP 401: Unauthorized
+
+[2026-05-12T00:42:20.562Z] 
 ━━━ Checking ATOM ━━━
-[2026-05-11T05:44:46.816Z] 💰 Current Price: $2.01
-[2026-05-11T05:44:46.936Z] ❌ ERROR fetching candles for ATOM: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
-[2026-05-11T05:44:48.938Z] 
+[2026-05-12T00:42:20.681Z] 💰 Current Price: $2.04
+[2026-05-12T00:42:20.776Z] ❌ ERROR fetching candles for ATOM: HTTP 401: Unauthorized
+
+[2026-05-12T00:42:22.776Z] 
 ━━━ Checking DOGE ━━━
-[2026-05-11T05:44:49.061Z] 💰 Current Price: $0.11
-[2026-05-11T05:44:49.265Z] ❌ ERROR fet[2026-05-11T06:43:46.877Z] 
-🔄 Cycle: 2026-05-11T06:43:46.877Z
-[2026-05-11T06:43:46.879Z] 
+[2026-05-12T00:42:23.030Z] 💰 Current Price: $0.11
+[2026-05-12T00:42:23.113Z] ❌ ERROR fetching candles for DOGE: HTTP 401: Unauthorized
+
+[2026-05-12T00:42:25.114Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T01:42:13.702Z] 
+🔄 Cycle: 2026-05-12T01:42:13.702Z
+[2026-05-12T01:42:13.705Z] 
 ━━━ Checking SOL ━━━
-[2026-05-11T06:43:47.165Z] 💰 Current Price: $95.53
-[2026-05-11T06:43:47.275Z] ❌ ERROR fetching candles for SOL: HTTP 400: {"error":"unknown","error_d[2026-05-11T06:44:39.800Z] 
-🔄 Cycle: 2026-05-11T06:44:39.800Z
-[2026-05-11T06:44:39.801Z] 
-━━━ Checking SOL ━━━
-[2026-05-11T06:44:40.044Z] 💰 Current Price: $95.57
-[2026-05-11T06:44:40.188Z] ❌ ERROR fetching candles for SOL: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
-[2026-05-11T06:44:42.190Z] 
+[2026-05-12T01:42:13.966Z] 💰 Current Price: $95.70
+[2026-05-12T01:42:14.062Z] ❌ ERROR fetching candles for SOL: HTTP 401: Unauthorized
+
+[2026-05-12T01:42:16.064Z] 
 ━━━ Checking ETH ━━━
-[2026-05-11T06:44:42.322Z] 💰 Current Price: $2332.38
-[2026-05-11T06:44:42.445Z] ❌ ERROR fetching candles for ETH: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
-[2026-05-11T06:44:44.446Z] 
+[2026-05-12T01:42:16.188Z] 💰 Current Price: $2299.99
+[2026-05-12T01:42:16.285Z] ❌ ERROR fetching candles for ETH: HTTP 401: Unauthorized
+
+[2026-05-12T01:42:18.285Z] 
 ━━━ Checking BTC ━━━
-[2026-05-11T06:44:44.572Z] 💰 Current Price: $80809.46
-[2026-05-11T06:44:44.684Z] ❌ ERROR fetching candles for BTC: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
-[2026-05-11T06:44:46.685Z] 
+[2026-05-12T01:42:18.410Z] 💰 Current Price: $80787.65
+[2026-05-12T01:42:18.517Z] ❌ ERROR fetching candles for BTC: HTTP 401: Unauthorized
+
+[2026-05-12T01:42:20.518Z] 
 ━━━ Checking ATOM ━━━
-[2026-05-11T06:44:46.799Z] 💰 Current Price: $2.01
-[2026-05-11T06:44:46.944Z] ❌ ERROR fetching candles for ATOM: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T01:42:20.649Z] 💰 Current Price: $2.01
+[2026-05-12T01:42:20.751Z] ❌ ERROR fetching candles for ATOM: HTTP 401: Unauthorized
+
+[2026-05-12T01:42:22.751Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T01:42:22.872Z] 💰 Current Price: $0.11
+[2026-05-12T01:42:22.974Z] ❌ ERROR fetching candles for DOGE: HTTP 401: Unauthorized
+
+[2026-05-12T01:42:24.975Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T02:42:13.803Z] 
+🔄 Cycle: 2026-05-12T02:42:13.803Z
+[2026-05-12T02:42:13.805Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T02:42:15.114Z] ❌ ERROR getting price for SOL: fetch failed
+[2026-05-12T02:42:17.116Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T02:42:17.657Z] ❌ ERROR getting price for ETH: fetch failed
+[2026-05-12T02:42:19.659Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T02:42:20.180Z] ❌ ERROR getting price for BTC: fetch failed
+[2026-05-12T02:42:22.182Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T02:42:22.697Z] ❌ ERROR getting price for ATOM: fetch failed
+[2026-05-12T02:42:24.699Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T02:42:25.209Z] ❌ ERROR getting price for DOGE: fetch failed
+[2026-05-12T02:42:27.211Z] 
+✅ Cycle complete. Next run in 60 minutes.
+00\" is not a valid value"}
 [2026-05-11T06:44:48.945Z] 
 ━━━ Checking DOGE ━━━
 [2026-05-11T06:44:49.069Z] 💰 Current Price: $0.11
@@ -1895,96 +1936,85 @@ complete. Next run in 60 minutes.
 [2026-05-11T23:44:48.163Z] 
 ━━━ Checking ATOM ━━━
 [2026-05-11T23:44:48.320Z] 💰 Current Price: $2.05
-[2026-05-11T23:44:48.433Z] ❌ ERROR fetching candles for ATOM: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
-[2026-05-11T23:44:50.434Z] 
-━━━ Checking DOGE ━━━
-[2026-05-11T23:44:50.579Z] 💰 Current Price: $0.11
-[2026-05-11T23:44:50.683Z] ❌ ERROR fetching candles for DOGE: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
-[2026-05-11T23:44:52.684Z] 
-✅ Cycle complete. Next run in 60 minutes.
-6-05-11T11:45:42.609Z] 📍 Position: 87.03% of range
-[2026-05-11T11:45:42.609Z] 📈 Trend: UPTREND
-[2026-05-11T11:45:42.609Z] ✅ SELL SIGNAL: Price in sell zone, UPTREND confirmed (range play)
-[2026-05-11T11:45:44.612Z] 
-━━━ Checking ETH ━━━
-[2026-05-11T11:45:44.725Z] 💰 Current Price: $2334.42
-[2026-05-11T11:45:44.926Z] 📊 30-Day Range: $2267.34 — $2689.42
-[2026-05-11T11:45:44.928Z] 🟢 Buy Zone: $2267.34 — $2393.96
-[2026-05-11T11:45:44.929Z] 🔴 Sell Zone: $2562.80 — $2689.42
-[2026-05-11T11:45:44.929Z] 📍 Position: 15.89% of range
-[2026-05-11T11:45:44.929Z] 📈 Trend: UPTREND
-[2026-05-11T11:45:44.929Z] ✅ BUY SIGNAL: Price in buy zone (15.89% of range)
-[2026-05-11T11:45:46.930Z] 
-━━━ Checking BTC ━━━
-[2026-05-11T11:45:47.070Z] 💰 Current Price: $81133.75
-[2026-05-11T11:45:47.196Z] 📊 30-Day Range: $76359.72 — $85750.92
-[2026-05-11T11:45:47.196Z] 🟢 Buy Zone: $76359.72 — $79177.08
-[2026-05-11T11:45:47.196Z] 🔴 Sell Zone: $82933.56 — $85750.92
-[2026-05-11T11:45:47.196Z] 📍 Position: 50.84% of range
-[2026-05-11T11:45:47.196Z] 📈 Trend: UPTREND
-[2026-05-11T11:45:47.196Z] ⏳ HOLD: Not in buy or sell zone
-[2026-05-11T11:45:49.197Z] 
-━━━ Checking ATOM ━━━
-[2026-05-11T11:45:49.380Z] 💰 Current Price: $2.04
-[2026-05-11T11:45:49.520Z] 📊 30-Day Range: $1.90 — $2.10
-[2026-05-11T11:45:49.520Z] 🟢 Buy Zone: $1.90 — $1.96
-[2026-05-11T11:45:49.521Z] 🔴 Sell Zone: $2.04 — $2.10
-[2026-05-11T11:45:49.521Z] 📍 Position: 71.50% of range
-[2026-05-11T11:45:49.521Z] 📈 Trend: UPTREND
-[2026-05-11T11:45:49.521Z] ✅ SELL SIGNAL: Price in sell zone, UPTREND confirmed (range play)
-[2026-05-11T11:45:51.521Z] 
-━━━ Checking DOGE ━━━
-[2026-05-11T11:45:51.773Z] 💰 Current Price: $0.11
-[2026-05-11T11:45:51.906Z] 📊 30-Day Range: $0.10 — $0.12
-[2026-05-11T11:45:51.906Z] 🟢 Buy Zone: $0.10 — $0.11
-[2026-05-11T11:45:51.906Z] 🔴 Sell Zone: $0.11 — $0.12
-[2026-05-11T11:45:51.906Z] 📍 Position: 50.50% of range
-[2026-05-11T11:45:51.907Z] 📈 Trend: DOWNTREND
-[2026-05-11T11:45:51.907Z] ⏸️  HOLD: In downtrend, waiting for buy zone to accumulate
-[2026-05-11T11:45:54.794Z] ⚠️ ERROR updating Google Sheet: The caller does not have permission
-[2026-05-11T11:45:54.796Z] 
-✅ Cycle complete. Next run in 60 minutes.
-[2026-05-11T12:45:42.319Z] 
-🔄 Cycle: 2026-05-11T12:45:42.319Z
-[2026-05-11T12:45:42.321Z] 
+[2026-05-11T23:44:48.433Z] ❌ ERROR fetching candles for ATOM: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\[2026-05-12T00:43:48.627Z] 
+🔄 Cycle: 2026-05-12T00:43:48.627Z
+[2026-05-12T00:43:48.628Z] 
 ━━━ Checking SOL ━━━
-[2026-05-11T12:45:42.664Z] 💰 Current Price: $95.05
-[2026-05-11T12:45:42.790Z] 📊 30-Day Range: $76.05 — $95.70
-[2026-05-11T12:45:42.790Z] 🟢 Buy Zone: $76.05 — $81.94
-[2026-05-11T12:45:42.790Z] 🔴 Sell Zone: $89.81 — $95.70
-[2026-05-11T12:45:42.790Z] 📍 Position: 96.69% of range
-[2026-05-11T12:45:42.790Z] 📈 Trend: DOWNTREND
-[2026-05-11T12:45:42.790Z] ⏸️  HOLD: Price in sell zone BUT DOWNTREND — NO SELL (never lose money)
-[2026-05-11T12:45:44.795Z] 
+[2026-05-12T00:43:48.897Z] 💰 Current Price: $97.40
+[2026-05-12T00:43:49.002Z] ❌ ERROR fetching candles for SOL: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"3600\" is not a valid value","message":"parsing field \"granularity\": \"3600\" is not a valid value"}
+[2026-05-12T00:43:51.004Z] 
+━━�[2026-05-12T00:44:41.171Z] 
+🔄 Cycle: 2026-05-12T00:44:41.171Z
+[2026-05-12T00:44:41.172Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T00:44:41.693Z] ❌ ERROR getting price for SOL: fetch failed
+[2026-05-12T00:44:43.696Z] 
 ━━━ Checking ETH ━━━
-[2026-05-11T12:45:44.967Z] 💰 Current Price: $2332.84
-[2026-05-11T12:45:45.122Z] 📊 30-Day Range: $2240.60 — $2423.69
-[2026-05-11T12:45:45.122Z] 🟢 Buy Zone: $2240.60 — $2295.53
-[2026-05-11T12:45:45.122Z] 🔴 Sell Zone: $2368.76 — $2423.69
-[2026-05-11T12:45:45.122Z] 📍 Position: 50.38% of range
-[2026-05-11T12:45:45.122Z] 📈 Trend: UPTREND
-[2026-05-11T12:45:45.122Z] ⏳ HOLD: Not in buy or sell zone
-[2026-05-11T12:45:47.123Z] 
+[2026-05-12T00:44:43.977Z] 💰 Current Price: $2331.90
+[2026-05-12T00:44:44.085Z] ❌ ERROR fetching candles for ETH: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T00:44:46.088Z] 
 ━━━ Checking BTC ━━━
-[2026-05-11T12:45:47.313Z] 💰 Current Price: $81158.54
-[2026-05-11T12:45:47.425Z] 📊 30-Day Range: $78348.29 — $92515.93
-[2026-05-11T12:45:47.426Z] 🟢 Buy Zone: $78348.29 — $82598.58
-[2026-05-11T12:45:47.426Z] 🔴 Sell Zone: $88265.64 — $92515.93
-[2026-05-11T12:45:47.426Z] 📍 Position: 19.84% of range
-[2026-05-11T12:45:47.426Z] 📈 Trend: UPTREND
-[2026-05-11T12:45:47.426Z] ✅ BUY SIGNAL: Price in buy zone (19.84% of range)
-[2026-05-11T12:45:49.427Z] 
+[2026-05-12T00:44:46.209Z] 💰 Current Price: $81476.76
+[2026-05-12T00:44:46.327Z] ❌ ERROR fetching candles for BTC: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T00:44:48.329Z] 
 ━━━ Checking ATOM ━━━
-[2026-05-11T12:45:49.607Z] 💰 Current Price: $2.03
-[2026-05-11T12:45:49.742Z] 📊 30-Day Range: $1.89 — $2.06
-[2026-05-11T12:45:49.742Z] 🟢 Buy Zone: $1.89 — $1.94
-[2026-05-11T12:45:49.742Z] 🔴 Sell Zone: $2.01 — $2.06
-[2026-05-11T12:45:49.742Z] 📍 Position: 81.76% of range
-[2026-05-11T12:45:49.742Z] 📈 Trend: UPTREND
-[2026-05-11T12:45:49.742Z] ✅ SELL SIGNAL: Price in sell zone, UPTREND confirmed (range play)
-[2026-05-11T12:45:51.743Z] 
+[2026-05-12T00:44:48.478Z] 💰 Current Price: $2.04
+[2026-05-12T00:44:48.599Z] ❌ ERROR fetching candles for ATOM: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T00:44:50.601Z] 
 ━━━ Checking DOGE ━━━
-[2026-05-11T12:45:51.884Z] 💰 Current Price: $0.11
+[2026-05-12T00:44:50.732Z] 💰 Current Price: $0.11
+[2026-05-12T00:44:50.840Z] ❌ ERROR fetching candles for DOGE: HTTP 400: {"er[2026-05-12T01:43:48.691Z] 
+🔄 Cycle: 2026-05-12T01:43:48.691Z
+[2026-05-12T01:43:48.692Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T01:43:48.987Z] 💰 Current Price: $95.87
+[2026-05-12T01:43:49.091Z] ❌ ERROR fetching candles for SOL:[2026-05-12T01:44:41.262Z] 
+🔄 Cycle: 2026-05-12T01:44:41.262Z
+[2026-05-12T01:44:41.263Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T01:44:41.581Z] 💰 Current Price: $96.05
+[2026-05-12T01:44:41.680Z] ❌ ERROR fetching candles for SOL: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T01:44:43.683Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T01:44:43.809Z] 💰 Current Price: $2307.07
+[2026-05-12T01:44:43.918Z] ❌ ERROR fetching candles for ETH: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T01:44:45.919Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T01:44:46.104Z] 💰 Current Price: $81009.09
+[2026-05-12T01:44:46.212Z] ❌ ERROR fetching candles for BTC: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T01:44:48.213Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T01:44:48.346Z] 💰 Current Price: $2.02
+[2026-05-12T01:44:48.458Z] ❌ ERROR fetching candles for ATOM: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T01:44:50.458Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T01:44:50.573Z] 💰 Current Price: $0.11
+[2026-05-12T01:44:50.678Z] ❌ ERROR fetching candles for DOGE: HTTP[2026-05-12T02:43:48.767Z] 
+🔄 Cycle: 2026-05-12T02:43:48.767Z
+[2026-05-12T02:43:48.768Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T02:43:49.299Z] ❌ ERROR getting price for SOL: fetch failed
+[2026-05-12T02:43:51.302Z] 
+━━━ Checking ETH �[2026-05-12T02:44:41.272Z] 
+🔄 Cycle: 2026-05-12T02:44:41.272Z
+[2026-05-12T02:44:41.273Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T02:44:41.792Z] ❌ ERROR getting price for SOL: fetch failed
+[2026-05-12T02:44:43.794Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T02:44:44.306Z] ❌ ERROR getting price for ETH: fetch failed
+[2026-05-12T02:44:46.308Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T02:44:46.823Z] ❌ ERROR getting price for BTC: fetch failed
+[2026-05-12T02:44:48.825Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T02:44:49.338Z] ❌ ERROR getting price for ATOM: fetch failed
+[2026-05-12T02:44:51.342Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T02:44:51.861Z] ❌ ERROR getting price for DOGE: fetch failed
+[2026-05-12T02:44:53.863Z] 
+✅ Cycle complete. Next run in 60 minutes.
+ent Price: $0.11
 [2026-05-11T12:45:52.022Z] 📊 30-Day Range: $0.09 — $0.11
 [2026-05-11T12:45:52.022Z] 🟢 Buy Zone: $0.09 — $0.10
 [2026-05-11T12:45:52.022Z] 🔴 Sell Zone: $0.10 — $0.11
@@ -2544,143 +2574,126 @@ complete. Next run in 60 minutes.
 [2026-05-11T23:45:55.432Z] ⚠️ ERROR updating Google Sheet: The caller does not have permission
 [2026-05-11T23:45:55.432Z] 
 ✅ Cycle complete. Next run in 60 minutes.
- not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
-[2026-05-10T14:44:49.753Z] 
-✅ Cycle complete. Next run in 60 minutes.
-[2026-05-10T14:45:40.371Z] 
-🔄 Cycle: 2026-05-10T14:45:40.371Z
-[2026-05-10T14:45:40.373Z] 
+[2026-05-12T00:45:43.272Z] 
+🔄 Cycle: 2026-05-12T00:45:43.272Z
+[2026-05-12T00:45:43.273Z] 
 ━━━ Checking SOL ━━━
-[2026-05-10T14:45:40.619Z] 💰 Current Price: $93.96
-[2026-05-10T14:45:40.734Z] 📊 30-Day Range: $88.09 — $95.24
-[2026-05-10T14:45:40.734Z] 🟢 Buy Zone: $88.09 — $90.23
-[2026-05-10T14:45:40.734Z] 🔴 Sell Zone: $93.09 — $95.24
-[2026-05-10T14:45:40.734Z] 📍 Position: 82.10% of range
-[2026-05-10T14:45:40.734Z] 📈 Trend: DOWNTREND
-[2026-05-10T14:45:40.734Z] ⏸️  HOLD: Price in sell zone BUT DOWNTREND — NO SELL (never lose money)
-[2026-05-10T14:45:42.737Z] 
+[2026-05-12T00:45:43.504Z] 💰 Current Price: $97.52
+[2026-05-12T00:45:43.630Z] 📊 30-Day Range: $96.37 — $108.85
+[2026-05-12T00:45:43.630Z] 🟢 Buy Zone: $96.37 — $100.11
+[2026-05-12T00:45:43.630Z] 🔴 Sell Zone: $105.11 — $108.85
+[2026-05-12T00:45:43.630Z] 📍 Position: 9.21% of range
+[2026-05-12T00:45:43.630Z] 📈 Trend: DOWNTREND
+[2026-05-12T00:45:43.630Z] ✅ BUY SIGNAL: Price in buy zone (9.21% of range)
+[2026-05-12T00:45:45.631Z] 
 ━━━ Checking ETH ━━━
-[2026-05-10T14:45:43.000Z] 💰 Current Price: $2331.31
-[2026-05-10T14:45:43.110Z] 📊 30-Day Range: $2287.55 — $2662.63
-[2026-05-10T14:45:43.110Z] 🟢 Buy Zone: $2287.55 — $2400.07
-[2026-05-10T14:45:43.110Z] 🔴 Sell Zone: $2550.11 — $2662.63
-[2026-05-10T14:45:43.110Z] 📍 Position: 11.67% of range
-[2026-05-10T14:45:43.110Z] 📈 Trend: UPTREND
-[2026-05-10T14:45:43.110Z] ✅ BUY SIGNAL: Price in buy zone (11.67% of range)
-[2026-05-10T14:45:45.111Z] 
+[2026-05-12T00:45:45.758Z] 💰 Current Price: $2333.64
+[2026-05-12T00:45:45.885Z] 📊 30-Day Range: $1991.53 — $2394.72
+[2026-05-12T00:45:45.885Z] 🟢 Buy Zone: $1991.53 — $2112.49
+[2026-05-12T00:45:45.885Z] 🔴 Sell Zone: $2273.76 — $2394.72
+[2026-05-12T00:45:45.885Z] 📍 Position: 84.85% of range
+[2026-05-12T00:45:45.885Z] 📈 Trend: UPTREND
+[2026-05-12T00:45:45.885Z] ✅ SELL SIGNAL: Price in sell zone, UPTREND confirmed (range play)
+[2026-05-12T00:45:47.885Z] 
 ━━━ Checking BTC ━━━
-[2026-05-10T14:45:45.233Z] 💰 Current Price: $80899.74
-[2026-05-10T14:45:45.363Z] 📊 30-Day Range: $77793.73 — $87013.48
-[2026-05-10T14:45:45.363Z] 🟢 Buy Zone: $77793.73 — $80559.65
-[2026-05-10T14:45:45.363Z] 🔴 Sell Zone: $84247.55 — $87013.48
-[2026-05-10T14:45:45.363Z] 📍 Position: 33.69% of range
-[2026-05-10T14:45:45.364Z] 📈 Trend: DOWNTREND
-[2026-05-10T14:45:45.364Z] ⏸️  HOLD: In downtrend, waiting for buy zone to accumulate
-[2026-05-10T14:45:47.364Z] 
+[2026-05-12T00:45:48.008Z] 💰 Current Price: $81547.73
+[2026-05-12T00:45:48.122Z] 📊 30-Day Range: $75325.57 — $84710.09
+[2026-05-12T00:45:48.122Z] 🟢 Buy Zone: $75325.57 — $78140.93
+[2026-05-12T00:45:48.122Z] 🔴 Sell Zone: $81894.73 — $84710.09
+[2026-05-12T00:45:48.122Z] 📍 Position: 66.30% of range
+[2026-05-12T00:45:48.122Z] 📈 Trend: UPTREND
+[2026-05-12T00:45:48.122Z] ⏳ HOLD: Not in buy or sell zone
+[2026-05-12T00:45:50.123Z] 
 ━━━ Checking ATOM ━━━
-[2026-05-10T14:45:47.488Z] 💰 Current Price: $1.94
-[2026-05-10T14:45:47.612Z] 📊 30-Day Range: $1.90 — $2.12
-[2026-05-10T14:45:47.613Z] 🟢 Buy Zone: $1.90 — $1.97
-[2026-05-10T14:45:47.613Z] 🔴 Sell Zone: $2.05 — $2.12
-[2026-05-10T14:45:47.613Z] 📍 Position: 20.00% of range
-[2026-05-10T14:45:47.613Z] 📈 Trend: DOWNTREND
-[2026-05-10T14:45:47.613Z] ✅ BUY SIGNAL: Price in buy zone (20.00% of range)
-[2026-05-10T14:45:49.613Z] 
+[2026-05-12T00:45:50.266Z] 💰 Current Price: $2.04
+[2026-05-12T00:45:50.390Z] 📊 30-Day Range: $1.83 — $2.05
+[2026-05-12T00:45:50.390Z] 🟢 Buy Zone: $1.83 — $1.90
+[2026-05-12T00:45:50.390Z] 🔴 Sell Zone: $1.98 — $2.05
+[2026-05-12T00:45:50.390Z] 📍 Position: 93.18% of range
+[2026-05-12T00:45:50.390Z] 📈 Trend: UPTREND
+[2026-05-12T00:45:50.390Z] ✅ SELL SIGNAL: Price in sell zone, UPTREND confirmed (range play)
+[2026-05-12T00:45:52.391Z] 
 ━━━ Checking DOGE ━━━
-[2026-05-10T14:45:49.744Z] 💰 Current Price: $0.11
-[2026-05-10T14:45:49.928Z] 📊 30-Day Range: $0.09 — $0.11
-[2026-05-10T14:45:49.928Z] 🟢 Buy Zone: $0.09 — $0.10
-[2026-05-10T14:45:49.928Z] 🔴 Sell Zone: $0.10 — $0.11
-[2026-05-10T14:45:49.928Z] 📍 Position: 91.25% of range
-[2026-05-10T14:45:49.928Z] 📈 Trend: UPTREND
-[2026-05-10T14:45:49.928Z] ✅ SELL SIGNAL: Price in sell zone, UPTREND confirmed (range play)
-[2026-05-10T14:45:52.840Z] ⚠️ ERROR updating Google Sheet: The caller does not have permission
-[2026-05-10T14:45:52.841Z] 
+[2026-05-12T00:45:52.534Z] 💰 Current Price: $0.11
+[2026-05-12T00:45:52.702Z] 📊 30-Day Range: $0.10 — $0.12
+[2026-05-12T00:45:52.702Z] 🟢 Buy Zone: $0.10 — $0.11
+[2026-05-12T00:45:52.702Z] 🔴 Sell Zone: $0.11 — $0.12
+[2026-05-12T00:45:52.702Z] 📍 Position: 57.60% of range
+[2026-05-12T00:45:52.702Z] 📈 Trend: UPTREND
+[2026-05-12T00:45:52.702Z] ⏳ HOLD: Not in buy or sell zone
+[2026-05-12T00:45:55.628Z] ⚠️ ERROR updating Google Sheet: The caller does not have permission
+[2026-05-12T00:45:55.629Z] 
 ✅ Cycle complete. Next run in 60 minutes.
-[2026-05-10T14:50:00.648Z] 
-🔄 Cycle: 2026-05-10T14:50:00.648Z
-[2026-05-10T14:50:00.651Z] 
-━━━ Checking ETH ━━━
-[2026-05-10T14:50:00.969Z] ❌ ERROR getting price for ETH: API Request (GET /products/ETH-USD): HTTP 401: Unauthorized
-
-[2026-05-10T14:50:01.971Z] 
-━━━ Checking BTC ━━━
-[2026-05-10T14:50:02.073Z] ❌ ERROR getting price for BTC: API Request (GET /products/BTC-USD): HTTP 401: Unauthorized
-
-[2026-05-10T14:50:03.074Z] 
-━━━ Checking ATOM ━━━
-[2026-05-10T14:50:03.178Z] ❌ ERROR getting price for ATOM: API Request (GET /products/ATOM-USD): HTTP 401: Unauthorized
-
-[2026-05-10T14:50:04.179Z] 
-━━━ Checking DOGE ━━━
-[2026-05-10T14:50:04.269Z] ❌ ERROR getting price for DOGE: API Request (GET /products/DOGE-USD): HTTP 401: Unauthorized
-
-[2026-05-10T14:50:05.269Z] 
-✅ Cycle complete. Next run in 60 minutes.
-[2026-05-10T15:38:45.132Z] 
-🔄 Cycle: 2026-05-10T15:38:45.132Z
-[2026-05-10T15:38:45.135Z] 
+[2026-05-12T01:45:43.373Z] 
+🔄 Cycle: 2026-05-12T01:45:43.373Z
+[2026-05-12T01:45:43.374Z] 
 ━━━ Checking SOL ━━━
-[2026-05-10T15:38:45.388Z] ❌ ERROR getting price for SOL: Invalid JSON: Unauthorized
-
-[2026-05-10T15:38:47.391Z] 
+[2026-05-12T01:45:43.662Z] 💰 Current Price: $96.01
+[2026-05-12T01:45:43.773Z] 📊 30-Day Range: $86.73 — $110.40
+[2026-05-12T01:45:43.773Z] 🟢 Buy Zone: $86.73 — $93.83
+[2026-05-12T01:45:43.773Z] 🔴 Sell Zone: $103.30 — $110.40
+[2026-05-12T01:45:43.773Z] 📍 Position: 39.21% of range
+[2026-05-12T01:45:43.773Z] 📈 Trend: UPTREND
+[2026-05-12T01:45:43.773Z] ⏳ HOLD: Not in buy or sell zone
+[2026-05-12T01:45:45.775Z] 
 ━━━ Checking ETH ━━━
-[2026-05-10T15:38:47.504Z] ❌ ERROR getting price for ETH: Invalid JSON: Unauthorized
-
-[2026-05-10T15:38:49.507Z] 
+[2026-05-12T01:45:45.890Z] 💰 Current Price: $2306.60
+[2026-05-12T01:45:46.005Z] 📊 30-Day Range: $2086.59 — $2326.61
+[2026-05-12T01:45:46.005Z] 🟢 Buy Zone: $2086.59 — $2158.60
+[2026-05-12T01:45:46.005Z] 🔴 Sell Zone: $2254.60 — $2326.61
+[2026-05-12T01:45:46.005Z] 📍 Position: 91.66% of range
+[2026-05-12T01:45:46.005Z] 📈 Trend: UPTREND
+[2026-05-12T01:45:46.005Z] ✅ SELL SIGNAL: Price in sell zone, UPTREND confirmed (range play)
+[2026-05-12T01:45:48.006Z] 
 ━━━ Checking BTC ━━━
-[2026-05-10T15:38:49.584Z] ❌ ERROR getting price for BTC: Invalid JSON: Unauthorized
-
-[2026-05-10T15:38:51.586Z] 
+[2026-05-12T01:45:48.129Z] 💰 Current Price: $81016.67
+[2026-05-12T01:45:48.259Z] 📊 30-Day Range: $76788.33 — $85238.69
+[2026-05-12T01:45:48.259Z] 🟢 Buy Zone: $76788.33 — $79323.44
+[2026-05-12T01:45:48.259Z] 🔴 Sell Zone: $82703.58 — $85238.69
+[2026-05-12T01:45:48.259Z] 📍 Position: 50.04% of range
+[2026-05-12T01:45:48.260Z] 📈 Trend: UPTREND
+[2026-05-12T01:45:48.260Z] ⏳ HOLD: Not in buy or sell zone
+[2026-05-12T01:45:50.260Z] 
 ━━━ Checking ATOM ━━━
-[2026-05-10T15:38:51.689Z] ❌ ERROR getting price for ATOM: Invalid JSON: Unauthorized
-
-[2026-05-10T15:38:53.691Z] 
+[2026-05-12T01:45:50.480Z] 💰 Current Price: $2.02
+[2026-05-12T01:45:50.601Z] 📊 30-Day Range: $2.02 — $2.45
+[2026-05-12T01:45:50.601Z] 🟢 Buy Zone: $2.02 — $2.15
+[2026-05-12T01:45:50.601Z] 🔴 Sell Zone: $2.32 — $2.45
+[2026-05-12T01:45:50.601Z] 📍 Position: 0.23% of range
+[2026-05-12T01:45:50.601Z] 📈 Trend: DOWNTREND
+[2026-05-12T01:45:50.601Z] ✅ BUY SIGNAL: Price in buy zone (0.23% of range)
+[2026-05-12T01:45:52.603Z] 
 ━━━ Checking DOGE ━━━
-[2026-05-10T15:38:53.795Z] ❌ ERROR getting price for DOGE: Invalid JSON: Unauthorized
-
-[2026-05-10T15:38:55.796Z] 
+[2026-05-12T01:45:52.733Z] 💰 Current Price: $0.11
+[2026-05-12T01:45:52.875Z] 📊 30-Day Range: $0.10 — $0.12
+[2026-05-12T01:45:52.876Z] 🟢 Buy Zone: $0.10 — $0.11
+[2026-05-12T01:45:52.876Z] 🔴 Sell Zone: $0.11 — $0.12
+[2026-05-12T01:45:52.876Z] 📍 Position: 51.20% of range
+[2026-05-12T01:45:52.876Z] 📈 Trend: NEUTRAL
+[2026-05-12T01:45:52.877Z] ⏳ HOLD: Not in buy or sell zone
+[2026-05-12T01:45:55.791Z] ⚠️ ERROR updating Google Sheet: The caller does not have permission
+[2026-05-12T01:45:55.791Z] 
 ✅ Cycle complete. Next run in 60 minutes.
-[2026-05-10T15:40:14.533Z] 
-🔄 Cycle: 2026-05-10T15:40:14.533Z
-[2026-05-10T15:40:14.533Z] 
+[2026-05-12T02:45:43.391Z] 
+🔄 Cycle: 2026-05-12T02:45:43.391Z
+[2026-05-12T02:45:43.392Z] 
 ━━━ Checking SOL ━━━
-[2026-05-10T15:40:14.711Z] ❌ ERROR getting price for SOL: HTTP 401: Unauthorized
-
-[2026-05-10T15:40:16.714Z] 
+[2026-05-12T02:45:44.415Z] ❌ ERROR getting price for SOL: fetch failed
+[2026-05-12T02:45:46.418Z] 
 ━━━ Checking ETH ━━━
-[2026-05-10T15:40:16.861Z] ❌ ERROR getting price for ETH: HTTP 401: Unauthorized
-
-[2026-05-10T15:40:18.861Z] 
+[2026-05-12T02:45:46.940Z] ❌ ERROR getting price for ETH: fetch failed
+[2026-05-12T02:45:48.943Z] 
 ━━━ Checking BTC ━━━
-[2026-05-10T15:40:18.943Z] ❌ ERROR getting price for BTC: HTTP 401: Unauthorized
-
-[2026-05-10T15:40:20.943Z] 
+[2026-05-12T02:45:49.464Z] ❌ ERROR getting price for BTC: fetch failed
+[2026-05-12T02:45:51.466Z] 
 ━━━ Checking ATOM ━━━
-[2026-05-10T15:40:21.028Z] ❌ ERROR getting price for ATOM: HTTP 401: Unauthorized
-
-[2026-05-10T15:40:23.029Z] 
+[2026-05-12T02:45:51.980Z] ❌ ERROR getting price for ATOM: fetch failed
+[2026-05-12T02:45:53.982Z] 
 ━━━ Checking DOGE ━━━
-[2026-05-10T15:40:23.131Z] ❌ ERROR getting price for DOGE: HTTP 401: Unauthorized
-
-[2026-05-10T15:40:25.132Z] 
+[2026-05-12T02:45:54.504Z] ❌ ERROR getting price for DOGE: fetch failed
+[2026-05-12T02:45:56.506Z] 
 ✅ Cycle complete. Next run in 60 minutes.
-[2026-05-10T15:42:11.298Z] 
-🔄 Cycle: 2026-05-10T15:42:11.297Z
-[2026-05-10T15:42:11.300Z] 
-━━━ Checking SOL ━━━
-[2026-05-10T15:42:11.797Z] 💰 Current Price: $94.49
-[2026-05-10T15:42:11.884Z] ❌ ERROR fetching candles for SOL: HTTP 401: Unauthorized
-
-[2026-05-10T15:42:13.886Z] 
-━━━ Checking ETH ━━━
-[2026-05-10T15:42:13.995Z] 💰 Current Price: $2341.76
-[2026-05-10T15:42:14.099Z] ❌ ERROR fetching candles for ETH: HTTP 401: Unauthorized
-
-[2026-05-10T15:42:16.100Z] 
-━━━ Checking BTC ━━━
-[2026-05-10T15:42:16.222Z] 💰 Current Price: $81074.34
-[2026-05-10T15:42:16.300Z] ❌ ERROR fetching candles for BTC: HTTP 401: Unauthorized
+:16.300Z] ❌ ERROR fetching candles for BTC: HTTP 401: Unauthorized
 
 [2026-05-10T15:42:18.300Z] 
 ━━━ Checking ATOM ━━━
@@ -9069,4 +9082,504 @@ complete. Next run in 60 minutes.
 [2026-05-12T00:38:57.009Z] ❌ ERROR getting price for DOGE: Invalid JSON: Unauthorized
 
 [2026-05-12T00:38:59.012Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T00:40:17.216Z] 
+🔄 Cycle: 2026-05-12T00:40:17.216Z
+[2026-05-12T00:40:17.218Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T00:40:17.410Z] ❌ ERROR getting price for SOL: HTTP 401: Unauthorized
+
+[2026-05-12T00:40:19.412Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T00:40:19.511Z] ❌ ERROR getting price for ETH: HTTP 401: Unauthorized
+
+[2026-05-12T00:40:21.512Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T00:40:21.600Z] ❌ ERROR getting price for BTC: HTTP 401: Unauthorized
+
+[2026-05-12T00:40:23.600Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T00:40:23.711Z] ❌ ERROR getting price for ATOM: HTTP 401: Unauthorized
+
+[2026-05-12T00:40:25.712Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T00:40:25.830Z] ❌ ERROR getting price for DOGE: HTTP 401: Unauthorized
+
+[2026-05-12T00:40:27.830Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T00:42:13.690Z] 
+🔄 Cycle: 2026-05-12T00:42:13.690Z
+[2026-05-12T00:42:13.690Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T00:42:13.981Z] 💰 Current Price: $97.44
+[2026-05-12T00:42:14.072Z] ❌ ERROR fetching candles for SOL: HTTP 401: Unauthorized
+
+[2026-05-12T00:42:16.076Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T00:42:16.190Z] 💰 Current Price: $2333.72
+[2026-05-12T00:42:16.294Z] ❌ ERROR fetching candles for ETH: HTTP 401: Unauthorized
+
+[2026-05-12T00:42:18.295Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T00:42:18.469Z] 💰 Current Price: $81513.06
+[2026-05-12T00:42:18.561Z] ❌ ERROR fetching candles for BTC: HTTP 401: Unauthorized
+
+[2026-05-12T00:42:20.562Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T00:42:20.681Z] 💰 Current Price: $2.04
+[2026-05-12T00:42:20.776Z] ❌ ERROR fetching candles for ATOM: HTTP 401: Unauthorized
+
+[2026-05-12T00:42:22.776Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T00:42:23.030Z] 💰 Current Price: $0.11
+[2026-05-12T00:42:23.113Z] ❌ ERROR fetching candles for DOGE: HTTP 401: Unauthorized
+
+[2026-05-12T00:42:25.114Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T00:43:48.627Z] 
+🔄 Cycle: 2026-05-12T00:43:48.627Z
+[2026-05-12T00:43:48.628Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T00:43:48.897Z] 💰 Current Price: $97.40
+[2026-05-12T00:43:49.002Z] ❌ ERROR fetching candles for SOL: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"3600\" is not a valid value","message":"parsing field \"granularity\": \"3600\" is not a valid value"}
+[2026-05-12T00:43:51.004Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T00:43:51.125Z] 💰 Current Price: $2332.35
+[2026-05-12T00:43:51.318Z] ❌ ERROR fetching candles for ETH: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"3600\" is not a valid value","message":"parsing field \"granularity\": \"3600\" is not a valid value"}
+[2026-05-12T00:43:53.320Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T00:43:53.432Z] 💰 Current Price: $81493.99
+[2026-05-12T00:43:53.546Z] ❌ ERROR fetching candles for BTC: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"3600\" is not a valid value","message":"parsing field \"granularity\": \"3600\" is not a valid value"}
+[2026-05-12T00:43:55.546Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T00:43:55.678Z] 💰 Current Price: $2.04
+[2026-05-12T00:43:55.778Z] ❌ ERROR fetching candles for ATOM: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"3600\" is not a valid value","message":"parsing field \"granularity\": \"3600\" is not a valid value"}
+[2026-05-12T00:43:57.779Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T00:43:57.884Z] 💰 Current Price: $0.11
+[2026-05-12T00:43:57.997Z] ❌ ERROR fetching candles for DOGE: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"3600\" is not a valid value","message":"parsing field \"granularity\": \"3600\" is not a valid value"}
+[2026-05-12T00:43:59.998Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T00:44:41.171Z] 
+🔄 Cycle: 2026-05-12T00:44:41.171Z
+[2026-05-12T00:44:41.172Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T00:44:41.693Z] ❌ ERROR getting price for SOL: fetch failed
+[2026-05-12T00:44:43.696Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T00:44:43.977Z] 💰 Current Price: $2331.90
+[2026-05-12T00:44:44.085Z] ❌ ERROR fetching candles for ETH: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T00:44:46.088Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T00:44:46.209Z] 💰 Current Price: $81476.76
+[2026-05-12T00:44:46.327Z] ❌ ERROR fetching candles for BTC: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T00:44:48.329Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T00:44:48.478Z] 💰 Current Price: $2.04
+[2026-05-12T00:44:48.599Z] ❌ ERROR fetching candles for ATOM: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T00:44:50.601Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T00:44:50.732Z] 💰 Current Price: $0.11
+[2026-05-12T00:44:50.840Z] ❌ ERROR fetching candles for DOGE: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T00:44:52.840Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T00:45:43.272Z] 
+🔄 Cycle: 2026-05-12T00:45:43.272Z
+[2026-05-12T00:45:43.273Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T00:45:43.504Z] 💰 Current Price: $97.52
+[2026-05-12T00:45:43.630Z] 📊 30-Day Range: $96.37 — $108.85
+[2026-05-12T00:45:43.630Z] 🟢 Buy Zone: $96.37 — $100.11
+[2026-05-12T00:45:43.630Z] 🔴 Sell Zone: $105.11 — $108.85
+[2026-05-12T00:45:43.630Z] 📍 Position: 9.21% of range
+[2026-05-12T00:45:43.630Z] 📈 Trend: DOWNTREND
+[2026-05-12T00:45:43.630Z] ✅ BUY SIGNAL: Price in buy zone (9.21% of range)
+[2026-05-12T00:45:45.631Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T00:45:45.758Z] 💰 Current Price: $2333.64
+[2026-05-12T00:45:45.885Z] 📊 30-Day Range: $1991.53 — $2394.72
+[2026-05-12T00:45:45.885Z] 🟢 Buy Zone: $1991.53 — $2112.49
+[2026-05-12T00:45:45.885Z] 🔴 Sell Zone: $2273.76 — $2394.72
+[2026-05-12T00:45:45.885Z] 📍 Position: 84.85% of range
+[2026-05-12T00:45:45.885Z] 📈 Trend: UPTREND
+[2026-05-12T00:45:45.885Z] ✅ SELL SIGNAL: Price in sell zone, UPTREND confirmed (range play)
+[2026-05-12T00:45:47.885Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T00:45:48.008Z] 💰 Current Price: $81547.73
+[2026-05-12T00:45:48.122Z] 📊 30-Day Range: $75325.57 — $84710.09
+[2026-05-12T00:45:48.122Z] 🟢 Buy Zone: $75325.57 — $78140.93
+[2026-05-12T00:45:48.122Z] 🔴 Sell Zone: $81894.73 — $84710.09
+[2026-05-12T00:45:48.122Z] 📍 Position: 66.30% of range
+[2026-05-12T00:45:48.122Z] 📈 Trend: UPTREND
+[2026-05-12T00:45:48.122Z] ⏳ HOLD: Not in buy or sell zone
+[2026-05-12T00:45:50.123Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T00:45:50.266Z] 💰 Current Price: $2.04
+[2026-05-12T00:45:50.390Z] 📊 30-Day Range: $1.83 — $2.05
+[2026-05-12T00:45:50.390Z] 🟢 Buy Zone: $1.83 — $1.90
+[2026-05-12T00:45:50.390Z] 🔴 Sell Zone: $1.98 — $2.05
+[2026-05-12T00:45:50.390Z] 📍 Position: 93.18% of range
+[2026-05-12T00:45:50.390Z] 📈 Trend: UPTREND
+[2026-05-12T00:45:50.390Z] ✅ SELL SIGNAL: Price in sell zone, UPTREND confirmed (range play)
+[2026-05-12T00:45:52.391Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T00:45:52.534Z] 💰 Current Price: $0.11
+[2026-05-12T00:45:52.702Z] 📊 30-Day Range: $0.10 — $0.12
+[2026-05-12T00:45:52.702Z] 🟢 Buy Zone: $0.10 — $0.11
+[2026-05-12T00:45:52.702Z] 🔴 Sell Zone: $0.11 — $0.12
+[2026-05-12T00:45:52.702Z] 📍 Position: 57.60% of range
+[2026-05-12T00:45:52.702Z] 📈 Trend: UPTREND
+[2026-05-12T00:45:52.702Z] ⏳ HOLD: Not in buy or sell zone
+[2026-05-12T00:45:55.628Z] ⚠️ ERROR updating Google Sheet: The caller does not have permission
+[2026-05-12T00:45:55.629Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T00:50:03.269Z] 
+🔄 Cycle: 2026-05-12T00:50:03.269Z
+[2026-05-12T00:50:03.271Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T00:50:03.524Z] ❌ ERROR getting price for ETH: API Request (GET /products/ETH-USD): HTTP 401: Unauthorized
+
+[2026-05-12T00:50:04.527Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T00:50:04.621Z] ❌ ERROR getting price for BTC: API Request (GET /products/BTC-USD): HTTP 401: Unauthorized
+
+[2026-05-12T00:50:05.623Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T00:50:05.736Z] ❌ ERROR getting price for ATOM: API Request (GET /products/ATOM-USD): HTTP 401: Unauthorized
+
+[2026-05-12T00:50:06.737Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T00:50:06.849Z] ❌ ERROR getting price for DOGE: API Request (GET /products/DOGE-USD): HTTP 401: Unauthorized
+
+[2026-05-12T00:50:07.849Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T01:38:48.025Z] 
+🔄 Cycle: 2026-05-12T01:38:48.025Z
+[2026-05-12T01:38:48.029Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T01:38:48.386Z] ❌ ERROR getting price for SOL: Invalid JSON: Unauthorized
+
+[2026-05-12T01:38:50.389Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T01:38:50.525Z] ❌ ERROR getting price for ETH: Invalid JSON: Unauthorized
+
+[2026-05-12T01:38:52.528Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T01:38:52.641Z] ❌ ERROR getting price for BTC: Invalid JSON: Unauthorized
+
+[2026-05-12T01:38:54.644Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T01:38:54.736Z] ❌ ERROR getting price for ATOM: Invalid JSON: Unauthorized
+
+[2026-05-12T01:38:56.739Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T01:38:56.846Z] ❌ ERROR getting price for DOGE: Invalid JSON: Unauthorized
+
+[2026-05-12T01:38:58.847Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T01:40:17.318Z] 
+🔄 Cycle: 2026-05-12T01:40:17.318Z
+[2026-05-12T01:40:17.319Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T01:40:17.561Z] ❌ ERROR getting price for SOL: HTTP 401: Unauthorized
+
+[2026-05-12T01:40:19.564Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T01:40:19.698Z] ❌ ERROR getting price for ETH: HTTP 401: Unauthorized
+
+[2026-05-12T01:40:21.699Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T01:40:21.839Z] ❌ ERROR getting price for BTC: HTTP 401: Unauthorized
+
+[2026-05-12T01:40:23.840Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T01:40:23.950Z] ❌ ERROR getting price for ATOM: HTTP 401: Unauthorized
+
+[2026-05-12T01:40:25.951Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T01:40:26.039Z] ❌ ERROR getting price for DOGE: HTTP 401: Unauthorized
+
+[2026-05-12T01:40:28.040Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T01:42:13.702Z] 
+🔄 Cycle: 2026-05-12T01:42:13.702Z
+[2026-05-12T01:42:13.705Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T01:42:13.966Z] 💰 Current Price: $95.70
+[2026-05-12T01:42:14.062Z] ❌ ERROR fetching candles for SOL: HTTP 401: Unauthorized
+
+[2026-05-12T01:42:16.064Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T01:42:16.188Z] 💰 Current Price: $2299.99
+[2026-05-12T01:42:16.285Z] ❌ ERROR fetching candles for ETH: HTTP 401: Unauthorized
+
+[2026-05-12T01:42:18.285Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T01:42:18.410Z] 💰 Current Price: $80787.65
+[2026-05-12T01:42:18.517Z] ❌ ERROR fetching candles for BTC: HTTP 401: Unauthorized
+
+[2026-05-12T01:42:20.518Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T01:42:20.649Z] 💰 Current Price: $2.01
+[2026-05-12T01:42:20.751Z] ❌ ERROR fetching candles for ATOM: HTTP 401: Unauthorized
+
+[2026-05-12T01:42:22.751Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T01:42:22.872Z] 💰 Current Price: $0.11
+[2026-05-12T01:42:22.974Z] ❌ ERROR fetching candles for DOGE: HTTP 401: Unauthorized
+
+[2026-05-12T01:42:24.975Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T01:43:48.691Z] 
+🔄 Cycle: 2026-05-12T01:43:48.691Z
+[2026-05-12T01:43:48.692Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T01:43:48.987Z] 💰 Current Price: $95.87
+[2026-05-12T01:43:49.091Z] ❌ ERROR fetching candles for SOL: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"3600\" is not a valid value","message":"parsing field \"granularity\": \"3600\" is not a valid value"}
+[2026-05-12T01:43:51.094Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T01:43:51.212Z] 💰 Current Price: $2304.39
+[2026-05-12T01:43:51.325Z] ❌ ERROR fetching candles for ETH: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"3600\" is not a valid value","message":"parsing field \"granularity\": \"3600\" is not a valid value"}
+[2026-05-12T01:43:53.326Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T01:43:53.471Z] 💰 Current Price: $80901.00
+[2026-05-12T01:43:53.588Z] ❌ ERROR fetching candles for BTC: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"3600\" is not a valid value","message":"parsing field \"granularity\": \"3600\" is not a valid value"}
+[2026-05-12T01:43:55.589Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T01:43:55.726Z] 💰 Current Price: $2.02
+[2026-05-12T01:43:55.855Z] ❌ ERROR fetching candles for ATOM: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"3600\" is not a valid value","message":"parsing field \"granularity\": \"3600\" is not a valid value"}
+[2026-05-12T01:43:57.857Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T01:43:57.971Z] 💰 Current Price: $0.11
+[2026-05-12T01:43:58.089Z] ❌ ERROR fetching candles for DOGE: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"3600\" is not a valid value","message":"parsing field \"granularity\": \"3600\" is not a valid value"}
+[2026-05-12T01:44:00.090Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T01:44:41.262Z] 
+🔄 Cycle: 2026-05-12T01:44:41.262Z
+[2026-05-12T01:44:41.263Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T01:44:41.581Z] 💰 Current Price: $96.05
+[2026-05-12T01:44:41.680Z] ❌ ERROR fetching candles for SOL: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T01:44:43.683Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T01:44:43.809Z] 💰 Current Price: $2307.07
+[2026-05-12T01:44:43.918Z] ❌ ERROR fetching candles for ETH: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T01:44:45.919Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T01:44:46.104Z] 💰 Current Price: $81009.09
+[2026-05-12T01:44:46.212Z] ❌ ERROR fetching candles for BTC: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T01:44:48.213Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T01:44:48.346Z] 💰 Current Price: $2.02
+[2026-05-12T01:44:48.458Z] ❌ ERROR fetching candles for ATOM: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T01:44:50.458Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T01:44:50.573Z] 💰 Current Price: $0.11
+[2026-05-12T01:44:50.678Z] ❌ ERROR fetching candles for DOGE: HTTP 400: {"error":"unknown","error_details":"parsing field \"granularity\": \"86400\" is not a valid value","message":"parsing field \"granularity\": \"86400\" is not a valid value"}
+[2026-05-12T01:44:52.679Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T01:45:43.373Z] 
+🔄 Cycle: 2026-05-12T01:45:43.373Z
+[2026-05-12T01:45:43.374Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T01:45:43.662Z] 💰 Current Price: $96.01
+[2026-05-12T01:45:43.773Z] 📊 30-Day Range: $86.73 — $110.40
+[2026-05-12T01:45:43.773Z] 🟢 Buy Zone: $86.73 — $93.83
+[2026-05-12T01:45:43.773Z] 🔴 Sell Zone: $103.30 — $110.40
+[2026-05-12T01:45:43.773Z] 📍 Position: 39.21% of range
+[2026-05-12T01:45:43.773Z] 📈 Trend: UPTREND
+[2026-05-12T01:45:43.773Z] ⏳ HOLD: Not in buy or sell zone
+[2026-05-12T01:45:45.775Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T01:45:45.890Z] 💰 Current Price: $2306.60
+[2026-05-12T01:45:46.005Z] 📊 30-Day Range: $2086.59 — $2326.61
+[2026-05-12T01:45:46.005Z] 🟢 Buy Zone: $2086.59 — $2158.60
+[2026-05-12T01:45:46.005Z] 🔴 Sell Zone: $2254.60 — $2326.61
+[2026-05-12T01:45:46.005Z] 📍 Position: 91.66% of range
+[2026-05-12T01:45:46.005Z] 📈 Trend: UPTREND
+[2026-05-12T01:45:46.005Z] ✅ SELL SIGNAL: Price in sell zone, UPTREND confirmed (range play)
+[2026-05-12T01:45:48.006Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T01:45:48.129Z] 💰 Current Price: $81016.67
+[2026-05-12T01:45:48.259Z] 📊 30-Day Range: $76788.33 — $85238.69
+[2026-05-12T01:45:48.259Z] 🟢 Buy Zone: $76788.33 — $79323.44
+[2026-05-12T01:45:48.259Z] 🔴 Sell Zone: $82703.58 — $85238.69
+[2026-05-12T01:45:48.259Z] 📍 Position: 50.04% of range
+[2026-05-12T01:45:48.260Z] 📈 Trend: UPTREND
+[2026-05-12T01:45:48.260Z] ⏳ HOLD: Not in buy or sell zone
+[2026-05-12T01:45:50.260Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T01:45:50.480Z] 💰 Current Price: $2.02
+[2026-05-12T01:45:50.601Z] 📊 30-Day Range: $2.02 — $2.45
+[2026-05-12T01:45:50.601Z] 🟢 Buy Zone: $2.02 — $2.15
+[2026-05-12T01:45:50.601Z] 🔴 Sell Zone: $2.32 — $2.45
+[2026-05-12T01:45:50.601Z] 📍 Position: 0.23% of range
+[2026-05-12T01:45:50.601Z] 📈 Trend: DOWNTREND
+[2026-05-12T01:45:50.601Z] ✅ BUY SIGNAL: Price in buy zone (0.23% of range)
+[2026-05-12T01:45:52.603Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T01:45:52.733Z] 💰 Current Price: $0.11
+[2026-05-12T01:45:52.875Z] 📊 30-Day Range: $0.10 — $0.12
+[2026-05-12T01:45:52.876Z] 🟢 Buy Zone: $0.10 — $0.11
+[2026-05-12T01:45:52.876Z] 🔴 Sell Zone: $0.11 — $0.12
+[2026-05-12T01:45:52.876Z] 📍 Position: 51.20% of range
+[2026-05-12T01:45:52.876Z] 📈 Trend: NEUTRAL
+[2026-05-12T01:45:52.877Z] ⏳ HOLD: Not in buy or sell zone
+[2026-05-12T01:45:55.791Z] ⚠️ ERROR updating Google Sheet: The caller does not have permission
+[2026-05-12T01:45:55.791Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T01:50:03.272Z] 
+🔄 Cycle: 2026-05-12T01:50:03.272Z
+[2026-05-12T01:50:03.274Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T01:50:03.492Z] ❌ ERROR getting price for ETH: API Request (GET /products/ETH-USD): HTTP 401: Unauthorized
+
+[2026-05-12T01:50:04.493Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T01:50:04.596Z] ❌ ERROR getting price for BTC: API Request (GET /products/BTC-USD): HTTP 401: Unauthorized
+
+[2026-05-12T01:50:05.598Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T01:50:05.710Z] ❌ ERROR getting price for ATOM: API Request (GET /products/ATOM-USD): HTTP 401: Unauthorized
+
+[2026-05-12T01:50:06.711Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T01:50:06.804Z] ❌ ERROR getting price for DOGE: API Request (GET /products/DOGE-USD): HTTP 401: Unauthorized
+
+[2026-05-12T01:50:07.806Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T02:38:48.031Z] 
+🔄 Cycle: 2026-05-12T02:38:48.031Z
+[2026-05-12T02:38:48.034Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T02:38:48.324Z] ❌ ERROR getting price for SOL: Invalid JSON: Unauthorized
+
+[2026-05-12T02:38:50.327Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T02:38:50.417Z] ❌ ERROR getting price for ETH: Invalid JSON: Unauthorized
+
+[2026-05-12T02:38:52.420Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T02:38:52.556Z] ❌ ERROR getting price for BTC: Invalid JSON: Unauthorized
+
+[2026-05-12T02:38:54.558Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T02:38:54.667Z] ❌ ERROR getting price for ATOM: Invalid JSON: Unauthorized
+
+[2026-05-12T02:38:56.670Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T02:38:56.774Z] ❌ ERROR getting price for DOGE: Invalid JSON: Unauthorized
+
+[2026-05-12T02:38:58.775Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T02:40:17.418Z] 
+🔄 Cycle: 2026-05-12T02:40:17.418Z
+[2026-05-12T02:40:17.420Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T02:40:17.953Z] ❌ ERROR getting price for SOL: fetch failed
+[2026-05-12T02:40:19.956Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T02:40:20.481Z] ❌ ERROR getting price for ETH: fetch failed
+[2026-05-12T02:40:22.485Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T02:40:23.657Z] ❌ ERROR getting price for BTC: fetch failed
+[2026-05-12T02:40:25.659Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T02:40:26.204Z] ❌ ERROR getting price for ATOM: fetch failed
+[2026-05-12T02:40:28.207Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T02:40:28.726Z] ❌ ERROR getting price for DOGE: fetch failed
+[2026-05-12T02:40:30.729Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T02:42:13.803Z] 
+🔄 Cycle: 2026-05-12T02:42:13.803Z
+[2026-05-12T02:42:13.805Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T02:42:15.114Z] ❌ ERROR getting price for SOL: fetch failed
+[2026-05-12T02:42:17.116Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T02:42:17.657Z] ❌ ERROR getting price for ETH: fetch failed
+[2026-05-12T02:42:19.659Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T02:42:20.180Z] ❌ ERROR getting price for BTC: fetch failed
+[2026-05-12T02:42:22.182Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T02:42:22.697Z] ❌ ERROR getting price for ATOM: fetch failed
+[2026-05-12T02:42:24.699Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T02:42:25.209Z] ❌ ERROR getting price for DOGE: fetch failed
+[2026-05-12T02:42:27.211Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T02:43:48.767Z] 
+🔄 Cycle: 2026-05-12T02:43:48.767Z
+[2026-05-12T02:43:48.768Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T02:43:49.299Z] ❌ ERROR getting price for SOL: fetch failed
+[2026-05-12T02:43:51.302Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T02:43:51.826Z] ❌ ERROR getting price for ETH: fetch failed
+[2026-05-12T02:43:53.828Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T02:43:54.369Z] ❌ ERROR getting price for BTC: fetch failed
+[2026-05-12T02:43:56.370Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T02:43:56.893Z] ❌ ERROR getting price for ATOM: fetch failed
+[2026-05-12T02:43:58.895Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T02:43:59.453Z] ❌ ERROR getting price for DOGE: fetch failed
+[2026-05-12T02:44:01.456Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T02:44:41.272Z] 
+🔄 Cycle: 2026-05-12T02:44:41.272Z
+[2026-05-12T02:44:41.273Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T02:44:41.792Z] ❌ ERROR getting price for SOL: fetch failed
+[2026-05-12T02:44:43.794Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T02:44:44.306Z] ❌ ERROR getting price for ETH: fetch failed
+[2026-05-12T02:44:46.308Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T02:44:46.823Z] ❌ ERROR getting price for BTC: fetch failed
+[2026-05-12T02:44:48.825Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T02:44:49.338Z] ❌ ERROR getting price for ATOM: fetch failed
+[2026-05-12T02:44:51.342Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T02:44:51.861Z] ❌ ERROR getting price for DOGE: fetch failed
+[2026-05-12T02:44:53.863Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T02:45:43.391Z] 
+🔄 Cycle: 2026-05-12T02:45:43.391Z
+[2026-05-12T02:45:43.392Z] 
+━━━ Checking SOL ━━━
+[2026-05-12T02:45:44.415Z] ❌ ERROR getting price for SOL: fetch failed
+[2026-05-12T02:45:46.418Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T02:45:46.940Z] ❌ ERROR getting price for ETH: fetch failed
+[2026-05-12T02:45:48.943Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T02:45:49.464Z] ❌ ERROR getting price for BTC: fetch failed
+[2026-05-12T02:45:51.466Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T02:45:51.980Z] ❌ ERROR getting price for ATOM: fetch failed
+[2026-05-12T02:45:53.982Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T02:45:54.504Z] ❌ ERROR getting price for DOGE: fetch failed
+[2026-05-12T02:45:56.506Z] 
+✅ Cycle complete. Next run in 60 minutes.
+[2026-05-12T02:50:03.371Z] 
+🔄 Cycle: 2026-05-12T02:50:03.371Z
+[2026-05-12T02:50:03.375Z] 
+━━━ Checking ETH ━━━
+[2026-05-12T02:50:05.074Z] ❌ ERROR getting price for ETH: API Request (GET /products/ETH-USD): fetch failed
+[2026-05-12T02:50:06.075Z] 
+━━━ Checking BTC ━━━
+[2026-05-12T02:50:06.620Z] ❌ ERROR getting price for BTC: API Request (GET /products/BTC-USD): fetch failed
+[2026-05-12T02:50:07.621Z] 
+━━━ Checking ATOM ━━━
+[2026-05-12T02:50:08.135Z] ❌ ERROR getting price for ATOM: API Request (GET /products/ATOM-USD): fetch failed
+[2026-05-12T02:50:09.137Z] 
+━━━ Checking DOGE ━━━
+[2026-05-12T02:50:09.661Z] ❌ ERROR getting price for DOGE: API Request (GET /products/DOGE-USD): fetch failed
+[2026-05-12T02:50:10.663Z] 
 ✅ Cycle complete. Next run in 60 minutes.

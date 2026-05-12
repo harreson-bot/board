@@ -2,6 +2,8 @@
 
 _Curated memories and significant context._
 
+**Last Updated:** May 11, 2026, 11:00 PM EDT (Nightly Telegram sync cron)
+
 ---
 
 ## 🔴 LATEST: 30-DAY RANGE TRADING BOT - LIVE & OPERATIONAL (May 10, 2026, 2:45 AM EDT)
@@ -52,6 +54,75 @@ _Curated memories and significant context._
 
 **Next cycle:** ~3:45 AM EDT (60 minutes from start)**
 **Context limit:** Reached; starting new chat session
+
+---
+
+## 🚀 PatchHub Phase 2 - FULLY OPERATIONAL (May 11, 2026, 8:40 PM EDT)
+
+**Status:** ✅ **LIVE** at https://app.patchhub.solutions | Ready for partner testing
+
+### Summary
+All deployment blockers resolved in evening session (May 11). Production-ready multi-tenant CRM platform for contact management, CSV import, DM drafts with personalization, and engagement tracking.
+
+**Key Capabilities:**
+- Self-signup with username/email flexibility
+- CSV/VCF import with 14 field type auto-detection
+- Duplicate detection (email + phone)
+- DM draft creation with {{firstName}}/{{company}} variables
+- Engagement tracking
+- Social integration placeholders
+- 50 auto-seeded sample leads per partner
+
+**Recent Fixes (May 11):**
+- ✅ CORS configured for https://app.patchhub.solutions
+- ✅ Tailwind CSS fully compiled (postcss.config.js added)
+- ✅ Database schema SQLite-compatible (PostgreSQL syntax removed)
+- ✅ Login accepts username OR email
+- ✅ Logo: 🚀 rocket
+
+**Test Account:**
+- Username: calvenn | Email: calvenn@calvennstarre.com
+- Or create new account (50 sample leads auto-generated)
+
+**Latest Commits:**
+- 74b4fe1 — Login with username OR email, SQLite/Tailwind fixes
+- 871dc9d — Phase 2 LIVE - Cloudflare + HTTPS
+- b393791 — Cloudflare Setup
+
+**Next:** Partner testing, gather feedback, enable real social integrations when Meta/X APIs available.
+
+---
+
+## Gmail Cron Jobs — ALL 4 Accounts (Overhauled May 11, 2026) 📧
+
+**Status:** ✅ Active — 3 jobs × 3 daily time slots = 9 runs/day across 4 accounts
+
+### Schedule
+- **8 AM EDT** — Check all 4 accounts, create drafts, notify Telegram
+- **1 PM EDT** — Check all 4 accounts, create drafts, notify Telegram
+- **9 PM EDT** — Check all 4 accounts, create drafts, notify Telegram
+
+### Accounts Checked
+1. yourbesthealthquote@gmail.com
+2. calvennstarre@gmail.com
+3. caylenstarresfg@gmail.com
+4. blackwellharreson@gmail.com
+
+### Duplicate Draft Prevention (Calvenn's Rule)
+- **Max 1 draft per email** — no duplicates
+- Before creating a draft: list existing drafts → match by sender + subject
+- If match found: skip creation, report as "pending draft"
+- Calvenn is responsible for clearing drafts (send or delete) before next cycle
+
+### Output Format (Per Run)
+```
+yourbesthealthquote@gmail.com → X unread, Y new drafts, Z pending
+calvennstarre@gmail.com → X unread, Y new drafts, Z pending
+caylenstarresfg@gmail.com → X unread, Y new drafts, Z pending
+blackwellharreson@gmail.com → X unread, Y new drafts, Z pending
+```
+
+**History:** 12 broken jobs (missing Telegram target) were deleted and replaced May 11 morning.
 
 ---
 
@@ -163,41 +234,49 @@ _Curated memories and significant context._
 3. Scoped database isolation via partner_id
 4. Ready to test: CSV import → DM drafts → queuing
 
-### Cloudflare Setup - LIVE (May 11, 2026, 11:55 PM EDT) 🚀
+### Cloudflare Setup - FULLY OPERATIONAL (May 11, 2026, 8:40 PM EDT) 🚀
 
-**Status:** ✅ OPERATIONAL
+**Status:** ✅ FULLY OPERATIONAL — All issues resolved, production-ready
 
-**Completed:**
+**Completed (Deployment):**
 - ✅ Domain added to Cloudflare (Zone ID: 70bac54f83c6ee26d4102777686adf8f)
 - ✅ Nameservers updated in Squarespace to Cloudflare (DNS ACTIVE)
 - ✅ Let's Encrypt SSL certificates created (patchhub.solutions + app.patchhub.solutions)
 - ✅ Cloudflare Tunnel created (patchhub-v2, Connector ID: 4846703d-5a09-42d3-80fa-6bf79ee68c3c)
-- ✅ Tunnel running via PM2 (cloudflared-patchhub process)
+- ✅ Tunnel running via PM2 (cloudflared-patchhub + patchhub-v2 process)
 - ✅ Public Hostname route: app.patchhub.solutions → http://localhost:8000
 - ✅ Backend running on HTTP (port 8000) with React frontend served
 - ✅ Tunnel connection established and routing traffic
 
-**Current Issue:**
-- Assets (JS/CSS) returning 404 when accessed via HTTPS tunnel (likely Cloudflare cache)
+**Completed (Evening Session Fixes - May 11):**
+- ✅ CORS 403 error FIXED — Added https://app.patchhub.solutions to allowed origins
+- ✅ Missing CSS FIXED — Added postcss.config.js for Tailwind compilation
+- ✅ Database column mismatch FIXED — display_name → full_name in auth.js
+- ✅ PostgreSQL syntax FIXED — All $1-$9 placeholders converted to SQLite ?
+- ✅ Login flexibility FIXED — Now accepts username OR email (better UX)
+- ✅ Logo updated — Changed from 🩹 bandaid to 🚀 rocket
 
-**Quick Fix:**
-1. Go to Cloudflare Dashboard → Caching → Purge Cache → Purge Everything
-2. Hard refresh browser: Ctrl+Shift+R (or Cmd+Shift+R on Mac)
-3. Try https://app.patchhub.solutions again
+**Browser Cache Note:**
+If you still see old logo/styling after deployment:
+1. Clear browser cache: Ctrl+Shift+Delete → All time → Clear data
+2. Hard refresh: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)
+3. Revisit https://app.patchhub.solutions
 
-**If still blank:**
-- Check browser console for JavaScript errors
-- Verify /assets/ path is loading (should see it in Network tab)
+### Latest Commits (May 11 Evening)
+- **74b4fe1** — Login with username OR email, all routes SQLite-compatible, Tailwind CSS fixed
+- **871dc9d** — PatchHub Phase 2 LIVE - Cloudflare Tunnel + HTTPS + React Frontend
+- **b393791** — Cloudflare Setup - Domain added, nameservers updated
+- **8bd88ea** — Memory sync update
 
-### Next Phase (May 12-18)
+### Next Phase (May 12+)
 
-- ✅ Verify Cloudflare tunnel routing (app.patchhub.solutions → localhost:8000)
+- ✅ All infrastructure operational
 - Test partner signup flow
-- Create test partner account + verify sample leads load
+- Create test partner account + verify sample leads auto-load
 - Test CSV import + duplicate detection
-- Test DM draft creation + personalization
-- Share test link with partners for feedback
-- Integration placeholders remain (toggle on as Meta/X certs come)
+- Test DM draft creation + personalization with {{variables}}
+- Gather partner feedback on UX
+- Enable real integrations (Meta, X APIs when certs available)
 
 ### Tech Stack
 
