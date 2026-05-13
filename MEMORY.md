@@ -2,7 +2,7 @@
 
 _Curated memories and significant context._
 
-**Last Updated:** May 11, 2026, 11:00 PM EDT (Nightly Telegram sync cron)
+**Last Updated:** Tuesday, May 12, 2026 - 7:28 PM EDT (Memory sync cron — all items verified current, no new entries needed)
 
 ---
 
@@ -172,6 +172,12 @@ blackwellharreson@gmail.com → X unread, Y new drafts, Z pending
 **Objective:** Build SaaS platform for SuperPatch ambassadors (and other MLM companies) to automate contact matching, social engagement, and DM automation. Launch SuperPatch first, then resell to other companies.
 
 **Status:** ✅ **PHASE 2 LIVE** (May 11, 2026)
+
+### Browser Cache Note (Important)
+If you still see old logo (🩹 bandaid instead of 🚀 rocket) or CSS styling issues after deployment:
+1. **Clear browser cache:** Ctrl+Shift+Delete → All time → Clear data
+2. **Hard refresh:** Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)
+3. **Revisit:** https://app.patchhub.solutions
 
 ### Phase 2: CRM Platform - NOW LIVE 🎉
 
@@ -400,6 +406,8 @@ Upgrade to **Sonnet** when processing content from untrusted sources:
 
 **User Context:** User doesn't know technical details of infrastructure (Coinbase API formats, signature algorithms, etc.) because Harreson set it all up. User delegates expertise to Harreson but maintains final approval authority. Communication should be clear and actionable, not theoretical.
 
+**Cross-Session Continuity Lesson (May 11, 5:08 PM Telegram):** Important changes made in one session (e.g., webchat session deleting 12 broken cron jobs) won't be visible to other sessions (e.g., Telegram) until MEMORY.md is explicitly updated. Always sync daily notes → MEMORY.md after significant config changes so continuity is reliable across all session types.
+
 ---
 
 ## Session Handoff Document (May 10, 2026 - 7:46 AM EDT)
@@ -416,5 +424,5 @@ Upgrade to **Sonnet** when processing content from untrusted sources:
 
 ---
 
-_Last Updated: Monday, May 11, 2026 (6:51 PM EDT / 22:51 UTC)_
-_Context: Bot deployed and operational. Running continuously since May 10, 2:45 AM EDT start (40+ hourly cycles completed). SOL signal improved from DOWNTREND to UPTREND on May 11. All infrastructure nominal. Email triage queue ready: Claro, Kristen FCRA, Kent Dobey, Cigna 2027, Bethany. All systems stable and nominal._
+_Last Updated: Tuesday, May 12, 2026 - 3:28 PM EDT (19:28 UTC)_
+_Context: PatchHub Phase 2 LIVE and operational. Bot running in paper trading mode (50+ cycles completed). Gmail cron jobs overhauled (3x daily checks, all 4 accounts). All infrastructure nominal. 1 PM EDT Gmail check completed routine._
