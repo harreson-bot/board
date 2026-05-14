@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-11T21:47:30.913Z",
+  "updatedAt": "2026-05-14T03:00:24.695Z",
   "entries": {
     "memory:memory/2026-04-28.md:1:38": {
       "key": "memory:memory/2026-04-28.md:1:38",
@@ -411,6 +411,316 @@
         "sync",
         "edt",
         "status"
+      ]
+    },
+    "memory:memory/2026-05-13.md:1:46": {
+      "key": "memory:memory/2026-05-13.md:1:46",
+      "path": "memory/2026-05-13.md",
+      "startLine": 1,
+      "endLine": 46,
+      "source": "memory",
+      "snippet": "# Daily Memory — May 13, 2026 ## 🌅 Early Morning Memory Sync (3:28 AM EDT) **Time:** Wednesday, May 13, 2026 - 3:28 AM EDT (07:28 UTC) ### Nightly Consolidation & Status Check **System Status:** ✅ All systems nominal - **PatchHub:** ✅ LIVE at https://app.patchhub.solutions (Phase 2 fully operational since May 11) - **30-day Trading Bot:** ✅ Paper trading mode, ~60+ hourly cycles completed since May 10 - **Gmail Crons:** ✅ 3 jobs × 4 accounts (8 AM, 1 PM, 9 PM EDT checks) — renewed May 11 - **DreamHost Infrastructure:** ✅ All 4 CRM instances stable - Engagement CRM (engage.calvennstarre.com) - Rick CRM (rick.successmanufacturing.com) - Angel CRM (angel.successmanufacturing.com) -",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3833210229873657,
+      "maxScore": 0.3833210229873657,
+      "firstRecalledAt": "2026-05-14T03:00:24.695Z",
+      "lastRecalledAt": "2026-05-14T03:00:24.695Z",
+      "queryHashes": [
+        "c72dbe8fda46"
+      ],
+      "recallDays": [
+        "2026-05-13"
+      ],
+      "conceptTags": [
+        "app.patchhub.solutions",
+        "30-day",
+        "engage.calvennstarre.com",
+        "rick.successmanufacturing.com",
+        "angel.successmanufacturing.com",
+        "may",
+        "early",
+        "morning"
+      ]
+    },
+    "memory:memory/2026-04-29.md:1:24": {
+      "key": "memory:memory/2026-04-29.md:1:24",
+      "path": "memory/2026-04-29.md",
+      "startLine": 1,
+      "endLine": 24,
+      "source": "memory",
+      "snippet": "# Daily Memory - Wednesday, April 29, 2026 ## Memory Sync Task (6:51 PM EDT) **Status:** ✅ Completed **Findings:** - No new sessions logged today (last activity was April 28) - MEMORY.md already synced at 2:51 PM EDT (afternoon sync) - No new commits since April 28 memory sync - No uncommitted changes to tracked files requiring consolidation **Action Taken:** - Updated MEMORY.md timestamp to reflect evening sync - Confirmed PatchHub project documentation is complete and stable - Ready for May 5 development kickoff (6 weeks to MVP) **Summary:** Quiet day on the development front. System is holding steady post-PatchHub architecture finalization. All critical pre-launch items documented in",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.376197674870491,
+      "maxScore": 0.376197674870491,
+      "firstRecalledAt": "2026-05-14T03:00:24.695Z",
+      "lastRecalledAt": "2026-05-14T03:00:24.695Z",
+      "queryHashes": [
+        "c72dbe8fda46"
+      ],
+      "recallDays": [
+        "2026-05-13"
+      ],
+      "conceptTags": [
+        "memory.md",
+        "post-patchhub",
+        "pre-launch",
+        "wednesday",
+        "april",
+        "sync",
+        "task",
+        "edt"
+      ]
+    },
+    "memory:memory/2026-05-06.md:1:42": {
+      "key": "memory:memory/2026-05-06.md:1:42",
+      "path": "memory/2026-05-06.md",
+      "startLine": 1,
+      "endLine": 42,
+      "source": "memory",
+      "snippet": "# Daily Memory — Wednesday, May 6, 2026 **Cron Task:** Memory sync at 10:51 AM EDT **Status:** ✅ Complete --- ## Memory Sync Summary (May 6, 10:51 AM EDT) **What was checked:** - ✅ MEMORY.md (comprehensive through May 5, 11:00 PM EDT) - ✅ Daily memory files (all current, no gaps) - ✅ Git history (last commit: daily backup May 5, 11:01 PM EDT) - ✅ Workspace activity (no sessions since May 5 evening) **Result:** Everything synchronized and current. **Items verified as up-to-date:** - ✅ PatchHub Phase 1 (ambassador replica sites live with real SuperPatch products) - ✅ SOLANA Trading Bot (hourly scalper deployed, paper trading active) - ✅ Pine Script MNQ (VP Levels + BoS + Multi-TF Dash",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.37245551645755764,
+      "maxScore": 0.37245551645755764,
+      "firstRecalledAt": "2026-05-14T03:00:24.695Z",
+      "lastRecalledAt": "2026-05-14T03:00:24.695Z",
+      "queryHashes": [
+        "c72dbe8fda46"
+      ],
+      "recallDays": [
+        "2026-05-13"
+      ],
+      "conceptTags": [
+        "backup",
+        "memory.md",
+        "up-to-date",
+        "multi-tf",
+        "wednesday",
+        "may",
+        "cron",
+        "task"
+      ]
+    },
+    "memory:memory/2026-05-04.md:1:52": {
+      "key": "memory:memory/2026-05-04.md:1:52",
+      "path": "memory/2026-05-04.md",
+      "startLine": 1,
+      "endLine": 52,
+      "source": "memory",
+      "snippet": "# Daily Memory — Monday, May 4, 2026 **Cron Task:** Memory sync at 6:51 AM EDT **Status:** ✅ Complete --- ## Memory Sync Summary **What was checked:** - ✅ MEMORY.md (comprehensive through May 3, 10:51 PM EDT) - ✅ Daily memory files (May 3 confirms all current) - ✅ No new sessions since May 3 evening **Result:** Everything current and stable. Timestamp updated. --- ## Current Project Status (As of May 4, 6:51 AM EDT) ### 🟢 Active & Running - **PatchHub Phase 1:** Live with ambassador replica sites (patchhub.solutions/enroll/) - **SOLANA Trading Bot:** Running hourly checks on DreamHost (paper trading mode) - **TradingView Bridge:** Architecture complete, ready to deploy to DreamHos",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3714691787958145,
+      "maxScore": 0.3714691787958145,
+      "firstRecalledAt": "2026-05-14T03:00:24.695Z",
+      "lastRecalledAt": "2026-05-14T03:00:24.695Z",
+      "queryHashes": [
+        "c72dbe8fda46"
+      ],
+      "recallDays": [
+        "2026-05-13"
+      ],
+      "conceptTags": [
+        "memory.md",
+        "patchhub.solutions/enroll",
+        "monday",
+        "may",
+        "cron",
+        "task",
+        "sync",
+        "edt"
+      ]
+    },
+    "memory:memory/2026-04-30.md:1:30": {
+      "key": "memory:memory/2026-04-30.md:1:30",
+      "path": "memory/2026-04-30.md",
+      "startLine": 1,
+      "endLine": 30,
+      "source": "memory",
+      "snippet": "# Daily Memory - Thursday, April 30, 2026 ## Timeline ### Morning (09:06 EDT) - TOOLS.md Crisis & Recovery **Incident:** TOOLS.md lost due to lack of git version control. ~2 weeks of infrastructure credentials, SSH keys, API tokens vanished. - Root cause: Local-only file, never committed to git, no backup preservation strategy - Impact: High frustration; deployment blocked temporarily - Resolution: Calvenn re-provided complete credentials; TOOLS.md now added to .gitignore (keep local, don't push to git) - Process improvement: Session startup validation, daily backup system activated - Status: ✅ RESOLVED — all infrastructure restored, credentials preserved **Backup System Activated:** - Lo",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.36805905401706696,
+      "maxScore": 0.36805905401706696,
+      "firstRecalledAt": "2026-05-14T03:00:24.695Z",
+      "lastRecalledAt": "2026-05-14T03:00:24.695Z",
+      "queryHashes": [
+        "c72dbe8fda46"
+      ],
+      "recallDays": [
+        "2026-05-13"
+      ],
+      "conceptTags": [
+        "backup",
+        "tools.md",
+        "local-only",
+        "re-provided",
+        "thursday",
+        "april",
+        "timeline",
+        "morning"
+      ]
+    },
+    "memory:memory/2026-05-10.md:1:41": {
+      "key": "memory:memory/2026-05-10.md:1:41",
+      "path": "memory/2026-05-10.md",
+      "startLine": 1,
+      "endLine": 41,
+      "source": "memory",
+      "snippet": "# Daily Log - May 10, 2026 (Sunday, 6:51 AM EDT) ## Memory Consolidation Sync (6:51 AM EDT) **Activity:** Automated memory sync cron (94d28c1c-c07e-414c-8e91-d4251cb8aa18) **Status:** ✅ Memory consolidation complete. All significant items from May 9 and earlier sessions are already captured in MEMORY.md. ### What Was Verified **Already in MEMORY.md (from 2:51 AM sync):** 1. ✅ 30-day range trading bot — fully operational, 5 coins, paper trading mode 2. ✅ Gmail OAuth setup — 4 accounts authenticated, 3x daily crons (8 AM, 1 PM, 9 PM EDT) 3. ✅ Email triage queue — 5 pending items identified (Claro, Kristen FCRA, Kent Dobey, Cigna 2027, Bethany) 4. ✅ Pine Scripts status — MNQ & Solana produ",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.36425881683826444,
+      "maxScore": 0.36425881683826444,
+      "firstRecalledAt": "2026-05-14T03:00:24.695Z",
+      "lastRecalledAt": "2026-05-14T03:00:24.695Z",
+      "queryHashes": [
+        "c72dbe8fda46"
+      ],
+      "recallDays": [
+        "2026-05-13"
+      ],
+      "conceptTags": [
+        "memory.md",
+        "30-day",
+        "log",
+        "may",
+        "sunday",
+        "edt",
+        "consolidation",
+        "sync"
+      ]
+    },
+    "memory:memory/2026-05-08.md:88:119": {
+      "key": "memory:memory/2026-05-08.md:88:119",
+      "path": "memory/2026-05-08.md",
+      "startLine": 88,
+      "endLine": 119,
+      "source": "memory",
+      "snippet": "- All workflow documents committed to git ### No New Activity Since 2:51 AM No user sessions between 2:51 AM - 6:51 AM EDT. Workspace in sleep state, all systems idling normally. **Status:** Ready for next user session. All infrastructure healthy, documentation current, backup system active. --- ## Telegram Session (11pm Sync - May 8, 11:00 PM EDT) **Note:** Nightly memory consolidation cron task ran at 11:00 PM EDT. Attempted to fetch Telegram session history (sessionKey='agent:main:telegram:direct:5395479182') but encountered visibility restriction — cron runs in isolated context without access to other session histories. **Action taken:** Unable to extract items from live Telegra",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.36424173116683956,
+      "maxScore": 0.36424173116683956,
+      "firstRecalledAt": "2026-05-14T03:00:24.695Z",
+      "lastRecalledAt": "2026-05-14T03:00:24.695Z",
+      "queryHashes": [
+        "c72dbe8fda46"
+      ],
+      "recallDays": [
+        "2026-05-13"
+      ],
+      "conceptTags": [
+        "backup",
+        "all",
+        "workflow",
+        "documents",
+        "committed",
+        "git",
+        "new",
+        "activity"
+      ]
+    },
+    "memory:memory/2026-05-01.md:1:42": {
+      "key": "memory:memory/2026-05-01.md:1:42",
+      "path": "memory/2026-05-01.md",
+      "startLine": 1,
+      "endLine": 42,
+      "source": "memory",
+      "snippet": "# Daily Memory - Friday, May 1st, 2026 ## Timeline ### Morning (10:51 AM EDT) - Memory Sync & Updates **Memory Sync Task Completed:** - Read MEMORY.md (April 30 state captured) - Reviewed daily files (April 28-30) - Identified new items to add: - Land lease investigation findings - Trello board population - PROP_FIRM_ANALYSIS.md documentation - Farm documents HTML/PDF conversion **New Significant Items Captured in MEMORY.md:** 1. **Land Lease Investigation (May 1)** - Finding: Agricultural land-only leases SCARCE in Alachua County - Typical: Bare land $100-200/acre/year, BUT most available properties are land+housing - Recommended strategies ranked: (1) Negotiate bundle",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3639764338731766,
+      "maxScore": 0.3639764338731766,
+      "firstRecalledAt": "2026-05-14T03:00:24.695Z",
+      "lastRecalledAt": "2026-05-14T03:00:24.695Z",
+      "queryHashes": [
+        "c72dbe8fda46"
+      ],
+      "recallDays": [
+        "2026-05-13"
+      ],
+      "conceptTags": [
+        "memory.md",
+        "28-30",
+        "prop-firm-analysis.md",
+        "html/pdf",
+        "land-only",
+        "100-200/acre/year",
+        "friday",
+        "may"
+      ]
+    },
+    "memory:memory/2026-05-12.md:1:49": {
+      "key": "memory:memory/2026-05-12.md:1:49",
+      "path": "memory/2026-05-12.md",
+      "startLine": 1,
+      "endLine": 49,
+      "source": "memory",
+      "snippet": "# Daily Memory — May 12, 2026 ## 📊 Midnight Memory Sync (10:51 AM EDT) **Time:** Tuesday, May 12, 2026 - 10:51 AM EDT (14:51 UTC) ### System Status Check - **PatchHub:** ✅ LIVE at https://app.patchhub.solutions (Phase 2 operational since May 11) - **30-day Trading Bot:** ✅ Running in paper mode (50+ cycles completed since May 10) - **Gmail Crons:** ✅ 3 jobs × 4 accounts (8 AM, 1 PM, 9 PM EDT checks) - **DreamHost Infrastructure:** ✅ All deployments stable - Harreson CRM (engagement-crm) - Rick CRM (rick.successmanufacturing.com) - Angel CRM (angel.successmanufacturing.com) - Patch CRM (app.patchhub.solutions) - Solana trading bot (paper trading) ### Memory Review Notes - All M",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.360421821475029,
+      "maxScore": 0.360421821475029,
+      "firstRecalledAt": "2026-05-14T03:00:24.695Z",
+      "lastRecalledAt": "2026-05-14T03:00:24.695Z",
+      "queryHashes": [
+        "c72dbe8fda46"
+      ],
+      "recallDays": [
+        "2026-05-13"
+      ],
+      "conceptTags": [
+        "app.patchhub.solutions",
+        "30-day",
+        "engagement-crm",
+        "rick.successmanufacturing.com",
+        "angel.successmanufacturing.com",
+        "may",
+        "midnight",
+        "sync"
+      ]
+    },
+    "memory:memory/2026-05-08.md:1:46": {
+      "key": "memory:memory/2026-05-08.md:1:46",
+      "path": "memory/2026-05-08.md",
+      "startLine": 1,
+      "endLine": 46,
+      "source": "memory",
+      "snippet": "# Daily Log - May 8, 2026 (Friday) **Time:** 6:51 AM EDT (Memory Sync Cron Task) ## Memory Sync Status ### Morning Systems Check ✅ **All systems operational and stable:** - ✅ **PatchHub Phase 1** — Live (deployed May 2, 12:55 PM EDT) - Ambassador replica sites functional at patchhub.solutions/enroll/ - Real SuperPatch products integrated (6 featured items) - Bash deployment script ready for new ambassadors - ✅ **SOLANA Trading Bot** — Running continuously - Process: `solana-trader` (PM2, online, paper trading) - Schedule: Hourly checks (0 * * * *) - Last verified: May 3 deployment complete - ✅ **Pine Script Tools** — Production-ready - MNQ VP Levels script: Syntax clean,",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3578425109386444,
+      "maxScore": 0.3578425109386444,
+      "firstRecalledAt": "2026-05-14T03:00:24.695Z",
+      "lastRecalledAt": "2026-05-14T03:00:24.695Z",
+      "queryHashes": [
+        "c72dbe8fda46"
+      ],
+      "recallDays": [
+        "2026-05-13"
+      ],
+      "conceptTags": [
+        "patchhub.solutions/enroll",
+        "solana-trader",
+        "production-ready",
+        "log",
+        "may",
+        "friday",
+        "time",
+        "edt"
       ]
     }
   }
