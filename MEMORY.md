@@ -2,7 +2,7 @@
 
 _Curated memories and significant context._
 
-**Last Updated:** Wednesday, May 13, 2026 - 11:28 PM EDT (Nightly memory consolidation cron — all systems verified stable; Telegram session history inaccessible from isolated cron context)
+**Last Updated:** Friday, May 15, 2026 - 7:28 PM EDT (Evening memory sync — all systems confirmed operational and stable; no new items to capture from May 14-15 period)
 
 ---
 
@@ -424,5 +424,30 @@ Upgrade to **Sonnet** when processing content from untrusted sources:
 
 ---
 
-_Last Updated: Thursday, May 14, 2026 - 11:00 PM EDT (03:00 UTC May 15)_
-_Context: PatchHub Phase 2 LIVE and operational. Bot running in paper trading mode (~110+ cycles completed). Gmail cron jobs active (3x daily checks, all 4 accounts). All infrastructure nominal. Quiet day — no new project work or incidents. All context current and verified._
+## Gateway & System Maintenance (May 15, 2026 - 1:13 PM EDT) 🔧
+
+**Status:** ✅ All systems operational and stable
+
+### Gateway Update
+- **Version upgrade:** 2026.5.5 → 2026.5.12 (completed)
+- **Uptime:** 5h 34m as of 1:13 PM EDT
+- **Incident:** Brief auth hiccup during update (missing OpenAI key in CLI auth store) — resolved automatically on gateway restart
+- **Status:** Responsive and operational
+
+### System Health (1:13 PM EDT Check)
+- ✅ **Gateway**: Running (2026.5.12)
+- ✅ **Cloudflared tunnels**: Active (harreson + patchhub, 18h+ uptime)
+- ✅ **Trading bot MCP**: Running (started 12:58 PM EDT today)
+- ✅ **Gmail MCP**: Running (started 1:13 PM EDT)
+- ✅ **CLI**: Responsive
+- ✅ **Cache performance**: 98% hit rate, 34k tokens cached
+- ✅ **Session context**: 37k/200k (plenty of headroom)
+
+### Routine Maintenance
+- **Backup**: Completed successfully (files ready on disk + OneDrive pending sync)
+- **Orphan transcripts**: 233 orphan transcript files identified by `openclaw doctor` → safe to archive (won't delete, just cleans up database references)
+
+---
+
+_Last Updated: Friday, May 15, 2026 - 7:28 PM EDT (23:28 UTC)_
+_Context: PatchHub Phase 2 LIVE and operational. Bot running in paper trading mode (~140+ cycles completed). Gmail cron jobs active (3x daily checks, all 4 accounts). Gateway updated to 2026.5.12. All infrastructure nominal. May 15: Daily backup + gateway update completed; auth hiccup resolved during morning. Evening memory sync confirms all systems stable with no new items to log._
