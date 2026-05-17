@@ -449,5 +449,126 @@ Upgrade to **Sonnet** when processing content from untrusted sources:
 
 ---
 
-_Last Updated: Friday, May 15, 2026 - 7:28 PM EDT (23:28 UTC)_
-_Context: PatchHub Phase 2 LIVE and operational. Bot running in paper trading mode (~140+ cycles completed). Gmail cron jobs active (3x daily checks, all 4 accounts). Gateway updated to 2026.5.12. All infrastructure nominal. May 15: Daily backup + gateway update completed; auth hiccup resolved during morning. Evening memory sync confirms all systems stable with no new items to log._
+## Twilio A2P 10DLC Campaign Rejection & Compliance Fix (May 16, 2026, 10:00 AM EDT) 📱
+
+**Status:** ✅ **WEBSITE UPDATED & READY FOR RESUBMISSION** | Campaign revision complete
+
+### Initial Rejections (Both Actionable)
+1. **Terms & Conditions Issues** — T&C page was too minimal (~500 words), lacked SMS/TCPA compliance language
+2. **Call to Action (CTA) Verification Issues** — Sample messages only had opt-out CTAs (STOP), no engagement CTAs
+
+### Root Causes & Fixes Applied
+
+**Problem #1: Insufficient Terms & Conditions**
+- Original page: Generic informational disclaimer, minimal SMS terms
+- Twilio requirement: Comprehensive, legally sound T&C with explicit SMS/TCPA language
+- **Fix:** Expanded to 1,200+ words with dedicated Section 2 on SMS services:
+  - Explicit opt-in/opt-out keywords (START, ENROLL, CONFIRM | STOP, OPTOUT, CANCEL, END, QUIT, UNSUBSCRIBE, REVOKE, STOPALL)
+  - Message frequency expectations (2-4/month)
+  - Data protection & no third-party sharing clause
+  - Prohibited uses & TCPA compliance statement
+
+**Problem #2: Weak Call-to-Action in Sample Messages**
+- Original: Messages only showed STOP opt-out, no engagement CTAs
+- Example: "Reply to confirm or reschedule. Reply STOP to opt out." — vague action
+- **Fix:** Revised all 5 sample messages with specific, actionable CTAs:
+  - "Reply with Y to confirm or N to reschedule"
+  - "Reply CONFIRM to schedule a review"
+  - "Reply VIEW to access documents"
+  - "Reply with any questions or call [phone]"
+  - "Reply CONFIRM to attend or RESCHEDULE"
+
+### Website Updates (LIVE as of May 16, 2026)
+
+1. **Terms & Conditions** — https://affordablehealthcare.solutions/terms-conditions/
+   - Page ID: 268 | Updated via WP REST API
+   - New: Section 2 "SMS/Text Message Services (TCPA Compliance)" (400+ words)
+   - New: All keywords, message types, frequency, data handling explicitly defined
+   - New: 7-year SMS log retention clause, TCPA compliance language
+
+2. **Privacy Policy** — https://affordablehealthcare.solutions/privacy-policy/
+   - Page ID: 3 | Updated via WP REST API
+   - New: Section 3 "SMS/Text Message Services and Privacy" (300+ words)
+   - New: Data retention (7-year compliance), third-party sharing restrictions (NO sharing)
+   - New: TCPA compliance statement, detailed opt-out procedures
+
+3. **Book Appointment** — https://affordablehealthcare.solutions/book-appointment/
+   - Page ID: 267 | Updated via WP REST API
+   - New: Two explicit SMS consent checkboxes (not just notices)
+   - New: Clear checkbox language: "I consent to receive SMS text messages"
+   - New: Links to T&C and Privacy Policy
+   - New: Enhanced contact information
+
+### Revised Campaign Submission (Ready to Paste into Twilio)
+
+**Campaign Description (Detailed & Use Case Aligned):**
+> Transactional appointment reminders, policy renewal notifications, and service confirmations for insurance clients. Our system sends appointment scheduling confirmations to help clients remember their consultation dates and times. We send policy renewal deadline reminders to ensure clients are aware of coverage renewal dates and can take action to renew their policies on time. Clients also receive account service updates including important policy documents, premium billing notifications, and enrollment confirmations. All messages are transactional in nature, sent only to individuals who have explicitly consented to receive SMS communications through our electronic enrollment process or appointment booking system.
+
+**Sample Messages (All with Clear CTAs):**
+- #1: "Hi [FirstName], reminder: You have an appointment on [Date] at [Time]. Reply with Y to confirm or N to reschedule. Reply STOP to opt out."
+- #2: "Your [InsuranceType] policy renews on [Date]. Take action now: Visit [website] or reply CONFIRM to schedule a review. Reply STOP to opt out."
+- #3: "Action needed: Your policy documents are ready for review. Click here [secure link] or reply VIEW to access. Reply STOP to opt out."
+- #4: "Appointment confirmed for [Date] at [Time] with [AgentName]. Reply with any questions or call [phone]. Reply STOP to opt out."
+- #5: "Your annual policy review is scheduled for [Date]. Reply CONFIRM to attend or RESCHEDULE to change time. Reply STOP to opt out."
+
+### Compliance Checklist ✅
+- [x] Terms & Conditions comprehensive and TCPA-compliant
+- [x] Privacy Policy includes SMS-specific data handling
+- [x] Website has explicit consent checkboxes
+- [x] All sample messages have clear, specific CTAs (not just opt-outs)
+- [x] Opt-in/opt-out keywords fully documented
+- [x] Message frequency expectations set (2-4/month)
+- [x] Data protection: No third-party sharing
+- [x] 7-year SMS log retention defined
+- [x] Contact information complete
+- [x] All links live and verified
+
+### Resubmission Instructions
+1. Go to https://console.twilio.com
+2. Messaging > Regulatory Compliance > Campaigns
+3. Click rejected campaign, then Blue "Edit Campaign" button
+4. Copy-paste updated fields from TWILIO_CAMPAIGN_REVISED_2026_05_16.md
+5. Click "Update" to resubmit
+6. Wait 24-48 hours for re-review
+
+### Documentation & Reference Files
+- **Full guide:** `/home/harreson/.openclaw/workspace/TWILIO_CAMPAIGN_REVISED_2026_05_16.md` (complete resubmission instructions)
+- **Quick ref:** `/home/harreson/.openclaw/workspace/TWILIO_QUICK_REFERENCE.txt` (one-page summary)
+
+### Key Learnings
+- Twilio A2P 10DLC requires comprehensive T&C, not just notices
+- Sample messages must have actionable CTAs, not just opt-outs
+- Clear consent mechanism on website is essential
+- TCPA compliance language must be explicit in all customer-facing documents
+- Message frequency expectations reduce compliance risk
+- No third-party phone sharing must be documented
+
+**Status:** ✅ Ready for Twilio resubmission | All website changes live | Full documentation in workspace
+
+---
+
+## Home WiFi Network Setup (Identified May 16, 2026) 🏠
+
+**Calvenn's Home Network Layout:**
+
+| Device | Model | Mode | Network Name | Use |
+|--------|-------|------|----------|-----|
+| **Main Router** | TP-Link BE600 (WiFi 7/6E) | Router | TP600E (MLO) | Laptop + daily use |
+| **Secondary** | TP-Link AX73 (WiFi 6) | AMP mode | AX73 | Xbox dedicated |
+| **Range Extender** | eero | Bridge mode | MyEero | Kitchen/Garage |
+
+**ISP Speeds (Baseline):** Direct modem wired = 301/180 Mbps | Wired AX73 = 800/900 Mbps
+
+**WiFi Issue Found (May 16):**
+- BE600 MLO WiFi was slow (45/64) → Fixed by enabling PSC on 6 GHz band → 170/65 Mbps
+- Still below optimal (target 250+); suspected: AX73 mode ambiguity or channel interference
+
+**Outstanding (Next Session):**
+- Confirm AX73 is in true AP mode (not routing) — prevents double-NAT
+- Separate 5 GHz channels: BE600 on Ch 149, AX73 on Ch 36
+- BE600 6 GHz: Use PSC channel 5 (lowest, least congested)
+
+---
+
+_Last Updated: Saturday, May 16, 2026 - 11:00 PM EDT (03:00 UTC May 17)_
+_Context: PatchHub Phase 2 LIVE and operational. Bot running in paper trading mode (~160+ cycles completed). Gmail cron jobs active (3x daily checks, all 4 accounts). Twilio A2P campaign revisions completed and ready for resubmission (May 16). Home WiFi troubleshooting started (BE600 MLO improved 45→170 Mbps, more optimization needed). Gateway updated to 2026.5.12, all systems nominal._
