@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll in SuperPatch Today - Clinical Evidence & Science-Backed Results</title>
+    <meta name="description" content="Transform your wellness with SuperPatch. Backed by 6 peer-reviewed studies, recommended by 1,000+ doctors. 100% drug-free, clinically proven results.">
+    <meta name="keywords" content="SuperPatch, VTT, pain relief, sleep, stress, clinical studies, wellness technology">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --success: #28a745;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Navigation */
+        header {
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero .lead {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .hero .subtext {
+            font-size: 1em;
+            opacity: 0.95;
+        }
+
+        /* Clinical Evidence Section */
+        .clinical {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+
+        .how-it-works {
+            background: var(--light);
+            border-left: 5px solid var(--primary);
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 60px;
+        }
+
+        .how-it-works h3 {
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .how-it-works ul {
+            list-style: none;
+        }
+
+        .how-it-works li {
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+            line-height: 1.6;
+        }
+
+        .how-it-works li:last-child {
+            border-bottom: none;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            color: #856404;
+            font-weight: 600;
+        }
+
+        /* Study Grid */
+        .studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .study-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .study-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .study-card h4 {
+            color: var(--primary);
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-percentage {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.85em;
+            color: #666;
+            line-height: 1.3;
+        }
+
+        .key-finding {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            color: #2e7d32;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+
+        .conference {
+            color: #666;
+            font-size: 0.9em;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Safety Box */
+        .safety-section {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 60px 0;
+        }
+
+        .safety-section h3 {
+            color: #856404;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .safety-section ul {
+            list-style: none;
+        }
+
+        .safety-section li {
+            padding: 12px 0 12px 35px;
+            position: relative;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .safety-section li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card h4 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .product-card p {
+            font-size: 0.95em;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        /* Doctor Endorsements */
+        .doctors {
+            background: #f0f4ff;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 60px 0;
+        }
+
+        .doctors h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .endorsements {
+            columns: 2;
+            column-gap: 30px;
+        }
+
+        .endorsements p {
+            margin: 15px 0;
+            break-inside: avoid;
+            line-height: 1.6;
+        }
+
+        .endorsements strong {
+            color: var(--primary);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            margin: 60px 0;
+        }
+
+        .testimonials h3 {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            color: var(--dark);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-left: 5px solid var(--primary);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        .testimonial-author {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1em;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .guarantee {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .studies-grid,
+            .products-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .endorsements {
+                columns: 1;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">🚀 SuperPatch</div>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/products">Products</a>
+                <a href="/science">Science</a>
+                <a href="/enroll">Enroll</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Transform Your Wellness Journey</h1>
+            <p class="lead">SuperPatch uses cutting-edge Vibrotactile Trigger Technology (VTT) backed by clinical science to help you live better.</p>
+            <p class="subtext">100% Drug-Free • Clinically Tested • Doctor Recommended</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="clinical">
+        <div class="container">
+            <h2 class="section-title">Science-Backed Results</h2>
+
+            <!-- How VTT Works -->
+            <div class="how-it-works">
+                <h3>How Vibrotactile Trigger Technology (VTT) Works</h3>
+                <p>SuperPatch uses a proprietary pattern of contoured ridges to stimulate your skin's natural neural response:</p>
+                <ul>
+                    <li><strong>Piezo Channels:</strong> Your skin naturally contains specialized receptors (Piezo-1 & Piezo-2) that convert mechanical pressure into electrical signals</li>
+                    <li><strong>Neural Communication:</strong> These signals travel through your nerves to the spinal pathway and reach specific brain areas</li>
+                    <li><strong>Corrective Response:</strong> Your brain receives the signal and generates a beneficial response without drugs or chemicals</li>
+                    <li><strong>All-Day Activation:</strong> Wear the patch for 24 hours to maintain continuous neural communication</li>
+                </ul>
+                <p class="highlight">Result: Your nervous system relearns optimal function—naturally.</p>
+            </div>
+
+            <!-- Clinical Studies -->
+            <h3 style="text-align: center; font-size: 1.8em; margin: 40px 0 30px 0; color: var(--dark);">Peer-Reviewed Clinical Studies</h3>
+
+            <div class="studies-grid">
+                <!-- Pain Relief -->
+                <div class="study-card">
+                    <h4>Pain Relief & Quality of Life</h4>
+                    <div class="stat-grid">
+                        <div class="stat-box">
+                            <span class="stat-percentage">47%</span>
+                            <span class="stat-label">Pain Severity Reduction</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-percentage">50%</span>
+                            <span class="stat-label">Pain Interference Reduction</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-percentage">82%</span>
+                            <span class="stat-label">Reduced Medication Use</span>
+                        </div>
+                    </div>
+                    <p class="key-finding"><strong>Key Finding:</strong> 100% of quality-of-life components improved without side effects.</p>
+                    <p class="conference">Presented at: 58th Annual Scientific Meeting of The British Pain Society</p>
+                </div>
+
+                <!-- Sleep -->
+                <div class="study-card">
+                    <h4>Deep, Restorative Sleep</h4>
+                    <div class="stat-grid">
+                        <div class="stat-box">
+                            <span class="stat-percentage">55%</span>
+                            <span class="stat-label">PSQI Improvement</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-percentage">48%</span>
+                            <span class="stat-label">Faster Sleep Onset</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-percentage">80%+</span>
+                            <span class="stat-label">Reduced Interruption</span>
+                        </div>
+                    </div>
+                    <p class="key-finding"><strong>Key Finding:</strong> Sleep duration increased 25%, without grogginess or medication.</p>
+                    <p class="conference">Presented at: 27th Congress of European Sleep Research Society</p>
+                </div>
+
+                <!-- Stress -->
+                <div class="study-card">
+                    <h4>Stress Management & Mental Clarity</h4>
+                    <div class="stat-grid">
+                        <div class="stat-box">
+                            <span class="stat-percentage">33%</span>
+                            <span class="stat-label">PSS Reduction</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-percentage">23.8%</span>
+                            <span class="stat-label">Mental Health Improvement</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-percentage">90%</span>
+                            <span class="stat-label">Patient Satisfaction</span>
+                        </div>
+                    </div>
+                    <p class="key-finding"><strong>Key Finding:</strong> Measurable improvements in cortisol response and cognitive function.</p>
+                    <p class="conference">Presented at: 25th World Congress of Psychiatry</p>
+                </div>
+
+                <!-- Performance -->
+                <div class="study-card">
+                    <h4>Athletic Performance & Strength</h4>
+                    <div class="stat-grid">
+                        <div class="stat-box">
+                            <span class="stat-percentage">5-8%</span>
+                            <span class="stat-label">Muscle Force Gain</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-percentage">7-8%</span>
+                            <span class="stat-label">Knee Flexion Strength</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-percentage">100%</span>
+                            <span class="stat-label">Improved Endurance</span>
+                        </div>
+                    </div>
+                    <p class="key-finding"><strong>Key Finding:</strong> Significantly outperforms placebo (2–4% improvement).</p>
+                    <p class="conference">Presented at: 13th EFSMA Congress of Sports Medicine</p>
+                </div>
+
+                <!-- Balance -->
+                <div class="study-card">
+                    <h4>Balance & Fall Prevention</h4>
+                    <div class="stat-grid">
+                        <div class="stat-box">
+                            <span class="stat-percentage">31%</span>
+                            <span class="stat-label">Balance Improvement</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-percentage">89.47%</span>
+                            <span class="stat-label">Mean Balance Score</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-percentage">73.6%</span>
+                            <span class="stat-label">Scored >85%</span>
+                        </div>
+                    </div>
+                    <p class="key-finding"><strong>Key Finding:</strong> Critical for fall prevention and proprioception in all ages.</p>
+                    <p class="conference">Presented at: 12th World Congress of World Institute of Pain</p>
+                </div>
+
+                <!-- Brain -->
+                <div class="study-card">
+                    <h4>Brain Function & Neuroplasticity</h4>
+                    <div class="stat-grid">
+                        <div class="stat-box">
+                            <span class="stat-percentage">100%</span>
+                            <span class="stat-label">EEG Changes</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-percentage">100%</span>
+                            <span class="stat-label">Coherence Changes</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-percentage">98.3%</span>
+                            <span class="stat-label">Power Changes</span>
+                        </div>
+                    </div>
+                    <p class="key-finding"><strong>Key Finding:</strong> Measurable neuroplasticity in attention and default-mode networks.</p>
+                    <p class="conference">Presented at: Multiple neuroscience conferences</p>
+                </div>
+            </div>
+
+            <!-- Safety -->
+            <div class="safety-section">
+                <h3>Safety Profile</h3>
+                <ul>
+                    <li><strong>100% Drug-Free:</strong> No medications, no chemicals, no contraindications</li>
+                    <li><strong>No Side Effects:</strong> Clinical studies show zero adverse events</li>
+                    <li><strong>Hypoallergenic:</strong> Medical-grade DermaMed material safe for sensitive skin</li>
+                    <li><strong>Water-Resistant:</strong> Designed for 24-hour wear with secure adhesive</li>
+                    <li><strong>Doctor Recommended:</strong> Trusted by 1,000+ healthcare practitioners</li>
+                </ul>
+            </div>
+
+            <!-- Products -->
+            <h3 style="text-align: center; font-size: 1.8em; margin: 40px 0 30px 0; color: var(--dark);">The SuperPatch Collection</h3>
+            <p style="text-align: center; margin-bottom: 30px; color: #666;">Each patch targets specific neural networks for targeted, evidence-based results:</p>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <h4>🦾 Victory Patch</h4>
+                    <p>Peak athletic performance, strength, and endurance recovery for competitive athletes.</p>
+                </div>
+                <div class="product-card">
+                    <h4>😴 REM Patch</h4>
+                    <p>Deep, restorative sleep without medication. Wake refreshed and energized.</p>
+                </div>
+                <div class="product-card">
+                    <h4>🎯 Focus Patch</h4>
+                    <p>Laser-sharp concentration and sustained attention without caffeine or stimulants.</p>
+                </div>
+                <div class="product-card">
+                    <h4>⚡ Boost Patch</h4>
+                    <p>All-day clean energy without sugar, caffeine, or crashes.</p>
+                </div>
+                <div class="product-card">
+                    <h4>🛡️ Freedom Patch</h4>
+                    <p>Fast relief from minor aches, pains, and inflammation without side effects.</p>
+                </div>
+                <div class="product-card">
+                    <h4>☮️ Peace Patch</h4>
+                    <p>Stress management, emotional balance, and calm clarity backed by science.</p>
+                </div>
+            </div>
+
+            <!-- Doctor Endorsements -->
+            <div class="doctors">
+                <h3>Doctor-Recommended & Trusted</h3>
+                <p style="margin-bottom: 20px;">SuperPatch is recommended by 1,000+ healthcare practitioners worldwide:</p>
+                <div class="endorsements">
+                    <p><strong>Dr. Eric Serrano</strong> — MD, Integrative & Functional Medicine</p>
+                    <p><strong>Dr. Jeffrey Gudin</strong> — MD, Professor of Anesthesiology & Pain Medicine</p>
+                    <p><strong>Dr. Charles Argoff</strong> — MD, Professor of Neurology</p>
+                    <p><strong>Dr. Anna Toker</strong> — MD, Colorectal Surgeon</p>
+                    <p><strong>Dr. Mark Sakr</strong> — MD, Head Team Physician, Division I</p>
+                    <p><strong>Mark Kerr</strong> — UFC Hall of Fame</p>
+                    <p><strong>Sean Feeney</strong> — Olympian</p>
+                    <p>And thousands of chiropractors, physiotherapists, and naturopaths</p>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div class="testimonials">
+                <h3>Real People, Real Results</h3>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Woke up and my low back was really bothering me and it was taken down hugely in only a few short moments."</p>
+                        <p class="testimonial-author">— Nancy Jannetta</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"With my heel spur, a Liberty patch on my ankle subsided the pain in less than five minutes."</p>
+                        <p class="testimonial-author">— Elsa Winterkorn</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"I felt stressed, put on Peace, and in 10 minutes, I felt calm. I highly recommend it."</p>
+                        <p class="testimonial-author">— Sandra B</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"I have sleep apnea and can't use CPAP. These patches have been a God-send for sleeping through the night."</p>
+                        <p class="testimonial-author">— Joann L</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Reclaim Your Wellness?</h2>
+            <p>Join thousands of satisfied customers experiencing the power of VTT-backed healing.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Choose Your Patch</a>
+                <a href="#" class="btn btn-secondary">Learn More</a>
+            </div>
+            <p class="guarantee">✓ 30-Day Money-Back Guarantee | ✓ Free Shipping Over $50 | ✓ Doctor-Recommended</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 SuperPatch. All rights reserved. | <a href="/terms">Terms</a> | <a href="/privacy">Privacy</a></p>
+        </div>
+    </footer>
+</body>
+</html>
