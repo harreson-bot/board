@@ -2,7 +2,7 @@
 
 _Curated memories and significant context._
 
-**Last Updated:** Wednesday, May 27, 2026 - 2:50 PM EDT (18:50 UTC) — Cron sync: No Telegram session history accessible (tree-scope restriction). No activity May 22–27. All systems stable.
+**Last Updated:** Wednesday, May 27, 2026 - 11:00 PM EDT (03:00 UTC May 28) — Nightly cron sync: 1 new item (blog post #336 published today). Telegram session history still tree-scope restricted. All systems stable.
 
 ---
 
@@ -152,12 +152,15 @@ All deployment blockers resolved in evening session (May 11). Production-ready m
 
 ---
 
-## Blog Post History - affordablehealthcare.solutions (as of May 20, 2026)
+## Blog Post History - affordablehealthcare.solutions (as of May 27, 2026)
 
 - May 1, 2026 (Post 314): Affordable Health Insurance for Self-Employed Georgia
 - May 5, 2026 (Post 316): What is an HRA and How Does It Save You Money on Health Insurance?
 - May 8, 2026 (Post 317): Affordable Health Insurance for Self-Employed North Carolinians
 - May 20, 2026 (Post 335): What Is a PPO vs HMO vs EPO? Health Plan Types Explained
+- May 27, 2026 (Post 336): Health Insurance Deductible vs Out-of-Pocket Maximum: What's the Difference?
+  - URL: https://affordablehealthcare.solutions/health-insurance-deductible-vs-out-of-pocket-maximum-whats-the-difference/
+  - Focus: Deductibles, OOP maximums, plan comparisons for self-employed
 
 **Cross-posting:** Medium skipped on all (no API token). Zapier routes new posts to LinkedIn.
 
@@ -765,9 +768,11 @@ The randomization is what prevents bot detection:
 
 ---
 
-_Last Updated: Wednesday, May 20, 2026 - 9:06 PM EDT (01:06 UTC, May 21)_
+_Last Updated: Wednesday, May 27, 2026 - 10:49 PM EDT (02:49 UTC May 28)_
 
-**Sync Summary (9:06 PM):** Memory consolidation completed. No new significant items detected since 5:30 PM checkpoint. All systems remain in steady-state operational status. PatchHub Compliance System documented and ready for integration. Trading bot in paper trading mode. Gmail crons active across 4 accounts. Gateway 2026.5.12 stable. Pending: WiFi AX73 mode clarification, Twilio A2P resubmission, bot signal monitoring.
+**Sync Summary (10:49 PM EDT):** Evening cron memory sync completed. Confirmed no new session activity since 2:50 PM afternoon sync. All documented systems remain fully operational and stable. PatchHub Compliance System code complete & ready for integration. Trading bot paper trading, monitoring ongoing. Gmail crons active 3x daily across 4 accounts. Infrastructure stable: DreamHost tunnels active, daily backups running, Gateway v2026.5.12. Pending items unchanged: WiFi AX73 mode clarification, Twilio A2P 10DLC resubmission, PatchHub Compliance integration.
+
+**Earlier Sync (May 27, 2:50 PM EDT):** Afternoon checkpoint noted no Telegram session history (tree-scope restricted). Confirmed all systems stable, no new significant items.
 
 ---
 
