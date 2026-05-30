@@ -783,6 +783,46 @@ The randomization is what prevents bot detection:
 
 ---
 
+## 2025 TAX PREP - DATA LOCKED IN (May 30, 2026, 2:15 PM EDT)
+
+**Status:** All income, expenses, and clarifications received and verified. Ready for final calculation.
+
+### Income (LOCKED - May 30, 2:00 PM)
+- Cadence Life Sciences: $76,500.00 (1099-NEC)
+- US Health: $89,880.72 (1099-NEC)
+- Claro Insurance: $13,618.00 (1099-NEC)
+- Navy Federal: $19.79 (1099-INT)
+- Coinbase: $4.46 (1099-DA)
+- **TOTAL: $180,023.97** ✅
+
+### Expenses Summary
+- QB expenses: $69,151.30 (754 transactions)
+- Supplementary card expenses: ~$55,000-60,000
+- **Total deductible (estimated): ~$105,000-110,000**
+- Vehicle loan principal (NOT deductible): $17,160.85 (Tundra)
+- F150 capital asset (Caylen's, NOT your deduction): $4,060 + $1,000 ongoing
+
+### Home Office
+- Total house: 1,400 sqft
+- **Office percentage: 30%** (Clarified May 30, different from 2024's 60.71%)
+- Form 8829 to be calculated
+
+### Vehicle Status
+- **2023 Toyota Tundra:** YOUR business vehicle. Vehicle loan principal NOT deductible. Depreciation via Schedule C.
+- **2011 Ford F150:** Caylen's vehicle (paid $8,000 total). HE depreciates it on his 2025 return, NOT you.
+- **CheckFreePlay payments:** Extra Tundra loan payments via Coinbase ($2,082.50 total) — principal, not deductible.
+
+### Key Clarifications (May 30, 2026)
+1. **Home office:** 30% of 1,400 sqft = 420 sqft (NOT 60.71% from 2024)
+2. **F150:** Purchased for Caylen. He depreciates it. Remove $4,060 + $1,000 from your deductions.
+3. **Vehicle loans:** $17,160.85 in Tundra payments + $2,082.50 CheckFreePlay = principal, NOT deductible
+4. **Sports/hunting gear:** Client entertainment supplies (Option B) — $2,500 likely deductible
+5. **QB reconciliation:** QB shows $175,531 income; 1099s show $180,023.97. Use 1099 figure.
+
+**Files:** 2025_TAX_PREP.md | 2025_EXPENSE_ANALYSIS.md | 2025_EXPENSE_CLARIFICATIONS.md | 2025_COMPLETE_CLARIFICATIONS.md
+
+---
+
 ## 🔒 CRITICAL COMMITMENT: Financial Data Accuracy (May 30, 2026, 1:28 PM EDT)
 
 **Calvenn's standard:** Zero tolerance for oversights, assumptions, or calculation mistakes with financial/tax data.
