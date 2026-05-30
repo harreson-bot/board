@@ -53,7 +53,9 @@
 ✅ 2023 Tax return (analyzed for carryovers, pattern)  
 ✅ QuickBooks income CSV (reconciled against 1099s)  
 
-⏳ **PENDING:** 2025 Business Expenses CSV/QuickBooks export  
+✅ **2025 Business Expenses:** Coinbase Debit (12 months) + Venmo Credit Card received & analyzed  
+✅ **Expense Clarifications:** Received from Calvenn (May 30, 2:02 PM EDT)  
+⏳ **PENDING:** CheckFreePlay payment clarification (marked as "auto loan" but user clarifies vehicles owned outright)  
 ⏳ **PENDING:** Depreciation schedule details (Section 179, MACRS percentages)  
 ⏳ **PENDING:** Home office exact measurements (sqft of office / sqft of house)
 
