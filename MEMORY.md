@@ -2,7 +2,23 @@
 
 _Curated memories and significant context._
 
-**Last Updated:** Thursday, May 28, 2026 - 11:00 PM EDT (03:00 UTC May 29) — Nightly Telegram sync: Quiet day confirmed. No new workspace activity detected. All projects operational. Pending items unchanged: WiFi AX73 verification, Twilio A2P resubmission, PatchHub Compliance integration, Trading bot monitoring.
+**Last Updated:** Friday, May 29, 2026 - 12:03 PM EDT (16:03 UTC) — Google Sheets integration added: sheets-automation service account authorized for tracking sheet (see Google Sheets API section below). All systems operational and stable.
+
+---
+
+## 📊 Google Sheets API — Authorized Document (May 29, 2026 - 12:03 PM EDT) 📈
+
+**Status:** ✅ Service account authorized and active
+
+### Authorized Sheet
+- **Document Name:** Tracking/Tasks Sheet (shared with service account)
+- **URL:** https://docs.google.com/spreadsheets/d/1sOcmJG9g2NezJztlsxIjyjGrYPI4n9rseZFCkfQJEPg/edit?usp=sharing
+- **Permissions:** Editor access via service account
+- **Service Account Email:** sheets-automation@tidal-horizon-493821-i6.iam.gserviceaccount.com
+- **Key File:** /home/harreson/.openclaw/workspace/tidal-horizon-493821-i6-f3e32cca3b96.json
+- **Project ID:** tidal-horizon-493821-i6
+- **API Status:** Google Sheets API enabled
+- **Use Case:** Automated write access for tracking, task management, updates, and engagement metrics
 
 ---
 
@@ -163,6 +179,13 @@ All deployment blockers resolved in evening session (May 11). Production-ready m
   - Focus: Deductibles, OOP maximums, plan comparisons for self-employed
 
 **Cross-posting:** Medium skipped on all (no API token). Zapier routes new posts to LinkedIn.
+
+### May 29, 2026 (Post 339): Affordable Health Insurance for Self-Employed Ohioans
+- **URL:** https://affordablehealthcare.solutions/affordable-health-insurance-self-employed-ohio-2/
+- **Status:** ✅ LIVE (Friday 9:00 AM)
+- **Keyword:** "affordable health insurance self-employed ohio"
+- **Focus:** Ohio-specific health insurance guide for self-employed, including tax advantages (deduction, HSA, HRA), state-specific insurers (Medical Mutual, UnitedHealth, Anthem), and examples for Columbus/Cleveland/Cincinnati freelancers
+- **Next state to publish:** Virginia (priority #5)
 
 ---
 
@@ -768,9 +791,11 @@ The randomization is what prevents bot detection:
 
 ---
 
-_Last Updated: Thursday, May 28, 2026 - 10:49 AM EDT (14:49 UTC)_
+_Last Updated: Friday, May 29, 2026 - 10:49 PM EDT (02:49 UTC, May 30)_
 
-**Sync Summary (10:49 AM EDT):** Mid-morning checkpoint completed. No new session activity since 6:49 AM sync (4 hours). All systems operational and stable: PatchHub Phase 2 LIVE, Compliance System ready for integration (4 files complete), Trading bot paper trading stable, Gmail crons active 3x daily, DreamHost infrastructure stable, daily backups running. Pending items unchanged: WiFi AX73 mode verification, Twilio A2P 10DLC resubmission, PatchHub Compliance integration (dev phase).
+**Sync Summary (6:49 PM EDT - Evening Checkpoint):** No new significant session activity since afternoon sync (2:49 PM). All systems operational and stable: PatchHub Phase 2 LIVE, Compliance System ready for integration (4 files complete), Trading bot paper trading stable, Gmail crons active 3x daily (8 AM, 1 PM, 9 PM), DreamHost infrastructure stable, daily backups running. Pending items unchanged: WiFi AX73 mode verification, Twilio A2P 10DLC resubmission, PatchHub Compliance integration (dev phase). No new context for MEMORY.md update needed.
+
+**Earlier Sync (May 28, 10:49 AM EDT):** Mid-morning checkpoint. No new session activity since 6:49 AM sync (4 hours).
 
 **Earlier Sync (May 28, 6:49 AM EDT):** Morning checkpoint confirmed no new activity. All systems stable, no infrastructure changes.
 

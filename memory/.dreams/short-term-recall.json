@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-14T03:00:24.695Z",
+  "updatedAt": "2026-05-29T13:01:52.803Z",
   "entries": {
     "memory:memory/2026-04-28.md:1:38": {
       "key": "memory:memory/2026-04-28.md:1:38",
@@ -721,6 +721,37 @@
         "friday",
         "time",
         "edt"
+      ]
+    },
+    "memory:memory/2026-05-20.md:32:62": {
+      "key": "memory:memory/2026-05-20.md:32:62",
+      "path": "memory/2026-05-20.md",
+      "startLine": 32,
+      "endLine": 62,
+      "source": "memory",
+      "snippet": "No memory files exist for May 19 or May 20 (prior to this entry). Either: - No Telegram/user sessions occurred those days, OR - Sessions occurred but couldn't be captured by cron (visibility restriction) If Calvenn had active sessions May 19–20, context from those sessions should be re-summarized in main session manually. --- ## Telegram Session (11pm sync) **Time:** Wednesday, May 20, 2026 - 11:00 PM EDT **Method:** Workspace file diff (session history tree-restricted) ### Key Items Identified Today #### 1. 📝 Blog Post PUBLISHED — PPO vs HMO vs EPO - **URL:** https://affordablehealthcare.solutions/what-is-a-ppo-vs-hmo-vs-epo-health-plan-types-explained/ - **Post ID:** 335 - **Title:*",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.26676439048477185,
+      "maxScore": 0.26676439048477185,
+      "firstRecalledAt": "2026-05-29T13:01:52.803Z",
+      "lastRecalledAt": "2026-05-29T13:01:52.803Z",
+      "queryHashes": [
+        "ea47b19d6fa2"
+      ],
+      "recallDays": [
+        "2026-05-29"
+      ],
+      "conceptTags": [
+        "telegram/user",
+        "re-summarized",
+        "tree-restricted",
+        "exist",
+        "may",
+        "prior",
+        "entry",
+        "either"
       ]
     }
   }
