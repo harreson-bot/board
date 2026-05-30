@@ -785,18 +785,23 @@ The randomization is what prevents bot detection:
 
 ## 2025 TAX PREP - DATA LOCKED IN (May 30, 2026, 2:15 PM EDT)
 
-**Status:** ✅ COMPLETE - Final estimated tax liability calculated
+**Status:** ✅ COMPLETE - Final estimated tax liability calculated WITH CARRYOVERS
 
-**ESTIMATED 2025 TAX LIABILITY: $16,375.48**
-- Federal income tax: $6,225.46
-- Self-employment tax: $10,150.02
-- Effective tax rate: 9.1%
+**REVISED 2025 TAX LIABILITY: ~$12,423**
+- Federal income tax: ~$3,623
+- Self-employment tax: ~$8,800
+- Reason for reduction: $12,075 Section 179 carryover from 2024 increases depreciation
 
-**Breakdown:**
-- Gross income: $180,023.97
-- Deductible expenses: ($86,536.50)
-- Depreciation: ($21,693.00)
-- Net profit: $71,794.47
+**2025 Net Profit (Revised - Schedule C Line 31):**
+- Gross receipts: $180,024
+- Less: Total business expenses (includes depreciation): ($111,383)
+- Tentative profit: $68,641
+- Less: Home office deduction (Form 8829): ($6,360)
+- **Net profit: $62,281** (includes benefit of $12,075 Section 179 carryover)
+
+**Carryovers Applied:**
+- Section 179 carryover from 2024: +$12,075 (reduces taxable income)
+- QBI loss carryforward from 2024: -$9,489 (affects QBI deduction)
 
 **Status:** PENDING additional lead purchase expenses from other credit card (user will look for this)
 
