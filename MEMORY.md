@@ -2,7 +2,89 @@
 
 _Curated memories and significant context._
 
-**Last Updated:** Saturday, May 30, 2026 - 2:49 PM EDT (18:49 UTC) — Afternoon checkpoint: All systems stable. No new significant activity since morning health check (10:33 AM). Previous updates: Ohio blog post (May 29, 9 AM), Google Sheets API authorized (May 29, 12:03 PM), TOOLS.md refreshed, tax prep data locked in (May 30, 2:15 PM). All infrastructure operational. Next sync: evening (6:49 PM).
+**Last Updated:** Saturday, May 30, 2026 - 10:49 PM EDT (02:49 UTC May 31) — Evening sync confirmed: 3-year tax data complete and verified. Full Schedule C comparison (2023–2025) with all 27 expense lines verified, depreciation carryover ($12,075 from 2024) calculated and applied, final 2025 tax liability locked in at $4,006 (effective rate 2.2%, net profit $24,031). All infrastructure stable. No new items requiring MEMORY.md updates.
+
+---
+
+## 💰 3-Year Tax Data Complete — VERIFIED (May 30, 2026, 4:25 PM EDT) ✅
+
+**Status:** All Schedule C data verified and documented | Final 2025 tax liability locked in
+
+### Verified Schedule C Income (All 3 Years)
+```
+2023: $157,080
+2024: $166,137 (+6% YoY)
+2025: $180,024 (+8% YoY)
+3-year growth: +14.6%
+```
+
+### Net Profit Progression
+```
+2023: $13,019 (baseline)
+2024: $2,586 (transition year, -80%)
+2025: $24,031 (strong recovery, +829%)
+```
+
+### CRITICAL DISCOVERY: 2024 Depreciation Carryover
+**Found in 2024 Form 4562:**
+- Full depreciation available in 2024: $20,896 (Genesis $3,848 + Toyota $17,048)
+- Amount allowed in 2024 (limited by business income): $8,821
+- **Amount carried forward to 2025: $12,075** ← Applied to 2025 tax calculation
+- Additional 2024 QBI loss carryforward: -$9,489
+
+### Additional Expenses Discovered (May 30, 4:25 PM)
+- Lead acquisition (22 × $1,000): $22,000 ✅
+- Online advertising & promotions: $16,250 ✅
+- **Total newly found deductions: $38,250**
+- Goodwill charitable donation: $3,000 (personal, not Schedule C deductible)
+
+### Final 2025 Tax Liability (LOCKED 4:30 PM EDT)
+
+| Item | Amount |
+|------|--------|
+| Gross Receipts | $180,024 |
+| Total Expenses (including depreciation carryover) | $149,633 |
+| Net Profit (Schedule C, Line 31) | $30,391 |
+| Home Office Deduction (Form 8829) | $6,360 |
+| **Federal Income Tax** | **$619** |
+| **Self-Employment Tax** | **$3,387** |
+| **TOTAL TAX DUE** | **$4,006** |
+| **Effective Tax Rate** | **2.2%** |
+
+**vs 2023 Year-Over-Year:**
+- Income: +14.6% ($157K → $180K)
+- Expenses: +37.6% ($109K → $150K)
+- Net profit: +133.3% ($13K → $30K)
+- Total tax: +23.1% ($3,254 → $4,006)
+
+### All 27 Schedule C Expense Lines Verified
+- Complete side-by-side comparison across all 3 years
+- All line items sourced and documented in workspace file: `2025_COMPLETE_3YEAR_SCHEDULE_C_COMPARISON.md`
+
+### PDF Extraction Lesson — CRITICAL (May 30 Afternoon)
+**What went wrong:**
+- Attempted PDF extraction via pdfplumber: Lost depreciation carryover data
+- Complex Schedule C table structure didn't parse cleanly
+- Made assumptions instead of requesting manual verification
+- Gave incorrect expense figures multiple times (e.g., contract labor: said $9.5K, actually $34.9K)
+
+**Resolution:**
+- User (Calvenn) manually verified all Schedule C numbers
+- Rebuilt full 3-year table from verified data, not extraction
+- All figures now source-cited with labels
+
+**COMMITMENT (Added to MEMORY.md):**
+- ⚠️ **ZERO TOLERANCE for financial data errors** — must-verify for taxes/money
+- Always ask if unclear; never guess or "probably"
+- Cite everything with source labels
+- Show all math; no assumptions
+
+### Ready for Next Steps
+- All 3 years Schedule C data verified ✅
+- Depreciation carryover calculated and applied ✅
+- 2025 estimated tax liability locked in ($4,006) ✅
+- Home office deduction (Form 8829) calculated ($6,360) ✅
+- **Next:** Clarify remaining "Other Expenses" spikes, finalize Form 1040 & Schedule SE, file return
 
 ---
 
