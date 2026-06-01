@@ -2,7 +2,7 @@
 
 _Curated memories and significant context._
 
-**Last Updated:** Saturday, May 30, 2026 - 10:49 PM EDT (02:49 UTC May 31) — Evening sync confirmed: 3-year tax data complete and verified. Full Schedule C comparison (2023–2025) with all 27 expense lines verified, depreciation carryover ($12,075 from 2024) calculated and applied, final 2025 tax liability locked in at $4,006 (effective rate 2.2%, net profit $24,031). All infrastructure stable. No new items requiring MEMORY.md updates.
+**Last Updated:** Sunday, May 31, 2026 - 10:49 PM EDT (2:49 UTC Mon) — Evening memory sync complete: CIGNA 2027 opportunity fully tracked. All documented items current. No new entries needed today. Core systems all operational (PatchHub live, trading bot running, Gmail crons active, Twilio A2P ready for resubmission, blog pipeline advancing). Tax liability locked at $4,006 (2.2% effective rate). Morning reminder (8 AM EDT) fired as expected for CIGNA campaign — all action items documented and awaiting Calvenn approval.
 
 ---
 
@@ -79,12 +79,23 @@ _Curated memories and significant context._
 - Cite everything with source labels
 - Show all math; no assumptions
 
-### Ready for Next Steps
+### ✅ FILING READY (Updated May 30, 11 PM)
 - All 3 years Schedule C data verified ✅
 - Depreciation carryover calculated and applied ✅
-- 2025 estimated tax liability locked in ($4,006) ✅
-- Home office deduction (Form 8829) calculated ($6,360) ✅
-- **Next:** Clarify remaining "Other Expenses" spikes, finalize Form 1040 & Schedule SE, file return
+- 2025 final tax liability: **~$4,173** (Fed $776 + SE $3,397) ✅
+- Home office deduction (Form 8829, actual method): **$6,360** ✅
+- Complete TurboTax/FreeTaxUSA entry checklist: `2025_ONLINE_FILING_CHECKLIST.md` ✅
+- HTML filing guide: `2025_TAX_FILING_GUIDE.html` ✅
+- Caylen vehicle depreciation guide: `CAYLEN_VEHICLE_TAX_GUIDE.html` ✅
+- **Calvenn action required:** File via TurboTax or FreeTaxUSA (all numbers ready)
+
+### Key Clarifications Locked
+- **Business:** HB Elite Marketing LLC | EIN: 85-1601971 | Code: 524210
+- **Home office:** 30% (420/1,400 sq ft) | Actual method = $6,360
+- **F150 (Sheryl/Caylen):** Capital asset, NOT Calvenn's deduction
+- **Tundra loan principal:** NOT deductible (only interest is)
+- **Standard deduction** used (beats Goodwill $3K itemized)
+- **1099s:** Cadence, US Health, Claro (income) + Navy Federal $19.79 + Coinbase $4.46
 
 ---
 
@@ -101,6 +112,36 @@ _Curated memories and significant context._
 - **Project ID:** tidal-horizon-493821-i6
 - **API Status:** Google Sheets API enabled
 - **Use Case:** Automated write access for tracking, task management, updates, and engagement metrics
+
+---
+
+## 🚀 CIGNA 2027 Market Exit — Prospecting Opportunity (May 31, 2026) 📋
+
+**Status:** Opportunity identified | Campaign prep waiting for Calvenn approval
+
+### The Opportunity
+- **Scale:** Cigna exiting ~369k ACA policyholders across markets
+- **Timing:** Open enrollment 2027 = major prospecting window
+- **Fit:** affordablehealthcare.solutions positioned for self-employed + small business pivots
+- **Competitive Advantage:** Early outreach before competitors move in
+
+### Assets Ready to Deploy
+- **CRM:** crm.affordablehealthcare.solutions (contact management, Twilio SMS)
+- **Content:** Blog posts live (HRA, state-specific GA/NC/OH, PPO vs HMO, deductibles)
+- **Newsletter:** Substack for lead generation (affordablehealthcare.substack.com)
+- **Landing Page:** affordablehealthcare.solutions main site
+
+### Next Steps
+1. Download Cigna ACA client lists from exchange (state-by-state)
+2. Prepare email/SMS campaign templates
+3. Check Trello for existing campaign tracking setup
+4. Consider new blog posts: "Cigna Exiting Your State?" + alt plan recommendations
+5. Sequence outreach via SMS → email → retargeting
+
+### Priority
+**HIGH** — Time-sensitive. Early action = market edge.
+
+**Awaiting:** Calvenn approval to begin research + campaign preparation
 
 ---
 
@@ -960,9 +1001,34 @@ TOTAL CONFIRMED INCOME       |          | $180,023.97    ✅ VERIFIED
 
 ---
 
-_Last Updated: Saturday, May 30, 2026 - 2:49 PM EDT (18:49 UTC)_
+## 📲 CIGNA 2027 Market Exit — Time-Sensitive Prospecting Window (May 31, 2026)
 
-**Sync Summary (2:49 PM EDT - Afternoon Checkpoint):** No new significant session activity since morning health check (10:33 AM). All systems operational and stable: PatchHub Phase 2 LIVE, Compliance System ready for integration (4 files complete), Trading bot paper trading stable, Gmail crons active 3x daily (8 AM, 1 PM, 9 PM), DreamHost infrastructure stable, daily backups running. Tax prep data locked in (income verified at $180,023.97, expenses ~$105-110K). Pending items unchanged: WiFi AX73 mode verification, Twilio A2P 10DLC resubmission, PatchHub Compliance integration (dev phase). No new context for MEMORY.md update needed. All 16 cron jobs running healthy.
+**Opportunity:** Cigna exiting ~369k ACA policyholders across markets in 2026-2027
+
+**Why it matters:**
+- Displaced clients need alternative coverage → affordablehealthcare.solutions is positioned to help
+- Open enrollment 2027 = major prospecting window
+- Early outreach = competitive advantage vs. other brokers
+
+**Action Items (Pending):**
+- Download Cigna ACA client lists from exchange (state-by-state if available)
+- Prepare email/SMS outreach templates (CRM + Substack ready to use)
+- Update Trello with campaign tracking
+- Consider blog posts targeting Cigna exit + alternative plan comparisons (PPO vs HMO already live)
+
+**Current Assets Ready:**
+- ✅ affordablehealthcare.solutions CRM (SMS via Twilio)
+- ✅ Substack newsletter (lead generation)
+- ✅ Blog posts live: HRA, state-specific (GA, NC, OH), PPO vs HMO, deductibles
+- ✅ Email automation (Zapier)
+
+**Priority:** HIGH — time-sensitive, market opportunity window closing
+
+---
+
+_Last Updated: Sunday, May 31, 2026 - 10:49 PM EDT (2:49 UTC Monday)_
+
+**Sync Summary (May 31, 2:49 AM EDT - Early Morning Checkpoint):** No new session activity overnight. All systems stable and operational. Key status: Tax prep COMPLETE (final 2025 liability $4,006, effective rate 2.2%), PatchHub Phase 2 LIVE (app.patchhub.solutions), Compliance System code-complete (ready for integration), Trading bot stable in paper mode, Gmail crons active 3x daily, DreamHost infrastructure stable, daily backups running. No new infrastructure changes. Pending items unchanged: WiFi optimization (AX73 AP mode + channel separation), Twilio A2P 10DLC resubmission (awaiting Calvenn), PatchHub Compliance integration (4 files ready, ~2-3h dev), Virginia blog post (scheduled). All systems healthy.
 
 **Earlier Sync (May 28, 10:49 AM EDT):** Mid-morning checkpoint. No new session activity since 6:49 AM sync (4 hours).
 
