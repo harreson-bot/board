@@ -2,7 +2,7 @@
 
 _Curated memories and significant context._
 
-**Last Updated:** Sunday, May 31, 2026 - 10:49 PM EDT (2:49 UTC Mon) — Evening memory sync complete: CIGNA 2027 opportunity fully tracked. All documented items current. No new entries needed today. Core systems all operational (PatchHub live, trading bot running, Gmail crons active, Twilio A2P ready for resubmission, blog pipeline advancing). Tax liability locked at $4,006 (2.2% effective rate). Morning reminder (8 AM EDT) fired as expected for CIGNA campaign — all action items documented and awaiting Calvenn approval.
+**Last Updated:** Monday, June 1, 2026 - 10:49 PM EDT (02:49 UTC, Tuesday) — Nightly memory sync complete. No new significant items. Trading bot SSH authentication issue remains pending (dh_ygjkxx@vps48233.dreamhostps.com). All other systems stable and operational.
 
 ---
 
@@ -208,6 +208,21 @@ _Curated memories and significant context._
 - **Status doc:** `BOT-STATUS.md` (current signals and technical details)
 - **Process:** `nohup node bot-30day-complete.js > bot-30day-range.log 2>&1 &`
 - **Git:** Committed as 8ef2484 "Trading Bot Production Deployment - May 10, 2026"
+
+### 🚨 STATUS ALERT — VERIFICATION NEEDED (June 1, 2026, 10:49 AM EDT)
+
+**Issue Discovered:** Cannot verify if bot is still running
+- **Root Cause:** SSH authentication to DreamHost dh_ygjkxx account failing ("too many authentication failures")
+- **Test Window:** Ended ~May 18, 2026 (15 days after May 3 deployment)
+- **Action Blocked:** Cannot access PM2 logs or trades.csv to confirm activity
+- **Trades Log Status:** Not yet reviewed
+
+**Next Steps for Calvenn:**
+1. Reset SSH password for dh_ygjkxx@vps48233.dreamhostps.com (or fix authentication)
+2. SSH in and run: `pm2 logs solana-trader` (to see if bot is still running)
+3. Review: `/home/dh_ygjkxx/trading-bot-solana/trades.csv` (for actual trading activity)
+4. Confirm: Did bot stay running through entire test window or did it stop?
+5. Decision: Keep running live, or investigate/fix and restart?
 
 ### Architecture
 - **API:** Coinbase Advanced Trade API (JWT authenticated, working)
@@ -1026,7 +1041,7 @@ TOTAL CONFIRMED INCOME       |          | $180,023.97    ✅ VERIFIED
 
 ---
 
-_Last Updated: Sunday, May 31, 2026 - 10:49 PM EDT (2:49 UTC Monday)_
+_Last Updated: Monday, June 1, 2026 - 6:49 AM EDT (10:49 UTC)_
 
 **Sync Summary (May 31, 2:49 AM EDT - Early Morning Checkpoint):** No new session activity overnight. All systems stable and operational. Key status: Tax prep COMPLETE (final 2025 liability $4,006, effective rate 2.2%), PatchHub Phase 2 LIVE (app.patchhub.solutions), Compliance System code-complete (ready for integration), Trading bot stable in paper mode, Gmail crons active 3x daily, DreamHost infrastructure stable, daily backups running. No new infrastructure changes. Pending items unchanged: WiFi optimization (AX73 AP mode + channel separation), Twilio A2P 10DLC resubmission (awaiting Calvenn), PatchHub Compliance integration (4 files ready, ~2-3h dev), Virginia blog post (scheduled). All systems healthy.
 
