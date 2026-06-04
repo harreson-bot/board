@@ -2,7 +2,7 @@
 
 _Curated memories and significant context._
 
-**Last Updated:** Tuesday, June 2, 2026 - 10:49 PM EDT (02:49 UTC June 3) — Late evening automated memory sync. No new session activity since June 1, 10:49 PM EDT. All systems stable and operational. Pending items unchanged: Twilio A2P 10DLC resubmission (awaiting Calvenn approval), PatchHub Compliance System integration (code ready), Virginia blog post (scheduled), WiFi optimization (AX73 AP mode).
+**Last Updated:** Wednesday, June 3, 2026 - 6:49 PM EDT (22:49 UTC) — Evening automated memory sync (cron job 94d28c1c). ⚠️ SSH authentication failure persists (dh_ygjkxx@vps48233.dreamhostps.com) — unable to verify SOLANA bot status since June 1 (8:00 AM attempt today also failed). Test window now 16 days past intended end date (May 18, 2026). **CRITICAL DECISION NEEDED:** Determine if SOLANA bot should continue running, extend test window, or move to live trading. All other systems stable and operational. Pending items unchanged: Twilio A2P 10DLC resubmission (awaiting Calvenn), PatchHub Compliance System integration (code ready), Virginia blog post (scheduled), WiFi optimization (AX73 AP mode), SOLANA bot SSH access restoration (critical for status verification).
 
 ---
 
@@ -209,12 +209,13 @@ _Curated memories and significant context._
 - **Process:** `nohup node bot-30day-complete.js > bot-30day-range.log 2>&1 &`
 - **Git:** Committed as 8ef2484 "Trading Bot Production Deployment - May 10, 2026"
 
-### 🚨 STATUS ALERT — VERIFICATION NEEDED (June 1, 2026, 10:49 AM EDT)
+### 🚨 STATUS ALERT — VERIFICATION NEEDED (June 1, 2026, 10:49 AM EDT | Updated June 3, 10:49 AM EDT)
 
 **Issue Discovered:** Cannot verify if bot is still running
 - **Root Cause:** SSH authentication to DreamHost dh_ygjkxx account failing ("too many authentication failures")
-- **Test Window:** Ended ~May 18, 2026 (15 days after May 3 deployment)
-- **Action Blocked:** Cannot access PM2 logs or trades.csv to confirm activity
+- **Test Window:** Ended ~May 18, 2026 (originally 15 days after May 3 deployment)
+- **Current Status (June 3):** 16 days past intended window — bot age unknown, may be idle or still running
+- **Action Blocked:** Cannot access PM2 logs or trades.csv to confirm activity status or trading performance
 - **Trades Log Status:** Not yet reviewed
 
 **Next Steps for Calvenn:**
@@ -1041,9 +1042,9 @@ TOTAL CONFIRMED INCOME       |          | $180,023.97    ✅ VERIFIED
 
 ---
 
-_Last Updated: Monday, June 1, 2026 - 6:49 AM EDT (10:49 UTC)_
+_Last Updated: Wednesday, June 3, 2026 - 10:49 PM EDT (02:49 UTC, June 4)_
 
-**Sync Summary (May 31, 2:49 AM EDT - Early Morning Checkpoint):** No new session activity overnight. All systems stable and operational. Key status: Tax prep COMPLETE (final 2025 liability $4,006, effective rate 2.2%), PatchHub Phase 2 LIVE (app.patchhub.solutions), Compliance System code-complete (ready for integration), Trading bot stable in paper mode, Gmail crons active 3x daily, DreamHost infrastructure stable, daily backups running. No new infrastructure changes. Pending items unchanged: WiFi optimization (AX73 AP mode + channel separation), Twilio A2P 10DLC resubmission (awaiting Calvenn), PatchHub Compliance integration (4 files ready, ~2-3h dev), Virginia blog post (scheduled). All systems healthy.
+**Sync Summary (June 3, 2:49 PM EDT - Afternoon Checkpoint):** No new significant session activity. All systems stable and operational. SOLANA bot still inaccessible due to persistent SSH auth failures (dh_ygjkxx account). Key status: Tax prep COMPLETE (final 2025 liability $4,006, effective rate 2.2%), PatchHub Phase 2 LIVE (app.patchhub.solutions), Compliance System code-complete (ready for integration), Trading bot health unknown (16 days past test window), Gmail crons active 3x daily, DreamHost infrastructure stable, daily backups running. No new infrastructure changes. Pending items unchanged: WiFi optimization (AX73 AP mode + channel separation), Twilio A2P 10DLC resubmission (awaiting Calvenn), PatchHub Compliance integration (4 files ready, ~2-3h dev), Virginia blog post (scheduled), SOLANA bot SSH restoration (critical). All systems healthy except SSH access bottleneck.
 
 **Earlier Sync (May 28, 10:49 AM EDT):** Mid-morning checkpoint. No new session activity since 6:49 AM sync (4 hours).
 
