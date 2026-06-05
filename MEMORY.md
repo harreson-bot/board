@@ -2,7 +2,7 @@
 
 _Curated memories and significant context._
 
-**Last Updated:** Thursday, June 4, 2026 - 11:00 PM EDT (03:00 UTC June 5) — 11pm nightly sync. ✅ **HAIKU MODEL FIXED** (afternoon session): `claude-haiku-4-5` deprecated by Anthropic; correct ID is `anthropic/claude-haiku-4-5-20251001` (full versioned). openclaw.json, AGENTS.md, MEMORY.md all updated. Gateway confirmed running. Haiku is Calvenn's preferred model — keep as default. ⚠️ SSH authentication failure persists (dh_ygjkxx@vps48233.dreamhostps.com) — SOLANA bot status unknown, now 17 days past test window. **CRITICAL DECISION NEEDED:** Determine if SOLANA bot should continue, extend, or move to live trading. Pending items unchanged: Twilio A2P 10DLC resubmission (awaiting Calvenn), PatchHub Compliance System integration (code ready), Virginia blog post (scheduled), WiFi optimization (AX73 AP mode), SOLANA bot SSH restoration (critical).
+**Last Updated:** Friday, June 5, 2026 - 10:51 AM EDT (14:51 UTC) — Morning sync. ✅ **STATUS STABLE:** No new events since June 4, 11pm sync. Haiku model fixed and confirmed working. ⚠️ SSH authentication failure persists (dh_ygjkxx@vps48233.dreamhostps.com) — SOLANA bot status unknown, now 18 days past test window. **CRITICAL DECISION PENDING:** SOLANA bot continuation/extension vs. live trading. Standing items: Twilio A2P 10DLC resubmission (awaiting Calvenn), PatchHub Compliance System integration (code ready), Virginia blog post (next in schedule), WiFi optimization (AX73 AP mode), SOLANA bot SSH fix (critical). All other systems stable ✅.
 
 ---
 
