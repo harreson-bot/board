@@ -2,7 +2,26 @@
 
 _Curated memories and significant context._
 
-**Last Updated:** Thursday, June 4, 2026 - 12:27 PM EDT (16:27 UTC) — Midday manual sync confirmed by Calvenn. ⚠️ SSH authentication failure persists (dh_ygjkxx@vps48233.dreamhostps.com) — unable to verify SOLANA bot status since June 1. Test window now 17 days past intended end date (May 18, 2026). **CRITICAL DECISION NEEDED:** Determine if SOLANA bot should continue running, extend test window, or move to live trading. All other systems stable and operational. Pending items unchanged: Twilio A2P 10DLC resubmission (awaiting Calvenn), PatchHub Compliance System integration (code ready), Virginia blog post (scheduled), WiFi optimization (AX73 AP mode), SOLANA bot SSH access restoration (critical for status verification).
+**Last Updated:** Thursday, June 4, 2026 - 11:00 PM EDT (03:00 UTC June 5) — 11pm nightly sync. ✅ **HAIKU MODEL FIXED** (afternoon session): `claude-haiku-4-5` deprecated by Anthropic; correct ID is `anthropic/claude-haiku-4-5-20251001` (full versioned). openclaw.json, AGENTS.md, MEMORY.md all updated. Gateway confirmed running. Haiku is Calvenn's preferred model — keep as default. ⚠️ SSH authentication failure persists (dh_ygjkxx@vps48233.dreamhostps.com) — SOLANA bot status unknown, now 17 days past test window. **CRITICAL DECISION NEEDED:** Determine if SOLANA bot should continue, extend, or move to live trading. Pending items unchanged: Twilio A2P 10DLC resubmission (awaiting Calvenn), PatchHub Compliance System integration (code ready), Virginia blog post (scheduled), WiFi optimization (AX73 AP mode), SOLANA bot SSH restoration (critical).
+
+---
+
+## 🐱 Anthropic Model ID — CRITICAL LESSON (June 4, 2026)
+
+**Calvenn's preferred model:** Haiku (fastest, most cost-efficient — use as default always)
+
+**Correct model ID:** `anthropic/claude-haiku-4-5-20251001` (full versioned ID with date suffix)
+**NEVER use:** `anthropic/claude-haiku-4-5` (short alias — DEPRECATED by Anthropic, causes API errors)
+
+**What happened:** Short alias `claude-haiku-4-5` was removed from Anthropic's API. OpenClaw showed `⚠️ Agent failed before reply: Unknown model: anthropic/claude-haiku-4-5` whenever Haiku was selected.
+
+**Fix (June 4 afternoon):**
+- `openclaw.json` → `"model": "anthropic/claude-haiku-4-5-20251001"` as default
+- `models.providers.anthropic.models[]` → each entry needs both `id` AND `name` fields
+- All three models registered: Haiku (default), Sonnet 4.6, Opus 4.7
+- Verified working via sub-agent spawn test ✅
+
+**Rule going forward:** Always use the full versioned model ID for Anthropic models.
 
 ---
 
