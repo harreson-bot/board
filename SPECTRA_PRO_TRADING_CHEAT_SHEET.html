@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectra Pro Footprint — Trading Cheat Sheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #0f3460;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #00d4ff;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+        h2 {
+            color: #00d4ff;
+            border-bottom: 2px solid #00d4ff;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #4ecca3;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        .setup-box {
+            background: #1a3a52;
+            border-left: 4px solid #00d4ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #a0d8ff;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: #1a3a52;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        table th {
+            background: #00d4ff;
+            color: #0f3460;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #2a5a7a;
+            color: #e0e0e0;
+        }
+        table tr:last-child td {
+            border-bottom: none;
+        }
+        table tr:hover {
+            background: #243d5a;
+        }
+        .signal-box {
+            background: #1a3a52;
+            border-left: 4px solid #4ecca3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .signal-box h4 {
+            color: #4ecca3;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        .signal-box p {
+            margin-bottom: 5px;
+            color: #d0d0d0;
+        }
+        .green-signal {
+            border-left-color: #2ecc71;
+        }
+        .red-signal {
+            border-left-color: #e74c3c;
+        }
+        .yellow-signal {
+            border-left-color: #f39c12;
+        }
+        .warning {
+            background: #3d2817;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            color: #f9b233;
+        }
+        .warning h4 {
+            color: #f39c12;
+            margin-bottom: 8px;
+        }
+        .checklist {
+            background: #1a3a52;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .checklist li {
+            list-style-position: inside;
+            margin: 8px 0;
+            color: #e0e0e0;
+        }
+        .checklist li strong {
+            color: #00d4ff;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+        .flow-section {
+            background: #1a3a52;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #00d4ff;
+        }
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            margin: 15px 0;
+        }
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: #00d4ff;
+            color: #0f3460;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .step-content h4 {
+            color: #4ecca3;
+            margin-bottom: 5px;
+        }
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .ref-card {
+            background: #1a3a52;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #00d4ff;
+        }
+        .ref-card strong {
+            color: #4ecca3;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .ref-card p {
+            font-size: 0.9em;
+            color: #d0d0d0;
+        }
+        .print-button {
+            text-align: center;
+            margin: 30px 0;
+        }
+        button {
+            background: #00d4ff;
+            color: #0f3460;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #4ecca3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #2a5a7a;
+            color: #888;
+            font-size: 0.9em;
+        }
+        .tldr-box {
+            background: linear-gradient(135deg, #1a4d3a 0%, #0f3460 100%);
+            border: 2px solid #4ecca3;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .tldr-box h3 {
+            color: #4ecca3;
+            margin-bottom: 15px;
+        }
+        .tldr-box ul {
+            list-style-position: inside;
+            color: #e0e0e0;
+        }
+        .tldr-box li {
+            margin: 8px 0;
+        }
+        .tldr-box strong {
+            color: #00d4ff;
+        }
+        @media print {
+            body {
+                background: white;
+                color: #000;
+            }
+            .container {
+                background: white;
+                color: #000;
+                box-shadow: none;
+                padding: 20px;
+            }
+            h1, h2, h3, h4 {
+                color: #000;
+                border-color: #000;
+            }
+            table {
+                background: #f5f5f5;
+            }
+            table th {
+                background: #ccc;
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Spectra Pro Footprint</h1>
+        <p class="subtitle">Day Trading & Scalping Cheat Sheet | Flow Zone Indicator for NinjaTrader 8</p>
+        
+        <div class="print-button">
+            <button onclick="window.print()">📄 Print or Save as PDF</button>
+        </div>
+
+        <!-- QUICK SETUP -->
+        <h2>⚙️ Quick Setup for Active Trading</h2>
+        <div class="setup-box">
+Ticks Per Level: 2 (NQ/MNQ) or 4 (ES/MES)
+Value Area %: 70%
+Footprint Left: Delta mode (Saturation color style)
+Footprint Right: Volume Bar
+Sessions: Adjust for your market (RTH, extended, etc.)
+        </div>
+
+        <!-- THE FOOTPRINT -->
+        <h2>📊 The Footprint: What You're Looking At</h2>
+        
+        <h3>Left Side = Order Flow (Delta) — The Aggression Indicator</h3>
+        <ul class="checklist">
+            <li><strong>Wide bars = Strong imbalance</strong> (one side dominated)</li>
+            <li><strong>Positive delta (green/blue)</strong> = Buyers were aggressive (lifting offers)</li>
+            <li><strong>Negative delta (red)</strong> = Sellers were aggressive (hitting bid)</li>
+            <li><strong>Neutral/small bars</strong> = Balanced buying and selling</li>
+            <li><strong>Saturation mode</strong> = Darker = stronger imbalance (makes dominant levels obvious)</li>
+        </ul>
+
+        <h3>Right Side = Volume Profile — The Activity Level</h3>
+        <ul class="checklist">
+            <li><strong>Widest bar = POC (Point of Control)</strong> — most-traded price in that candle</li>
+            <li><strong>Bars inside Value Area</strong> = Where 70% of volume traded (most likely support/resistance)</li>
+            <li><strong>POC is a potential pivot</strong> — price often bounces here</li>
+        </ul>
+
+        <!-- FIVE CORE SIGNALS -->
+        <h2>🎲 Five Core Signals for Entries & Exits</h2>
+
+        <h3>1️⃣ IMBALANCE ZONES — "The Money Print"</h3>
+        <p><strong>What it is:</strong> A cluster of price levels where one side (buyers OR sellers) dominated 150%+ more than the other side.</p>
+        <p><strong>Visual:</strong> Colored background zones extending right from the candle.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Signal</th>
+                    <th>Setup</th>
+                    <th>Entry</th>
+                    <th>Exit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong style="color: #2ecc71;">BUY Imbalance</strong></td>
+                    <td>Active buy imbalance zone (green) + price pulls back INTO the zone</td>
+                    <td>Buy on the bounce INTO the imbalance</td>
+                    <td>Scale out at first resistance (POC above) OR when imbalance zone is traded through</td>
+                </tr>
+                <tr>
+                    <td><strong style="color: #e74c3c;">SELL Imbalance</strong></td>
+                    <td>Active sell imbalance zone (red) + price rallies back INTO the zone</td>
+                    <td>Short on the rejection at the imbalance</td>
+                    <td>Cover at first support (POC below) OR when imbalance zone is traded through</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="signal-box green-signal">
+            <h4>Key Rule:</h4>
+            <p>Buy imbalances are support (price wants to go back up). Sell imbalances are resistance (price wants to go back down).</p>
+        </div>
+
+        <div class="signal-box yellow-signal">
+            <h4>Pro Tip:</h4>
+            <p>Imbalance zones that extend for 3+ candles without being filled = <strong>STRONG level</strong> = better entry odds.</p>
+        </div>
+
+        <h3>2️⃣ ZERO PRINTS — "The Vacuum"</h3>
+        <p><strong>What it is:</strong> Price gaps within a candle where NO trades occurred — unfilled price voids.</p>
+        <p><strong>Visual:</strong> Subtle colored bands extending right. Price "skipped over" these levels.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Signal</th>
+                    <th>Setup</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Zero Print Gap</strong></td>
+                    <td>Zone appears on chart and extends right unfilled</td>
+                    <td>Price is DRAWN to fill these voids. Watch for quick price reversals back into zero print zones.</td>
+                </tr>
+                <tr>
+                    <td><strong>Zone Gets Filled</strong></td>
+                    <td>Candle trades through entire zero print zone</td>
+                    <td>Zone invalidated. Often creates strong breakout momentum in that direction.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="signal-box green-signal">
+            <h4>Entry:</h4>
+            <p>Fade bounces OFF zero prints. If price rejects a zero print level, short the rejection (sellers defending). If price breaks through, ride the momentum (don't fight it).</p>
+        </div>
+
+        <div class="signal-box yellow-signal">
+            <h4>Pro Tip:</h4>
+            <p>Small zero print gaps (1–2 ticks) fill FAST. Large gaps (4+ ticks) often act as strong support/resistance.</p>
+        </div>
+
+        <h3>3️⃣ DELTA DIVERGENCE — "The Reversal Warning"</h3>
+        <p><strong>What it is:</strong> Price and volume disagree.</p>
+        <ul class="checklist">
+            <li><strong>Bearish Divergence:</strong> Price closes UP ↑ but sellers dominated (negative delta) = FAKE BUYING</li>
+            <li><strong>Bullish Divergence:</strong> Price closes DOWN ↓ but buyers dominated (positive delta) = FAKE SELLING</li>
+        </ul>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Divergence</th>
+                    <th>What It Means</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Bearish (price up, delta down)</strong></td>
+                    <td>Uptrend is weak. Buyers are passive. Candle close near highs.</td>
+                    <td>PREPARE TO SHORT. Wait for next candle to confirm weakness, then enter short.</td>
+                </tr>
+                <tr>
+                    <td><strong>Bullish (price down, delta up)</strong></td>
+                    <td>Downtrend is weak. Sellers are passive. Candle close near lows.</td>
+                    <td>PREPARE TO BUY. Wait for next candle to confirm strength, then enter long.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="warning">
+            <h4>⚠️ Important:</h4>
+            <p>Do NOT enter on the divergence candle itself. Wait for the NEXT candle to confirm the reversal is real.</p>
+        </div>
+
+        <div class="signal-box yellow-signal">
+            <h4>Pro Tip:</h4>
+            <p>Divergence + Price touching an imbalance zone = <strong>HIGH PROBABILITY</strong> reversal.</p>
+        </div>
+
+        <h3>4️⃣ UNFINISHED AUCTIONS — "The Wick Trap"</h3>
+        <p><strong>What it is:</strong> A candle's extreme (high wick or low wick) had zero response from the other side.</p>
+        <ul class="checklist">
+            <li><strong>High wick with zero bids</strong> = Buyers pushed price up, sellers didn't show up = Unfinished HIGH</li>
+            <li><strong>Low wick with zero asks</strong> = Sellers pushed price down, buyers didn't show up = Unfinished LOW</li>
+        </ul>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Unfinished Type</th>
+                    <th>Entry</th>
+                    <th>Exit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Unfinished HIGH (no bids at wick)</strong></td>
+                    <td>Price comes back down to the unfinished high level → SHORT at the level. The market "fills" it by coming back to complete the auction.</td>
+                    <td>Cover at nearest support OR when price breaks below support.</td>
+                </tr>
+                <tr>
+                    <td><strong>Unfinished LOW (no asks at wick)</strong></td>
+                    <td>Price comes back up to the unfinished low level → BUY at the level. The market "fills" it by coming back to complete the auction.</td>
+                    <td>Scale out at nearest resistance OR when price breaks above resistance.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="signal-box yellow-signal">
+            <h4>Pro Tip:</h4>
+            <p>Unfinished auctions from the <strong>PREVIOUS SESSION</strong> = strong magnets for price in early RTH. These are your best scalp setups.</p>
+        </div>
+
+        <div class="warning">
+            <h4>⚠️ Caution:</h4>
+            <p>If the candle that created the unfinished auction closed FAR from the wick (more than 4 ticks away), the market already rejected it. The auction may already be resolved.</p>
+        </div>
+
+        <h3>5️⃣ BUBBLE LOTS — "The Volume Cluster"</h3>
+        <p><strong>What it is:</strong> Large circles at price levels with extreme volume or extreme delta (imbalance).</p>
+        <p><strong>Visual:</strong> Sized circles overlaid on the footprint. Bigger bubble = more activity/imbalance.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Bubble Setup</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong style="color: #2ecc71;">Large positive bubble (green, upper levels)</strong></td>
+                    <td>Strong buying happened here. If price drops below, it's support. If price rallies above, that level may resist on the way back down.</td>
+                </tr>
+                <tr>
+                    <td><strong style="color: #e74c3c;">Large negative bubble (red, lower levels)</strong></td>
+                    <td>Strong selling happened here. If price rallies above, it's resistance. If price drops below, that level may support on the way back up.</td>
+                </tr>
+                <tr>
+                    <td><strong style="color: #f39c12;">Bubble at POC</strong></td>
+                    <td>Most activity of the candle. Strong pivot level. Bounce candidates.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- STAT TABLE -->
+        <h2>📈 Stat Table — One-Glance Metrics</h2>
+        <div class="signal-box green-signal">
+            <h4>Recommended Setup:</h4>
+            <div class="setup-box">
+1st Row: Delta (shows aggressive buying/selling per candle)
+2nd Row: Cumulative Delta (running total imbalance)
+3rd Row: Volume (see which bars had real activity)
+4th Row: Off
+            </div>
+        </div>
+        <ul class="checklist">
+            <li><strong>Red stat = negative (selling dominance)</strong></li>
+            <li><strong>Green stat = positive (buying dominance)</strong></li>
+            <li><strong>Large swings in cumulative delta = directional strength</strong></li>
+        </ul>
+
+        <!-- LIVE TRADING FLOWS -->
+        <h2>⚡ Live Trading Flow — Step-by-Step</h2>
+
+        <h3>SCALP SETUP (1–5 minute timeframe, hold 2–10 minutes)</h3>
+        <div class="flow-section">
+            <div class="flow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Scan for active imbalance zones</h4>
+                    <p>on current bar + last 2 bars. Do they extend 2+ bars unfilled? (Extended zones = stronger). Are they at Value Area boundaries? (Higher probability)</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Look for divergence confirmation</h4>
+                    <p>Price near imbalance + delta divergence signal = Enter. Wait for NEXT candle close to enter (don't chase the divergence candle itself)</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Check unfinished auctions from last 2–3 candles</h4>
+                    <p>Are they still unfilled? Is price within 2–3 ticks of returning to the level? If yes → This is your entry zone</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>Confirm with volume</h4>
+                    <p>Stat Table should show positive/negative delta in your direction. Cumulative delta should show direction strength (not flattening)</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h4>Place entry at imbalance zone or unfinished auction level</h4>
+                    <p>Stop loss = 1–2 ticks beyond the level (failed breakout). Target = First POC above/below OR opposite imbalance zone</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <h4>Exit triggers:</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Profit target hit</li>
+                        <li>Stop loss hit</li>
+                        <li>Imbalance zone fully traded through</li>
+                        <li>Opposite divergence signal appears</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3>DAY TRADE SETUP (5–15 minute timeframe, hold 15–60 minutes)</h3>
+        <div class="flow-section">
+            <div class="flow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Identify session-level imbalance clusters</h4>
+                    <p>(zones extending 3+ bars). Buy imbalance = support, sell imbalance = resistance</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Wait for price pullback into the zone</h4>
+                    <p>Check delta profile: Are there ITM or trapped participants at this level? Trapped participants = better odds for momentum continuation</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Confirm with POC bounce</h4>
+                    <p>If price bounces off VAL (support) + positive delta = BUY. If price rejects VAH (resistance) + negative delta = SHORT</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>Entry at POC or just above/below Value Area</h4>
+                    <p>Stop loss = Just beyond the opposite extreme of the Value Area. Target = Next major resistance/support OR 10+ ticks profit</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h4>Manage with zero prints</h4>
+                    <p>If price approaches an unfilled zero print zone in your direction, hold. If price enters an unfilled zero print zone against you, exit half position</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <h4>Exit triggers:</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Profit target hit</li>
+                        <li>Stop loss hit (failed bounce)</li>
+                        <li>Price breaks through opposite Value Area boundary (breakout mode)</li>
+                        <li>Divergence signal appears (weakness in your direction)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUICK REFERENCE -->
+        <h2>🎯 Quick Reference: What Each Feature Tells You</h2>
+        <div class="reference-grid">
+            <div class="ref-card green-signal">
+                <strong>Imbalance (Green)</strong>
+                <p><strong>Signal:</strong> Active buy imbalance<br><strong>Action:</strong> BUY pullback INTO the zone</p>
+            </div>
+            <div class="ref-card red-signal">
+                <strong>Imbalance (Red)</strong>
+                <p><strong>Signal:</strong> Active sell imbalance<br><strong>Action:</strong> SHORT rally INTO the zone</p>
+            </div>
+            <div class="ref-card">
+                <strong>Zero Print</strong>
+                <p><strong>Signal:</strong> Unfilled price gaps<br><strong>Action:</strong> Fade bounces OFF zero prints</p>
+            </div>
+            <div class="ref-card red-signal">
+                <strong>Bearish Divergence</strong>
+                <p><strong>Signal:</strong> Price up, sellers dominated<br><strong>Action:</strong> Prepare SHORT on next candle</p>
+            </div>
+            <div class="ref-card green-signal">
+                <strong>Bullish Divergence</strong>
+                <p><strong>Signal:</strong> Price down, buyers dominated<br><strong>Action:</strong> Prepare BUY on next candle</p>
+            </div>
+            <div class="ref-card red-signal">
+                <strong>Unfinished High</strong>
+                <p><strong>Signal:</strong> No bids at wick<br><strong>Action:</strong> SHORT at the wick level</p>
+            </div>
+            <div class="ref-card green-signal">
+                <strong>Unfinished Low</strong>
+                <p><strong>Signal:</strong> No asks at wick<br><strong>Action:</strong> BUY at the wick level</p>
+            </div>
+            <div class="ref-card green-signal">
+                <strong>Bubble (Green)</strong>
+                <p><strong>Signal:</strong> Strong buying cluster<br><strong>Action:</strong> BUY the dip to this level</p>
+            </div>
+            <div class="ref-card red-signal">
+                <strong>Bubble (Red)</strong>
+                <p><strong>Signal:</strong> Strong selling cluster<br><strong>Action:</strong> SHORT the rally to this level</p>
+            </div>
+            <div class="ref-card">
+                <strong>POC Bounce</strong>
+                <p><strong>Signal:</strong> Price rejects POC<br><strong>Action:</strong> Trade the bounce</p>
+            </div>
+        </div>
+
+        <!-- COMMON MISTAKES -->
+        <h2>❌ Common Mistakes to Avoid</h2>
+        <ul class="checklist">
+            <li><strong>Entering ON the divergence candle</strong> → Wait for next candle to confirm</li>
+            <li><strong>Trading unfilled zero prints without confluence</strong> → Always confirm with imbalance or divergence</li>
+            <li><strong>Ignoring stop losses</strong> → Always define stops at the opposite extreme of your zone</li>
+            <li><strong>Chasing price into exhaustion</strong> → Wait for the bounce, don't chase the move</li>
+            <li><strong>Trading during value area reversals</strong> → POC bounces are strongest; avoid fighting them</li>
+            <li><strong>Overleveraging near unfinished auctions</strong> → High volatility here; size down</li>
+            <li><strong>Not waiting for delta confirmation</strong> → Divergence + negative delta in your direction = best odds</li>
+            <li><strong>Fighting the Value Area</strong> → Price stays in VA 70% of the time; breakouts are rare and explosive</li>
+        </ul>
+
+        <!-- OPTIMAL SETTINGS -->
+        <h2>⚙️ Optimal Settings for Scalping</h2>
+        <div class="setup-box">
+General:
+  Days to Load: 5
+  Ticks Per Level: 2 (NQ) or 4 (ES)
+  Value Area %: 70
+
+Footprint Left:
+  Profile Type: Delta

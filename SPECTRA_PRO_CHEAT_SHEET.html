@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectra Pro Footprint — Trading Cheat Sheet</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; background: #0f3460; color: #e0e0e0; line-height: 1.6; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; background: #0f3460; padding: 40px; }
+        h1 { text-align: center; color: #00d4ff; margin-bottom: 20px; font-size: 2.5em; }
+        h2 { color: #4ecca3; border-bottom: 2px solid #4ecca3; padding-bottom: 10px; margin-top: 30px; margin-bottom: 15px; }
+        h3 { color: #00d4ff; margin-top: 20px; margin-bottom: 10px; }
+        h4 { color: #4ecca3; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #1a3a52; }
+        table th { background: #00d4ff; color: #0f3460; padding: 12px; text-align: left; font-weight: bold; }
+        table td { padding: 12px; border-bottom: 1px solid #2a5a7a; }
+        table tr:hover { background: #243d5a; }
+        .box { background: #1a3a52; border-left: 4px solid #00d4ff; padding: 15px; margin: 15px 0; border-radius: 5px; }
+        .box.green { border-left-color: #2ecc71; }
+        .box.red { border-left-color: #e74c3c; }
+        .box.yellow { border-left-color: #f39c12; }
+        .setup-box { background: #1a3a52; border-left: 4px solid #00d4ff; padding: 15px; margin: 15px 0; font-family: monospace; font-size: 0.9em; color: #a0d8ff; white-space: pre; overflow-x: auto; }
+        ul { margin-left: 20px; }
+        li { margin: 8px 0; }
+        .print-btn { text-align: center; margin: 20px 0; }
+        button { background: #00d4ff; color: #0f3460; border: none; padding: 12px 30px; font-size: 1em; font-weight: bold; cursor: pointer; border-radius: 5px; }
+        button:hover { background: #4ecca3; }
+        .flow { background: #1a3a52; padding: 20px; border-radius: 5px; margin: 15px 0; border-left: 4px solid #00d4ff; }
+        .footer { text-align: center; margin-top: 40px; color: #888; }
+        @media print { body { background: white; color: #000; } .container { background: white; } h1, h2, h3 { color: #000; } button { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Spectra Pro Footprint Cheat Sheet</h1>
+        <p style="text-align: center; color: #888; margin-bottom: 30px;">Day Trading & Scalping Guide | Flow Zone Indicator for NinjaTrader 8</p>
+
+        <div class="print-btn">
+            <button onclick="window.print()">📄 Print / Save as PDF</button>
+        </div>
+
+        <h2>⚙️ Quick Setup</h2>
+        <div class="setup-box">Ticks Per Level: 2 (NQ/MNQ) or 4 (ES/MES)
+Value Area %: 70%
+Footprint Left: Delta mode (Saturation)
+Footprint Right: Volume Bar
+Stat Table: 1st Row = Delta, 2nd Row = CumDelta, 3rd Row = Volume</div>
+
+        <h2>📊 The Footprint Basics</h2>
+        <h3>Left Side = Order Flow (Delta)</h3>
+        <ul>
+            <li><strong>Wide bars</strong> = Strong imbalance (one side dominated)</li>
+            <li><strong>Green/Blue (Positive delta)</strong> = Buyers were aggressive</li>
+            <li><strong>Red (Negative delta)</strong> = Sellers were aggressive</li>
+            <li><strong>Saturation mode</strong> = Darker = stronger imbalance</li>
+        </ul>
+
+        <h3>Right Side = Volume Profile</h3>
+        <ul>
+            <li><strong>Widest bar = POC</strong> = Most-traded price in that candle</li>
+            <li><strong>Value Area bars</strong> = 70% of volume (support/resistance)</li>
+            <li><strong>VAH/VAL lines</strong> = Value Area High/Low (from session profile)</li>
+        </ul>
+
+        <h2>🎲 Five Core Trading Signals</h2>
+
+        <h3>1️⃣ IMBALANCE ZONES — "The Money Print"</h3>
+        <p><strong>What:</strong> Price levels where one side dominated 150%+ more than the other.</p>
+        <table>
+            <tr><th>Signal</th><th>Setup</th><th>Entry</th><th>Exit</th></tr>
+            <tr><td><strong style="color: #2ecc71;">BUY Imbalance</strong></td><td>Green zone + price pulls back INTO it</td><td>BUY the bounce</td><td>POC above OR zone traded through</td></tr>
+            <tr><td><strong style="color: #e74c3c;">SELL Imbalance</strong></td><td>Red zone + price rallies back INTO it</td><td>SHORT the rejection</td><td>POC below OR zone traded through</td></tr>
+        </table>
+        <div class="box yellow">⭐ Pro Tip: Imbalance zones extending 3+ candles without fill = STRONG level = better odds</div>
+
+        <h3>2️⃣ ZERO PRINTS — "The Vacuum"</h3>
+        <p><strong>What:</strong> Price gaps where NO trades occurred — unfilled voids.</p>
+        <ul>
+            <li>Price is DRAWN back to fill these gaps</li>
+            <li><strong>Small gaps (1-2 ticks)</strong> fill FAST</li>
+            <li><strong>Large gaps (4+ ticks)</strong> act as strong support/resistance</li>
+            <li><strong>Entry:</strong> Fade bounces OFF zero prints OR ride breakouts THROUGH them</li>
+        </ul>
+
+        <h3>3️⃣ DELTA DIVERGENCE — "The Reversal Warning"</h3>
+        <p><strong>What:</strong> Price and volume disagree.</p>
+        <table>
+            <tr><th>Divergence</th><th>What It Means</th><th>Action</th></tr>
+            <tr><td><strong style="color: #e74c3c;">Bearish (price up, delta down)</strong></td><td>Uptrend weak — buyers passive</td><td>PREPARE TO SHORT (wait next candle)</td></tr>
+            <tr><td><strong style="color: #2ecc71;">Bullish (price down, delta up)</strong></td><td>Downtrend weak — sellers passive</td><td>PREPARE TO BUY (wait next candle)</td></tr>
+        </table>
+        <div class="box red">⚠️ Don't enter ON the divergence candle — wait for NEXT candle to confirm</div>
+
+        <h3>4️⃣ UNFINISHED AUCTIONS — "The Wick Trap"</h3>
+        <p><strong>What:</strong> A candle's extreme (wick) had zero response from the other side.</p>
+        <table>
+            <tr><th>Type</th><th>Setup</th><th>Action</th></tr>
+            <tr><td><strong style="color: #e74c3c;">Unfinished HIGH</strong><br>(no bids at wick)</td><td>Buyers pushed up, sellers didn't show</td><td>SHORT when price returns to wick level</td></tr>
+            <tr><td><strong style="color: #2ecc71;">Unfinished LOW</strong><br>(no asks at wick)</td><td>Sellers pushed down, buyers didn't show</td><td>BUY when price returns to wick level</td></tr>
+        </table>
+        <div class="box yellow">⭐ Best setup: Unfinished auctions from PREVIOUS SESSION = strong magnets in early RTH</div>
+
+        <h3>5️⃣ BUBBLE LOTS — "The Volume Cluster"</h3>
+        <p><strong>What:</strong> Large circles at price levels with extreme volume or delta.</p>
+        <ul>
+            <li><strong>Green bubble (upper)</strong> = Strong buying → BUY pullbacks to this level</li>
+            <li><strong>Red bubble (lower)</strong> = Strong selling → SHORT rallies to this level</li>
+            <li><strong>Bubble at POC</strong> = Most active level = Strong pivot</li>
+        </ul>
+
+        <h2>📈 Stat Table Setup</h2>
+        <div class="box green">
+            <strong>Recommended:</strong>
+            <ul>
+                <li>1st Row = Delta (buying/selling per candle)</li>
+                <li>2nd Row = Cumulative Delta (running imbalance)</li>
+                <li>3rd Row = Volume (activity level)</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Reading:</strong> Red stat = selling | Green stat = buying | Large swings = directional strength</p>
+        </div>
+
+        <h2>⚡ SCALP TRADING FLOW (1-5 min, hold 2-10 min)</h2>
+        <div class="flow">
+            <strong>1. Scan for imbalance zones</strong> on current + last 2 bars. Extended zones (2+ bars) = stronger.<br>
+            <strong>2. Look for divergence</strong> — Price near imbalance + delta divergence signal.<br>
+            <strong>3. Check unfinished auctions</strong> — Are they within 2-3 ticks of current price?<br>
+            <strong>4. Confirm with volume</strong> — Stat Table shows delta in your direction.<br>
+            <strong>5. Enter</strong> at imbalance zone or unfinished auction level.<br>
+            <strong>6. Stop loss:</strong> 1-2 ticks beyond the zone (failed breakout).<br>
+            <strong>7. Target:</strong> First POC above/below OR opposite imbalance zone.<br>
+            <strong>8. Exit triggers:</strong> Profit hit | Stop hit | Zone traded through | Opposite divergence appears.
+        </div>
+
+        <h2>📊 DAY TRADE FLOW (5-15 min, hold 15-60 min)</h2>
+        <div class="flow">
+            <strong>1. Identify session clusters</strong> — Imbalance zones extending 3+ bars.<br>
+            <strong>2. Wait for pullback</strong> into the zone. Check delta profile for ITM/trapped participants.<br>
+            <strong>3. Confirm with POC</strong> — Bounce off VAL (support) + positive delta = BUY. Reject VAH (resistance) + negative delta = SHORT.<br>
+            <strong>4. Entry</strong> at POC or just above/below Value Area.<br>
+            <strong>5. Stop loss:</strong> Just beyond opposite Value Area extreme.<br>
+            <strong>6. Target:</strong> Next major resistance/support OR 10+ ticks profit.<br>
+            <strong>7. Manage:</strong> If zero print in your direction → hold. If against you → exit half.<br>
+            <strong>8. Exit triggers:</strong> Profit hit | Stop hit | VAH/VAL breakout (trend) | Divergence weakness.
+        </div>
+
+        <h2>🎯 Quick Reference Table</h2>
+        <table>
+            <tr><th>Signal</th><th>What It Means</th><th>Trade Action</th></tr>
+            <tr><td><strong style="color: #2ecc71;">Imbalance (Green)</strong></td><td>Buyers dominated here</td><td>BUY pullback INTO zone</td></tr>
+            <tr><td><strong style="color: #e74c3c;">Imbalance (Red)</strong></td><td>Sellers dominated here</td><td>SHORT rally INTO zone</td></tr>
+            <tr><td>Zero Print</td><td>Unfilled price gap</td><td>Fade bounces OFF OR ride breaks THROUGH</td></tr>
+            <tr><td><strong style="color: #e74c3c;">Bearish Divergence</strong></td><td>Uptrend weak</td><td>Prepare SHORT (next candle)</td></tr>
+            <tr><td><strong style="color: #2ecc71;">Bullish Divergence</strong></td><td>Downtrend weak</td><td>Prepare BUY (next candle)</td></tr>
+            <tr><td>Unfinished High</td><td>Wick rejected by buyers</td><td>SHORT at wick level</td></tr>
+            <tr><td>Unfinished Low</td><td>Wick rejected by sellers</td><td>BUY at wick level</td></tr>
+            <tr><td><strong style="color: #2ecc71;">Bubble (Green)</strong></td><td>Strong buying cluster</td><td>BUY dips to level</td></tr>
+            <tr><td><strong style="color: #e74c3c;">Bubble (Red)</strong></td><td>Strong selling cluster</td><td>SHORT rallies to level</td></tr>
+            <tr><td>POC Bounce</td><td>Price rejects POC</td><td>Trade the bounce</td></tr>
+        </table>
+
+        <h2>❌ Common Mistakes</h2>
+        <ul>
+            <li>❌ Entering ON the divergence candle → Wait for next candle</li>
+            <li>❌ Trading zero prints without confluence → Confirm with imbalance/divergence</li>
+            <li>❌ No stop losses → Define stops at zone extremes</li>
+            <li>❌ Chasing exhaustion → Wait for bounces, don't chase</li>
+            <li>❌ Fighting Value Area → Price stays in VA 70% of time</li>
+            <li>❌ Overleveraging near unfinished auctions → High volatility = size down</li>
+            <li>❌ No delta confirmation → Divergence + delta in your direction = best odds</li>
+        </ul>
+
+        <h2>✅ Setup Checklist</h2>
+        <div class="box green">
+            <strong>Before you trade:</strong>
+            <ul>
+                <li>☐ Identify active imbalance zones (extended = stronger)</li>
+                <li>☐ Spot unfilled zero prints (price magnets)</li>
+                <li>☐ Check unfinished auctions from last 2-3 candles</li>
+                <li>☐ Look for delta divergence signals (weakness)</li>
+                <li>☐ Confirm direction with Stat Table (positive/negative delta)</li>
+                <li>☐ Define entry zone and stop loss BEFORE entering</li>
+                <li>☐ Define profit target (POC, imbalance, or tick count)</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>Last Updated: June 11, 2026 | Ready for live trading</p>
+            <p>📌 Always respect your stop losses. Risk management > winning percentage.</p>
+        </div>
+
+        <div class="print-btn" style="margin-top: 40px;">
+            <button onclick="window.print()">📄 Print / Save as PDF</button>
+        </div>
+    </div>
+</body>
+</html>
