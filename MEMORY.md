@@ -2,7 +2,25 @@
 
 _Curated memories and significant context._
 
-**Last Updated:** Friday, July 3, 2026 - 8:06 AM EDT (12:06 UTC) — Nightly memory sync (cron:6b43e034). Status review complete: MEMORY.md is current and comprehensive ✅. No new items from July 2 → July 3 (holiday weekend, July 4th). All standing action items unchanged: Twilio A2P 10DLC resubmission (awaiting Calvenn), PatchHub Compliance System integration (code ready), SOLANA bot SSH fix (critical—~62 days past test window), WiFi optimization (AX73 AP mode), CIGNA 2027 campaign launch (awaiting approval), next blog post TBD (Florida/Texas/Pennsylvania pipeline). All infrastructure systems operational ✅. **Next blog post:** State TBD (Florida/Texas/Pennsylvania pipeline). **Note:** Telegram history inaccessible from isolated cron context — persistent architectural limitation.
+**Last Updated:** Saturday, July 4, 2026 - 8:04 PM EDT — Nightly memory sync (cron:94d28c1c). July 4th work: booking page updated (new headshot + phone number fix + blue BG), Colorado blog post written and ready to publish (`colorado_blog_post.md`). Standing action items: Twilio A2P 10DLC (awaiting Calvenn), PatchHub Compliance integration (code ready), SOLANA bot SSH fix (critical—~65 days past test window), WiFi AX73 AP mode, CIGNA 2027 campaign. **Next blog post:** Colorado post READY in workspace (awaiting Calvenn publish action). **Note:** Telegram history inaccessible from isolated cron context — persistent architectural limitation.
+
+---
+
+## 📅 July 4, 2026 — Booking Page + Colorado Blog Post
+
+### Booking Page Updated (affordablehealthcare.solutions/book-appointment/)
+- ✅ New casual headshot uploaded — navy quarter-zip, warm lighting, approachable vibe
+- ✅ Phone number color fixed — was white-on-white; forced to black with `!important`
+- ✅ Light blue background added (`#003087`/`#0066CC` palette from home page)
+- ✅ Side-by-side layout — photo left, bio right
+
+### Colorado Blog Post — READY TO PUBLISH
+- **File:** `colorado_blog_post.md` (workspace root)
+- **Title:** "Affordable Health Insurance for Self-Employed Coloradans"
+- **Slug:** `affordable-health-insurance-self-employed-colorado`
+- **Status:** ⬜ Written, not yet published — Calvenn to approve and publish
+- **Content:** Colorado Option marketplace, Denver-Boulder corridor, ACA subsidies, HSA strategies
+- **Next after Colorado:** Florida, Texas, or Pennsylvania
 
 ---
 
@@ -1044,7 +1062,7 @@ TOTAL CONFIRMED INCOME       |          | $180,023.97    ✅ VERIFIED
 
 ---
 
-## 📲 CIGNA 2027 Market Exit — Time-Sensitive Prospecting Window (May 31, 2026)
+## 📲 CIGNA 2027 Market Exit — Time-Sensitive Prospecting Window (May 31, 2026) & Booking Page Refresh (July 4, 2026)
 
 **Opportunity:** Cigna exiting ~369k ACA policyholders across markets in 2026-2027
 
@@ -1052,6 +1070,24 @@ TOTAL CONFIRMED INCOME       |          | $180,023.97    ✅ VERIFIED
 - Displaced clients need alternative coverage → affordablehealthcare.solutions is positioned to help
 - Open enrollment 2027 = major prospecting window
 - Early outreach = competitive advantage vs. other brokers
+- **Fresh booking page** (July 4) with new professional headshot = ready for lead capture
+
+### Booking Page Update (July 4, 2026 - 8:04 PM EDT) ✅
+**URL:** https://affordablehealthcare.solutions/book-appointment/
+- **New headshot:** Casual, approachable (navy quarter-zip, gray shirt, goatee, warm lighting)
+- **Layout:** Side-by-side (photo left, bio right)
+- **Phone number:** Fixed visibility (black text, `!important` override to beat theme CSS—was white-on-white before)
+- **Background:** Light blue (#003087/#0066CC colors) matching home page branding
+- **Enhanced shadow effect:** Updated photo styling
+- **Status:** ✅ LIVE — Professional, welcoming presentation ready for lead generation
+
+### Colorado Blog Post (July 4, 2026) ✅
+**File:** `colorado_blog_post.md` (workspace root)
+- **Title:** "Affordable Health Insurance for Self-Employed Coloradans"
+- **Slug:** `affordable-health-insurance-self-employed-colorado`
+- **Content:** Colorado Option marketplace, Denver-Boulder-Fort Collins corridor, ACA subsidies, HSA strategies, self-employed deduction
+- **Categories:** 7, 8, 11 (Health Insurance Tips, Self-Employed & Freelancers, State Coverage)
+- **Status:** ✅ Written and ready to publish | Awaiting Calvenn publish action
 
 **Action Items (Pending):**
 - Download Cigna ACA client lists from exchange (state-by-state if available)
@@ -1062,14 +1098,15 @@ TOTAL CONFIRMED INCOME       |          | $180,023.97    ✅ VERIFIED
 **Current Assets Ready:**
 - ✅ affordablehealthcare.solutions CRM (SMS via Twilio)
 - ✅ Substack newsletter (lead generation)
-- ✅ Blog posts live: HRA, state-specific (GA, NC, OH), PPO vs HMO, deductibles
+- ✅ Blog posts live: HRA, state-specific (GA, NC, OH, IL, VA), PPO vs HMO, deductibles, HSA vs FSA
 - ✅ Email automation (Zapier)
+- ✅ Professional booking page with fresh headshot (July 4)
 
-**Priority:** HIGH — time-sensitive, market opportunity window closing
+**Priority:** HIGH — time-sensitive, market opportunity window closing, now with updated lead capture page
 
 ---
 
-_Last Updated: Friday, July 3, 2026 - 8:07 AM EDT (12:07 UTC) — Memory sync (cron:94d28c1c). Holiday weekend (July 4th). No new workspace activity since May 30 tax work. No new blog posts since Virginia (June 30). All core infrastructure systems operational ✅. Standing items unchanged: Twilio A2P 10DLC resubmission (awaiting Calvenn), PatchHub Compliance integration (code-ready), SOLANA bot SSH restoration (62+ days past test window), WiFi optimization (AX73 AP mode), CIGNA 2027 campaign (awaiting approval). Next blog post state TBD (Florida/Texas/Pennsylvania pipeline). Telegram history inaccessible from isolated cron context (architectural limitation)._
+_Last Updated: Saturday, July 4, 2026 - 4:04 PM EDT (20:04 UTC) — Memory sync (cron:94d28c1c). Webchat session identified: Calvenn updated affordablehealthcare.solutions booking page with new casual headshot + fixed phone number visibility + added blue background. All core infrastructure systems operational ✅. Standing items unchanged: Twilio A2P 10DLC resubmission (awaiting Calvenn), PatchHub Compliance integration (code-ready), SOLANA bot SSH restoration (65+ days past test window), WiFi optimization (AX73 AP mode), CIGNA 2027 campaign (awaiting approval). Next blog post state TBD (Florida/Texas/Pennsylvania pipeline). Telegram history inaccessible from isolated cron context (architectural limitation)._
 
 **Sync Summary (June 5, 2:51 PM EDT - Afternoon Review):** Memory sync completed. MEMORY.md review confirmed current and comprehensive with no missing significant items. All systems stable and operational. Infrastructure healthy: OpenClaw gateway ✅, CloudFlare tunnels ✅, PatchHub LIVE ✅, Gmail crons 3×/day ✅. Daily memory file created (2026-06-05.md). All pending items unchanged: Twilio A2P 10DLC resubmission (awaiting Calvenn), PatchHub Compliance integration (code-ready), Virginia blog post, SOLANA bot SSH restoration (18 days past test window), WiFi optimization (AX73 AP mode), CIGNA 2027 campaign (awaiting approval).
 
