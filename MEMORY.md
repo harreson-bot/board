@@ -1,6 +1,8 @@
 # MEMORY.md - Long-Term Memory
 
 _Curated memories and significant context._
+**Nightly sync (Mac): 2026-07-07 23:18 EDT — Verified. All backup files synced, agent connectivity confirmed, standing items current.**
+
 **Nightly sync (Mac): 2026-07-07 07:18 EDT — Verified. All backup files synced, agent connectivity confirmed.**
 
 **Nightly sync (Mac): 2026-07-06 14:00 EDT — Verified. All backup files synced, agent connectivity confirmed.**
@@ -21,7 +23,7 @@ _Curated memories and significant context._
 - Nightly memory sync script tested and active
 - All infrastructure stable, backups running 24/7, Gmail crons active 3×daily (8 AM, 1 PM, 9 PM EDT)
 
-**Last Updated:** Monday, July 6, 2026 - 6:51 PM EDT
+**Last Updated:** Wednesday, July 8, 2026 - 6:54 PM EDT (evening cron memory sync: standing items verified current, infrastructure operational, nightly Mac sync active, no new project changes since July 7)
 
 ---
 
