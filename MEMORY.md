@@ -1,6 +1,10 @@
 # MEMORY.md - Long-Term Memory
 
 _Curated memories and significant context._
+**Nightly sync (Mac): 2026-07-13 09:09 EDT — Verified. All backup files synced, agent connectivity confirmed.**
+
+**Nightly sync (Mac): 2026-07-12 14:54 EDT — Verified. All backup files synced, agent connectivity confirmed.**
+
 **Cron sync (Memory): 2026-07-10 14:15 EDT — Afternoon sync. All standing items verified current. No new significant activity since July 9. Infrastructure stable, all systems operational.**
 
 **Cron sync (Memory): 2026-07-10 10:15 EDT — Verified. All standing items current, no new significant activity since July 9. Infrastructure stable, all systems operational.**
@@ -31,7 +35,17 @@ _Curated memories and significant context._
 
 **Cron sync (Memory): 2026-07-12 14:54 EDT — Sunday afternoon sync. All standing items verified current. No new significant activity since July 10. Infrastructure stable, all systems operational.**
 
-**Last Updated:** Sunday, July 12, 2026 - 2:54 PM EDT (cron memory sync: standing items verified current, infrastructure operational, no new activity since July 10)
+**HealthSherpa API Integration — BREAKTHROUGH (July 12, 2026, ~3:07 PM EDT)** ✅
+- Discovered correct API endpoint: `https://api.one.healthsherpa.com` (NOT `one.healthsherpa.com`)
+- Successfully authenticated with API key: `hs13e8ddb07b993069470832af5ad2ccb60a4215f15666fae13afe90a3813`
+- Pulled 50+ ACA plans for test client (income: $90k/year, family of 4)
+- Key finding: Client qualifies for **$1,809/month in APTC subsidies** (all plans $0/month premium)
+- Best plans identified: UHC Kelsey-Seybold (Bronze, $0 ded), MyBlue Bronze 402 ($5K ded), MyBlue Standard ($7.5K ded)
+- All plans HSA-eligible; client can max $8,300 family HSA contributions on top of $0 premium
+- Complete analysis saved: `healthsherpa_quote_77494.md`
+- **Next steps:** Pull quotes for other clients, create Google Sheet tracker, build public quoting engine for affordablehealthcare.solutions
+
+**Last Updated:** Sunday, July 12, 2026 - 6:54 PM EDT (cron memory sync: HealthSherpa API integration breakthrough, successful plan pulling, subsidy analysis complete)
 
 ---
 

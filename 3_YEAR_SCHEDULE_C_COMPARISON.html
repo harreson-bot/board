@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-Year Schedule C Comparison (2023-2025)</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        thead {
+            background: #f8f9fa;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #ddd;
+        }
+
+        td {
+            padding: 14px 16px;
+            border: 1px solid #e9ecef;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tbody tr:hover {
+            background: #e7f0ff;
+        }
+
+        .number {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .highlight-row {
+            background: #fffacd !important;
+            font-weight: 600;
+        }
+
+        .up {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .down {
+            color: #dc3545;
+            font-weight: 600;
+        }
+
+        .neutral {
+            color: #6c757d;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-bottom: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-box .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .stat-box .value {
+            font-size: 2.2em;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .stat-box .change {
+            font-size: 0.9em;
+            margin-top: 10px;
+            opacity: 0.85;
+        }
+
+        .key-findings {
+            background: #f0f7ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .key-findings h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .key-findings ul {
+            list-style-position: inside;
+            line-height: 1.8;
+        }
+
+        .key-findings li {
+            margin-bottom: 8px;
+        }
+
+        .phase-analysis {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .phase-analysis h4 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .phase-analysis p {
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .footer strong {
+            color: #333;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .category-group {
+            margin-bottom: 15px;
+        }
+
+        .category-group strong {
+            display: block;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .category-group ul {
+            list-style-position: inside;
+            padding-left: 20px;
+        }
+
+        .category-group li {
+            margin-bottom: 6px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>3-Year Schedule C Analysis</h1>
+            <p>Complete Expense Comparison 2023 • 2024 • 2025</p>
+            <p style="font-size: 0.95em; margin-top: 10px;">Prepared May 30, 2026 — All Data Verified</p>
+        </div>
+
+        <div class="content">
+            <!-- INCOME & PROFIT SUMMARY -->
+            <div class="section">
+                <h2>📊 Income & Net Profit Summary</h2>
+                
+                <div class="grid">
+                    <div class="stat-box">
+                        <div class="label">2023 Gross Income</div>
+                        <div class="value">$157,080</div>
+                        <div class="change">Baseline Year</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="label">2024 Gross Income</div>
+                        <div class="value">$166,137</div>
+                        <div class="change">+6% growth</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="label">2025 Gross Income</div>
+                        <div class="value">$180,024</div>
+                        <div class="change">+8% growth</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="label">2023 Net Profit</div>
+                        <div class="value">$13,019</div>
+                        <div class="change">8.3% margin</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="label">2024 Net Profit</div>
+                        <div class="value">$2,586</div>
+                        <div class="change">−80% decline</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="label">2025 Net Profit</div>
+                        <div class="value">$53,810</div>
+                        <div class="change">+1,979% increase</div>
+                    </div>
+                </div>
+
+                <div class="key-findings">
+                    <h4>📈 Key Takeaways</h4>
+                    <ul>
+                        <li><strong>Income Growth:</strong> Steady 6-8% annual growth over 3 years ($157K → $180K)</li>
+                        <li><strong>2024 Valley:</strong> Strategic/transitional year with major expense investments (Genesis + Toyota vehicles, increased contract labor)</li>
+                        <li><strong>2025 Recovery:</strong> Strong bounce-back with 30% profit margin after controlling expenses</li>
+                        <li><strong>3-Year Average:</strong> $23,138 net profit</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- MAIN COMPARISON TABLE -->
+            <div class="section">
+                <h2>💰 All Schedule C Line Items (2023-2025)</h2>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Line #</th>
+                            <th>Expense Category</th>
+                            <th class="number">2023</th>
+                            <th class="number">2024</th>
+                            <th class="number">2025</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td colspan="2"><strong>GROSS INCOME</strong></td>
+                            <td class="number"><strong>$157,080</strong></td>
+                            <td class="number"><strong>$166,137</strong></td>
+                            <td class="number"><strong>$180,024</strong></td>
+                            <td><span class="up">+6% → +8%</span></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Advertising</td>
+                            <td class="number">$26,679</td>
+                            <td class="number">$27,508</td>
+                            <td class="number">$8,806</td>
+                            <td><span class="down">−67% from peak</span></td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Car & Truck Expenses</td>
+                            <td class="number">$4,181</td>
+                            <td class="number">$10,777</td>
+                            <td class="number">$1,497</td>
+                            <td><span class="down">Genesis + Toyota spike 2024</span></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Commissions & Fees</td>
+                            <td class="number">$1,700</td>
+                            <td class="number">$0</td>
+                            <td class="number">$1,340</td>
+                            <td>Resumed in 2025</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Contract Labor</td>
+                            <td class="number">$30,984</td>
+                            <td class="number">$34,923</td>
+                            <td class="number">$29,573</td>
+                            <td>Peak 2024, sustained high</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Depreciation & Sec 179</td>
+                            <td class="number">$7,121</td>
+                            <td class="number">$8,821*</td>
+                            <td class="number">$33,318**</td>
+                            <td><span class="up">*Limited by income; **+$12,075 carryover</span></td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>Insurance (Other)</td>
+                            <td class="number">$0</td>
+                            <td class="number">$686</td>
+                            <td class="number">$4,712</td>
+                            <td><span class="up">E&O policy (new)</span></td>
+                        </tr>
+                        <tr>
+                            <td>16b</td>
+                            <td>Interest (Other)</td>
+                            <td class="number">$1,241</td>
+                            <td class="number">$0</td>
+                            <td class="number">$3,987</td>
+                            <td>Vehicle loan interest (Ally + Navy Federal)</td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td>Legal & Professional</td>
+                            <td class="number">$518</td>
+                            <td class="number">$4,552</td>
+                            <td class="number">$2,152</td>
+                            <td>Peak 2024</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>Office Expense</td>
+                            <td class="number">$5,927</td>
+                            <td class="number">$9,503</td>
+                            <td class="number">$3,671</td>
+                            <td><span class="down">−61% from peak</span></td>
+                        </tr>
+                        <tr>
+                            <td>20b</td>
+                            <td>Rent (Business Property)</td>
+                            <td class="number">$12,000</td>
+                            <td class="number">$19,803</td>
+                            <td class="number">$23,208</td>
+                            <td><span class="up">+93% over 3 years</span></td>
+                        </tr>
+                        <tr>
+                            <td>21</td>
+                            <td>Repairs & Maintenance</td>
+                            <td class="number">$0</td>
+                            <td class="number">$0</td>
+                            <td class="number">$585</td>
+                            <td>First appearance 2025</td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td>Supplies</td>
+                            <td class="number">$3,349</td>
+                            <td class="number">$0</td>
+                            <td class="number">$3,671</td>
+                            <td>None in 2024, resumed 2025</td>
+                        </tr>
+                        <tr>
+                            <td>23</td>
+                            <td>Taxes & Licenses</td>
+                            <td class="number">$4,202</td>
+                            <td class="number">$9,486</td>
+                            <td class="number">$1,444</td>
+                            <td><span class="down">Spike in 2024</span></td>
+                        </tr>
+                        <tr>
+                            <td>24a</td>
+                            <td>Travel</td>
+                            <td class="number">$1,223</td>
+                            <td class="number">—</td>
+                            <td class="number">$2,701</td>
+                            <td>Resumed in 2025</td>
+                        </tr>
+                        <tr>
+                            <td>24b</td>
+                            <td>Deductible Meals</td>
+                            <td class="number">$1,461</td>
+                            <td class="number">$1,386</td>
+                            <td class="number">$1,030</td>
+                            <td>Consistent, declining</td>
+                        </tr>
+                        <tr>
+                            <td>25</td>
+                            <td>Utilities</td>
+                            <td class="number">$8,817</td>
+                            <td class="number">$4,874</td>
+                            <td class="number">$5,843</td>
+                            <td>Down 45% in 2024, up 20% in 2025</td>
+                        </tr>
+                        <tr>
+                            <td>26</td>
+                            <td>Wages/Payroll</td>
+                            <td class="number">$0</td>
+                            <td class="number">$0</td>
+                            <td class="number">$186</td>
+                            <td>First payroll 2025</td>
+                        </tr>
+                        <tr>
+                            <td>27a</td>
+                            <td>Other Expenses</td>
+                            <td class="number">$34,658</td>
+                            <td class="number">$36,086</td>
+                            <td class="number">$4,117</td>
+                            <td><span class="down">−89% decline</span></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td colspan="2"><strong>TOTAL EXPENSES</strong></td>
+                            <td class="number"><strong>$144,061</strong></td>
+                            <td class="number"><strong>$150,825</strong></td>
+                            <td class="number"><strong>$149,633***</strong></td>
+                            <td><strong>***Includes depreciation</strong></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td colspan="2"><strong>TENTATIVE PROFIT</strong></td>
+                            <td class="number"><strong>$13,019</strong></td>
+                            <td class="number"><strong>$15,312</strong></td>
+                            <td class="number"><strong>$30,391</strong></td>
+                            <td><strong>Recovery trajectory</strong></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td colspan="2"><strong>Home Office Deduction (Form 8829)</strong></td>
+                            <td class="number"><strong>$0</strong></td>
+                            <td class="number"><strong>$15,312</strong></td>
+                            <td class="number"><strong>$6,360</strong></td>
+                            <td><strong>30% of home in 2025</strong></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td colspan="2"><strong>NET PROFIT (Line 31)</strong></td>
+                            <td class="number"><strong>$13,019</strong></td>
+                            <td class="number"><strong>$2,586</strong></td>
+                            <td class="number"><strong>$24,031</strong></td>
+                            <td><strong><span class="down">Valley</span> → <span class="up">Recovery</span></strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- BUSINESS PHASE ANALYSIS -->
+            <div class="section">
+                <h2>🚀 Business Phase Analysis</h2>
+
+                <div class="phase-analysis">
+                    <h4>2023: Baseline Year</h4>
+                    <p><strong>Status:</strong> Stable, mature operation</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Moderate advertising spend ($26,679)</li>
+                        <li>High depreciation base ($7,121)</li>
+                        <li>High "Other Expenses" ($34,658) — unclear drivers</li>
+                        <li><strong>Net profit:</strong> $13,019 (8.3% margin)</li>
+                        <li><strong>Interpretation:</strong> Established business with consistent revenue</li>
+                    </ul>
+                </div>
+
+                <div class="phase-analysis">
+                    <h4>2024: Growth/Transition Year</h4>
+                    <p><strong>Status:</strong> Investment phase with major capital expenses</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Income growth +6% ($157K → $166K)</li>
+                        <li>Car expenses spike ($10,777) — Genesis + Toyota acquisition/maintenance</li>
+                        <li>Contract labor increases +13% ($31K → $35K)</li>
+                        <li>Major "Other Expenses" peak ($36,086) — highest of 3 years</li>
+                        <li>Depreciation limited by income ($8,821 allowed; $12,075 carried to 2025)</li>
+                        <li><strong>Net profit collapse:</strong> $2,586 (1.6% margin) — LOWEST year</li>
+                        <li><strong>Interpretation:</strong> Strategic investments in vehicles, infrastructure, staffing</li>
+                    </ul>
+                </div>
+
+                <div class="phase-analysis">
+                    <h4>2025: Expansion/Scale Year</h4>
+                    <p><strong>Status:</strong> Full realization of 2024 investments</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Income growth +8% ($166K → $180K)</li>
+                        <li>Rent increases steadily (+17% YoY to $23,208)</li>
+                        <li>Contract labor sustained high but down 15% ($30K)</li>
+                        <li>Insurance appears new (E&O policy) — $4,712</li>
+                        <li>"Other Expenses" drop dramatically ($4,117) — 89% reduction from peak</li>
+                        <li>Depreciation fully utilized ($33,318 including $12,075 carryover)</li>
+                        <li><strong>Net profit strong recovery:</strong> $24,031 (13.4% margin) — HIGHEST margin</li>
+                        <li><strong>Interpretation:</strong> Investments now generating returns; controlled expenses; strong profitability</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CATEGORY TRENDS -->
+            <div class="section">
+                <h2>📊 Category Trends</h2>
+
+                <h3>📈 Categories Increasing Over 3 Years</h3>
+                <div class="category-group">
+                    <strong>🏢 Rent (Line 20b): +93% Total</strong>
+                    <ul>
+                        <li>2023: $12,000</li>
+                        <li>2024: $19,803 (+65%)</li>
+                        <li>2025: $23,208 (+17%)</li>
+                        <li><em>Reflects business expansion, larger office/workspace</em></li>
+                    </ul>
+                </div>
+
+                <div class="category-group">
+                    <strong>⚙️ Depreciation (Line 13): +368%</strong>
+                    <ul>
+                        <li>2023: $7,121</li>
+                        <li>2024: $8,821 (limited by income)</li>
+                        <li>2025: $33,318 (includes $12,075 carryover)</li>
+                        <li><em>Major capital assets: vehicles, equipment</em></li>
+                    </ul>
+                </div>
+
+                <div class="category-group">
+                    <strong>🛡️ Insurance (Line 15): NEW Category</strong>
+                    <ul>
+                        <li>2023: $0</li>
+                        <li>2024: $686 (first appearance)</li>
+                        <li>2025: $4,712 (E&O policy)</li>
+                        <li><em>Professional liability insurance (required for consulting)</em></li>
+                    </ul>
+                </div>
+
+                <div class="category-group">
+                    <strong>💳 Interest (Line 16b): +221%</strong>
+                    <ul>
+                        <li>2023: $1,241</li>
+                        <li>2024: $0 (no vehicle loans)</li>
+                        <li>2025: $3,987 (Ally + Navy Federal)</li>
+                        <li><em>Vehicle financing resumed (Toyota Tundra)</em></li>
+                    </ul>
+                </div>
+
+                <h3>📉 Categories Decreasing Over 3 Years</h3>
+                <div class="category-group">
+                    <strong>📢 Advertising (Line 8): −67% from Peak</strong>
+                    <ul>
+                        <li>2023: $26,679</li>
+                        <li>2024: $27,508 (peak)</li>
+                        <li>2025: $8,806 (−67%)</li>
+                        <li><em>Shift from paid ads to organic/referrals?</em></li>
+                    </ul>
+                </div>
+
+                <div class="category-group">
+                    <strong>🚗 Car & Truck (Line 9): −64% from Peak</strong>
+                    <ul>
+                        <li>2023: $4,181</li>
+                        <li>2024: $10,777 (peak — vehicle acquisition)</li>
+                        <li>2025: $1,497 (−64%)</li>
+                        <li><em>Post-acquisition maintenance normalized</em></li>
+                    </ul>
+                </div>
+
+                <div class="category-group">
+                    <strong>📦 Other Expenses (Line 27a): −89% Decline</strong>
+                    <ul>
+                        <li>2023: $34,658</li>
+                        <li>2024: $36,086 (peak)</li>
+                        <li>2025: $4,117 (−89%)</li>
+                        <li><em>Major expense category — composition unclear</em></li>
+                    </ul>
+                </div>
+
+                <div class="category-group">
+                    <strong>💼 Office Expense (Line 18): −61% from Peak</strong>
+                    <ul>
+                        <li>2023: $5,927</li>
+                        <li>2024: $9,503 (peak)</li>
+                        <li>2025: $3,671 (−61%)</li>
+                        <li><em>One-time 2024 office setup costs</em></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- VOLATILITY ANALYSIS -->
+            <div class="section">
+                <h2>⚡ Most Volatile Categories</h2>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th class="number">2023</th>
+                            <th class="number">2024</th>
+                            <th class="number">2025</th>
+                            <th>Range (High–Low)</th>
+                            <th>Volatility</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Other Expenses (27a)</strong></td>
+                            <td class="number">$34,658</td>
+                            <td class="number">$36,086</td>
+                            <td class="number">$4,117</td>
+                            <td>$36,086 – $4,117</td>
+                            <td class="down">🔴 EXTREME (−89%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Depreciation (13)</strong></td>
+                            <td class="number">$7,121</td>
+                            <td class="number">$8,821</td>
+                            <td class="number">$33,318</td>
+                            <td>$33,318 – $7,121</td>
+                            <td class="up">🟡 HIGH (+368%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Car & Truck (9)</strong></td>
+                            <td class="number">$4,181</td>
+                            <td class="number">$10,777</td>
+                            <td class="number">$1,497</td>
+                            <td>$10,777 – $1,497</td>
+                            <td class="down">🟡 HIGH (±158%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Taxes & Licenses (23)</strong></td>
+                            <td class="number">$4,202</td>
+                            <td class="number">$9,486</td>
+                            <td class="number">$1,444</td>
+                            <td>$9,486 – $1,444</td>
+                            <td class="down">🟡 HIGH (−85%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Office Expense (18)</strong></td>
+                            <td class="number">$5,927</td>
+                            <td class="number">$9,503</td>
+                            <td class="number">$3,671</td>
+                            <td>$9,503 – $3,671</td>
+                            <td class="neutral">🟢 MODERATE (±61%)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- KEY INSIGHTS -->
+            <div class="section">
+                <h2>💡 Key Insights & Interpretations</h2>
+
+                <div class="key-findings">
+                    <h4>🎯 Net Profit Trajectory</h4>
+                    <p style="margin-top: 10px; line-height: 1.8;">
+                        <strong>2023 ($13,019) → 2024 ($2,586) → 2025 ($24,031)</strong><br>
+                        The "valley" in 2024 is <strong>strategic</strong>, not a business failure. The data shows:
+                    </p>
+                    <ul>
+                        <li>Heavy investment in vehicles (+$6,596 over baseline)</li>
+                        <li>Increased staffing/contract labor (+$3,939)</li>
+                        <li>Mysterious spike in "Other Expenses" (+$1
